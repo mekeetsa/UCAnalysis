@@ -1,0 +1,567 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     28018,        558]
+NotebookOptionsPosition[     27493,        536]
+NotebookOutlinePosition[     27880,        552]
+CellTagsIndexPosition[     27837,        549]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["UCAnalysis Pallete Source Code", "Title",
+ CellChangeTimes->{{3.527139752*^9, 3.527139761984375*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"UcSymbol", "[", " ", "symb_Symbol", " ", "]"}], ":=", 
+   RowBox[{"PasteButton", "[", " ", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Style", "[", " ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"ToString", "[", " ", "symb", " ", "]"}], " ", "<>", " ", 
+        "\"\< \>\""}], ",", " ", "\"\<InputForm\>\"", ",", " ", 
+       RowBox[{"FontColor", "\[Rule]", "Blue"}], ",", " ", 
+       RowBox[{"FontSize", "\[Rule]", "Larger"}]}], " ", "]"}], ",", 
+     "\[IndentingNewLine]", "symb", ",", " ", 
+     RowBox[{"Alignment", "\[Rule]", "Left"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UcSymbol", "[", " ", "expr_", " ", "]"}], ":=", 
+   RowBox[{"PasteButton", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Style", "[", " ", 
+      RowBox[{"expr", ",", " ", "\"\<InputForm\>\"", ",", " ", 
+       RowBox[{"FontColor", "\[Rule]", "Blue"}], ",", 
+       RowBox[{"FontWeight", "\[Rule]", "Bold"}], ",", " ", 
+       RowBox[{"FontSize", "\[Rule]", "Larger"}]}], " ", "]"}], ",", 
+     "\[IndentingNewLine]", "expr", ",", " ", 
+     RowBox[{"Alignment", "\[Rule]", "Left"}]}], " ", "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UcSymbol", "[", " ", 
+    RowBox[{"list_", "?", "ListQ"}], " ", "]"}], " ", ":=", " ", 
+   RowBox[{"Column", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Table", "[", " ", 
+      RowBox[{
+       RowBox[{"UcSymbol", "[", " ", 
+        RowBox[{
+        "list", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], " ", 
+        "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "list", "]"}]}], "}"}]}], " ", "]"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Spacings", " ", "\[Rule]", " ", "0"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"UcSymbolRow", "[", " ", 
+    RowBox[{"list_", "?", "ListQ"}], " ", "]"}], " ", ":=", " ", 
+   RowBox[{"Row", "[", "\[IndentingNewLine]", 
+    RowBox[{"Table", "[", " ", 
+     RowBox[{
+      RowBox[{"UcSymbol", "[", " ", 
+       RowBox[{"list", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+        " ", "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"Length", "[", "list", "]"}]}], "}"}]}], " ", "]"}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.526276411412269*^9, 3.5262764451806693`*^9}, {
+   3.5262764904050694`*^9, 3.526276545722669*^9}, {3.526276627356759*^9, 
+   3.5262766428944583`*^9}, {3.5262766761058755`*^9, 
+   3.5262767112217007`*^9}, {3.526276741291898*^9, 3.526276749263549*^9}, 
+   3.5262767871069994`*^9, {3.5262768187752028`*^9, 3.5262768599114704`*^9}, {
+   3.5262784012891307`*^9, 3.5262784036914387`*^9}, {3.5269792696362143`*^9, 
+   3.5269795536708765`*^9}, {3.52699067215625*^9, 3.526990686703125*^9}, {
+   3.526990738984375*^9, 3.5269907531875*^9}, {3.526991043015625*^9, 
+   3.52699106215625*^9}, {3.526991097890625*^9, 3.52699114946875*^9}, {
+   3.526991198359375*^9, 3.526991230796875*^9}, {3.526991295015625*^9, 
+   3.526991429734375*^9}, {3.526991471640625*^9, 3.526991473265625*^9}, {
+   3.52699153390625*^9, 3.526991538390625*^9}, {3.52699166771875*^9, 
+   3.5269916885625*^9}, {3.526991792796875*^9, 3.526991826421875*^9}, {
+   3.526991944390625*^9, 3.52699199359375*^9}, {3.526992066546875*^9, 
+   3.526992183609375*^9}, {3.526992214953125*^9, 3.526992304265625*^9}, {
+   3.5269923395625*^9, 3.526992379890625*^9}, {3.52699241834375*^9, 
+   3.526992436984375*^9}, 3.52699248659375*^9, {3.526992523109375*^9, 
+   3.526992523515625*^9}, {3.526992565625*^9, 3.5269925751875*^9}, {
+   3.526992749640625*^9, 3.526992836765625*^9}, {3.5269928668125*^9, 
+   3.526992879625*^9}, {3.526993903109375*^9, 3.526994146953125*^9}, {
+   3.52713882425*^9, 3.52713885115625*^9}, {3.5271391714375*^9, 
+   3.527139250625*^9}, {3.527139322203125*^9, 3.527139403515625*^9}, {
+   3.5271394454375*^9, 3.527139504125*^9}, {3.527144619578125*^9, 
+   3.52714472415625*^9}, {3.527144771421875*^9, 3.5271447719375*^9}, {
+   3.5271448293125*^9, 3.527144882875*^9}, {3.5271449808125*^9, 
+   3.527145089015625*^9}, {3.5271451490625*^9, 3.52714517909375*^9}, {
+   3.5271452406875*^9, 3.52714529496875*^9}, {3.5271552985625*^9, 
+   3.527155335625*^9}, {3.5271554023125*^9, 3.52715540709375*^9}, {
+   3.52715544009375*^9, 3.5271554456875*^9}, {3.52715547709375*^9, 
+   3.527155485*^9}, {3.527155518171875*^9, 3.527155583203125*^9}, {
+   3.527156539296875*^9, 3.52715654515625*^9}, {3.527157821875*^9, 
+   3.52715784715625*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nb", "=", 
+   RowBox[{"CreatePalette", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Grid", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Button", "[", " ", 
+            RowBox[{"\"\<Open \!\(\*
+StyleBox[\"UCA\",
+FontColor->RGBColor[0, 0, 1]]\)\>\"", ",", "\[IndentingNewLine]", 
+             RowBox[{"NotebookOpen", "[", " ", 
+              RowBox[{"ToFileName", "[", " ", 
+               RowBox[{"$UcAnalysisRoot", ",", " ", "\"\<UCAnalysis.nb\>\""}],
+                " ", "]"}], " ", "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}]}], 
+            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", " ", 
+            RowBox[{"\"\<Open \!\(\*
+StyleBox[\"UCQ\",
+FontColor->RGBColor[0, 0, 1]]\)\>\"", ",", "\[IndentingNewLine]", 
+             RowBox[{"NotebookOpen", "[", " ", 
+              RowBox[{"ToFileName", "[", " ", 
+               RowBox[{"$UcAnalysisRoot", ",", " ", "\"\<UCQuantity.nb\>\""}],
+                " ", "]"}], " ", "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}]}], 
+            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", " ", 
+            RowBox[{"\"\<\!\(\*
+StyleBox[\"CODATA\",
+FontColor->RGBColor[0, 0, 1]]\)\>\"", ",", "\[IndentingNewLine]", 
+             RowBox[{"Get", "@", " ", "\"\<CODATA-Browser.m\>\""}], " ", ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}]}], 
+            "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "}"}], ",",
+          "\[IndentingNewLine]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"PasteButton", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Style", "[", " ", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{
+                "\"\<Uc\[ScriptCapitalV][\[SelectionPlaceholder]]\>\"", ",", 
+                 " ", "Bold", ",", " ", "Larger"}], " ", "]"}], ",", " ", 
+               "\"\<InputForm\>\""}], " ", "]"}], ",", "\[IndentingNewLine]", 
+             
+             RowBox[{
+             "Uc\[ScriptCapitalV]", "[", "\[SelectionPlaceholder]", "]"}]}], 
+            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"PasteButton", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Style", "[", " ", 
+              RowBox[{
+               RowBox[{"Style", "[", 
+                RowBox[{
+                "\"\<Uc\[ScriptCapitalF][\[SelectionPlaceholder]]\>\"", ",", 
+                 " ", "Bold", ",", " ", "Larger"}], " ", "]"}], ",", " ", 
+               "\"\<InputForm\>\""}], " ", "]"}], ",", "\[IndentingNewLine]", 
+             
+             RowBox[{
+             "Uc\[ScriptCapitalF]", "[", "\[SelectionPlaceholder]", "]"}]}], 
+            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           "Null"}], "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]",
+          
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"PasteButton", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Style", "[", " ", 
+              RowBox[{
+              "\"\<\[SelectionPlaceholder](\[Placeholder])\[Times]\!\(\*\
+SuperscriptBox[\(10\), \(\[Placeholder]\)]\)\>\"", ",", " ", "Larger"}], " ", 
+              "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"DisplayForm", "@", " ", 
+              RowBox[{"RowBox", "[", 
+               RowBox[{"{", "\[IndentingNewLine]", 
+                RowBox[{"RowBox", "[", 
+                 RowBox[{"{", " ", 
+                  RowBox[{
+                  "\"\<\[SelectionPlaceholder]\>\"", ",", 
+                   "\"\<\[InvisibleApplication]\>\"", ",", 
+                   RowBox[{"RowBox", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    "\"\<(\>\"", ",", "\"\<\[Placeholder]\>\"", ",", 
+                    "\"\<)\>\""}], " ", "}"}], "]"}], ",", " ", 
+                   "\[IndentingNewLine]", "\"\<\[Times]\>\"", ",", 
+                   RowBox[{"SuperscriptBox", "[", " ", 
+                    RowBox[{"\"\<10\>\"", ",", "\"\<\[Placeholder]\>\""}], 
+                    " ", "]"}]}], "\[IndentingNewLine]", "}"}], "]"}], 
+                "\[IndentingNewLine]", "}"}], "]"}]}]}], " ", 
+            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{"PasteButton", "[", "\[ScriptCapitalV]", "]"}], ",", 
+              RowBox[{"PasteButton", "[", "\[ScriptCapitalF]", "]"}], ",", 
+              RowBox[{"PasteButton", "[", "\[CapitalKoppa]", "]"}]}], " ", 
+             "}"}], "]"}], ",", "\[IndentingNewLine]", "Null"}], 
+          "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"OpenerView", "[", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Style", "[", " ", 
+               RowBox[{"\"\<Input Quantities\>\"", ",", " ", "Bold"}], " ", 
+               "]"}], ",", " ", "\[IndentingNewLine]", 
+              RowBox[{"UcSymbol", "[", 
+               RowBox[{"{", "\[IndentingNewLine]", 
+                RowBox[{"n", ",", 
+                 RowBox[{
+                 "\[CapitalKoppa]X", "[", "\[SelectionPlaceholder]", "]"}], 
+                 ",", 
+                 RowBox[{"fDist", "[", "\[SelectionPlaceholder]", "]"}], ",", 
+                 
+                 RowBox[{
+                 "\[CapitalKoppa]fSensitivityOfX", "[", 
+                  "\[SelectionPlaceholder]", "]"}], ",", 
+                 "\[IndentingNewLine]", "\[CapitalKoppa]fDomain", ",", " ", 
+                 "\[CapitalKoppa]Vector", ",", " ", "\[CapitalKoppa]Verbose", 
+                 ",", "\[CapitalKoppa]VerboseArgs", ",", 
+                 "\[IndentingNewLine]", "\[CapitalKoppa]AsMaximumUncertainty",
+                  ",", " ", "\[CapitalKoppa]AsStandardUncertainty"}], 
+                "\[IndentingNewLine]", "}"}], "]"}]}], " ", 
+             "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           "SpanFromLeft", ",", "SpanFromLeft"}], "\[IndentingNewLine]", 
+          "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"OpenerView", "[", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Style", "[", " ", 
+               RowBox[{"\"\<Estimated Result\>\"", ",", " ", "Bold"}], " ", 
+               "]"}], ",", " ", "\[IndentingNewLine]", 
+              RowBox[{"UcSymbol", "[", 
+               RowBox[{"{", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"\[CapitalKoppa]UCResult", "[", 
+                  RowBox[{"\[SelectionPlaceholder]", ",", "\[Placeholder]"}], 
+                  "]"}], ",", "\[IndentingNewLine]", "\[CapitalKoppa]Y", ",", 
+                 "\[IndentingNewLine]", "\[CapitalKoppa]fMinValue", ",", " ", 
+                 "\[CapitalKoppa]fMaxValue", ",", " ", "\[IndentingNewLine]", 
+                 "\[CapitalKoppa]fEstimate", ",", "\[IndentingNewLine]", 
+                 "\[CapitalKoppa]fStandardUncertainty", ",", 
+                 "\[CapitalKoppa]fMaximumUncertainty", ",", " ", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                 "\[CapitalKoppa]MonteCarlo", "[", "\[SelectionPlaceholder]", 
+                  "]"}]}], "\[IndentingNewLine]", "}"}], "]"}]}], " ", 
+             "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+           "SpanFromLeft", ",", "SpanFromLeft"}], "\[IndentingNewLine]", 
+          "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"OpenerView", "[", 
+            RowBox[{
+             RowBox[{"{", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Style", "[", " ", 
+                RowBox[{"\"\<Display\>\"", ",", " ", "Bold"}], " ", "]"}], 
+               ",", " ", "\[IndentingNewLine]", 
+               RowBox[{"UcSymbolRow", "[", 
+                RowBox[{"{", "\[IndentingNewLine]", 
+                 RowBox[{
+                 "\[CapitalKoppa]UC", ",", "\[CapitalKoppa]UCU", ",", 
+                  "\[CapitalKoppa]UCA", ",", "\[CapitalKoppa]UCE"}], 
+                 "\[IndentingNewLine]", "}"}], "]"}]}], "\[IndentingNewLine]",
+               "}"}], ",", " ", "True"}], " ", 
+            RowBox[{"(*", " ", "open", " ", "*)"}], " ", "]"}], ",", 
+           "\[IndentingNewLine]", "SpanFromLeft", ",", "SpanFromLeft"}], 
+          "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"OpenerView", "[", 
+            RowBox[{"{", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"Style", "[", " ", 
+               RowBox[{"\"\<Reports\>\"", ",", " ", "Bold"}], " ", "]"}], ",",
+               " ", "\[IndentingNewLine]", 
+              RowBox[{"UcSymbol", "[", 
+               RowBox[{"{", "\[IndentingNewLine]", 
+                RowBox[{
+                "\[CapitalKoppa]FunctionalRelationship", ",", 
+                 "\[IndentingNewLine]", "\[CapitalKoppa]InputQuantities", ",",
+                  "\[CapitalKoppa]AnalysisResult", ",", " ", 
+                 "\[IndentingNewLine]", "\[CapitalKoppa]AnalysisEnvironment", 
+                 ",", "\[IndentingNewLine]", 
+                 "\[CapitalKoppa]DumpRelationship", ",", 
+                 "\[CapitalKoppa]DumpQuantities"}], "\[IndentingNewLine]", 
+                "}"}], "]"}]}], " ", "\[IndentingNewLine]", "}"}], "]"}], ",",
+            "\[IndentingNewLine]", "SpanFromLeft", ",", "SpanFromLeft"}], 
+          "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{"Null", ",", "\[IndentingNewLine]", 
+           RowBox[{"Button", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"Style", "[", " ", 
+              RowBox[{"\"\<>> WMF\>\"", ",", " ", 
+               RowBox[{"FontColor", "\[Rule]", 
+                RowBox[{"Darker", "[", "Red", "]"}]}]}], " ", "]"}], ",", 
+             "\[IndentingNewLine]", 
+             RowBox[{"Module", "[", 
+              RowBox[{
+               RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{"SelectionMove", "[", " ", 
+                 RowBox[{
+                  RowBox[{"FrontEnd`SelectedNotebook", "[", "]"}], ",", " ", 
+                  "All", ",", " ", "Cell"}], " ", "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"SetOptions", "[", " ", 
+                 RowBox[{
+                  RowBox[{"NotebookSelection", "[", " ", 
+                   RowBox[{"FrontEnd`SelectedNotebook", "[", "]"}], " ", 
+                   "]"}], ",", " ", 
+                  RowBox[{"FontSize", "\[Rule]", "22"}]}], " ", "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{"SelectionMove", "[", " ", 
+                 RowBox[{
+                  RowBox[{"FrontEnd`SelectedNotebook", "[", "]"}], ",", " ", 
+                  "All", ",", " ", "Cell"}], " ", "]"}], ";", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"FrontEnd`SelectedNotebook", "[", "]"}], 
+                 "\[IndentingNewLine]", "  ", 
+                 RowBox[{"FrontEndExecute", "[", 
+                  RowBox[{"{", "\[IndentingNewLine]", 
+                   RowBox[{"FrontEndToken", "[", " ", 
+                    RowBox[{
+                    RowBox[{"FrontEnd`SelectedNotebook", "[", "]"}], ",", 
+                    " ", "\"\<SelectionConvert\>\"", ",", " ", 
+                    "\"\<Metafile\>\""}], " ", "]"}], "\[IndentingNewLine]", 
+                   "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+                RowBox[{"SelectionMove", "[", " ", 
+                 RowBox[{
+                  RowBox[{"FrontEnd`SelectedNotebook", "[", "]"}], ",", " ", 
+                  "All", ",", " ", "CellContents"}], " ", "]"}], ";"}]}], 
+              "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+             RowBox[{"Appearance", "\[Rule]", "\"\<Palette\>\""}], ",", 
+             RowBox[{"Alignment", "\[Rule]", "Left"}]}], 
+            "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+           "Null"}], "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"Spacings", "\[Rule]", " ", 
+        RowBox[{"{", " ", 
+         RowBox[{"0.2", ",", " ", "0.5"}], " ", "}"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Alignment", "\[Rule]", 
+        RowBox[{"{", " ", 
+         RowBox[{
+          RowBox[{"{", " ", "Left", " ", "}"}], ",", " ", 
+          RowBox[{"{", " ", "Center", " ", "}"}]}], " ", "}"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Frame", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "False", "}"}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"False", ",", " ", "False", ",", " ", "False", ",", " ", 
+            RowBox[{"{", "True", "}"}]}], " ", "}"}]}], "}"}]}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"FrameStyle", "\[Rule]", 
+        RowBox[{"Directive", "[", "Gray", "]"}]}]}], "\[IndentingNewLine]", 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"WindowElements", "\[Rule]", 
+        RowBox[{"{", "\"\<StatusArea\>\"", "}"}]}], ","}], "*)"}], 
+     "\[IndentingNewLine]", 
+     RowBox[{"WindowStatusArea", "\[Rule]", "Automatic"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"WindowMargins", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"Automatic", ",", "2"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"Automatic", ",", "2"}], "}"}]}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"WindowTitle", "\[Rule]", "\"\<UC Analysis Palette\>\""}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.526276411412269*^9, 3.5262764451806693`*^9}, {
+   3.5262764904050694`*^9, 3.526276545722669*^9}, {3.526276627356759*^9, 
+   3.5262766428944583`*^9}, {3.5262766761058755`*^9, 
+   3.5262767112217007`*^9}, {3.526276741291898*^9, 3.526276749263549*^9}, 
+   3.5262767871069994`*^9, {3.5262768187752028`*^9, 3.5262768599114704`*^9}, {
+   3.5262784012891307`*^9, 3.5262784036914387`*^9}, {3.5269792696362143`*^9, 
+   3.5269795536708765`*^9}, {3.52699067215625*^9, 3.526990686703125*^9}, {
+   3.526990738984375*^9, 3.5269907531875*^9}, {3.526991043015625*^9, 
+   3.52699106215625*^9}, {3.526991097890625*^9, 3.52699114946875*^9}, {
+   3.526991198359375*^9, 3.526991230796875*^9}, {3.526991295015625*^9, 
+   3.526991429734375*^9}, {3.526991471640625*^9, 3.526991473265625*^9}, {
+   3.52699153390625*^9, 3.526991538390625*^9}, {3.52699166771875*^9, 
+   3.5269916885625*^9}, {3.526991792796875*^9, 3.526991826421875*^9}, {
+   3.526991944390625*^9, 3.52699199359375*^9}, {3.526992066546875*^9, 
+   3.526992183609375*^9}, {3.526992214953125*^9, 3.526992304265625*^9}, {
+   3.5269923395625*^9, 3.526992379890625*^9}, {3.52699241834375*^9, 
+   3.526992436984375*^9}, 3.52699248659375*^9, {3.526992523109375*^9, 
+   3.526992523515625*^9}, {3.526992565625*^9, 3.5269925751875*^9}, {
+   3.526992749640625*^9, 3.526992836765625*^9}, {3.5269928668125*^9, 
+   3.526992879625*^9}, {3.526993903109375*^9, 3.526994146953125*^9}, {
+   3.52713882425*^9, 3.52713885115625*^9}, {3.52713889128125*^9, 
+   3.527138933046875*^9}, {3.527138974359375*^9, 3.52713915778125*^9}, {
+   3.527139266125*^9, 3.52713931228125*^9}, 3.527139418875*^9, {
+   3.527139535484375*^9, 3.527139546734375*^9}, {3.527140124046875*^9, 
+   3.527140139734375*^9}, {3.52714017125*^9, 3.52714024153125*^9}, {
+   3.5271402785*^9, 3.527140353296875*^9}, {3.52714043121875*^9, 
+   3.5271404951875*^9}, {3.527140605046875*^9, 3.5271407354375*^9}, {
+   3.527140787890625*^9, 3.52714087925*^9}, 3.52714093584375*^9, {
+   3.527141034375*^9, 3.52714109825*^9}, {3.52714113428125*^9, 
+   3.527141136015625*^9}, {3.527141177453125*^9, 3.527141178625*^9}, {
+   3.52714121146875*^9, 3.527141306109375*^9}, {3.5271413401875*^9, 
+   3.52714157740625*^9}, {3.527141625140625*^9, 3.527141974984375*^9}, {
+   3.5271420305*^9, 3.527142138234375*^9}, {3.527142186578125*^9, 
+   3.527142216875*^9}, {3.527142338484375*^9, 3.527142346265625*^9}, {
+   3.527142412*^9, 3.527142876484375*^9}, {3.527142989984375*^9, 
+   3.527142998609375*^9}, {3.52714331696875*^9, 3.52714349678125*^9}, {
+   3.52714353259375*^9, 3.5271435861875*^9}, {3.527143617734375*^9, 
+   3.527143924671875*^9}, {3.527143982265625*^9, 3.527144070953125*^9}, {
+   3.52714410840625*^9, 3.5271445861875*^9}, {3.5271447189375*^9, 
+   3.527144732*^9}, {3.52714480515625*^9, 3.527144813203125*^9}, {
+   3.527144891515625*^9, 3.52714494271875*^9}, {3.527145094328125*^9, 
+   3.527145097203125*^9}, {3.527145460796875*^9, 3.527145623515625*^9}, {
+   3.527145665859375*^9, 3.527145727953125*^9}, {3.5271457629375*^9, 
+   3.527145795046875*^9}, {3.527145826703125*^9, 3.527145831484375*^9}, {
+   3.527145866921875*^9, 3.527145876*^9}, {3.52715535525*^9, 
+   3.52715536990625*^9}, 3.527155418015625*^9, {3.527155627625*^9, 
+   3.5271557033125*^9}, {3.527156600703125*^9, 3.527156631296875*^9}, {
+   3.52715667590625*^9, 3.52715671521875*^9}, {3.52715678465625*^9, 
+   3.5271568066875*^9}, {3.52715685303125*^9, 3.527156858125*^9}, {
+   3.52715695275*^9, 3.527157156234375*^9}, {3.52715720128125*^9, 
+   3.527157244953125*^9}, {3.527157281546875*^9, 3.527157294390625*^9}, {
+   3.52715734678125*^9, 3.527157380359375*^9}, {3.527157683125*^9, 
+   3.5271578005625*^9}, {3.52715783565625*^9, 3.5271578359375*^9}, {
+   3.527157877828125*^9, 3.527157890609375*^9}, {3.527157927734375*^9, 
+   3.52715798296875*^9}, {3.527158015625*^9, 3.52715803415625*^9}, {
+   3.527159881828125*^9, 3.527159883828125*^9}, 3.52715995428125*^9, {
+   3.527168060078125*^9, 3.5271680915625*^9}, {3.5271682251875*^9, 
+   3.527168284453125*^9}, {3.527168327671875*^9, 3.52716851571875*^9}, {
+   3.527268861375*^9, 3.52726887675*^9}, 3.52726899096875*^9, {
+   3.527345269375*^9, 3.527345272625*^9}, {3.527529548234375*^9, 
+   3.527529564046875*^9}, {3.52753002121875*^9, 3.52753010375*^9}, {
+   3.5275301820625*^9, 3.5275301850625*^9}, {3.527530224765625*^9, 
+   3.527530226296875*^9}, {3.527530257*^9, 3.527530266796875*^9}, {
+   3.527530318265625*^9, 3.527530332609375*^9}, {3.52753038165625*^9, 
+   3.5275303955625*^9}, {3.527530491234375*^9, 3.52753049915625*^9}, {
+   3.5275305298125*^9, 3.527530573203125*^9}, {3.527530607046875*^9, 
+   3.527530679*^9}, 3.527530801109375*^9, {3.5275308609375*^9, 
+   3.52753086653125*^9}, {3.5275309200625*^9, 3.527530922609375*^9}, {
+   3.5275309918125*^9, 3.527530996078125*^9}, {3.52753104521875*^9, 
+   3.527531045359375*^9}, {3.527580676484375*^9, 3.527580691390625*^9}, {
+   3.527581520578125*^9, 3.527581547296875*^9}, {3.527593905078125*^9, 
+   3.52759394496875*^9}, {3.52759397803125*^9, 3.527593979125*^9}, {
+   3.52760680871875*^9, 3.52760685109375*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "[", " ", 
+  RowBox[{"ToFileName", "[", " ", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{
+     "$UserBaseDirectory", ",", " ", "\"\<SystemFiles\>\"", ",", " ", 
+      "\"\<FrontEnd\>\""}], " ", "}"}], ",", " ", "\"\<Palettes\>\""}], " ", 
+   "]"}], " ", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NotebookSave", "[", " ", 
+   RowBox[{"nb", ",", " ", 
+    RowBox[{"ToFileName", "[", " ", 
+     RowBox[{
+      RowBox[{"Directory", "[", "]"}], ",", " ", "\"\<UCA-Pallete.nb\>\""}], 
+     " ", "]"}]}], " ", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ResetDirectory", "[", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.526276411412269*^9, 3.5262764451806693`*^9}, {
+   3.5262764904050694`*^9, 3.526276545722669*^9}, {3.526276627356759*^9, 
+   3.5262766428944583`*^9}, {3.5262766761058755`*^9, 
+   3.5262767112217007`*^9}, {3.526276741291898*^9, 3.526276749263549*^9}, 
+   3.5262767871069994`*^9, {3.5262768187752028`*^9, 3.5262768599114704`*^9}, {
+   3.5262784012891307`*^9, 3.5262784036914387`*^9}, {3.5269792696362143`*^9, 
+   3.5269795536708765`*^9}, {3.52699067215625*^9, 3.526990686703125*^9}, {
+   3.526990738984375*^9, 3.5269907531875*^9}, {3.526991043015625*^9, 
+   3.52699106215625*^9}, {3.526991097890625*^9, 3.52699114946875*^9}, {
+   3.526991198359375*^9, 3.526991230796875*^9}, {3.526991295015625*^9, 
+   3.526991429734375*^9}, {3.526991471640625*^9, 3.526991473265625*^9}, {
+   3.52699153390625*^9, 3.526991538390625*^9}, {3.52699166771875*^9, 
+   3.5269916885625*^9}, {3.526991792796875*^9, 3.526991826421875*^9}, {
+   3.526991944390625*^9, 3.52699199359375*^9}, {3.526992066546875*^9, 
+   3.526992183609375*^9}, {3.526992214953125*^9, 3.526992304265625*^9}, {
+   3.5269923395625*^9, 3.526992379890625*^9}, {3.52699241834375*^9, 
+   3.526992436984375*^9}, 3.52699248659375*^9, {3.526992523109375*^9, 
+   3.526992523515625*^9}, {3.526992565625*^9, 3.5269925751875*^9}, {
+   3.526992749640625*^9, 3.526992836765625*^9}, 3.527139788203125*^9, {
+   3.527578377765625*^9, 3.52757845590625*^9}, {3.527578489546875*^9, 
+   3.5275785575625*^9}, {3.527578627453125*^9, 3.5275787530625*^9}, {
+   3.527580256375*^9, 3.527580366796875*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Documents and \
+Settings\\\\Administrator\\\\Application Data\\\\Mathematica\\\\SystemFiles\\\
+\\FrontEnd\\\\Palettes\"\>"], "Output",
+ CellChangeTimes->{
+  3.527580375140625*^9, 3.527580694203125*^9, 3.527581558140625*^9, {
+   3.52759397278125*^9, 3.527593985671875*^9}, 3.527606871546875*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{888, 1047},
+WindowMargins->{{3, Automatic}, {18, Automatic}},
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->"UCA-Stylesheet.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 107, 1, 67, "Title"],
+Cell[700, 26, 4680, 92, 310, "Input"],
+Cell[5383, 120, 19526, 362, 2290, "Input"],
+Cell[CellGroupData[{
+Cell[24934, 486, 2210, 39, 70, "Input"],
+Cell[27147, 527, 318, 5, 54, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,259 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      7919,        250]
+NotebookOptionsPosition[      5197,        193]
+NotebookOutlinePosition[      5749,        213]
+CellTagsIndexPosition[      5706,        210]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[StyleData[StyleDefinitions -> "Default.nb"]],
+
+Cell[CellGroupData[{
+
+Cell["Inline Text Styles", "Section",
+ CellChangeTimes->{{3.526396346015625*^9, 3.52639635934375*^9}, {
+  3.526396401375*^9, 3.5263964083125*^9}}],
+
+Cell[StyleData["Comment"],
+ MenuPosition->10000,
+ FontSlant->"Italic",
+ FontColor->RGBColor[0.501961, 0, 0.501961]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Presentation Environment", "Section",
+ CellChangeTimes->{{3.526396346015625*^9, 3.52639635934375*^9}}],
+
+Cell[StyleData["Title", "Presentation"],
+ CellMargins->{{39, 0}, {4, 30}},
+ TextAlignment->Center,
+ FontSize->28.,
+ FontColor->RGBColor[0, 0.501961, 0.752941]],
+
+Cell[StyleData["Subtitle", "Presentation"],
+ CellMargins->{{39, 0}, {20, 0}},
+ TextAlignment->Center,
+ FontSize->18.],
+
+Cell[StyleData["Section", "Presentation"],
+ CellMargins->{{39, 0}, {4, 25}},
+ FontSize->24.,
+ FontColor->RGBColor[0.501961, 0, 0]],
+
+Cell[StyleData["Subsection", "Presentation"],
+ CellMargins->{{39, 0}, {4, 15}},
+ FontSize->22.],
+
+Cell[StyleData["Subsubsection", "Presentation"],
+ CellMargins->{{39, 0}, {4, 10}},
+ FontSize->18.,
+ FontColor->RGBColor[0, 0, 1]],
+
+Cell[StyleData["Text", "Presentation"],
+ CellMargins->{{39, 0}, {6, 8}}],
+
+Cell[StyleData["TextGroup", "Presentation", StyleDefinitions -> StyleData[
+ "Text", "Presentation"]],
+ CellDingbat->"\[EmptyDownTriangle]",
+ CellGroupingRules->{"SectionGrouping", 50},
+ PageBreakBelow->False],
+
+Cell[StyleData["Hyperlink", "Presentation"],
+ FontFamily->"Verdana",
+ FontSize->12.],
+
+Cell[StyleData["DisplayFormula", "Presentation"],
+ FontSize->14.],
+
+Cell[StyleData["Code", "Presentation"],
+ PageWidth->WindowWidth,
+ CellFrame->True,
+ CellMargins->{{72, 10}, {4, 0}},
+ CellFrameColor->GrayLevel[0.9],
+ ShowAutoStyles->True,
+ ShowSyntaxStyles->True,
+ FontSize->14.,
+ Background->RGBColor[0.992157, 0.996078, 0.905882]],
+
+Cell[StyleData["Print", "Presentation"],
+ CellMargins->{{72, 10}, {0, 0}},
+ CellFrameMargins->{{8, 8}, {4, 4}},
+ FontSize->14.,
+ Background->RGBColor[1., 0.9, 0.9]],
+
+Cell[StyleData["Input", "Presentation"],
+ CellFrame->{{0.5, 0.5}, {0.5, 0.5}},
+ CellMargins->{{72, 10}, {2, 2}},
+ CellFrameMargins->{{8, 8}, {4, 4}},
+ CellFrameColor->RGBColor[0.866667, 0.933333, 1],
+ FontSize->14,
+ Background->RGBColor[1, 1, 0.941176]],
+
+Cell[StyleData["Output", "Presentation"],
+ CellFrame->{{0.5, 0}, {0, 0}},
+ CellMargins->{{72, 10}, {8, 4}},
+ CellFrameMargins->{{8, 8}, {4, 4}},
+ CellFrameColor->None,
+ FontSize->14]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Printout Environment", "Section",
+ CellChangeTimes->{{3.526396346015625*^9, 3.526396387453125*^9}}],
+
+Cell[StyleData["Title", "Printout"],
+ CellMargins->{{20, 0}, {4, 0}},
+ TextAlignment->Center,
+ FontSize->24,
+ FontColor->RGBColor[0, 0.501961, 0.752941]],
+
+Cell[StyleData["Subtitle", "Printout"],
+ CellMargins->{{20, 0}, {20, 0}},
+ TextAlignment->Center,
+ FontSize->14.],
+
+Cell[StyleData["Section", "Printout"],
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{20, 0}, {4, 25}},
+ FontSize->18,
+ FontColor->RGBColor[0.501961, 0, 0]],
+
+Cell[StyleData["Subsection", "Printout"],
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{20, 0}, {4, 15}},
+ FontSize->14.],
+
+Cell[StyleData["Subsubsection", "Printout"],
+ CellDingbat->"\[FilledDownTriangle]",
+ CellMargins->{{20, 10}, {4, 10}},
+ FontSize->12.,
+ FontColor->RGBColor[0, 0, 1]],
+
+Cell[StyleData["Text", "Printout"],
+ CellMargins->{{20, 0}, {3, 3}},
+ FontSize->11.5],
+
+Cell[StyleData["TextGroup", "Printout", StyleDefinitions -> StyleData[
+ "Text", "Printout"]],
+ CellGroupingRules->{"SectionGrouping", 50},
+ PageBreakBelow->False],
+
+Cell[StyleData["Hyperlink", "Printout"],
+ FontFamily->"Verdana",
+ FontSize->10.6],
+
+Cell[StyleData["DisplayFormula", "Printout"],
+ FontSize->10.6],
+
+Cell[StyleData["Code", "Printout"],
+ PageWidth->PaperWidth,
+ CellFrame->{{0.5, 0.5}, {0.5, 0.5}},
+ CellMargins->{{20, 0}, {0, -0.5}},
+ ShowCellLabel->False,
+ CellFrameColor->RGBColor[0.866667, 0.933333, 1],
+ ShowAutoStyles->True,
+ ShowSyntaxStyles->True,
+ Background->RGBColor[1, 1, 0.909804]],
+
+Cell[StyleData["Print", "Printout"],
+ CellFrame->True,
+ CellMargins->{{20, 0}, {0, 0}},
+ CellFrameMargins->{{8, 8}, {4, 4}},
+ CellFrameColor->None,
+ Background->RGBColor[1., 0.9, 0.9]],
+
+Cell[StyleData["Input", "Printout"],
+ CellFrame->{{0.5, 0.5}, {0.5, 0.5}},
+ CellMargins->{{20, 0}, {4, 0}},
+ CellFrameMargins->{{8, 8}, {4, 4}},
+ CellFrameColor->RGBColor[0.866667, 0.933333, 1],
+ Background->RGBColor[1, 1, 0.941176]],
+
+Cell[StyleData["Output", "Printout"],
+ CellFrame->{{0.5, 0}, {0, 0}},
+ CellMargins->{{20, 0}, {8, 4}},
+ CellFrameMargins->{{16, 8}, {4, 4}},
+ CellFrameColor->None]
+}, Open  ]]
+},
+WindowSize->{808, 831},
+WindowMargins->{{Automatic, 316}, {Automatic, 61}},
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "PrivateStylesheetFormatting.nb"]]}, 
+  Visible -> False, FrontEndVersion -> 
+  "6.0 for Microsoft Windows (32-bit) (May 21, 2008)", StyleDefinitions -> 
+  "Default.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 49, 0, 40, 49, 0, "StyleData", "StyleDefinitions", ""],
+Cell[CellGroupData[{
+Cell[642, 25, 146, 2, 51, "Section"],
+Cell[791, 29, 115, 3, 40, 26, 0, "StyleData", "Comment", "All",
+ MenuPosition->10000]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[943, 37, 108, 1, 51, "Section"],
+Cell[1054, 40, 159, 4, 84, 40, 0, "StyleData", "Title", "Presentation"],
+Cell[1216, 46, 117, 3, 57, 43, 0, "StyleData", "Subtitle", "Presentation"],
+Cell[1336, 51, 130, 3, 73, 42, 0, "StyleData", "Section", "Presentation"],
+Cell[1469, 56, 95, 2, 61, 45, 0, "StyleData", "Subsection", "Presentation"],
+Cell[1567, 60, 129, 3, 51, 48, 0, "StyleData", "Subsubsection", \
+"Presentation"],
+Cell[1699, 65, 72, 1, 50, 39, 0, "StyleData", "Text", "Presentation"],
+Cell[1774, 68, 208, 4, 50, 101, 1, "StyleData", "TextGroup", "Presentation"],
+Cell[1985, 74, 84, 2, 39, 44, 0, "StyleData", "Hyperlink", "Presentation"],
+Cell[2072, 78, 65, 1, 41, 49, 0, "StyleData", "DisplayFormula", \
+"Presentation"],
+Cell[2140, 81, 266, 8, 53, 39, 0, "StyleData", "Code", "Presentation"],
+Cell[2409, 91, 164, 4, 41, 40, 0, "StyleData", "Print", "Presentation"],
+Cell[2576, 97, 253, 6, 46, 40, 0, "StyleData", "Input", "Presentation"],
+Cell[2832, 105, 182, 5, 45, 41, 0, "StyleData", "Output", "Presentation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3051, 115, 105, 1, 51, "Section"],
+Cell[3159, 118, 153, 4, 48, 36, 0, "StyleData", "Title", "Printout"],
+Cell[3315, 124, 113, 3, 53, 39, 0, "StyleData", "Subtitle", "Printout"],
+Cell[3431, 129, 163, 4, 66, 38, 0, "StyleData", "Section", "Printout"],
+Cell[3597, 135, 129, 3, 52, 41, 0, "StyleData", "Subsection", "Printout"],
+Cell[3729, 140, 165, 4, 46, 44, 0, "StyleData", "Subsubsection", "Printout"],
+Cell[3897, 146, 85, 2, 38, 35, 0, "StyleData", "Text", "Printout"],
+Cell[3985, 150, 162, 3, 38, 93, 1, "StyleData", "TextGroup", "Printout"],
+Cell[4150, 155, 81, 2, 38, 40, 0, "StyleData", "Hyperlink", "Printout"],
+Cell[4234, 159, 62, 1, 39, 45, 0, "StyleData", "DisplayFormula", "Printout"],
+Cell[4299, 162, 293, 8, 47, 35, 0, "StyleData", "Code", "Printout"],
+Cell[4595, 172, 184, 5, 39, 36, 0, "StyleData", "Print", "Printout"],
+Cell[4782, 179, 233, 5, 44, 36, 0, "StyleData", "Input", "Printout"],
+Cell[5018, 186, 163, 4, 43, 37, 0, "StyleData", "Output", "Printout"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

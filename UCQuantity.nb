@@ -1,0 +1,4252 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    159243,       4243]
+NotebookOptionsPosition[    149264,       3923]
+NotebookOutlinePosition[    149868,       3946]
+CellTagsIndexPosition[    149825,       3943]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Uncertain Quantities \[MathematicaIcon]", "Title"],
+
+Cell["\<\
+Package for dealing with estimated quantities with uncertainties\
+\>", "Subtitle"],
+
+Cell[BoxData[
+ RowBox[{"(*", "\n", 
+  StyleBox["   ", "Comment"], 
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"Uncertain", " ", "Quantities"}], "\n", "   ", 
+     RowBox[{
+      RowBox[{
+      "Package", " ", "for", " ", "dealing", " ", "with", " ", "estimated", 
+       " ", "quantities", " ", "with", " ", "uncertainties"}], "\n", "   ", 
+      RowBox[{"Author", ":", " ", 
+       RowBox[{"Mikica", " ", "B", " ", "Kocic"}]}], "\n", "   ", 
+      RowBox[{"Version", ":", " ", "2.5"}]}]}], ",", " ", 
+    RowBox[{"2011", "-", "10", "-", "15"}]}], "Comment"], 
+  StyleBox["\n", "Comment"], "*)"}]], "Code"],
+
+Cell[CellGroupData[{
+
+Cell["Begin Package", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeginPackage", "[", " ", 
+   RowBox[{"\"\<UCQuantity`\>\"", ",", " ", 
+    RowBox[{"{", " ", "\"\<Notation`\>\"", " ", "}"}]}], " ", "]"}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Unprotect", "[", " ", 
+   RowBox[{
+   "UCQuantity`Uc\[ScriptCapitalV]", ",", " ", 
+    "UCQuantity`Uc\[ScriptCapitalF]"}], " ", "]"}], ";"}]], "Code"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", " ", "\"\<UCQuantity`Private`*\>\"", " ", "]"}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ClearAll", "[", " ", "\"\<UCQuantity`*\>\"", " ", "]"}], 
+  ";"}]}], "Code"],
+
+Cell[CellGroupData[{
+
+Cell["Exported Symbols", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["Constants", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "$ExactUc\[ScriptCapitalV]QuantityPrecision", " ", ":=", " ", "30"}], 
+  ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Known Distributions", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", " ", 
+   RowBox[{
+   "Normal\[ScriptCapitalD]", ",", " ", "Uniform\[ScriptCapitalD]", ",", " ", 
+    "Triangular\[ScriptCapitalD]"}], " ", "]"}], ";"}]], "Code"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Normal\[ScriptCapitalD]", "::", "usage"}], "     ", "=", " ", 
+  "\"\<Normal Distribution\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"Uniform\[ScriptCapitalD]", "::", "usage"}], "    ", "=", " ", 
+  "\"\<Uniform Distribution\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"Triangular\[ScriptCapitalD]", "::", "usage"}], " ", "=", " ", 
+  "\"\<Triangular Distribution\>\""}]}], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Uc\[ScriptCapitalV] Transformations", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Uc\[ScriptCapitalV]", "::", "usage"}], " ", "=", " ", 
+  "\"\<Uncertain Quantity Object\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Uc\[ScriptCapitalF]", "::", "usage"}], " ", "=", " ", 
+  "\"\<Functional Relationship with Input Quantities Object\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", " ", "Uc\[ScriptCapitalV]", " ", "]"}], " ", "=", 
+   " ", "\n", 
+   RowBox[{"{", " ", "\n", "  ", 
+    RowBox[{
+     RowBox[{"Distribution", " ", "\[Rule]", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"CoverFactor", " ", "\[Rule]", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"Name", " ", "\[Rule]", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"Unit", " ", "\[Rule]", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"Comment", " ", "\[Rule]", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"Expression", " ", "\[Rule]", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"Interpretation", " ", "\[Rule]", " ", "Null"}]}], "\n", "}"}]}],
+   ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Protect", "[", " ", 
+   RowBox[{"Uc\[ScriptCapitalV]", ",", " ", "Uc\[ScriptCapitalF]"}], " ", 
+   "]"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Uc\[ScriptCapitalV]Q", "::", "usage"}], " ", "=", " ", 
+  "\"\<tests whether expr is a Uc\[ScriptCapitalV] quantity\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"UncertainUc\[ScriptCapitalV]Q", "::", "usage"}], " ", "=", " ", 
+  "\"\<tests whether expr is an uncertain Uc\[ScriptCapitalV] \
+quantity\>\""}]], "Code"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ExactUc\[ScriptCapitalV]Q", "::", "usage"}], " ", "=", " ", 
+  "\"\<tests whether expr is an exact numeric Uc\[ScriptCapitalV] \
+quantity\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"IndeterminateUc\[ScriptCapitalV]Q", "::", "usage"}], " ", "=", 
+  " ", "\"\<testes whether expr is an indeterminate Uc\[ScriptCapitalV]Q \
+quantity\>\""}]}], "Code"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Uc\[ScriptCapitalV]$Option", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the value of name for options associated with the Uc\
+\[ScriptCapitalV]\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"Uc\[ScriptCapitalV]$NameBox", "::", "usage"}], " ", "=", " ", 
+  "\"\<\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"Uc\[ScriptCapitalV]$UnitBox", "::", "usage"}], " ", "=", " ", 
+  "\"\<\>\""}]}], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ToUc\[ScriptCapitalV]", "::", "usage"}], " ", "=", " ", 
+  "\"\<transforms expression to a Uc\[ScriptCapitalV] quantity if \
+possible\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", " ", "ToUc\[ScriptCapitalV]", " ", "]"}], " ", "=",
+    " ", 
+   RowBox[{"Options", "[", " ", "Uc\[ScriptCapitalV]", " ", "]"}]}], 
+  ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Uc\[ScriptCapitalV] Functions", "Subsubsection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Estimate", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the estimate part of the Uc\[ScriptCapitalV] quantity\>\""}], "\n\
+", 
+ RowBox[{
+  RowBox[{"Uncertainty", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the uncertainty part of the Uc\[ScriptCapitalV] quantity\>\""}], \
+"\n", 
+ RowBox[{
+  RowBox[{"LowerLimit", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the lower limit of the Uc\[ScriptCapitalV] quantity\>\""}], "\n\
+", 
+ RowBox[{
+  RowBox[{"UpperLimit", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the upper limit of the Uc\[ScriptCapitalV] quantity\>\""}], "\n\
+", 
+ RowBox[{
+  RowBox[{"StdUncertainty", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the standard uncertainty of the Uc\[ScriptCapitalV] \
+quantity\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"MaxUncertainty", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the maximum uncertainty of the Uc\[ScriptCapitalV] \
+quantity\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"Distribution", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the continuous staticial distribution associated with the Uc\
+\[ScriptCapitalV] quantity\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"SigFigures", "::", "usage"}], " ", "=", " ", 
+  "\"\<gives the number of the significant figures of the Uc\[ScriptCapitalV] \
+quantity\>\"", " "}]}], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RoundOff", "::", "usage"}], " ", "=", " ", 
+  "\"\<rounds off the Uc\[ScriptCapitalV] quantity to a number of uc \
+significant figures\>\""}]], "Code"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"UcBox", "::", "usage"}], " ", "=", " ", 
+  "\"\<generates boxes corresponding to the printed form of the Uc\
+\[ScriptCapitalV] quantity\>\""}], "\n", 
+ RowBox[{
+  RowBox[{"DisplayUc\[ScriptCapitalV]", "::", "usage"}], " ", "=", " ", 
+  "\"\<generates the full report for the Uc\[ScriptCapitalV] \
+quantity\>\""}]}], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", " ", "UcBox", " ", "]"}], " ", "=", " ", "\n", 
+   RowBox[{"{", "\n", "  ", 
+    RowBox[{
+     RowBox[{"Condensed", " ", "\[Rule]", " ", "False"}], ",", "\n", "  ", 
+     RowBox[{"Precision", " ", "\[Rule]", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"ToString", " ", "\[Rule]", " ", "False"}]}], "\n", "}"}]}], 
+  ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Utilities", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NumberBox", "::", "usage"}], " ", "=", " ", "\"\<\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NameAsIs", "::", "usage"}], " ", "=", " ", 
+  "\"\<converts expression to string in input form\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ImportUnits", "::", "usage"}], " ", "=", " ", 
+  "\"\<converts expression to string suitable for Unit option of an Uc\
+\[ScriptCapitalV]\>\""}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Messages", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Uc\[ScriptCapitalV]", "::", "invuc"}], " ", "=", " ", 
+  "\"\<invalid uncertainty `1` in `2`. \\\nUncertainty must be a non-zero \
+positive integer or the Null.\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Uc\[ScriptCapitalV]", "::", "invdist"}], " ", "=", " ", 
+  "\"\<invalid distribution `1` in `2`. \\\nAccepted values are Normal\
+\[ScriptCapitalD], Triangular\[ScriptCapitalD], Uniform\[ScriptCapitalD] or \
+Null.\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ToUc\[ScriptCapitalV]", "::", "invcstr"}], " ", "=", " ", 
+  "\"\<coluld not determine Uc\[ScriptCapitalV] constructor for `1`.\>\""}]], \
+"Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ToUc\[ScriptCapitalV]", "::", "invargs"}], " ", "=", " ", 
+  "\"\<invalid arguments in `1`.\>\""}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RoundOff", "::", "ucinc"}], " ", "=", " ", 
+  "\"\<ignoring to increase uc significant figures from `1` to `2` in \
+`3`.\>\""}]], "Code"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Private Section", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", " ", "\"\<UCQuantity`Private`\>\"", " ", "]"}], 
+  ";"}]], "Code"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uncertain Quantity (Uc\[ScriptCapitalV] Object)\
+\>", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["Uc\[ScriptCapitalV] Structure", "Subsubsection"],
+
+Cell["\<\
+Uncertaint quantity (Uc\[ScriptCapitalV] quantity) is represented as a dummy \
+function call:\
+\>", "Text"],
+
+Cell[TextData[{
+ "\t",
+ Cell[BoxData[
+  RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+   RowBox[{"est", ",", "uc", ",", "exp", ",", 
+    StyleBox["OptionsPattern",
+     FontSlant->"Italic"]}], " ", "]"}]]],
+ " "
+}], "Text"],
+
+Cell["\<\
+which parameters consists of the base, mandatory part (parameters est, uc, \
+exp) and an optional part. The members of the base part are:\
+\>", "Text"],
+
+Cell[TextData[{
+ "\t\[FilledSmallCircle]  ",
+ StyleBox["estimate",
+  FontWeight->"Bold"],
+ " - positive or negative integer that contains significant digits of the \
+estimate\n\t\[FilledSmallCircle]  ",
+ StyleBox["uncertainty",
+  FontWeight->"Bold"],
+ " - positive non-zero integer that contains the last digits of the standard \
+uncertainty\n\t\[FilledSmallCircle]  ",
+ StyleBox["exponent",
+  FontWeight->"Bold"],
+ " - positive or negative integer with exponent"
+}], "Text"],
+
+Cell["The options are:", "Text"],
+
+Cell[TextData[{
+ "\t\[FilledSmallCircle]  ",
+ StyleBox["Distribution",
+  FontWeight->"Bold"],
+ " - statistical distribution of the uncertainty\n\t\[FilledSmallCircle]  ",
+ StyleBox["Name",
+  FontWeight->"Bold"],
+ " - name of the quantity\n\t\[FilledSmallCircle]  ",
+ StyleBox["Unit",
+  FontWeight->"Bold"],
+ " - physical unit of the quantity"
+}], "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Uc\[ScriptCapitalV] Constraints", "Subsubsection"],
+
+Cell[TextData[{
+ "\t\[FilledSmallCircle] For exact quantities, the uncertainty and exponent \
+parts are both ",
+ Cell[BoxData[
+  StyleBox["Null",
+   FontSize->14]]],
+ " and estimate can be any type of expression.\n\t\[FilledSmallCircle] For \
+uncertain quantities, the estimate, uncertainty and exponent parts are \
+integers.\n\t\[FilledSmallCircle] The uncertainty part must be greater than \
+zero 0.\n\t\[FilledSmallCircle] Significant digits is number of digits of the \
+respective estimate or uncertainty part.\n\t\[FilledSmallCircle] Distribution \
+option is ignored for exact values."
+}], "Text"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV]Q Object Accertion Functions\
+\>", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV]Q: tests wheter expression is a Uc\[ScriptCapitalV] object\
+\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]Q", "[", " ", "expr_", " ", "]"}], " ", ":=", 
+   " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Head", "[", " ", "expr", " ", "]"}], " ", "===", " ", 
+     "Uc\[ScriptCapitalV]"}], " ", "&&", " ", 
+    RowBox[{
+     RowBox[{"Length", "[", " ", "expr", " ", "]"}], " ", "\[GreaterEqual]", 
+     " ", "3"}]}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+UncertainUc\[ScriptCapitalV]Q: tests whether expression is an uncertain Uc\
+\[ScriptCapitalV] quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UncertainUc\[ScriptCapitalV]Q", "[", " ", "expr_", " ", "]"}], 
+   " ", ":=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Uc\[ScriptCapitalV]Q", "[", " ", "expr", " ", "]"}], " ", 
+     "\\\n"}], "  ", "&&", " ", 
+    RowBox[{"IntegerQ", "[", " ", 
+     RowBox[{"expr", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+     " ", "]"}], " ", "&&", " ", 
+    RowBox[{"IntegerQ", "[", " ", 
+     RowBox[{"expr", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+     " ", "]"}], " ", "&&", " ", 
+    RowBox[{
+     RowBox[{"IntegerQ", "[", " ", 
+      RowBox[{"expr", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+      " ", "]"}], " ", "\\\n"}], "  ", "&&", " ", 
+    RowBox[{"If", "[", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"expr", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}],
+        " ", ">", " ", "0"}], ",", " ", "True", ",", "\n", "\t", 
+      RowBox[{
+       RowBox[{"Message", "[", " ", 
+        RowBox[{
+         RowBox[{"Uc\[ScriptCapitalV]", "::", "invuc"}], ",", " ", 
+         RowBox[{
+         "expr", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], ",", 
+         " ", "expr"}], " ", "]"}], ";", "\n", "    ", 
+       RowBox[{"Abort", "[", "]"}]}]}], "\n", "  ", "]"}]}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+ExactUc\[ScriptCapitalV]Q: tests whether expression is an exact Uc\
+\[ScriptCapitalV] quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ExactUc\[ScriptCapitalV]Q", "[", " ", "expr_", " ", "]"}], " ", ":=",
+    " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Uc\[ScriptCapitalV]Q", "[", " ", "expr", " ", "]"}], " ", 
+     "\\\n"}], "  ", "&&", " ", 
+    RowBox[{"NumericQ", "[", " ", 
+     RowBox[{"expr", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+     " ", "]"}], " ", "&&", " ", 
+    RowBox[{
+     RowBox[{"expr", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+     " ", "===", " ", "Null"}], " ", "&&", " ", 
+    RowBox[{
+     RowBox[{"expr", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+     " ", "===", " ", "Null"}]}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+IndeterminateUc\[ScriptCapitalV]Q: tests whether expression is an \
+indeterminate Uc\[ScriptCapitalV] quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"IndeterminateUc\[ScriptCapitalV]Q", "[", " ", "expr_", " ", "]"}],
+    " ", ":=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Uc\[ScriptCapitalV]Q", "[", " ", "expr", " ", "]"}], " ", 
+     "\\\n"}], "  ", "&&", " ", 
+    RowBox[{"!", " ", 
+     RowBox[{"NumericQ", "[", " ", 
+      RowBox[{"expr", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+      " ", "]"}]}], " ", "&&", " ", 
+    RowBox[{
+     RowBox[{"expr", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+     " ", "===", " ", "Null"}], " ", "&&", " ", 
+    RowBox[{
+     RowBox[{"expr", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+     " ", "===", " ", "Null"}]}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV] List: converts Uc\[ScriptCapitalV] to a list\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]$List", "[", " ", 
+    RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], " ", "]"}], " ", ":=",
+    " ", 
+   RowBox[{"(", " ", 
+    RowBox[{"qty", " ", "/.", " ", 
+     RowBox[{"Uc\[ScriptCapitalV]", " ", "\[Rule]", " ", "List"}]}], " ", 
+    ")"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV] Base:  gets base part ( est, uc and exp ) of the Uc\
+\[ScriptCapitalV]\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]$Base", "[", " ", 
+    RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], " ", "]"}], " ", ":=",
+    " ", 
+   RowBox[{
+    RowBox[{"Uc\[ScriptCapitalV]$List", "[", " ", "qty", " ", "]"}], 
+    "\[LeftDoubleBracket]", 
+    RowBox[{";;", "3"}], "\[RightDoubleBracket]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV] Options: gets the option pattern of the Uc\
+\[ScriptCapitalV]\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]$Options", "[", " ", 
+    RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], " ", "]"}], " ", ":=",
+    " ", 
+   RowBox[{
+    RowBox[{"Uc\[ScriptCapitalV]$List", "[", " ", "qty", " ", "]"}], 
+    "\[LeftDoubleBracket]", 
+    RowBox[{"4", ";;"}], "\[RightDoubleBracket]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV] Option: gets value of the option of the Uc\
+\[ScriptCapitalV]\
+\>", "Subsubsection"],
+
+Cell[TextData[{
+ Cell[BoxData["Uc\[ScriptCapitalV]$Option"]],
+ " gets value of the option of the ",
+ Cell[BoxData["Uc\[ScriptCapitalV]"]],
+ "."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], ",", " ", "name_"}], 
+    " ", "]"}], " ", ":=", " ", "\n", "  ", 
+   RowBox[{"OptionValue", "[", " ", 
+    RowBox[{"Uc\[ScriptCapitalV]", ",", " ", 
+     RowBox[{"Uc\[ScriptCapitalV]$Options", "[", " ", "qty", " ", "]"}], ",", 
+     " ", "name"}], " ", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV] NameBox: gets name option of the Uc\[ScriptCapitalV] as \
+boxes\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]$NameBox", "[", " ", 
+    RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], " ", "]"}], " ", ":=",
+    " ", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"outBox", " ", "=", " ", 
+       RowBox[{"NullifyIfEmpty", "[", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+         RowBox[{"qty", ",", " ", "Name"}], " ", "]"}], " ", "]"}]}], " ", 
+      "}"}], ",", "\n", "  ", 
+     RowBox[{
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"outBox", " ", "=!=", " ", "Null"}], " ", "&&", " ", 
+         RowBox[{
+          RowBox[{"Head", "[", "outBox", "]"}], " ", "===", " ", "String"}]}],
+         ",", "\n", "    ", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"Quiet", "[", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"StringTake", "[", " ", 
+              RowBox[{"outBox", ",", " ", "1"}], " ", "]"}], " ", "=!=", " ", 
+             "\"\<\\!\>\""}], " ", "&&", " ", 
+            RowBox[{
+             RowBox[{"StringTake", "[", " ", 
+              RowBox[{"outBox", ",", " ", "2"}], " ", "]"}], " ", "=!=", " ", 
+             "\"\<\\\"\\!\>\""}]}], " ", "]"}], ",", "\n", "      ", 
+          RowBox[{"outBox", " ", "=", " ", 
+           RowBox[{"ToBoxes", "[", " ", 
+            RowBox[{"ToExpression", "[", " ", 
+             RowBox[{
+             "outBox", ",", " ", "StandardForm", ",", " ", "HoldForm"}], " ", 
+             "]"}], " ", "]"}]}]}], "\n", "    ", "]"}]}], "\n", "  ", "]"}], 
+      ";", "\n", "  ", "outBox"}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV] UnitBox: gets unit option of the Uc\[ScriptCapitalV] as \
+boxes\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]$UnitBox", "[", " ", 
+    RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], " ", "]"}], " ", ":=",
+    " ", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"outBox", " ", "=", " ", 
+       RowBox[{"NullifyIfEmpty", "[", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+         RowBox[{"qty", ",", " ", "Unit"}], " ", "]"}], " ", "]"}]}], " ", 
+      "}"}], ",", "\n", "  ", 
+     RowBox[{
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"outBox", " ", "=!=", " ", "Null"}], " ", "&&", " ", 
+         RowBox[{
+          RowBox[{"Head", "[", "outBox", "]"}], " ", "===", " ", "String"}]}],
+         ",", "\n", "    ", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"Quiet", "[", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"StringTake", "[", " ", 
+              RowBox[{"outBox", ",", " ", "1"}], " ", "]"}], " ", "=!=", " ", 
+             "\"\<\\!\>\""}], " ", "&&", " ", 
+            RowBox[{
+             RowBox[{"StringTake", "[", " ", 
+              RowBox[{"outBox", ",", " ", "2"}], " ", "]"}], " ", "=!=", " ", 
+             "\"\<\\\"\\!\>\""}]}], " ", "]"}], ",", "\n", "      ", 
+          RowBox[{"outBox", " ", "=", " ", 
+           RowBox[{"ToBoxes", "[", " ", 
+            RowBox[{"ToExpression", "[", " ", 
+             RowBox[{
+             "outBox", ",", " ", "StandardForm", ",", " ", "HoldForm"}], " ", 
+             "]"}], " ", "]"}]}]}], "\n", "    ", "]"}]}], "\n", "  ", "]"}], 
+      ";", "\n", "  ", "outBox"}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV] InterpretationBox: gets unit option of the Uc\
+\[ScriptCapitalV] as boxes\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]$InterpretationBox", "[", " ", 
+    RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], " ", "]"}], " ", ":=",
+    " ", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"outBox", " ", "=", " ", 
+       RowBox[{"NullifyIfEmpty", "[", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+         RowBox[{"qty", ",", " ", "Interpretation"}], " ", "]"}], " ", 
+        "]"}]}], " ", "}"}], ",", "\n", "  ", 
+     RowBox[{
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"outBox", " ", "=!=", " ", "Null"}], " ", "&&", " ", 
+         RowBox[{
+          RowBox[{"Head", "[", "outBox", "]"}], " ", "===", " ", "String"}]}],
+         ",", "\n", "    ", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"Quiet", "[", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"StringTake", "[", " ", 
+              RowBox[{"outBox", ",", " ", "1"}], " ", "]"}], " ", "=!=", " ", 
+             "\"\<\\!\>\""}], " ", "&&", " ", 
+            RowBox[{
+             RowBox[{"StringTake", "[", " ", 
+              RowBox[{"outBox", ",", " ", "2"}], " ", "]"}], " ", "=!=", " ", 
+             "\"\<\\\"\\!\>\""}]}], " ", "]"}], ",", "\n", "      ", 
+          RowBox[{"outBox", " ", "=", " ", 
+           RowBox[{"ToBoxes", "[", " ", 
+            RowBox[{"ToExpression", "[", " ", 
+             RowBox[{
+             "outBox", ",", " ", "StandardForm", ",", " ", "HoldForm"}], " ", 
+             "]"}], " ", "]"}]}]}], "\n", "    ", "]"}]}], "\n", "  ", "]"}], 
+      ";", "\n", "  ", "outBox"}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Uc\[ScriptCapitalV] DistributionBox: gets distribution option of the Uc\
+\[ScriptCapitalV] as boxes\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uc\[ScriptCapitalV]$DistributionBox", "[", " ", 
+    RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], " ", "]"}], " ", ":=",
+    " ", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", "\n", "    ", 
+      RowBox[{
+       RowBox[{"dist", " ", "=", " ", 
+        RowBox[{"NullifyIfEmpty", "[", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+          RowBox[{"qty", ",", " ", "Distribution"}], " ", "]"}], " ", "]"}]}],
+        ",", "\n", "    ", 
+       RowBox[{"coverFactor", " ", "=", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+         RowBox[{"qty", ",", " ", "CoverFactor"}], " ", "]"}]}]}], "\n", "  ",
+       "}"}], ",", "\n", "  ", 
+     RowBox[{
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"coverFactor", " ", "===", " ", "Null"}], ",", " ", 
+        RowBox[{"coverFactor", " ", "=", " ", "1"}]}], " ", "]"}], ";", "\n", 
+      "  ", 
+      RowBox[{"Switch", "[", " ", 
+       RowBox[{
+       "dist", ",", "\n", "    ", "Normal\[ScriptCapitalD]", ",", "     ", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", " ", 
+          RowBox[{
+          "\"\<Normal\[ScriptCapitalD]\>\"", ",", " ", "\"\<,\>\"", ",", " ", 
+           "\"\<k\>\"", ",", " ", "\"\<=\>\"", ",", " ", "\n", 
+           "                          ", "coverFactor", ",", " ", 
+           "\"\<\[InvisibleTimes]\>\"", " ", 
+           RowBox[{"(*", 
+            RowBox[{"[", "InvisibleTimes", "]"}], "*)"}], ",", " ", 
+           "\"\<\[Sigma]\>\""}], " ", "}"}], "]"}], ",", "\n", "    ", 
+        "Uniform\[ScriptCapitalD]", ",", "    ", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", " ", "\"\<Uniform\[ScriptCapitalD]\>\"", " ", "}"}], 
+         "]"}], ",", "\n", "    ", "Triangular\[ScriptCapitalD]", ",", " ", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", " ", "\"\<Triangular\[ScriptCapitalD]\>\"", " ", "}"}], 
+         "]"}], ",", "\n", "    ", "Null", ",", "        ", "Null", ",", "\n",
+         "    ", "_", ",", "           ", 
+        RowBox[{"ToBoxes", "[", " ", "dist", " ", "]"}]}], "\n", "  ", 
+       "]"}]}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Uc\[ScriptCapitalV] Constructors", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetAttributes", "[", " ", 
+   RowBox[{"ToUc\[ScriptCapitalV]", ",", " ", "Listable"}], " ", "]"}], 
+  ";"}]], "Code"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Transform an estimate \[PlusMinus]  uncertainty expression to a Uc\
+\[ScriptCapitalV] quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"estimate_", "?", " ", "NumericQ"}], " ", "\[PlusMinus]", " ", 
+      RowBox[{"uncertainty_", "?", " ", "NumericQ"}]}], ",", " ", 
+     RowBox[{"opts", ":", " ", 
+      RowBox[{"OptionsPattern", " ", "[", "]"}]}]}], " ", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", "    ", 
+      RowBox[{
+      "estPrec", ",", " ", "ucPrec", ",", " ", "estExp", ",", " ", "ucExp", 
+       ",", " ", "exp"}], "\[IndentingNewLine]", "  ", "}"}], ",", 
+     "\[IndentingNewLine]", "\n", "  ", 
+     RowBox[{
+      RowBox[{"If", " ", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"!", " ", 
+          RowBox[{"NumericQ", "[", " ", "estimate", " ", "]"}]}], " ", "||", 
+         " ", 
+         RowBox[{"!", " ", 
+          RowBox[{"NumericQ", "[", " ", "uncertainty", " ", "]"}]}]}], ",", 
+        "\n", "    ", 
+        RowBox[{
+         RowBox[{"Message", "[", " ", 
+          RowBox[{
+           RowBox[{"ToUc\[ScriptCapitalV]", "::", "invargs"}], ",", " ", 
+           RowBox[{"HoldForm", "[", " ", 
+            RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+             RowBox[{
+              RowBox[{"estimate", " ", "\[PlusMinus]", " ", "uncertainty"}], 
+              ",", " ", "opts"}], " ", "]"}], " ", "]"}]}], " ", "]"}], ";", 
+         "\n", "    ", 
+         RowBox[{"Abort", "[", "]"}]}]}], "\n", "  ", "]"}], ";", 
+      "\[IndentingNewLine]", "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"uncertainty", " ", "===", " ", "Null"}], " ", "||", " ", 
+         RowBox[{"uncertainty", " ", "\[Equal]", " ", "0"}]}], ",", "\n", 
+        "    ", 
+        RowBox[{"Return", "[", " ", 
+         RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+          RowBox[{"estimate", ",", " ", "opts"}], " ", "]"}], " ", "]"}]}], 
+       "\n", "  ", "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "  ", 
+      RowBox[{"estExp", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"RealDigits", "[", " ", 
+         RowBox[{
+          RowBox[{"N", "@", " ", "estimate"}], ",", " ", "10"}], " ", "]"}], 
+        "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], ";", 
+      "\[IndentingNewLine]", "  ", 
+      RowBox[{"ucExp", "  ", "=", " ", 
+       RowBox[{
+        RowBox[{"RealDigits", "[", " ", 
+         RowBox[{
+          RowBox[{"N", "@", " ", "uncertainty"}], ",", " ", "10"}], " ", 
+         "]"}], "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], ";",
+       "\[IndentingNewLine]", "  ", 
+      RowBox[{"ucPrec", " ", "=", " ", 
+       RowBox[{"SigFigures", "[", " ", "uncertainty", " ", "]"}]}], ";", 
+      "\[IndentingNewLine]", "  ", 
+      RowBox[{"exp", "    ", "=", " ", 
+       RowBox[{"ucPrec", " ", "-", " ", "ucExp"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "  ", 
+      RowBox[{"Uc\[ScriptCapitalV]", "[", "\n", "    ", 
+       RowBox[{"(*", " ", "est", "  ", "*)"}], " ", 
+       RowBox[{
+        RowBox[{"Round", "[", " ", 
+         RowBox[{"estimate", " ", "*", " ", 
+          RowBox[{"10", "^", "exp"}]}], " ", "]"}], ",", "\n", "    ", 
+        RowBox[{"(*", " ", "uc", "   ", "*)"}], " ", 
+        RowBox[{"Round", "[", " ", 
+         RowBox[{"uncertainty", "  ", "*", " ", 
+          RowBox[{"10", "^", "exp"}]}], " ", "]"}], ",", "\n", "    ", 
+        RowBox[{"(*", " ", "exp", "  ", "*)"}], " ", 
+        RowBox[{"Round", "[", " ", 
+         RowBox[{"-", "exp"}], " ", "]"}], ",", "\n", "    ", 
+        RowBox[{"(*", " ", "opts", " ", "*)"}], " ", 
+        RowBox[{"Sequence", " ", "@@", " ", 
+         RowBox[{"FilterRules", "[", " ", 
+          RowBox[{
+           RowBox[{"{", "opts", "}"}], ",", " ", 
+           RowBox[{"Options", "[", " ", "Uc\[ScriptCapitalV]", " ", "]"}]}], 
+          " ", "]"}]}]}], "\n", "  ", "]"}]}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Transform condensed notation est@(uc)\[Times]10^exp to a Uc\[ScriptCapitalV] \
+quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"estimate_", "?", " ", "NumberQ"}], ",", " ", 
+     RowBox[{"ucLastFigs_", "?", " ", "IntegerQ"}], ",", " ", 
+     RowBox[{"exp_", "?", " ", "NumberQ"}]}], " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", "    ", 
+      RowBox[{
+       RowBox[{"estPrec", " ", "=", " ", 
+        RowBox[{"SigFigures", "[", " ", "estimate", " ", "]"}]}], ",", 
+       "\[IndentingNewLine]", "    ", 
+       RowBox[{"ucPrec", " ", "=", " ", 
+        RowBox[{"IntegerLength", "[", " ", "ucLastFigs", " ", "]"}]}], ",", 
+       "\[IndentingNewLine]", "    ", "uncertainty"}], "\[IndentingNewLine]", 
+      "  ", "}"}], ",", "\[IndentingNewLine]", "  ", 
+     RowBox[{
+      RowBox[{"uncertainty", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"Abs", "[", " ", "ucLastFigs", " ", "]"}], " ", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"(", " ", 
+          RowBox[{"exp", " ", "+", " ", 
+           RowBox[{
+            RowBox[{"RealDigits", "[", " ", "estimate", " ", "]"}], 
+            "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], " ", "-", 
+           " ", "estPrec"}], " ", ")"}]}]}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "  ", 
+      RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+       RowBox[{
+        RowBox[{"estimate", " ", "*", " ", 
+         RowBox[{"10", "^", "exp"}]}], " ", "\[PlusMinus]", " ", 
+        RowBox[{"N", "[", " ", 
+         RowBox[{"uncertainty", ",", " ", "ucPrec"}], " ", "]"}]}], " ", 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Transform a numerical value (with significant figures) to a Uc\
+\[ScriptCapitalV] quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"estimate_", "?", " ", "NumberQ"}], ",", " ", 
+     RowBox[{"opts", ":", " ", 
+      RowBox[{"OptionsPattern", " ", "[", "]"}]}]}], " ", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", "    ", 
+      RowBox[{
+       RowBox[{"estPrec", " ", "=", " ", 
+        RowBox[{"Round", "[", " ", 
+         RowBox[{"Precision", "[", " ", "estimate", " ", "]"}], " ", "]"}]}], 
+       ",", "\n", "    ", "estExp", ",", "\n", "    ", 
+       RowBox[{"dist", " ", "=", " ", 
+        RowBox[{"OptionValue", "[", " ", "Distribution", " ", "]"}]}]}], "\n",
+       "  ", "}"}], ",", "\[IndentingNewLine]", "  ", "\n", "  ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"filter", " ", "exact", " ", "values"}], " ", "*)"}], "\n", 
+     "  ", 
+     RowBox[{
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"MachineNumberQ", "[", " ", "estimate", " ", "]"}], " ", "||",
+          " ", 
+         RowBox[{"estPrec", " ", "\[Equal]", " ", "Infinity"}]}], ",", "\n", 
+        "    ", 
+        RowBox[{"Return", "[", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]", "[", " ", "\n", "      ", 
+          RowBox[{"(*", " ", 
+           RowBox[{"base", ":"}], " ", "*)"}], " ", 
+          RowBox[{
+          "estimate", ",", " ", "Null", ",", " ", "Null", ",", "\n", "      ",
+            
+           RowBox[{"(*", " ", 
+            RowBox[{"opts", ":"}], " ", "*)"}], " ", 
+           RowBox[{"Sequence", " ", "@@", " ", 
+            RowBox[{"FilterRules", "[", " ", 
+             RowBox[{
+              RowBox[{"{", "opts", "}"}], ",", " ", 
+              RowBox[{
+              "Options", "[", " ", "Uc\[ScriptCapitalV]", " ", "]"}]}], " ", 
+             "]"}]}]}], "\n", "    ", "]"}], " ", "]"}]}], "\n", "  ", "]"}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"estExp", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"RealDigits", "[", " ", 
+         RowBox[{"estimate", ",", " ", "10"}], " ", "]"}], 
+        "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], ";", "\n", 
+      "  ", 
+      RowBox[{"dist", " ", "=", " ", 
+       RowBox[{"Distribution", " ", "\[Rule]", " ", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"dist", " ", "=!=", " ", "Null"}], ",", " ", "dist", ",", 
+          " ", "Uniform\[ScriptCapitalD]"}], " ", "]"}]}]}], ";", 
+      "\[IndentingNewLine]", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "number", " ", "is", " ", "given", " ", "with", " ", "specified", " ",
+          "precision"}], ",", " ", 
+        RowBox[{
+         RowBox[{"i", ".", "e", ".", " ", "significant"}], " ", "figures"}]}],
+        " ", "*)"}], "\n", "  ", 
+      RowBox[{"Uc\[ScriptCapitalV]", "[", "\n", "    ", 
+       RowBox[{"(*", " ", "est", "  ", "*)"}], " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Round", "[", " ", 
+          RowBox[{"estimate", " ", "*", " ", 
+           RowBox[{"10", "^", 
+            RowBox[{"(", " ", 
+             RowBox[{"estPrec", " ", "-", " ", "estExp"}], " ", ")"}]}]}], 
+          " ", "]"}], " ", "*", " ", "10"}], ",", "\n", "    ", 
+        RowBox[{"(*", " ", "uc", "   ", "*)"}], " ", "5", ",", "\n", "    ", 
+        RowBox[{"(*", " ", "exp", "  ", "*)"}], " ", 
+        RowBox[{"Round", "[", " ", 
+         RowBox[{"estExp", " ", "-", " ", "estPrec", " ", "-", " ", "1"}], 
+         " ", "]"}], ",", "\n", "    ", 
+        RowBox[{"(*", " ", "opts", " ", "*)"}], " ", 
+        RowBox[{"Sequence", " ", "@@", " ", 
+         RowBox[{"Join", "[", " ", 
+          RowBox[{
+           RowBox[{"FilterRules", "[", " ", 
+            RowBox[{
+             RowBox[{"{", "opts", "}"}], ",", " ", 
+             RowBox[{"Except", "[", " ", 
+              RowBox[{"{", "dist", "}"}], " ", "]"}]}], " ", "]"}], ",", " ", 
+           
+           RowBox[{"{", "dist", "}"}]}], " ", "]"}]}]}], "\n", "  ", 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Modify options of a Uc\[ScriptCapitalV] quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "Uc\[ScriptCapitalV]Q"}], ",", " ", 
+     RowBox[{"newOpts", ":", " ", 
+      RowBox[{"OptionsPattern", " ", "[", "]"}]}]}], " ", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"est", ",", " ", "uc", ",", " ", "exp", ",", " ", "oldOpts"}], 
+      " ", "}"}], ",", "\n", "\n", "  ", 
+     RowBox[{
+      RowBox[{"If", " ", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"!", " ", 
+          RowBox[{
+          "UncertainUc\[ScriptCapitalV]Q", "[", " ", "qty", " ", "]"}]}], " ",
+          "&&", " ", 
+         RowBox[{"!", " ", 
+          RowBox[{"ExactUc\[ScriptCapitalV]Q", "[", " ", "qty", " ", "]"}]}], 
+         " ", "&&", " ", 
+         RowBox[{"!", " ", 
+          RowBox[{
+          "IndeterminateUc\[ScriptCapitalV]Q", "[", " ", "qty", " ", 
+           "]"}]}]}], ",", "\n", "    ", 
+        RowBox[{
+         RowBox[{"Message", "[", " ", 
+          RowBox[{
+           RowBox[{"ToUc\[ScriptCapitalV]", "::", "invargs"}], ",", " ", 
+           RowBox[{"HoldForm", "[", " ", 
+            RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+             RowBox[{"qty", ",", " ", "newOpts"}], " ", "]"}], " ", "]"}]}], 
+          " ", "]"}], ";", "\n", "    ", 
+         RowBox[{"Abort", "[", "]"}]}]}], "\n", "  ", "]"}], ";", 
+      "\[IndentingNewLine]", "\n", "  ", 
+      RowBox[{"If", " ", "[", " ", 
+       RowBox[{
+        RowBox[{
+        "IndeterminateUc\[ScriptCapitalV]Q", "[", " ", "qty", " ", "]"}], ",",
+         "\n", "    ", 
+        RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], " ", 
+         "=", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]$Base", "[", " ", 
+          RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+           RowBox[{
+            RowBox[{
+            "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+            " ", "/.", " ", 
+            RowBox[{
+             RowBox[{"Hold", "[", "e_", "]"}], " ", "\[RuleDelayed]", " ", 
+             "e"}]}], " ", "]"}], " ", "]"}]}], ",", "\n", "    ", 
+        RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], " ", 
+         "=", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]$Base", "[", " ", "qty", " ", "]"}]}]}], 
+       "\n", "  ", "]"}], ";", "\n", "  ", 
+      RowBox[{"oldOpts", " ", "=", " ", 
+       RowBox[{"Uc\[ScriptCapitalV]$Options", "[", " ", "qty", " ", "]"}]}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"Uc\[ScriptCapitalV]", "[", "\n", "    ", 
+       RowBox[{"(*", " ", "base", " ", "*)"}], " ", 
+       RowBox[{"est", ",", " ", "uc", ",", " ", "exp", ",", "\n", "    ", 
+        RowBox[{"(*", " ", "opts", " ", "*)"}], " ", 
+        RowBox[{"Sequence", " ", "@@", " ", 
+         RowBox[{"FilterRules", "[", " ", "\n", "                 ", 
+          RowBox[{
+           RowBox[{"Join", "[", " ", 
+            RowBox[{
+             RowBox[{"FilterRules", "[", " ", 
+              RowBox[{"oldOpts", ",", " ", 
+               RowBox[{"Except", "[", " ", 
+                RowBox[{"{", "newOpts", "}"}], " ", "]"}]}], " ", "]"}], ",", 
+             " ", 
+             RowBox[{"{", "newOpts", "}"}]}], " ", "]"}], ",", " ", "\n", 
+           "                 ", 
+           RowBox[{"Options", "[", " ", "Uc\[ScriptCapitalV]", " ", "]"}]}], 
+          "\n", "               ", "]"}]}]}], "\n", "  ", "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Transform an exact value to a Uc\[ScriptCapitalV] quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"estimate_", "?", " ", "NumericQ"}], ",", " ", 
+     RowBox[{"opts", ":", " ", 
+      RowBox[{"OptionsPattern", " ", "[", "]"}]}]}], " ", "]"}], " ", ":=", 
+   " ", "\n", 
+   RowBox[{"If", "[", " ", 
+    RowBox[{
+     RowBox[{"estimate", " ", "=!=", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"Uc\[ScriptCapitalV]", "[", " ", "\n", "    ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"base", ":"}], " ", "*)"}], " ", 
+      RowBox[{
+      "estimate", ",", " ", "Null", ",", " ", "Null", ",", "\n", "    ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"opts", ":"}], " ", "*)"}], " ", 
+       RowBox[{"Sequence", " ", "@@", " ", 
+        RowBox[{"FilterRules", "[", " ", 
+         RowBox[{
+          RowBox[{"{", "opts", "}"}], ",", " ", 
+          RowBox[{"Options", "[", " ", "Uc\[ScriptCapitalV]", " ", "]"}]}], 
+         " ", "]"}]}]}], "\n", "  ", "]"}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Transform an indeterminate value to a Uc\[ScriptCapitalV] quantity\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{"estimate_", ",", " ", 
+     RowBox[{"opts", ":", " ", 
+      RowBox[{"OptionsPattern", " ", "[", "]"}]}]}], " ", "]"}], " ", ":=", 
+   " ", "\n", 
+   RowBox[{"If", "[", " ", 
+    RowBox[{
+     RowBox[{"estimate", " ", "=!=", " ", "Null"}], ",", "\n", "  ", 
+     RowBox[{"Uc\[ScriptCapitalV]", "[", " ", "\n", "    ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"base", ":"}], " ", "*)"}], " ", 
+      RowBox[{
+       RowBox[{"Hold", "[", " ", "estimate", " ", "]"}], ",", " ", "Null", 
+       ",", " ", "Null", ",", "\n", "    ", 
+       RowBox[{"(*", " ", 
+        RowBox[{"opts", ":"}], " ", "*)"}], " ", 
+       RowBox[{"Sequence", " ", "@@", " ", 
+        RowBox[{"FilterRules", "[", " ", 
+         RowBox[{
+          RowBox[{"{", "opts", "}"}], ",", " ", 
+          RowBox[{"Options", "[", " ", "Uc\[ScriptCapitalV]", " ", "]"}]}], 
+         " ", "]"}]}]}], "\n", "  ", "]"}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Report unrecognized default ToUc\[ScriptCapitalV]\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any___", " ", "]"}], " ", ":=",
+    " ", 
+   RowBox[{"Module", "[", " ", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\n", "  ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"alternative", ":", " ", 
+       RowBox[{
+       "return", " ", "the", " ", "first", " ", "argument", " ", "as", " ", 
+        "the", " ", "result", " ", 
+        RowBox[{"??", "?"}]}]}], " ", "*)"}], "\n", "  ", 
+     RowBox[{
+      RowBox[{"Message", "[", " ", 
+       RowBox[{
+        RowBox[{"ToUc\[ScriptCapitalV]", "::", "invcstr"}], ",", " ", 
+        RowBox[{"HoldForm", "[", " ", 
+         RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}], " ", 
+         "]"}]}], " ", "]"}], ";", "\n", "  ", 
+      RowBox[{"Abort", "[", "]"}]}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Custom notation for Uc\[ScriptCapitalV] in condensed format\
+\>", "Subsection"],
+
+Cell[TextData[{
+ "Establishes conversion of the condensed format  ",
+ Cell[BoxData[
+  RowBox[{"estimate", " ", 
+   RowBox[{"(", "uc", ")"}], "\[Times]", 
+   SuperscriptBox["10", "exponent"]}]]],
+ "  into ",
+ Cell[BoxData["Uc\[ScriptCapitalV]"]],
+ "  object.\nNote that there must be invisible application (alias ",
+ Cell[BoxData[
+  RowBox[{
+   StyleBox["Esc",
+    Background->RGBColor[
+     0.9647058823529412, 0.9294117647058824, 0.8392156862745098]], "@", 
+   StyleBox["Esc",
+    Background->RGBColor[
+     0.9647058823529412, 0.9294117647058824, 0.8392156862745098]]}]]],
+ ") character between the ",
+ Cell[BoxData["estimate"]],
+ " and the (",
+ Cell[BoxData["uc"]],
+ ") part."
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell["EstimateQ and UncertaintyQ helper functions", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"StringEstimateQ", "[", " ", "any___", " ", "]"}], " ", ":=", "\n",
+    
+   RowBox[{"Module", "[", " ", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"notNumString", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"StringQ", "[", "any", "]"}], " ", "\n", "                ", "&&",
+         " ", 
+        RowBox[{"!", " ", 
+         RowBox[{"StringMatchQ", "[", " ", 
+          RowBox[{"any", ",", " ", 
+           RowBox[{
+           "RegularExpression", "[", " ", "\"\<([0-9]|\\\\.|`)+\>\"", " ", 
+            "]"}]}], " ", "]"}]}]}]}], " ", "}"}], ",", "\[IndentingNewLine]",
+      "  ", 
+     RowBox[{"If", "[", " ", 
+      RowBox[{"notNumString", ",", " ", "False", ",", " ", 
+       RowBox[{"NumberQ", "[", " ", 
+        RowBox[{"ToExpression", "[", " ", "any", " ", "]"}], " ", "]"}]}], 
+      " ", "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"StringUncertaintyQ", "[", " ", "any___", " ", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", " ", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"notNumString", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"StringQ", "[", "any", "]"}], " ", "\n", "                ", "&&",
+         " ", 
+        RowBox[{"!", " ", 
+         RowBox[{"StringMatchQ", "[", " ", 
+          RowBox[{"any", ",", " ", 
+           RowBox[{"RegularExpression", "[", "\"\<[0-9]+\>\"", " ", "]"}]}], 
+          " ", "]"}]}]}]}], " ", "}"}], ",", "\[IndentingNewLine]", "  ", 
+     RowBox[{"If", "[", " ", 
+      RowBox[{"notNumString", ",", " ", "False", ",", " ", 
+       RowBox[{"IntegerQ", "[", " ", 
+        RowBox[{"ToExpression", "[", " ", "any", " ", "]"}], " ", "]"}]}], 
+      " ", "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   RowBox[{
+    RowBox[{
+     TagBox[
+      RowBox[{"a_", "?", "EstimateQ"}],
+      "NotationPatternTag"], " ", "@", 
+     RowBox[{"(", " ", 
+      TagBox[
+       RowBox[{"b_", "?", "UncertaintyQ"}],
+       "NotationPatternTag"], " ", ")"}]}], "\[Times]", 
+    SuperscriptBox["10", "c_"]}],
+   "NotationTemplateTag"], " ", "\[DoubleLongRightArrow]", " ", 
+  TagBox[
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", 
+    RowBox[{"a_", ",", "b_", ",", "c_"}], "]"}],
+   "NotationTemplateTag"]}]], "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Notation", "[", "\n", "  ", 
+   RowBox[{
+    RowBox[{"ParsedBoxWrapper", "[", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"LEFT", " ", "expression"}], " ", "*)"}], "\n", "    ", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", "\n", "      ", 
+       RowBox[{
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", "\n", "        ", 
+          RowBox[{
+           RowBox[{"TagBox", "[", " ", 
+            RowBox[{
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", " ", 
+               RowBox[{
+               "\"\<a_\>\"", ",", " ", "\"\<?\>\"", ",", " ", 
+                "StringEstimateQ"}], " ", "}"}], "]"}], ",", " ", 
+             "\"\<NotationPatternTag\>\""}], " ", "]"}], ",", "\n", 
+           "        ", "\"\<\[InvisibleApplication]\>\"", ",", " ", 
+           RowBox[{"(*", " ", 
+            RowBox[{"\[LeftArrow]", " ", 
+             RowBox[{"[", "InvisibleApplication", "]"}]}], " ", "*)"}], "\n", 
+           "        ", 
+           RowBox[{"RowBox", "[", 
+            RowBox[{"{", " ", "\n", "          ", 
+             RowBox[{"\"\<(\>\"", ",", " ", "\n", "          ", 
+              RowBox[{"TagBox", "[", " ", 
+               RowBox[{
+                RowBox[{"RowBox", "[", 
+                 RowBox[{"{", " ", 
+                  RowBox[{
+                  "\"\<b_\>\"", ",", " ", "\"\<?\>\"", ",", " ", 
+                   "StringUncertaintyQ"}], " ", "}"}], "]"}], ",", " ", 
+                "\"\<NotationPatternTag\>\""}], " ", "]"}], ",", "\n", 
+              "          ", "\"\<)\>\""}], "\n", "        ", "}"}], "]"}]}], 
+          "\n", "      ", "}"}], "]"}], ",", "\n", "      ", 
+        "\"\<\[Times]\>\"", ",", " ", 
+        RowBox[{"SuperscriptBox", "[", " ", 
+         RowBox[{"\"\<10\>\"", ",", " ", "\"\<c_\>\""}], " ", "]"}]}], "\n", 
+       "    ", "}"}], "]"}], "\n", "  ", "]"}], " ", 
+    "\[DoubleLongRightArrow]", "\n", "  ", 
+    RowBox[{"ParsedBoxWrapper", "[", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"RIGHT", " ", "expression"}], " ", "*)"}], "\n", "    ", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", "\n", "      ", 
+       RowBox[{"ToUc\[ScriptCapitalV]", ",", " ", "\"\<[\>\"", ",", " ", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", " ", 
+          RowBox[{
+          "\"\<a_\>\"", ",", " ", "\"\<,\>\"", ",", " ", "\"\<b_\>\"", ",", 
+           " ", "\"\<,\>\"", ",", " ", "\"\<c_\>\""}], " ", "}"}], "]"}], ",",
+         " ", "\"\<]\>\""}], "\n", "    ", "}"}], "]"}], "\n", "  ", "]"}]}], 
+   "\n", "]"}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   RowBox[{
+    TagBox[
+     RowBox[{"a_", "?", "EstimateQ"}],
+     "NotationPatternTag"], " ", "@", 
+    RowBox[{"(", " ", 
+     TagBox[
+      RowBox[{"b_", "?", "UncertaintyQ"}],
+      "NotationPatternTag"], " ", ")"}]}],
+   "NotationTemplateTag"], " ", "\[DoubleLongRightArrow]", " ", 
+  TagBox[
+   RowBox[{"ToUc\[ScriptCapitalV]", "[", 
+    RowBox[{"a_", ",", "b_", ",", "0"}], "]"}],
+   "NotationTemplateTag"]}]], "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Notation", "[", "\n", "  ", 
+   RowBox[{
+    RowBox[{"ParsedBoxWrapper", "[", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"LEFT", " ", "expression"}], " ", "*)"}], "\n", "    ", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", "\n", "      ", 
+       RowBox[{
+        RowBox[{"TagBox", "[", " ", 
+         RowBox[{
+          RowBox[{"RowBox", "[", 
+           RowBox[{"{", " ", 
+            RowBox[{
+            "\"\<a_\>\"", ",", " ", "\"\<?\>\"", ",", " ", 
+             "StringEstimateQ"}], " ", "}"}], "]"}], ",", " ", 
+          "\"\<NotationPatternTag\>\""}], " ", "]"}], ",", "\n", "      ", 
+        "\"\<\[InvisibleApplication]\>\"", ",", " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"\[LeftArrow]", " ", 
+          RowBox[{"[", "InvisibleApplication", "]"}]}], " ", "*)"}], "\n", 
+        "      ", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", " ", "\n", "      ", 
+          RowBox[{"\"\<(\>\"", ",", " ", "\n", "        ", 
+           RowBox[{"TagBox", "[", " ", 
+            RowBox[{
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", " ", 
+               RowBox[{
+               "\"\<b_\>\"", ",", " ", "\"\<?\>\"", ",", " ", 
+                "StringUncertaintyQ"}], " ", "}"}], "]"}], ",", " ", 
+             "\"\<NotationPatternTag\>\""}], " ", "]"}], ",", "\n", 
+           "        ", "\"\<)\>\""}], "\n", "      ", "}"}], "]"}]}], "\n", 
+       "    ", "}"}], "]"}], "\n", "  ", "]"}], " ", 
+    "\[DoubleLongRightArrow]", "\n", "  ", 
+    RowBox[{"ParsedBoxWrapper", "[", " ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"RIGHT", " ", "expression"}], " ", "*)"}], "\n", "    ", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", "\n", "      ", 
+       RowBox[{"ToUc\[ScriptCapitalV]", ",", " ", "\"\<[\>\"", ",", " ", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", " ", 
+          RowBox[{
+          "\"\<a_\>\"", ",", " ", "\"\<,\>\"", ",", " ", "\"\<b_\>\"", ",", 
+           " ", "\"\<,\>\"", ",", " ", "\"\<0\>\""}], " ", "}"}], "]"}], ",", 
+        " ", "\"\<]\>\""}], "\n", "    ", "}"}], "]"}], "\n", "  ", "]"}]}], 
+   "\n", "]"}], ";"}]], "Code"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Functions of the Uc\[ScriptCapitalV]", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["Estimate", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Estimate", "[", " ", 
+    RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], " ", "]"}], " ", 
+   ":=", " ", 
+   RowBox[{"qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Estimate", "[", " ", 
+    RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], " ", "]"}], 
+   " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+    " ", "*", " ", 
+    RowBox[{"10", "^", 
+     RowBox[{
+     "qty", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}]}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Estimate", "[", " ", 
+    RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], " ", 
+    "]"}], " ", ":=", " ", "Indeterminate"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Estimate", "[", " ", "any_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"Estimate", "[", " ", 
+    RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}], " ", 
+    "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Uncertainty", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], " ", "]"}], " ", 
+   ":=", " ", "0"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], " ", "]"}], 
+   " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"qty", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+    " ", "*", " ", 
+    RowBox[{"10", "^", 
+     RowBox[{
+     "qty", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}]}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], " ", 
+    "]"}], " ", ":=", " ", "Indeterminate"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Uncertainty", "[", " ", "any_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"Uncertainty", "[", " ", 
+    RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}], " ", 
+    "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["LowerLimit", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"LowerLimit", "[", " ", 
+    RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], " ", "]"}], " ", 
+   ":=", " ", 
+   RowBox[{"qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"LowerLimit", "[", " ", 
+    RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], " ", "]"}], 
+   " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"(", " ", 
+     RowBox[{
+      RowBox[{"qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+      " ", "-", " ", 
+      RowBox[{"qty", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+      " ", ")"}], " ", "*", " ", 
+    RowBox[{"10", "^", 
+     RowBox[{
+     "qty", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}]}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"LowerLimit", "[", " ", 
+    RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], " ", 
+    "]"}], " ", ":=", " ", "Indeterminate"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"LowerLimit", "[", " ", "any_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"LowerLimit", "[", " ", 
+    RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}], " ", 
+    "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["UpperLimit", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpperLimit", "[", " ", 
+    RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], " ", "]"}], " ", 
+   ":=", " ", 
+   RowBox[{"qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpperLimit", "[", " ", 
+    RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], " ", "]"}], 
+   " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"(", " ", 
+     RowBox[{
+      RowBox[{"qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+      " ", "+", " ", 
+      RowBox[{"qty", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}],
+      " ", ")"}], " ", "*", " ", 
+    RowBox[{"10", "^", 
+     RowBox[{
+     "qty", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}]}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpperLimit", "[", " ", 
+    RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], " ", 
+    "]"}], " ", ":=", " ", "Indeterminate"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UpperLimit", "[", " ", "any_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"UpperLimit", "[", " ", 
+    RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}], " ", 
+    "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["StdUncertainty", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"StdUncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], " ", "]"}], " ", 
+   ":=", " ", "0"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"StdUncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], " ", "]"}], 
+   " ", ":=", " ", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], ",", "\n",
+      "  ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], " ", 
+       "=", " ", 
+       RowBox[{"Uc\[ScriptCapitalV]$Base", "[", " ", "qty", " ", "]"}]}], ";",
+       "\n", "\n", "  ", 
+      RowBox[{
+       RowBox[{"10", "^", "exp"}], " ", "*", " ", 
+       RowBox[{"Switch", "[", " ", 
+        RowBox[{
+         RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+          RowBox[{"qty", ",", " ", "Distribution"}], " ", "]"}], ",", "\n", 
+         "    ", "Normal\[ScriptCapitalD]", ",", "     ", "uc", ",", "\n", 
+         "    ", "Uniform\[ScriptCapitalD]", ",", "    ", 
+         RowBox[{"uc", "/", 
+          RowBox[{"Sqrt", "[", "3", "]"}]}], ",", "\n", "    ", 
+         "Triangular\[ScriptCapitalD]", ",", " ", 
+         RowBox[{"uc", "/", 
+          RowBox[{"Sqrt", "[", "6", "]"}]}], ",", "\n", "    ", "_", ",", 
+         "           ", 
+         RowBox[{"uc", "/", 
+          RowBox[{"Sqrt", "[", "3", "]"}]}]}], "  ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Unknown", ":", " ", "Uniform"}], " ", "*)"}], "\n", "  ", 
+        "]"}]}]}]}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"StdUncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], " ", 
+    "]"}], " ", ":=", " ", "Indeterminate"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"StdUncertainty", "[", " ", "any_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"StdUncertainty", "[", " ", 
+    RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}], " ", 
+    "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["MaxUncertainty", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxUncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], " ", "]"}], " ", 
+   ":=", " ", "0"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxUncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], " ", "]"}], 
+   " ", ":=", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], ",", "\n",
+      "  ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], " ", 
+       "=", " ", 
+       RowBox[{"Uc\[ScriptCapitalV]$Base", "[", " ", "qty", " ", "]"}]}], ";",
+       "\n", "\n", "  ", 
+      RowBox[{
+       RowBox[{"10", "^", "exp"}], " ", "*", " ", 
+       RowBox[{"Switch", "[", " ", 
+        RowBox[{
+         RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+          RowBox[{"qty", ",", " ", "Distribution"}], " ", "]"}], ",", "\n", 
+         "    ", "Normal\[ScriptCapitalD]", ",", "     ", 
+         RowBox[{"uc", " ", "*", " ", "3"}], ",", "    ", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "3", "\[Sigma]", " ", "with", " ", "99.73", "\[MediumSpace]", "%", 
+           " ", "level", " ", "of", " ", "confidence"}], " ", "*)"}], "\n", 
+         "    ", "Uniform\[ScriptCapitalD]", ",", "    ", "uc", ",", "\n", 
+         "    ", "Triangular\[ScriptCapitalD]", ",", " ", "uc", ",", "\n", 
+         "    ", "_", ",", "           ", "uc"}], "         ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"Unknown", ":", " ", "Uniform"}], " ", "*)"}], "\n", "  ", 
+        "]"}]}]}]}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxUncertainty", "[", " ", 
+    RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], " ", 
+    "]"}], " ", ":=", " ", "Indeterminate"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MaxUncertainty", "[", " ", "any_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"MaxUncertainty", "[", " ", 
+    RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}], " ", 
+    "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Distribution", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Distribution", "[", " ", 
+    RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], " ", "]"}], " ", 
+   ":=", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\[Delta]max", " ", "\[Equal]", " ", 
+          RowBox[{"maximal", " ", "relative", " ", "precision"}]}], ";", " ", 
+         
+         RowBox[{"For", " ", "numeric", " ", "quantities"}]}], ",", " ", "\n",
+         "       ", 
+        RowBox[{
+        "Infinity", " ", "is", " ", "reduced", " ", "to", " ", 
+         "$ExactUc\[ScriptCapitalV]QuantityPrecision", " ", "significant", 
+         " ", 
+         RowBox[{"figures", ".", "\n", "       ", "For"}], " ", "machine", 
+         " ", "numbers"}], ",", " ", 
+        RowBox[{
+        "\[Delta]max", " ", "is", " ", "MachinePrecision", " ", "in", " ", 
+         "significant", " ", 
+         RowBox[{"digits", "."}]}]}], "\n", "       ", "*)"}], "\n", "    ", 
+      RowBox[{"\[Delta]max", " ", "=", " ", 
+       RowBox[{"5", " ", "*", " ", 
+        RowBox[{"10", "^", 
+         RowBox[{"(", " ", 
+          RowBox[{"-", " ", 
+           RowBox[{"Floor", "[", " ", 
+            RowBox[{"Min", "[", " ", 
+             RowBox[{
+              RowBox[{"Precision", "[", " ", 
+               RowBox[{
+               "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+               " ", "]"}], ",", " ", 
+              "$ExactUc\[ScriptCapitalV]QuantityPrecision"}], " ", "]"}], " ",
+             "]"}]}], " ", ")"}]}]}]}], "\n", "    ", "}"}], ",", "\n", "  ", 
+     
+     RowBox[{"Distribution", "@", " ", 
+      RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+         "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], " ", 
+         "\[PlusMinus]", " ", 
+         RowBox[{"N", "[", " ", 
+          RowBox[{
+           RowBox[{"\[Delta]max", " ", "*", " ", 
+            RowBox[{
+            "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+           ",", " ", "2"}], " ", "]"}]}], ",", " ", 
+        RowBox[{
+        "Distribution", " ", "\[Rule]", " ", "Uniform\[ScriptCapitalD]"}]}], 
+       " ", "]"}]}]}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Distribution", "[", " ", 
+    RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], " ", "]"}], 
+   " ", ":=", " ", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"est", ",", " ", "uc", ",", " ", "exp", ",", " ", "dist"}], " ",
+       "}"}], ",", "\n", "  ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], " ", 
+       "=", " ", 
+       RowBox[{"Uc\[ScriptCapitalV]$Base", "[", " ", "qty", " ", "]"}]}], ";",
+       "\n", "  ", 
+      RowBox[{"dist", " ", "=", " ", 
+       RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+        RowBox[{"qty", ",", " ", "Distribution"}], " ", "]"}]}], ";", "\n", 
+      "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"dist", " ", "===", " ", "Normal\[ScriptCapitalD]"}], ",", 
+        "\n", "    ", 
+        RowBox[{"NormalDistribution", "[", " ", 
+         RowBox[{
+          RowBox[{"Estimate", "[", " ", "qty", " ", "]"}], ",", " ", 
+          RowBox[{"StdUncertainty", "[", " ", "qty", " ", "]"}]}], " ", "]"}],
+         ",", "\n", "  ", 
+        RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"dist", " ", "===", " ", "Triangular\[ScriptCapitalD]"}], 
+          ",", "\n", "    ", 
+          RowBox[{"TriangularDistribution", "[", 
+           RowBox[{"{", " ", 
+            RowBox[{
+             RowBox[{"LowerLimit", "[", " ", "qty", " ", "]"}], ",", " ", 
+             RowBox[{"UpperLimit", "[", " ", "qty", " ", "]"}]}], " ", "}"}], 
+           "]"}], ",", "\n", "  ", 
+          RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+          RowBox[{"If", "[", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"dist", " ", "===", " ", "Uniform\[ScriptCapitalD]"}], 
+             " ", "||", " ", 
+             RowBox[{"dist", " ", "===", " ", "Null"}]}], ",", "\n", "    ", 
+            RowBox[{"UniformDistribution", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"LowerLimit", "[", " ", "qty", " ", "]"}], ",", " ", 
+               RowBox[{"UpperLimit", "[", " ", "qty", " ", "]"}]}], " ", 
+              "}"}], "]"}], ",", "\n", "  ", 
+            RowBox[{"(*", " ", "Else", " ", "*)"}], "\n", "\t", 
+            RowBox[{
+             RowBox[{"Message", "[", " ", 
+              RowBox[{
+               RowBox[{"Uc\[ScriptCapitalV]", "::", "invdist"}], ",", " ", 
+               "dist", ",", " ", "qty"}], " ", "]"}], ";", "\n", "    ", 
+             RowBox[{"Abort", "[", "]"}]}]}], "\n", "  ", "]"}]}], "]"}]}], 
+       "]"}]}]}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Distribution", "[", " ", 
+    RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], " ", 
+    "]"}], " ", ":=", " ", "Indeterminate"}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Round-Off", "Subsubsection"],
+
+Cell["\<\
+Rounding can produce increased number of significant figures, e.g. rounding \
+995 to 2 sig figures will give 100 with 3 sig figures.\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"RoundOff", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], ",", " ", 
+     "newUcPrec_"}], " ", "]"}], " ", ":=", " ", "qty"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"RoundOff", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], ",", " ", 
+     "newUcPrec_"}], " ", "]"}], " ", ":=", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", "\n", "    ", 
+      RowBox[{
+      "est", ",", " ", "uc", ",", " ", "exp", ",", "\n", "    ", "estPrec", 
+       ",", " ", "ucPrec", ",", " ", "\[CapitalDelta]prec", ",", "\n", "    ",
+        "resEst", ",", " ", "resUc", ",", " ", "resExp"}], 
+      "\[IndentingNewLine]", "  ", "}"}], ",", "\[IndentingNewLine]", "\n", 
+     "  ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], " ", 
+       "=", " ", 
+       RowBox[{"Uc\[ScriptCapitalV]$Base", "[", " ", "qty", " ", "]"}]}], ";",
+       "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "obtain", " ", "number", " ", "of", " ", "significant", " ", "digits", 
+        " ", "for", " ", "est", " ", "and", " ", "uc"}], " ", "*)"}], "\n", 
+      "  ", 
+      RowBox[{"estPrec", " ", "=", " ", 
+       RowBox[{"IntegerLength", "[", " ", "est", " ", "]"}]}], ";", "\n", 
+      "  ", 
+      RowBox[{"ucPrec", " ", "=", " ", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{"uc", " ", "\[Equal]", " ", "0"}], ",", " ", "estPrec", ",", 
+         " ", 
+         RowBox[{"IntegerLength", "[", " ", "uc", " ", "]"}]}], " ", "]"}]}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "get", " ", "the", " ", "change", " ", "of", " ", "uc", " ", "sig", 
+        " ", "figs"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"\[CapitalDelta]prec", " ", "=", " ", 
+       RowBox[{"newUcPrec", " ", "-", " ", "ucPrec"}]}], ";", "\n", "\n", 
+      "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"\[CapitalDelta]prec", " ", ">", " ", "0"}], ",", " ", 
+        RowBox[{"Return", "[", " ", "qty", " ", "]"}]}], " ", "]"}], ";", 
+      "\n", "\[IndentingNewLine]", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "round", " ", "off", " ", "restimate", " ", "and", " ", 
+        "uncertainty"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"resEst", " ", "=", " ", 
+       RowBox[{"Round", "[", " ", 
+        RowBox[{"est", " ", "*", " ", 
+         RowBox[{"10", "^", "\[CapitalDelta]prec"}]}], " ", "]"}]}], ";", 
+      "\n", "  ", 
+      RowBox[{"resUc", " ", "=", " ", 
+       RowBox[{"Round", "[", " ", 
+        RowBox[{
+         RowBox[{"uc", " ", "*", " ", 
+          RowBox[{"10", "^", "\[CapitalDelta]prec"}]}], " ", "+", " ", 
+         RowBox[{
+          RowBox[{"(", " ", 
+           RowBox[{"8", " ", "-", " ", "5"}], " ", ")"}], " ", "/", " ", 
+          "10"}]}], " ", "]"}]}], ";", "\n", "  ", 
+      RowBox[{"resExp", " ", "=", " ", 
+       RowBox[{"exp", " ", "-", " ", "\[CapitalDelta]prec"}]}], ";", "\n", 
+      "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "Do", " ", "not", " ", "allow", " ", "for", " ", "uc", " ", "to", " ", 
+        "drop", " ", "bellow", " ", "0"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"resUc", " ", "\[LessEqual]", " ", "0"}], ",", "\n", "  ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{"Then", " ", "--"}], " ", "try", " ", "with", " ", 
+          "incremented", " ", "uc", " ", "precision", " ", 
+          RowBox[{"(", "recursive", ")"}]}], " ", "*)"}], "\n", "    ", 
+        RowBox[{"RoundOff", "[", " ", 
+         RowBox[{"qty", ",", " ", 
+          RowBox[{"newUcPrec", " ", "+", " ", "1"}]}], " ", "]"}], ",", "\n", 
+        "  ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{"Else", " ", "--"}], " ", "return", " ", "new", " ", 
+          "Uc\[ScriptCapitalV]", " ", "as", " ", "the", " ", "result"}], " ", 
+         "*)"}], "\n", "    ", 
+        RowBox[{"Uc\[ScriptCapitalV]", "[", "\n", "      ", 
+         RowBox[{"(*", " ", 
+          RowBox[{"base", ":"}], " ", "*)"}], " ", 
+         RowBox[{
+         "resEst", ",", " ", "resUc", ",", " ", "resExp", ",", "\n", "      ",
+           
+          RowBox[{"(*", " ", 
+           RowBox[{"opts", ":"}], " ", "*)"}], " ", 
+          RowBox[{"Sequence", " ", "@@", " ", 
+           RowBox[{"FilterRules", "[", " ", 
+            RowBox[{
+             RowBox[{
+             "Uc\[ScriptCapitalV]$Options", "[", " ", "qty", " ", "]"}], ",", 
+             " ", 
+             RowBox[{"Options", "[", " ", "Uc\[ScriptCapitalV]", " ", "]"}]}],
+             " ", "]"}]}]}], "\n", "    ", "]"}]}], "\n", "  ", "]"}]}]}], 
+    "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"RoundOff", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], ",", 
+     " ", "newUcPrec_"}], " ", "]"}], " ", ":=", " ", "Indeterminate"}], 
+  ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Significant Figures", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SigFigures", "[", " ", 
+    RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], " ", "]"}], " ", 
+   ":=", "\n", "  ", "$ExactUc\[ScriptCapitalV]QuantityPrecision"}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SigFigures", "[", " ", 
+    RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], " ", "]"}], 
+   " ", ":=", "\n", "  ", 
+   RowBox[{"Max", "[", " ", 
+    RowBox[{
+     RowBox[{"IntegerLength", "[", " ", 
+      RowBox[{"qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+      " ", "]"}], ",", " ", 
+     RowBox[{"IntegerLength", "[", " ", 
+      RowBox[{"qty", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+      " ", "]"}]}], " ", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SigFigures", "[", " ", 
+    RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], " ", 
+    "]"}], " ", ":=", " ", "\n", "  ", "Indeterminate"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SigFigures", "[", " ", 
+    RowBox[{"expr_", " ", "?", " ", "NumberQ"}], " ", "]"}], " ", ":=", "\n", 
+   
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"prec", ",", " ", "mant"}], " ", "}"}], ",", "\n", "\n", "  ", 
+     RowBox[{
+      RowBox[{"prec", " ", "=", " ", 
+       RowBox[{"Round", "[", " ", 
+        RowBox[{"Precision", "[", " ", "expr", " ", "]"}], " ", "]"}]}], ";", 
+      "\n", "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"!", " ", 
+          RowBox[{"MachineNumberQ", "[", " ", "expr", " ", "]"}]}], " ", "&&",
+          " ", 
+         RowBox[{"prec", " ", "\[NotEqual]", " ", "Infinity"}]}], ",", " ", 
+        "\n", "    ", 
+        RowBox[{"Return", "[", " ", "prec", " ", "]"}]}], "\n", "  ", "]"}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"mant", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"RealDigits", "[", " ", 
+         RowBox[{"expr", ",", " ", "10", ",", " ", 
+          RowBox[{"Min", "[", " ", 
+           RowBox[{
+           "prec", ",", " ", "$ExactUc\[ScriptCapitalV]QuantityPrecision"}], 
+           " ", "]"}]}], " ", "]"}], "\[LeftDoubleBracket]", "1", 
+        "\[RightDoubleBracket]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "remove", " ", "trailing", " ", "zeros", " ", "and", " ", 
+        "indeterminate", " ", "digits"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"While", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", " ", "mant", " ", "]"}], " ", ">", " ", 
+          "0"}], " ", "\n", "         ", "&&", " ", 
+         RowBox[{"(", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Last", "[", " ", "mant", " ", "]"}], " ", "\[Equal]", 
+            " ", "0"}], " ", "||", " ", 
+           RowBox[{
+            RowBox[{"Last", "[", " ", "mant", " ", "]"}], " ", "===", " ", 
+            "Indeterminate"}]}], " ", ")"}]}], ",", "\n", "    ", 
+        RowBox[{"mant", " ", "=", " ", 
+         RowBox[{"Most", "[", " ", "mant", " ", "]"}]}]}], "\n", "  ", "]"}], 
+      ";", "\n", "\[IndentingNewLine]", "  ", 
+      RowBox[{"Length", "[", " ", "mant", " ", "]"}]}]}], "\n", "]"}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SigFigures", "[", " ", "expr_", " ", "]"}], " ", ":=", " ", 
+   "$ExactUc\[ScriptCapitalV]QuantityPrecision"}], ";"}]], "Code"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Presentation of Uc\[ScriptCapitalV] Quantities", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+UcBox - converts a Uc\[ScriptCapitalV] quantity to boxes\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetAttributes", "[", " ", 
+   RowBox[{"UcBox", ",", " ", "Listable"}], " ", "]"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UcBox", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], ",", " ", 
+     RowBox[{"OptionsPattern", "[", "]"}]}], " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", "interpretationBox", " ", "}"}], ",", "\n", "\n", "  ",
+      
+     RowBox[{
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"OptionValue", "[", " ", "ToString", " ", "]"}], ",", "\n", 
+        "    ", 
+        RowBox[{"Return", "[", " ", 
+         RowBox[{"ToString", "[", " ", 
+          RowBox[{
+           RowBox[{
+           "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",",
+            " ", "InputForm"}], " ", "]"}], " ", "]"}]}], "\n", "  ", "]"}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"interpretationBox", " ", "=", " ", 
+       RowBox[{"NullifyIfEmpty", "[", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+         RowBox[{"qty", ",", " ", "Interpretation"}], " ", "]"}], " ", 
+        "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"InterpretationBox", "@@", "\n", "  ", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{"interpretationBox", " ", "===", " ", "Null"}], ",", "\n", 
+         "    ", 
+         RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+         RowBox[{"{", "\n", "       ", 
+          RowBox[{
+           RowBox[{"RowBox", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{"ToBoxes", "[", " ", 
+               RowBox[{
+               "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+               " ", "]"}], ",", " ", "\"\<\[MediumSpace]\>\"", " ", 
+              RowBox[{"(*", " ", 
+               RowBox[{"[", "MediumSpace", "]"}], " ", "*)"}], ",", " ", 
+              "\"\<(exact)\>\""}], " ", "}"}], "]"}], ",", "\n", "       ", 
+           RowBox[{
+           "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",",
+            "\n", "       ", 
+           RowBox[{"Editable", " ", "\[Rule]", " ", "False"}], ",", " ", 
+           RowBox[{"Selectable", " ", "\[Rule]", " ", "False"}]}], "\n", 
+          "    ", "}"}], ",", "\n", "    ", 
+         RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+         RowBox[{"{", "\n", "       ", 
+          RowBox[{
+           RowBox[{"RowBox", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+             "interpretationBox", ",", " ", "\"\<\[MediumSpace]\>\"", " ", 
+              RowBox[{"(*", " ", 
+               RowBox[{"[", "MediumSpace", "]"}], " ", "*)"}], ",", " ", 
+              "\"\<(exact)\>\""}], " ", "}"}], "]"}], ",", "\n", "       ", 
+           RowBox[{
+           "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",",
+            " ", "\n", "       ", 
+           RowBox[{"Editable", " ", "\[Rule]", " ", "False"}], ",", " ", 
+           RowBox[{"Selectable", " ", "\[Rule]", " ", "False"}]}], "\n", 
+          "    ", "}"}]}], "\n", "  ", "]"}]}]}]}], "\n", "]"}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UcBox", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", " ", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], ",", 
+     " ", 
+     RowBox[{"OptionsPattern", "[", "]"}]}], " ", "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", "    ", 
+      RowBox[{
+      "est", ",", " ", "uc", ",", " ", "exp", ",", " ", "dist", ",", 
+       "\[IndentingNewLine]", "    ", "estPrec", ",", " ", "ucPrec", ",", " ",
+        "estExp", ",", "\n", "    ", "a", ",", " ", "b", ",", "\n", "    ", 
+       "result"}], "\[IndentingNewLine]", "  ", "}"}], ",", "\n", "\n", "  ", 
+     
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"est", ",", " ", "uc", ",", " ", "exp"}], " ", "}"}], " ", 
+       "=", " ", 
+       RowBox[{"Uc\[ScriptCapitalV]$Base", "@", "\n", "    ", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"OptionValue", "[", " ", "Precision", " ", "]"}], " ", "===",
+            " ", "Null"}], ",", " ", "\n", "      ", 
+          RowBox[{"(*", " ", "Then", " ", "*)"}], " ", "qty", ",", " ", "\n", 
+          "      ", 
+          RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+          RowBox[{"RoundOff", "[", " ", 
+           RowBox[{"qty", ",", " ", 
+            RowBox[{"OptionValue", "[", " ", "Precision", " ", "]"}]}], " ", 
+           "]"}]}], "\n", "    ", "]"}]}]}], ";", "\n", "\[IndentingNewLine]",
+       "  ", 
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"a", ",", " ", "estPrec"}], " ", "}"}], " ", "=", " ", 
+       RowBox[{"RealDigits", "[", " ", 
+        RowBox[{"est", ",", " ", "10"}], " ", "]"}]}], ";", 
+      "\[IndentingNewLine]", "  ", 
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"b", ",", " ", "ucPrec"}], " ", "}"}], " ", "=", " ", 
+       RowBox[{"RealDigits", "[", " ", 
+        RowBox[{"uc", ",", " ", "10"}], " ", "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"estExp", " ", "=", " ", 
+       RowBox[{"exp", " ", "+", " ", 
+        RowBox[{"Max", "[", " ", 
+         RowBox[{"estPrec", ",", " ", "ucPrec"}], " ", "]"}], " ", "-", " ", 
+        "1"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"a", " ", "=", " ", 
+       RowBox[{"ToString", " ", "/@", " ", 
+        RowBox[{"Join", "[", " ", 
+         RowBox[{
+          RowBox[{"Table", "[", " ", 
+           RowBox[{"0", ",", " ", 
+            RowBox[{"{", " ", 
+             RowBox[{"ucPrec", " ", "-", " ", "estPrec"}], " ", "}"}]}], " ", 
+           "]"}], ",", " ", "a"}], " ", "]"}]}]}], ";", "\n", "  ", 
+      RowBox[{"a", " ", "=", " ", 
+       RowBox[{"StringJoin", "[", " ", 
+        RowBox[{"Insert", "[", " ", 
+         RowBox[{"a", ",", " ", "\"\<.\>\"", ",", " ", "2"}], " ", "]"}], " ",
+         "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"OptionValue", "[", " ", "Condensed", " ", "]"}], ",", "\n", 
+        "  ", 
+        RowBox[{"(*", " ", "Then", " ", "*)"}], "\n", "    ", 
+        RowBox[{"b", " ", "=", " ", 
+         RowBox[{"StringJoin", "[", " ", 
+          RowBox[{"ToString", " ", "/@", " ", "b"}], " ", "]"}]}], ",", "\n", 
+        "  ", 
+        RowBox[{"(*", " ", "Else", " ", "*)"}], "\n", "    ", 
+        RowBox[{
+         RowBox[{"b", " ", "=", " ", 
+          RowBox[{"ToString", " ", "/@", " ", 
+           RowBox[{"Join", "[", " ", 
+            RowBox[{
+             RowBox[{"Table", "[", " ", 
+              RowBox[{"0", ",", " ", 
+               RowBox[{"{", " ", 
+                RowBox[{"estPrec", " ", "-", " ", "ucPrec"}], " ", "}"}]}], 
+              " ", "]"}], ",", " ", "b"}], " ", "]"}]}]}], ";", "\n", "    ", 
+         
+         RowBox[{"b", " ", "=", " ", 
+          RowBox[{"StringJoin", "[", " ", 
+           RowBox[{"Insert", "[", " ", 
+            RowBox[{"b", ",", " ", "\"\<.\>\"", ",", " ", "2"}], " ", "]"}], 
+           " ", "]"}]}]}]}], "\n", "  ", "]"}], ";", "\[IndentingNewLine]", 
+      "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"add", " ", "sign", " ", "to", " ", "the", " ", "estimate"}], 
+       " ", "*)"}], "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"est", " ", "<", " ", "0"}], ",", "\n", "    ", 
+        RowBox[{"a", " ", "=", " ", 
+         RowBox[{"\"\<-\>\"", " ", "<>", " ", "a"}]}]}], "\n", "  ", "]"}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+         "add", " ", "number", " ", "marks", " ", "indicating", " ", 
+          "significant", " ", "figures", " ", "\n", "  ", "a"}], " ", "=", 
+         " ", 
+         RowBox[{"a", " ", "<>", " ", "\"\<`\>\"", " ", "<>", " ", 
+          RowBox[{"ToString", "[", " ", "estPrec", " ", "]"}]}]}], ";", "\n", 
+        "  ", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"!", " ", 
+           RowBox[{"OptionValue", "[", " ", "Condensed", " ", "]"}]}], ",", 
+          "\n", "     ", 
+          RowBox[{"b", " ", "=", " ", 
+           RowBox[{"b", " ", "<>", " ", "\"\<`\>\"", " ", "<>", " ", 
+            RowBox[{"ToString", "[", " ", "ucPrec", " ", "]"}]}]}]}], "\n", 
+         "  ", "]"}], ";"}], "*)"}], "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "build", " ", "the", " ", "resulting", " ", "row", " ", "box"}], " ", 
+       "*)"}], "\n", "  ", 
+      RowBox[{"result", " ", "=", " ", 
+       RowBox[{"RowBox", "\n", "  ", "[", 
+        RowBox[{"{", "\n", "    ", 
+         RowBox[{
+          RowBox[{"If", "[", " ", 
+           RowBox[{
+            RowBox[{"OptionValue", "[", " ", "Condensed", " ", "]"}], ",", 
+            "\n", "      ", 
+            RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+            RowBox[{"RowBox", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{"a", ",", " ", 
+               RowBox[{"(*", "\"\<\[NegativeVeryThinSpace]\>\"", "*)"}], " ", 
+               "\"\<\[InvisibleApplication]\>\"", ",", " ", 
+               RowBox[{"RowBox", "[", 
+                RowBox[{"{", " ", 
+                 RowBox[{"\"\<(\>\"", ",", " ", "b", ",", " ", "\"\<)\>\""}], 
+                 " ", "}"}], "]"}]}], " ", "}"}], "]"}], ",", "\n", "      ", 
+            
+            RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+            RowBox[{"RowBox", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{"\"\<(\>\"", ",", " ", 
+               RowBox[{"RowBox", "[", 
+                RowBox[{"{", " ", 
+                 RowBox[{
+                 "a", ",", " ", "\"\<\[PlusMinus]\>\"", ",", " ", "b"}], " ", 
+                 "}"}], "]"}], ",", " ", "\"\<)\>\""}], " ", "}"}], "]"}]}], 
+           "\n", "    ", "]"}], ",", "\n", "    ", 
+          RowBox[{"Opt$Seq", "[", " ", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"estExp", " ", "\[NotEqual]", " ", "0"}], " ", "||", " ",
+              
+             RowBox[{"!", " ", 
+              RowBox[{"OptionValue", "[", " ", "Condensed", " ", "]"}]}]}], 
+            ",", "\n", "      ", "\"\<\[Times]\>\"", ",", " ", 
+            RowBox[{"SuperscriptBox", "[", " ", 
+             RowBox[{"\"\<10\>\"", ",", " ", 
+              RowBox[{"ToString", "[", " ", "estExp", " ", "]"}]}], " ", 
+             "]"}]}], "\n", "    ", "]"}]}], "\n", "  ", "}"}], "]"}]}], ";", 
+      "\n", "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"!", " ", 
+         RowBox[{"OptionValue", "[", " ", "ToString", " ", "]"}]}], ",", " ", 
+        
+        RowBox[{"Return", "[", " ", "result", " ", "]"}]}], " ", "]"}], ";", 
+      "\n", "\n", "  ", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", "result", "}"}], " ", "/.", " ", 
+          RowBox[{"RowBox", " ", "\[Rule]", " ", "List"}]}], " ", "/.", " ", 
+         RowBox[{"SuperscriptBox", " ", "\[Rule]", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"#1", ",", "\"\<^\>\"", ",", "#2"}], "}"}], "&"}], 
+           ")"}]}]}], " ", "//", " ", "Flatten"}], " ", "//", " ", 
+       "StringJoin"}]}]}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UcBox", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], ",", 
+     " ", 
+     RowBox[{"OptionsPattern", "[", "]"}]}], " ", "]"}], " ", ":=", " ", "\n",
+    
+   RowBox[{"If", "[", " ", 
+    RowBox[{
+     RowBox[{"!", " ", 
+      RowBox[{"OptionValue", "[", " ", "ToString", " ", "]"}]}], ",", " ", 
+     "\n", 
+     RowBox[{"(*", " ", "Then", " ", "*)"}], "\n", "  ", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", "\n", "    ", 
+       RowBox[{
+        RowBox[{"ToBoxes", "[", " ", 
+         RowBox[{
+          RowBox[{
+          "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], " ", 
+          "/.", " ", 
+          RowBox[{
+           RowBox[{"Hold", "[", "e_", "]"}], " ", "\[RuleDelayed]", " ", 
+           RowBox[{"HoldForm", "[", "e", "]"}]}]}], " ", "]"}], ",", " ", 
+        "\n", "    ", 
+        RowBox[{"Opt$Seq", "[", " ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ReleaseHold", "[", 
+            RowBox[{
+            "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+            "]"}], " ", "=!=", " ", "Indeterminate"}], ",", " ", 
+          "\"\<(indeterminate)\>\""}], " ", "]"}]}], "\n", "  ", "}"}], "]"}],
+      ",", "\n", 
+     RowBox[{"(*", " ", "Else", " ", "*)"}], "\n", "  ", 
+     RowBox[{"ToString", "[", " ", 
+      RowBox[{
+       RowBox[{"qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+       ",", " ", "InputForm"}], " ", "]"}]}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"UcBox", "[", " ", 
+    RowBox[{"any_", ",", " ", 
+     RowBox[{"opts", ":", " ", 
+      RowBox[{"OptionsPattern", "[", "]"}]}]}], " ", "]"}], " ", ":=", " ", 
+   "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"qty", " ", "=", " ", 
+       RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}]}], " ", 
+      "}"}], ",", "\n", "  ", 
+     RowBox[{"If", "[", " ", 
+      RowBox[{
+       RowBox[{"Uc\[ScriptCapitalV]Q", "[", " ", "qty", " ", "]"}], ",", " ", 
+       "\n", "    ", 
+       RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+       RowBox[{"UcBox", "[", " ", 
+        RowBox[{"qty", ",", " ", "opts"}], " ", "]"}], ",", "\n", "    ", 
+       RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+       RowBox[{"ToBoxes", "[", " ", "any", " ", "]"}]}], "\n", "  ", "]"}]}], 
+    "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["DisplayUc\[ScriptCapitalV]", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetAttributes", "[", " ", 
+   RowBox[{"DisplayUc\[ScriptCapitalV]", ",", " ", "HoldAllComplete"}], " ", 
+   "]"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplayUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "UncertainUc\[ScriptCapitalV]Q"}], ",", " ", 
+     RowBox[{"ucPrecision_:", " ", "Null"}], ",", " ", 
+     RowBox[{"precision_:", " ", "Null"}]}], " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", "\n", "    ", 
+      RowBox[{
+       RowBox[{"a", "       ", "=", " ", 
+        RowBox[{"Estimate", "[", " ", "qty", " ", "]"}]}], ",", "\n", "    ", 
+       
+       RowBox[{"b", "       ", "=", " ", 
+        RowBox[{"Uncertainty", "[", " ", "qty", " ", "]"}]}], ",", "\n", 
+       "    ", 
+       RowBox[{"nameBox", " ", "=", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$NameBox", "[", " ", "qty", " ", "]"}]}], 
+       ",", "\n", "    ", 
+       RowBox[{"unitBox", " ", "=", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$UnitBox", "[", " ", "qty", " ", "]"}]}], 
+       ",", "\n", "    ", 
+       RowBox[{"distBox", " ", "=", " ", 
+        RowBox[{
+        "Uc\[ScriptCapitalV]$DistributionBox", "[", " ", "qty", " ", "]"}]}], 
+       ",", "\n", "    ", 
+       RowBox[{"comment", " ", "=", " ", 
+        RowBox[{"NullifyIfEmpty", "[", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+          RowBox[{"qty", ",", " ", "Comment"}], " ", "]"}], " ", "]"}]}], ",",
+        "\n", "    ", 
+       RowBox[{"exprBox", " ", "=", " ", 
+        RowBox[{"NullifyIfEmpty", "[", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+          RowBox[{"qty", ",", " ", "Expression"}], " ", "]"}], " ", "]"}]}], 
+       ",", "\n", "    ", "ucPrec", ",", " ", "estPrec", ",", " ", "intPrec", 
+       ",", "\n", "    ", "spanFromAbove"}], "\n", "  ", "}"}], ",", "\n", 
+     "\n", "  ", 
+     RowBox[{
+      RowBox[{"ucPrec", " ", "=", " ", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ucPrecision", " ", "=!=", " ", "Null"}], " ", "&&", " ", 
+          RowBox[{"ucPrecision", " ", "=!=", " ", "Infinity"}]}], ",", "\n", 
+         "    ", 
+         RowBox[{"(*", " ", "Then", " ", "*)"}], " ", "ucPrecision", ",", 
+         "\n", "    ", 
+         RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+         RowBox[{"IntegerLength", "[", " ", 
+          RowBox[{
+          "qty", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], " ", 
+          "]"}]}], "\n", "  ", "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"estPrec", " ", "=", " ", 
+        RowBox[{"IntegerLength", "[", " ", 
+         RowBox[{
+         "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], " ", 
+         "]"}]}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"estPrec", " ", "=", " ", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"precision", " ", "=!=", " ", "Null"}], " ", "&&", " ", 
+          RowBox[{"precision", " ", "=!=", " ", "Infinity"}]}], ",", " ", 
+         "\n", "    ", 
+         RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+         RowBox[{"Max", "[", " ", 
+          RowBox[{"precision", ",", " ", 
+           RowBox[{
+            RowBox[{"SigFigures", "[", " ", 
+             RowBox[{"RoundOff", "[", " ", 
+              RowBox[{"qty", ",", " ", "ucPrec"}], " ", "]"}], " ", "]"}], 
+            " ", "+", " ", "3"}]}], " ", "]"}], ",", "\n", "    ", 
+         RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+         RowBox[{"SigFigures", "[", " ", "qty", " ", "]"}]}], "\n", "  ", 
+        "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"intPrec", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"SigFigures", "[", " ", 
+         RowBox[{"RoundOff", "[", " ", 
+          RowBox[{"qty", ",", " ", "ucPrec"}], " ", "]"}], " ", "]"}], " ", 
+        "+", " ", "3"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"spanFromAbove", " ", "=", " ", "\"\<\[SpanFromAbove]\>\""}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"DisplayForm", "@", "\n", "  ", 
+       RowBox[{"GridBox", "[", 
+        RowBox[{
+         RowBox[{"{", "\n", "    ", 
+          RowBox[{
+           RowBox[{"Opt$Seq", "[", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"exprBox", " ", "=!=", " ", "Null"}], " ", "||", " ", 
+              RowBox[{"comment", " ", "=!=", " ", "Null"}]}], ",", "\n", 
+             "    ", 
+             RowBox[{"{", "\n", "      ", 
+              RowBox[{
+               RowBox[{"Opt$Seq", "[", " ", 
+                RowBox[{
+                 RowBox[{"nameBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                 "nameBox", ",", " ", "\"\<\[RightTriangle]\>\""}], " ", 
+                "]"}], ",", "\n", "      ", 
+               RowBox[{"RowBox", "[", 
+                RowBox[{"{", "\n", "        ", 
+                 RowBox[{"RowBox", "[", 
+                  RowBox[{"{", "\n", "        ", 
+                   RowBox[{
+                    RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{"comment", " ", "=!=", " ", "Null"}], ",", " ", 
+                    RowBox[{"ToBoxes", "[", " ", "comment", " ", "]"}]}], " ",
+                     "]"}], ",", "\n", "        ", 
+                    RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"exprBox", " ", "=!=", " ", "Null"}], " ", "&&", 
+                    " ", 
+                    RowBox[{"comment", " ", "=!=", " ", "Null"}]}], ",", " ", 
+                    "\"\<; \>\""}], " ", "]"}], ",", "\n", "        ", 
+                    RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{"exprBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                    RowBox[{"StyleBox", "[", " ", 
+                    RowBox[{"exprBox", ",", " ", 
+                    RowBox[{
+                    "ShowStringCharacters", " ", "\[Rule]", " ", "False"}]}], 
+                    " ", "]"}]}], " ", "]"}], ",", "\n", "        ", 
+                    RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                    RowBox[{"RowBox", "[", 
+                    RowBox[{"{", " ", 
+                    RowBox[{
+                    "\"\<[\>\"", ",", " ", "unitBox", ",", " ", "\"\<]\>\""}],
+                     " ", "}"}], "]"}]}], " ", "]"}]}], "\n", "        ", 
+                   "}"}], "]"}], "\n", "      ", "}"}], "]"}], ",", "\n", 
+               "      ", 
+               RowBox[{"Opt$Seq", "[", " ", 
+                RowBox[{
+                 RowBox[{"nameBox", " ", "===", " ", "Null"}], ",", " ", 
+                 "\"\<\[SpanFromLeft]\>\"", ",", " ", 
+                 "\"\<\[SpanFromLeft]\>\""}], " ", "]"}]}], "\n", "    ", 
+              "}"}]}], "]"}], ",", "\n", "    ", 
+           RowBox[{"{", "\n", "      ", 
+            RowBox[{
+             RowBox[{"Opt$Seq", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", " ", 
+                 RowBox[{
+                  RowBox[{"exprBox", " ", "=!=", " ", "Null"}], " ", "||", 
+                  " ", 
+                  RowBox[{"comment", " ", "=!=", " ", "Null"}]}], " ", ")"}], 
+                " ", "&&", " ", 
+                RowBox[{"nameBox", " ", "===", " ", "Null"}]}], ",", " ", 
+               "\"\<\>\"", ",", " ", "\"\<=\>\""}], " ", "]"}], ",", "\n", 
+             "      ", 
+             RowBox[{"Opt$Seq", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", " ", 
+                 RowBox[{
+                  RowBox[{"exprBox", " ", "=!=", " ", "Null"}], " ", "||", 
+                  " ", 
+                  RowBox[{"comment", " ", "=!=", " ", "Null"}]}], " ", ")"}], 
+                " ", "&&", " ", 
+                RowBox[{"nameBox", " ", "=!=", " ", "Null"}]}], ",", " ", 
+               "spanFromAbove", ",", " ", "\"\<=\>\""}], " ", "]"}], ",", 
+             "\n", "      ", 
+             RowBox[{"Opt$Seq", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", " ", 
+                 RowBox[{
+                  RowBox[{"exprBox", " ", "===", " ", "Null"}], " ", "&&", 
+                  " ", 
+                  RowBox[{"comment", " ", "===", " ", "Null"}]}], " ", ")"}], 
+                " ", "&&", " ", 
+                RowBox[{"nameBox", " ", "=!=", " ", "Null"}]}], ",", " ", 
+               "nameBox", ",", " ", "\"\<=\>\""}], " ", "]"}], ",", "\n", 
+             "      ", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", "\n", "        ", 
+               RowBox[{
+                RowBox[{"Opt$Seq", "[", " ", 
+                 RowBox[{
+                  RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                  "\"\<(\>\""}], " ", "]"}], ",", "\n", "        ", 
+                RowBox[{"NumberBox", "[", " ", 
+                 RowBox[{"a", ",", " ", "Null", ",", " ", "estPrec"}], " ", 
+                 "]"}], ",", "\n", "        ", "\"\<\[ThinSpace]\>\"", ",", 
+                " ", "\"\<\[PlusMinus]\>\"", ",", " ", "\"\<\[ThinSpace]\>\"",
+                 ",", " ", 
+                RowBox[{"(*", " ", 
+                 RowBox[{"2", 
+                  RowBox[{"x", " ", "[", "ThinSpace", "]"}]}], " ", "*)"}], 
+                "\n", "        ", 
+                RowBox[{"NumberBox", "[", " ", 
+                 RowBox[{"b", ",", " ", "a", ",", " ", 
+                  RowBox[{"Max", "[", " ", 
+                   RowBox[{"6", ",", " ", "ucPrec"}], " ", "]"}]}], " ", 
+                 "]"}], ",", "\n", "        ", 
+                RowBox[{"Opt$Seq", "[", " ", 
+                 RowBox[{
+                  RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                  "\"\<)\>\"", ",", " ", "unitBox"}], " ", "]"}], ",", "\n", 
+                "        ", 
+                RowBox[{"Opt$Seq", "[", " ", 
+                 RowBox[{
+                  RowBox[{"distBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                  "\"\<;\>\"", ",", " ", "\"\< \>\"", ",", " ", "distBox"}], 
+                 " ", "]"}]}], "\n", "      ", "}"}], "]"}], ",", "\n", 
+             "      ", 
+             RowBox[{"Opt$Seq", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", " ", 
+                 RowBox[{
+                  RowBox[{"exprBox", " ", "===", " ", "Null"}], " ", "&&", 
+                  " ", 
+                  RowBox[{"comment", " ", "===", " ", "Null"}]}], " ", ")"}], 
+                " ", "&&", " ", 
+                RowBox[{"nameBox", " ", "===", " ", "Null"}]}], ",", " ", 
+               "\"\<\[SpanFromLeft]\>\"", ",", " ", 
+               "\"\<\[SpanFromLeft]\>\""}], " ", "]"}]}], "\n", "    ", "}"}],
+            ",", "\n", "    ", 
+           RowBox[{"Opt$Seq", "[", " ", 
+            RowBox[{"True", " ", 
+             RowBox[{"(*", " ", 
+              RowBox[{"ShowInterval", " ", "option", " ", "is", " ", "true", 
+               RowBox[{"??", "?"}]}], " ", "*)"}], ",", "\n", "    ", 
+             RowBox[{"{", "\n", "      ", 
+              RowBox[{
+               RowBox[{"If", "[", " ", 
+                RowBox[{
+                 RowBox[{"nameBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                 "spanFromAbove", ",", " ", "\"\<\>\""}], " ", "]"}], ",", 
+               "\n", "      ", "\"\<\[Element]\>\"", ",", "\n", "      ", 
+               RowBox[{"RowBox", "[", 
+                RowBox[{"{", "\n", "        ", 
+                 RowBox[{
+                  RowBox[{"RowBox", "[", 
+                   RowBox[{"{", "\n", "          ", 
+                    RowBox[{"\"\<[\>\"", ",", " ", "\n", "          ", 
+                    RowBox[{"RowBox", "[", 
+                    RowBox[{"{", "\n", "            ", 
+                    RowBox[{
+                    RowBox[{"NumberBox", "[", " ", 
+                    RowBox[{
+                    RowBox[{"a", " ", "-", " ", "b"}], ",", " ", "Null", ",", 
+                    " ", "intPrec"}], " ", "]"}], ",", "\n", "            ", 
+                    "\"\<;\>\"", ",", "\n", "            ", 
+                    RowBox[{"NumberBox", "[", " ", 
+                    RowBox[{
+                    RowBox[{"a", " ", "+", " ", "b"}], ",", " ", "Null", ",", 
+                    " ", "intPrec"}], " ", "]"}]}], "\n", "          ", "}"}],
+                     "]"}], ",", "\n", "          ", "\"\<]\>\""}], "\n", 
+                    "        ", "}"}], "]"}], ",", "\n", "        ", 
+                  RowBox[{"Opt$Seq", "[", " ", 
+                   RowBox[{
+                    RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                    "unitBox"}], " ", "]"}]}], "\n", "      ", "}"}], "]"}]}],
+               "\n", "    ", "}"}]}], "]"}], ",", "\n", "    ", 
+           RowBox[{"{", "\n", "      ", 
+            RowBox[{
+             RowBox[{"If", "[", " ", 
+              RowBox[{
+               RowBox[{"nameBox", " ", "=!=", " ", "Null"}], ",", " ", 
+               "spanFromAbove", ",", " ", "\"\<\>\""}], " ", "]"}], ",", "\n",
+              "      ", "\"\<\[TildeTilde]\>\"", ",", "\n", "      ", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", "\n", "        ", 
+               RowBox[{"(*", " ", 
+                RowBox[{
+                "estimator", " ", "\[PlusMinus]", " ", "uncertainty"}], " ", 
+                "*)"}], "\n", "        ", 
+               RowBox[{
+                RowBox[{"StyleBox", "[", " ", 
+                 RowBox[{
+                  RowBox[{"UcBox", "[", " ", 
+                   RowBox[{"qty", ",", " ", 
+                    RowBox[{"Precision", " ", "\[Rule]", " ", "ucPrec"}]}], 
+                   " ", "]"}], ",", " ", 
+                  RowBox[{"FontWeight", " ", "\[Rule]", " ", "Bold"}]}], " ", 
+                 "]"}], ",", "\n", "        ", 
+                RowBox[{"Opt$Seq", "[", " ", 
+                 RowBox[{
+                  RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                  "unitBox"}], " ", "]"}], ",", "\n", "        ", 
+                RowBox[{"RowBox", "[", 
+                 RowBox[{"{", "\n", "          ", 
+                  RowBox[{"\"\< \>\"", ",", " ", "\"\<=\>\"", ",", " ", 
+                   RowBox[{"(*", " ", 
+                    RowBox[{"Condensed", " ", "style"}], " ", "*)"}], "\n", 
+                   "          ", 
+                   RowBox[{"StyleBox", "[", " ", 
+                    RowBox[{
+                    RowBox[{"UcBox", "[", " ", 
+                    RowBox[{"qty", ",", " ", 
+                    RowBox[{"Precision", " ", "\[Rule]", " ", "ucPrec"}], ",",
+                     " ", 
+                    RowBox[{"Condensed", " ", "\[Rule]", " ", "True"}]}], " ",
+                     "]"}], ",", " ", 
+                    RowBox[{"FontWeight", " ", "\[Rule]", " ", "Bold"}]}], 
+                    " ", "]"}], ",", "\n", "          ", 
+                   RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                    "unitBox"}], " ", "]"}]}], "\n", "        ", "}"}], 
+                 "]"}]}], "\n", "      ", "}"}], "]"}]}], "\n", "    ", 
+            "}"}]}], "\n", "  ", "}"}], ",", " ", 
+         RowBox[{"ColumnAlignments", " ", "\[Rule]", " ", "Left"}], ",", " ", 
+         
+         RowBox[{"RowsEqual", " ", "\[Rule]", " ", "True"}], ",", " ", 
+         RowBox[{"RowMinHeight", " ", "\[Rule]", " ", "1"}]}], " ", 
+        "]"}]}]}]}], " ", 
+    RowBox[{"(*", " ", "GridBox", " ", "*)"}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplayUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "ExactUc\[ScriptCapitalV]Q"}], ",", " ", 
+     RowBox[{"ucPrecision_:", " ", "Null"}], ",", " ", 
+     RowBox[{"precision_:", " ", "Null"}]}], " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", "\n", "    ", 
+      RowBox[{
+       RowBox[{"nameBox", " ", "=", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$NameBox", "[", " ", "qty", " ", "]"}]}], 
+       ",", "\n", "    ", 
+       RowBox[{"unitBox", " ", "=", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$UnitBox", "[", " ", "qty", " ", "]"}]}], 
+       ",", "\n", "    ", 
+       RowBox[{"comment", " ", "=", " ", 
+        RowBox[{"NullifyIfEmpty", "[", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+          RowBox[{"qty", ",", " ", "Comment"}], " ", "]"}], " ", "]"}]}], ",",
+        "\n", "    ", 
+       RowBox[{"exprBox", " ", "=", " ", 
+        RowBox[{"NullifyIfEmpty", "[", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+          RowBox[{"qty", ",", " ", "Expression"}], " ", "]"}], " ", "]"}]}], 
+       ",", "\n", "    ", 
+       RowBox[{"interpretationBox", " ", "=", " ", 
+        RowBox[{"NullifyIfEmpty", "[", " ", 
+         RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+          RowBox[{"qty", ",", " ", "Interpretation"}], " ", "]"}], " ", 
+         "]"}]}], ",", "\n", "    ", "valueBox", ",", "\n", "    ", 
+       "spanFromAbove"}], "\n", "  ", "}"}], ",", "\n", "\n", "  ", 
+     RowBox[{
+      RowBox[{"spanFromAbove", " ", "=", " ", "\"\<\[SpanFromAbove]\>\""}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"DisplayForm", "@", "\n", "  ", 
+       RowBox[{"GridBox", "[", 
+        RowBox[{
+         RowBox[{"{", "\n", "    ", 
+          RowBox[{
+           RowBox[{"Opt$Seq", "[", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"exprBox", " ", "=!=", " ", "Null"}], " ", "||", " ", 
+              RowBox[{"comment", " ", "=!=", " ", "Null"}]}], ",", "\n", 
+             "    ", 
+             RowBox[{"{", "\n", "      ", 
+              RowBox[{
+               RowBox[{"Opt$Seq", "[", " ", 
+                RowBox[{
+                 RowBox[{"nameBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                 "nameBox", ",", " ", "\"\<\[RightTriangle]\>\""}], " ", 
+                "]"}], ",", "\n", "      ", 
+               RowBox[{"RowBox", "[", 
+                RowBox[{"{", "\n", "        ", 
+                 RowBox[{"RowBox", "[", 
+                  RowBox[{"{", "\n", "        ", 
+                   RowBox[{
+                    RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{"comment", " ", "=!=", " ", "Null"}], ",", " ", 
+                    RowBox[{"ToBoxes", "[", " ", "comment", " ", "]"}]}], " ",
+                     "]"}], ",", "\n", "        ", 
+                    RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"exprBox", " ", "=!=", " ", "Null"}], " ", "&&", 
+                    " ", 
+                    RowBox[{"comment", " ", "=!=", " ", "Null"}]}], ",", " ", 
+                    "\"\<; \>\""}], " ", "]"}], ",", "\n", "        ", 
+                    RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{"exprBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                    RowBox[{"StyleBox", "[", " ", 
+                    RowBox[{"exprBox", ",", " ", 
+                    RowBox[{
+                    "ShowStringCharacters", " ", "\[Rule]", " ", "False"}]}], 
+                    " ", "]"}]}], " ", "]"}], ",", "\n", "        ", 
+                    RowBox[{"Opt$Seq", "[", " ", 
+                    RowBox[{
+                    RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                    RowBox[{"RowBox", "[", 
+                    RowBox[{"{", " ", 
+                    RowBox[{
+                    "\"\<[\>\"", ",", " ", "unitBox", ",", " ", "\"\<]\>\""}],
+                     " ", "}"}], "]"}]}], " ", "]"}]}], "\n", "        ", 
+                   "}"}], "]"}], "\n", "      ", "}"}], "]"}], ",", "\n", 
+               "      ", 
+               RowBox[{"Opt$Seq", "[", " ", 
+                RowBox[{
+                 RowBox[{"nameBox", " ", "===", " ", "Null"}], ",", " ", 
+                 "\"\<\[SpanFromLeft]\>\"", ",", " ", 
+                 "\"\<\[SpanFromLeft]\>\""}], " ", "]"}]}], "\n", "    ", 
+              "}"}]}], "]"}], ",", "\n", "    ", 
+           RowBox[{"{", "\n", "      ", 
+            RowBox[{
+             RowBox[{"Opt$Seq", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", " ", 
+                 RowBox[{
+                  RowBox[{"exprBox", " ", "=!=", " ", "Null"}], " ", "||", 
+                  " ", 
+                  RowBox[{"comment", " ", "=!=", " ", "Null"}]}], " ", ")"}], 
+                " ", "&&", " ", 
+                RowBox[{"nameBox", " ", "=!=", " ", "Null"}]}], ",", " ", 
+               "spanFromAbove", ",", " ", "\"\<=\>\""}], " ", "]"}], ",", 
+             "\n", "      ", 
+             RowBox[{"Opt$Seq", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", " ", 
+                 RowBox[{
+                  RowBox[{"exprBox", " ", "=!=", " ", "Null"}], " ", "||", 
+                  " ", 
+                  RowBox[{"comment", " ", "=!=", " ", "Null"}]}], " ", ")"}], 
+                " ", "&&", " ", 
+                RowBox[{"nameBox", " ", "===", " ", "Null"}]}], ",", " ", 
+               "\"\<\>\"", ",", " ", "\"\<=\>\""}], " ", "]"}], ",", "\n", 
+             "      ", 
+             RowBox[{"Opt$Seq", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", " ", 
+                 RowBox[{
+                  RowBox[{"exprBox", " ", "===", " ", "Null"}], " ", "&&", 
+                  " ", 
+                  RowBox[{"comment", " ", "===", " ", "Null"}]}], " ", ")"}], 
+                " ", "&&", " ", 
+                RowBox[{"nameBox", " ", "=!=", " ", "Null"}]}], ",", " ", 
+               "nameBox", ",", " ", "\"\<=\>\""}], " ", "]"}], ",", "\n", 
+             "      ", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", "\n", "        ", 
+               RowBox[{
+                RowBox[{"UcBox", "[", " ", "qty", " ", "]"}], ",", "\n", 
+                "        ", 
+                RowBox[{"Opt$Seq", "[", " ", 
+                 RowBox[{
+                  RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                  "unitBox"}], " ", "]"}]}], "\n", "      ", "}"}], "]"}], 
+             ",", "\n", "      ", 
+             RowBox[{"Opt$Seq", "[", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", " ", 
+                 RowBox[{
+                  RowBox[{"exprBox", " ", "===", " ", "Null"}], " ", "&&", 
+                  " ", 
+                  RowBox[{"comment", " ", "===", " ", "Null"}]}], " ", ")"}], 
+                " ", "&&", " ", 
+                RowBox[{"nameBox", " ", "===", " ", "Null"}]}], ",", " ", 
+               "\"\<\[SpanFromLeft]\>\"", ",", " ", 
+               "\"\<\[SpanFromLeft]\>\""}], " ", "]"}]}], "\n", "    ", "}"}],
+            ",", "\n", "    ", 
+           RowBox[{"Opt$Seq", "[", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"!", " ", 
+               RowBox[{"NumberQ", "[", " ", 
+                RowBox[{
+                "qty", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+                 " ", "]"}]}], " ", "||", " ", 
+              RowBox[{"interpretationBox", " ", "=!=", " ", "Null"}]}], ",", 
+             "\n", "    ", 
+             RowBox[{"{", "\n", "      ", 
+              RowBox[{
+               RowBox[{"If", "[", " ", 
+                RowBox[{
+                 RowBox[{"nameBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                 "spanFromAbove", ",", " ", "\"\<\>\""}], " ", "]"}], ",", 
+               "\n", "      ", 
+               RowBox[{"If", "[", " ", 
+                RowBox[{
+                 RowBox[{"NumberQ", "[", " ", 
+                  RowBox[{
+                  "qty", "\[LeftDoubleBracket]", "1", 
+                   "\[RightDoubleBracket]"}], " ", "]"}], ",", " ", 
+                 "\"\<=\>\"", ",", " ", "\"\<\[TildeTilde]\>\""}], " ", "]"}],
+                ",", "\n", "      ", 
+               RowBox[{"RowBox", "[", 
+                RowBox[{"{", "\n", "        ", 
+                 RowBox[{
+                  RowBox[{"StyleBox", "[", "\n", "          ", 
+                   RowBox[{
+                    RowBox[{"NumberBox", "[", " ", 
+                    RowBox[{
+                    RowBox[{
+                    "qty", "\[LeftDoubleBracket]", "1", 
+                    "\[RightDoubleBracket]"}], ",", " ", "Null", ",", " ", 
+                    "precision"}], " ", "]"}], ",", "\n", "          ", 
+                    RowBox[{"FontWeight", " ", "\[Rule]", " ", "Bold"}]}], 
+                   " ", "\n", "        ", "]"}], ",", "\n", "        ", 
+                  RowBox[{"Opt$Seq", "[", " ", 
+                   RowBox[{
+                    RowBox[{"unitBox", " ", "=!=", " ", "Null"}], ",", " ", 
+                    "unitBox"}], " ", "]"}]}], "\n", "      ", "}"}], "]"}]}],
+               "\n", "    ", "}"}]}], "]"}]}], "\n", "  ", "}"}], ",", " ", 
+         RowBox[{"ColumnAlignments", " ", "\[Rule]", " ", "Left"}], ",", " ", 
+         
+         RowBox[{"RowsEqual", " ", "\[Rule]", " ", "True"}], ",", " ", 
+         RowBox[{"RowMinHeight", " ", "\[Rule]", " ", "1"}]}], " ", 
+        "]"}]}]}]}], " ", 
+    RowBox[{"(*", " ", "GridBox", " ", "*)"}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplayUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"qty_", "?", " ", "IndeterminateUc\[ScriptCapitalV]Q"}], ",", 
+     " ", 
+     RowBox[{"ucPrecision_:", " ", "Null"}], ",", " ", 
+     RowBox[{"precision_:", " ", "Null"}]}], " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", "\n", "    ", 
+      RowBox[{
+       RowBox[{"nameBox", " ", "=", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$NameBox", "[", " ", "qty", " ", "]"}]}], 
+       ",", "\n", "    ", 
+       RowBox[{"unitBox", " ", "=", " ", 
+        RowBox[{"Uc\[ScriptCapitalV]$UnitBox", "[", " ", "qty", " ", "]"}]}], 
+       ",", "\n", "    ", "valueBox"}], "\n", "  ", "}"}], ",", "\n", "\n", 
+     "  ", 
+     RowBox[{"DisplayForm", "@", "\n", "  ", 
+      RowBox[{"RowBox", "[", 
+       RowBox[{"{", "\n", "    ", 
+        RowBox[{
+         RowBox[{"Opt$Seq", "[", " ", 
+          RowBox[{
+           RowBox[{"nameBox", " ", "=!=", " ", "Null"}], ",", " ", "nameBox", 
+           ",", " ", "\"\<=\>\""}], " ", "]"}], ",", "\n", "    ", 
+         RowBox[{"UcBox", "[", " ", "qty", " ", "]"}]}], "\n", "  ", "}"}], 
+       "]"}]}]}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplayUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"any_", "?", " ", "ListQ"}], ",", " ", 
+     RowBox[{"ucPrecision_:", " ", "Null"}], ",", " ", 
+     RowBox[{"precision_:", " ", "Null"}]}], " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"Module", "[", " ", 
+    RowBox[{
+     RowBox[{"{", "i", "}"}], ",", "\n", "  ", 
+     RowBox[{"Table", "[", " ", 
+      RowBox[{
+       RowBox[{"DisplayUc\[ScriptCapitalV]", "[", " ", 
+        RowBox[{
+         RowBox[{
+         "any", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], ",", 
+         " ", "ucPrecision", ",", " ", "precision"}], " ", "]"}], ",", " ", 
+       RowBox[{"{", " ", 
+        RowBox[{"i", ",", " ", 
+         RowBox[{"Length", "[", "any", "]"}]}], " ", "}"}]}], " ", "]"}]}], 
+    "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DisplayUc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{"any_", ",", " ", 
+     RowBox[{"ucPrecision_:", " ", "Null"}], ",", " ", 
+     RowBox[{"precision_:", " ", "Null"}]}], " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"qty", " ", "=", " ", 
+       RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", "any", " ", "]"}]}], " ", 
+      "}"}], ",", "\n", "  ", 
+     RowBox[{"If", "[", " ", 
+      RowBox[{
+       RowBox[{"Uc\[ScriptCapitalV]Q", "[", " ", "qty", " ", "]"}], ",", " ", 
+       "\n", "    ", 
+       RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+       RowBox[{"DisplayUc\[ScriptCapitalV]", "[", " ", 
+        RowBox[{"qty", ",", " ", "ucPrecision", ",", " ", "precision"}], " ", 
+        "]"}], ",", "\n", "    ", 
+       RowBox[{"(*", " ", "Else", " ", "*)"}], " ", "any"}], "\n", "  ", 
+      "]"}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Utility Functions", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["Optional Sequence", "Subsubsection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Opt$Seq", "[", " ", 
+    RowBox[{"expr_", ",", " ", "then__"}], " ", "]"}], " ", ":=", " ", 
+   RowBox[{"Sequence", " ", "@@", " ", 
+    RowBox[{"If", "[", " ", 
+     RowBox[{
+      RowBox[{"expr", " ", "===", " ", "True"}], ",", " ", 
+      RowBox[{"{", "then", "}"}], ",", " ", 
+      RowBox[{"{", "}"}], ",", " ", 
+      RowBox[{"{", "}"}]}], " ", "]"}]}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Opt$Seq", "[", "expr_", "]"}], ":=", 
+     RowBox[{"If", "[", " ", 
+      RowBox[{
+       RowBox[{"expr", " ", "=!=", " ", "True"}], ",", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Sequence", "@@", " ", 
+          RowBox[{"{", "}"}]}], " ", "&"}], ")"}], ",", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"Sequence", "@@", " ", "##"}], " ", "&"}], ")"}]}], " ", 
+      "]"}]}], ";"}], "*)"}]}]}], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+NameAsIs - converts unevaulated expression to string in InputForm\
+\>", "Subsubsection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetAttributes", "[", " ", 
+   RowBox[{"NameAsIs", ",", " ", "HoldAll"}], " ", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"NameAsIs", "[", " ", "expr_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"ToString", "[", " ", 
+    RowBox[{
+     RowBox[{"Unevaluated", "[", " ", "expr", " ", "]"}], ",", " ", 
+     "InputForm"}], " ", "]"}]}], ";"}]}], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Converts unit expression to Uc\[ScriptCapitalV] option format\
+\>", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetAttributes", "[", 
+   RowBox[{"ImportUnits", ",", "HoldAll"}], "]"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ImportUnits", "[", " ", "unit_", " ", "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"t", ",", " ", "e"}], " ", "}"}], ",", "\n", "\n", "  ", 
+     RowBox[{"(*", " ", 
+      RowBox[{"REQUIREMENT", ":", " ", 
+       RowBox[{"CenterDot", " ", "and", " ", "Overscript", " ", "are", " ", 
+        RowBox[{
+         RowBox[{"undefined", " ", "!!"}], "!"}]}]}], " ", "*)"}], "\n", "\n",
+      "  ", 
+     RowBox[{
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{"StringQ", "[", " ", "unit", " ", "]"}], ",", " ", "\n", 
+         "        ", 
+         RowBox[{"(*", " ", "Then", " ", "*)"}], " ", "unit", ",", " ", "\n", 
+         "        ", 
+         RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+         RowBox[{"ToString", "[", " ", 
+          RowBox[{
+           RowBox[{"Unevaluated", "[", "unit", "]"}], ",", " ", "InputForm"}],
+           " ", "]"}]}], "\n", "      ", "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"StringReplace", "[", " ", 
+        RowBox[{"t", ",", " ", 
+         RowBox[{"\"\<_\>\"", " ", "\[Rule]", " ", "\"\<\[DownArrow]\>\""}]}],
+         " ", "]"}]}], ";", " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"to", " ", "handle", " ", "subscripts"}], " ", "*)"}], "\n", 
+      "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "convert", " ", "input", " ", "expression", " ", "to", " ", 
+         "FullForm"}], ",", " ", 
+        RowBox[{"also", " ", "holding", " ", "all", " ", "symbols"}]}], " ", 
+       "*)"}], "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"ToExpression", "[", " ", 
+        RowBox[{"t", ",", " ", "InputForm", ",", " ", "HoldForm"}], " ", 
+        "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"t", " ", "===", " ", "$Failed"}], ",", " ", 
+        RowBox[{"Return", "[", " ", "$Failed", " ", "]"}]}], " ", "]"}], ";", 
+      "\n", "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"FullForm", "@", " ", "t"}]}], ";", "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "/.", " ", 
+        RowBox[{
+         RowBox[{"a_Symbol", " ", "/;", " ", 
+          RowBox[{"AtomQ", "[", " ", 
+           RowBox[{"Unevaluated", "[", "a", "]"}], " ", "]"}]}], " ", 
+         "\[RuleDelayed]", " ", 
+         RowBox[{"Hold", "[", " ", "a", " ", "]"}]}]}]}], ";", "\n", "\n", 
+      "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "replace", " ", "Times", " ", "and", " ", "Power", " ", "so", " ", 
+        "we", " ", "can", " ", "handle", " ", "them", " ", "as", " ", "we", 
+        " ", "will"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "//.", " ", 
+        RowBox[{"{", "\n", "    ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"Hold", "[", "Times", "]"}], "[", " ", "a__", " ", "]"}], 
+           " ", "\[RuleDelayed]", " ", 
+           RowBox[{
+            RowBox[{"Hold", "[", "CenterDot", "]"}], "[", " ", "a", " ", 
+            "]"}]}], ",", "\n", "    ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Hold", "[", "Power", "]"}], "[", " ", "a__", " ", "]"}], 
+           " ", "\[RuleDelayed]", " ", 
+           RowBox[{
+            RowBox[{"Hold", "[", "Overscript", "]"}], "[", " ", "a", " ", 
+            "]"}]}]}], "\n", "  ", "}"}]}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "remove", " ", "HoldForm", " ", "and", " ", "Hold", " ", "from", " ", 
+         "all", " ", "non"}], "-", 
+        RowBox[{"leaf", " ", "symbols"}]}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "//.", " ", 
+        RowBox[{"{", "\n", "    ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Hold", "[", "HoldForm", "]"}], " ", "\[Rule]", " ", 
+           "HoldForm"}], ",", "\n", "    ", 
+          RowBox[{
+           RowBox[{"HoldForm", "[", "e_", "]"}], " ", "\[RuleDelayed]", " ", 
+           "e"}], ",", "\n", "    ", 
+          RowBox[{
+           RowBox[{"Hold", "[", "FullForm", "]"}], " ", "\[Rule]", " ", 
+           "FullForm"}], ",", "\n", "    ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Hold", "[", "a_", "]"}], "[", "b__", "]"}], " ", 
+           "\[RuleDelayed]", " ", 
+           RowBox[{"a", "[", "b", "]"}]}]}], "\n", "  ", "}"}]}]}], ";", "\n",
+       "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "now", " ", "we", " ", "can", " ", "modify", " ", "expression", " ", 
+        "as", " ", "we", " ", "will"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "//.", " ", 
+        RowBox[{"{", "\n", "    ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"CenterDot", "[", " ", 
+            RowBox[{"1", ",", " ", "a_"}], " ", "]"}], " ", "\[RuleDelayed]", 
+           " ", "a"}], ",", " ", "\[IndentingNewLine]", "    ", 
+          RowBox[{
+           RowBox[{"CenterDot", "[", " ", 
+            RowBox[{"a_", ",", " ", "1"}], " ", "]"}], " ", "\[RuleDelayed]", 
+           " ", "a"}], ",", " ", "\[IndentingNewLine]", "    ", 
+          RowBox[{
+           RowBox[{"CenterDot", "[", " ", 
+            RowBox[{
+             RowBox[{"CenterDot", "[", " ", "a__", " ", "]"}], ",", " ", 
+             "b_"}], " ", "]"}], " ", "\[RuleDelayed]", " ", 
+           RowBox[{"CenterDot", "[", " ", 
+            RowBox[{"a", ",", " ", "b"}], " ", "]"}]}], ",", 
+          "\[IndentingNewLine]", "    ", 
+          RowBox[{
+           RowBox[{"CenterDot", "[", " ", 
+            RowBox[{"a_", ",", " ", 
+             RowBox[{"CenterDot", "[", " ", "b__", " ", "]"}]}], " ", "]"}], 
+           " ", "\[RuleDelayed]", " ", 
+           RowBox[{"CenterDot", "[", " ", 
+            RowBox[{"a", ",", " ", "b"}], " ", "]"}]}], ",", "\n", "    ", 
+          RowBox[{
+           RowBox[{"DownArrow", "[", " ", 
+            RowBox[{"a_", ",", " ", "b_"}], " ", "]"}], " ", "\[RuleDelayed]",
+            " ", 
+           RowBox[{"Subscript", "[", " ", 
+            RowBox[{"a", ",", " ", "b"}], " ", "]"}]}], ",", "\n", "    ", 
+          RowBox[{
+           RowBox[{"Overscript", "[", " ", 
+            RowBox[{
+             RowBox[{"Overscript", "[", " ", 
+              RowBox[{"a_", ",", " ", 
+               RowBox[{"b_", "?", " ", "NumberQ"}]}], " ", "]"}], ",", " ", 
+             RowBox[{"c_", "?", " ", "NumberQ"}]}], " ", "]"}], " ", 
+           "\[RuleDelayed]", " ", 
+           RowBox[{"Overscript", "[", " ", 
+            RowBox[{"a", ",", " ", 
+             RowBox[{"b", " ", "*", " ", "c"}]}], " ", "]"}]}], ",", "\n", 
+          "    ", 
+          RowBox[{"E", " ", "\[Rule]", " ", "\"\<\!\(\*
+StyleBox[\"E\", \"TI\"]\)\>\""}]}], "\n", "  ", "}"}]}]}], ";", "\n", "\n", 
+      "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"HoldForm", " ", "of", " ", "all", " ", "remaingin", " ", 
+        RowBox[{"(", "leaf", ")"}], " ", "symbols"}], " ", "*)"}], "\n", "  ",
+       
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "//.", " ", 
+        RowBox[{
+         RowBox[{"Hold", "[", "a_", "]"}], " ", "\[RuleDelayed]", " ", 
+         RowBox[{"HoldForm", "[", "a", "]"}]}]}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"get", " ", "normal", " ", "expression", " ", 
+        RowBox[{"(", 
+         RowBox[{"remove", " ", "FullForm"}], ")"}]}], " ", "*)"}], "\n", 
+      "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "//.", " ", 
+        RowBox[{
+         RowBox[{"FullForm", "[", "e_", "]"}], " ", "\[RuleDelayed]", " ", 
+         "e"}]}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"If", " ", "[", " ", 
+       RowBox[{
+        RowBox[{"t", " ", "===", " ", "Null"}], ",", " ", 
+        RowBox[{"Return", " ", "[", "]"}]}], " ", "]"}], ";", "\n", "\n", 
+      "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"convert", " ", "to", " ", "boxes"}], ";", " ", 
+        RowBox[{
+        "now", " ", "we", " ", "can", " ", "also", " ", "remove", " ", 
+         "HoldForm", " ", "from", " ", "leaf", " ", "symbols"}]}], " ", 
+       "*)"}], "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"ToBoxes", "@", " ", "t"}]}], ";", "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "//.", " ", 
+        RowBox[{
+         RowBox[{"TagBox", "[", " ", 
+          RowBox[{"a_", ",", " ", "HoldForm"}], " ", "]"}], " ", 
+         "\[RuleDelayed]", " ", "a"}]}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"change", " ", 
+        RowBox[{"OverscriptBox", ":", 
+         RowBox[{"es", " ", "to", " ", 
+          RowBox[{"SuperscriptBox", ":", "es"}]}]}]}], " ", "*)"}], "\n", 
+      "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "//.", " ", 
+        RowBox[{"{", "\n", "    ", 
+         RowBox[{
+          RowBox[{
+          "\"\<\[CenterDot]\>\"", "\[Rule]", " ", "\"\<\[MediumSpace]\>\""}], 
+          " ", 
+          RowBox[{"(*", " ", 
+           RowBox[{"[", "MediumSpace", "]"}], " ", "*)"}], ",", "\n", "    ", 
+          
+          RowBox[{
+           RowBox[{
+            RowBox[{"a_", "?", " ", "StringQ"}], " ", "/;", " ", 
+            RowBox[{
+             RowBox[{"ToLowerCase", "[", "a", "]"}], " ", "===", " ", 
+             "\"\<ohm\>\""}]}], " ", "\[RuleDelayed]", " ", 
+           "\"\<\[CapitalOmega]\>\""}], ",", "\[IndentingNewLine]", "    ", 
+          RowBox[{
+           RowBox[{"OverscriptBox", "[", " ", 
+            RowBox[{"a_", ",", " ", "b_"}], " ", "]"}], " ", "\[RuleDelayed]",
+            " ", "\n", "      ", 
+           RowBox[{"If", "[", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"AtomQ", "[", "a", "]"}], " ", "||", " ", 
+              RowBox[{
+               RowBox[{"Head", "[", "a", "]"}], " ", "===", " ", 
+               "HoldForm"}]}], ",", " ", "\n", "        ", 
+             RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+             RowBox[{"SuperscriptBox", "[", " ", 
+              RowBox[{"a", ",", " ", "b"}], " ", "]"}], ",", " ", "\n", 
+             "        ", 
+             RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+             RowBox[{"SuperscriptBox", "[", " ", 
+              RowBox[{
+               RowBox[{"RowBox", "[", 
+                RowBox[{"{", " ", 
+                 RowBox[{"\"\<(\>\"", ",", " ", "a", ",", " ", "\"\<)\>\""}], 
+                 " ", "}"}], "]"}], ",", " ", "b"}], " ", "]"}]}], "\n", 
+            "      ", "]"}]}]}], "\n", "  ", "}"}]}]}], ";", "\n", "\n", "  ",
+       
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"t", " ", "===", " ", "\"\<Null\>\""}], " ", "||", " ", 
+         RowBox[{"t", " ", "===", " ", "\"\<\>\""}]}], ",", " ", 
+        RowBox[{"Return", " ", "[", "]"}]}], " ", "]"}], ";", 
+      "\[IndentingNewLine]", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "convert", " ", "to", " ", "boxes", " ", "to", " ", "string", " ", 
+         "in", " ", "input", " ", "form"}], ",", " ", 
+        RowBox[{"also", " ", "removing", " ", "extra", " ", "spaces"}]}], " ",
+        "*)"}], "\n", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"ToString", "[", " ", 
+        RowBox[{
+         RowBox[{"StyleBox", "[", " ", "t", " ", "]"}], ",", " ", 
+         "InputForm"}], " ", "]"}]}], ";", "\[IndentingNewLine]", "  ", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"StringReplace", "[", " ", 
+        RowBox[{"t", ",", " ", 
+         RowBox[{"\"\< \>\"", " ", "\[Rule]", " ", "\"\<\>\""}]}], " ", 
+        "]"}]}], ";", "\[IndentingNewLine]", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "return", " ", "string", " ", "indicating", " ", "input", " ", "form", 
+        " ", 
+        RowBox[{"(", 
+         RowBox[{"with", " ", 
+          RowBox[{"\\*", "StyleBox"}], " ", "at", " ", "the", " ", 
+          "beginning"}], ")"}]}], " ", "*)"}], "\n", "  ", 
+      RowBox[{
+      "\"\<\\!\\(\\*\>\"", " ", "<>", " ", "t", " ", "<>", " ", 
+       "\"\<\\)\>\""}]}]}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Return Null if expr is null or empty string", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"NullifyIfEmpty", "[", " ", "expr_", " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"If", "[", " ", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"expr", " ", "=!=", " ", "Null"}], " ", "\n", "&&", " ", 
+      RowBox[{"!", " ", 
+       RowBox[{"(", " ", 
+        RowBox[{
+         RowBox[{"StringQ", "[", " ", "expr", "]"}], " ", "&&", " ", 
+         RowBox[{"(", " ", 
+          RowBox[{
+           RowBox[{"expr", " ", "\[Equal]", " ", "\"\<Null\>\""}], " ", "||", 
+           " ", 
+           RowBox[{"expr", " ", "\[Equal]", " ", "\"\<\>\""}], " ", "||", " ",
+            
+           RowBox[{"StringMatchQ", "[", " ", 
+            RowBox[{"expr", ",", " ", "Whitespace"}], " ", "]"}]}], " ", 
+          ")"}]}], " ", ")"}]}]}], ",", "\n", "  ", 
+     RowBox[{"(*", " ", "Then", " ", "*)"}], " ", "expr", ",", " ", "Null", 
+     ",", " ", "Null"}], "\n", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Number Form Box", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"NumberBox", "[", " ", 
+    RowBox[{"value_", ",", " ", 
+     RowBox[{"fixedExponent_:", " ", "Null"}], ",", " ", 
+     RowBox[{"sigFigures_:", " ", "0"}]}], " ", "]"}], " ", ":=", " ", "\n", 
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+      "x", ",", " ", "prec", ",", " ", "mant", ",", " ", "exp", ",", " ", 
+       "fixedExp", ",", " ", 
+       RowBox[{"decimalPos", " ", "=", " ", "1"}]}], " ", "}"}], ",", "\n", 
+     "\n", "  ", 
+     RowBox[{
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"!", " ", 
+         RowBox[{"NumericQ", "[", " ", "value", " ", "]"}]}], ",", " ", 
+        RowBox[{"Return", "[", " ", "value", " ", "]"}]}], " ", "]"}], ";", 
+      "\n", "\n", "  ", 
+      RowBox[{"prec", " ", "=", " ", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"sigFigures", " ", "=!=", " ", "Infinity"}], " ", "&&", " ",
+           
+          RowBox[{"sigFigures", " ", "=!=", " ", "Null"}], " ", "&&", " ", 
+          RowBox[{"sigFigures", " ", ">", " ", "0"}]}], ",", " ", "\n", 
+         "    ", 
+         RowBox[{"(*", " ", "Then", " ", "*)"}], " ", "sigFigures", ",", " ", 
+         "\n", "    ", 
+         RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+         RowBox[{"SigFigures", "[", " ", "value", " ", "]"}]}], "\n", "  ", 
+        "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"x", " ", "=", " ", 
+       RowBox[{"N", "[", " ", 
+        RowBox[{"value", ",", " ", 
+         RowBox[{"prec", " ", "+", " ", "2"}]}], " ", "]"}]}], ";", "\n", 
+      "  ", 
+      RowBox[{"exp", " ", "=", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"RealDigits", "[", " ", 
+          RowBox[{"x", ",", " ", "10"}], " ", "]"}], "\[LeftDoubleBracket]", 
+         "2", "\[RightDoubleBracket]"}], " ", "-", " ", "1"}]}], ";", "\n", 
+      "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Abs", "[", "exp", "]"}], " ", "<", " ", "6"}], ",", "\n", 
+        "    ", 
+        RowBox[{
+         RowBox[{"decimalPos", " ", "=", " ", 
+          RowBox[{"exp", " ", "+", " ", "1"}]}], ";", " ", 
+         RowBox[{"exp", " ", "=", " ", "0"}]}]}], "\n", "  ", "]"}], ";", 
+      "\n", "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"!", " ", 
+          RowBox[{"fixedExponent", " ", "===", " ", "Null"}]}], " ", "&&", 
+         " ", 
+         RowBox[{"NumberQ", "[", " ", "fixedExponent", " ", "]"}]}], ",", 
+        "\n", "    ", 
+        RowBox[{
+         RowBox[{"fixedExp", " ", "=", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"RealDigits", "[", " ", 
+             RowBox[{"fixedExponent", ",", " ", "10"}], " ", "]"}], 
+            "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], " ", "-", 
+           " ", "1"}]}], ";", "\n", "    ", 
+         RowBox[{"If", "[", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Abs", "[", " ", "fixedExp", " ", "]"}], " ", 
+             "\[GreaterEqual]", " ", "6"}], " ", "&&", " ", 
+            RowBox[{
+             RowBox[{"Abs", "[", " ", 
+              RowBox[{
+              "fixedExp", " ", "-", " ", "exp", " ", "-", " ", "decimalPos", 
+               " ", "+", " ", "1"}], " ", "]"}], " ", "<", " ", "6"}]}], ",", 
+           "\n", "      ", 
+           RowBox[{
+            RowBox[{"decimalPos", " ", "+=", " ", 
+             RowBox[{"exp", " ", "-", " ", "fixedExp"}]}], ";", "\n", 
+            "      ", 
+            RowBox[{"exp", " ", "=", " ", "fixedExp"}], ";"}]}], "\n", "    ",
+           "]"}], ";"}]}], "\n", "  ", "]"}], ";", "\n", "\n", "  ", 
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"mant", ",", " ", "exp"}], " ", "}"}], " ", "=", " ", 
+       RowBox[{"DigitsOf", "[", " ", 
+        RowBox[{"x", ",", " ", "prec", ",", " ", 
+         RowBox[{"FLOP", " ", "\[Rule]", " ", "decimalPos"}], ",", " ", 
+         RowBox[{"EatZeros", " ", "\[Rule]", " ", "True"}]}], " ", "]"}]}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"RowBox", "[", 
+       RowBox[{"{", "\n", "    ", 
+        RowBox[{"mant", ",", "\n", "    ", 
+         RowBox[{"Opt$Seq", "[", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"mant", " ", "\[NotEqual]", " ", "\"\<0\>\""}], " ", "&&",
+             " ", 
+            RowBox[{"exp", " ", "\[NotEqual]", " ", "0"}]}], ",", " ", "\n", 
+           "      ", "\"\<\[Times]\>\"", ",", " ", 
+           RowBox[{"SuperscriptBox", "[", " ", 
+            RowBox[{"\"\<10\>\"", ",", " ", "exp"}], " ", "]"}]}], " ", "\n", 
+          "    ", "]"}]}], "\n", "  ", "}"}], "]"}]}]}], "\n", "]"}]}], 
+  ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["DigitsOf", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Options", "[", " ", "DigitsOf", " ", "]"}], " ", "=", " ", "\n", 
+   RowBox[{"{", " ", "\n", "  ", 
+    RowBox[{
+     RowBox[{"NumberPoint", " ", "\[Rule]", " ", "\"\<.\>\""}], ",", "\n", 
+     "  ", 
+     RowBox[{"FLOP", " ", "\[Rule]", " ", "1"}], ",", "\n", "  ", 
+     RowBox[{"RoundOffset", " ", "\[Rule]", " ", "0"}], ",", "\n", "  ", 
+     RowBox[{"EatZeros", " ", "\[Rule]", " ", "False"}]}], "\n", "}"}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DigitsOf", "[", " ", 
+    RowBox[{"x_", ",", " ", "sigFig_", ",", " ", 
+     RowBox[{"OptionsPattern", " ", "[", "]"}]}], " ", "]"}], " ", ":=", "\n",
+    
+   RowBox[{"Module", "[", "\n", "  ", 
+    RowBox[{
+     RowBox[{"{", "\n", "    ", 
+      RowBox[{
+       RowBox[{"numberPoint", " ", "=", " ", 
+        RowBox[{"OptionValue", "[", " ", "NumberPoint", " ", "]"}]}], ",", 
+       "\n", "    ", 
+       RowBox[{"figsLOP", " ", "=", " ", 
+        RowBox[{"OptionValue", "[", " ", "FLOP", " ", "]"}]}], ",", "\n", 
+       "    ", 
+       RowBox[{"roundOffset", " ", "=", " ", 
+        RowBox[{"OptionValue", "[", " ", "RoundOffset", " ", "]"}]}], ",", 
+       "\n", "    ", "rounded", ",", " ", "digits", ",", " ", "sigFigures", 
+       ",", " ", "mant", ",", " ", "exp"}], "\n", "  ", "}"}], ",", "\n", " ",
+      "\n", "  ", 
+     RowBox[{
+      RowBox[{"sigFigures", " ", "=", " ", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{"sigFig", " ", "===", " ", "Null"}], ",", " ", 
+         RowBox[{"SigFigures", "[", " ", "x", " ", "]"}], ",", " ", 
+         "sigFig"}], " ", "]"}]}], ";", "\n", "  ", 
+      RowBox[{"sigFigures", " ", "=", " ", 
+       RowBox[{"Max", "[", " ", 
+        RowBox[{"1", ",", " ", "sigFigures"}], " ", "]"}]}], ";", "\n", "\n", 
+      "  ", 
+      RowBox[{"exp", " ", "=", " ", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{"x", " ", "\[Equal]", " ", "0"}], ",", " ", "0", ",", " ", 
+         RowBox[{"Floor", "[", " ", 
+          RowBox[{"Log", "[", " ", 
+           RowBox[{"10", ",", " ", 
+            RowBox[{"Abs", "[", "x", "]"}]}], " ", "]"}], " ", "]"}]}], " ", 
+        "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+        "round", " ", "off", " ", "to", " ", "specified", " ", "number", " ", 
+         "of", " ", "significant", " ", "figures"}], ",", " ", 
+        RowBox[{"and", " ", "get", " ", "digits"}]}], " ", "*)"}], "\n", "  ",
+       
+      RowBox[{"rounded", " ", "=", " ", 
+       RowBox[{"Round", "[", " ", 
+        RowBox[{
+         RowBox[{"x", " ", "*", " ", 
+          RowBox[{"10", " ", "^", " ", 
+           RowBox[{"(", " ", 
+            RowBox[{"sigFigures", " ", "-", " ", "exp", " ", "-", " ", "1"}], 
+            " ", ")"}]}]}], " ", "+", " ", "roundOffset"}], " ", "]"}]}], ";",
+       "\n", "  ", 
+      RowBox[{"rounded", " ", "=", " ", 
+       RowBox[{"rounded", " ", "/", " ", 
+        RowBox[{"10", " ", "^", " ", 
+         RowBox[{"(", " ", 
+          RowBox[{"sigFigures", " ", "-", " ", "exp", " ", "-", " ", "1"}], 
+          " ", ")"}]}]}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"get", " ", "digits", " ", "and", " ", "re"}], "-", 
+         RowBox[{"adjust", " ", 
+          RowBox[{"sig", ".", " ", "figures"}]}]}], ";", " ", 
+        RowBox[{
+        "then", " ", "get", " ", "mantissa", " ", "and", " ", "exponent"}]}], 
+       " ", "*)"}], "\n", "  ", 
+      RowBox[{"digits", " ", "=", " ", 
+       RowBox[{"RealDigits", "[", " ", 
+        RowBox[{"rounded", ",", " ", "10"}], " ", "]"}]}], ";", "\n", "  ", 
+      RowBox[{"sigFigures", " ", "+=", " ", 
+       RowBox[{
+        RowBox[{
+        "digits", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], " ",
+         "-", " ", "1", " ", "-", " ", "exp"}]}], ";", " ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"fix", " ", "flip", " ", "offs", " ", 
+        RowBox[{"e", ".", "g", ".", " ", "from"}], " ", "9.5", " ", "to", " ",
+         "10.0"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"mant", " ", "=", " ", 
+       RowBox[{"Join", "[", " ", 
+        RowBox[{
+         RowBox[{
+         "digits", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+         ",", " ", 
+         RowBox[{"Table", "[", " ", 
+          RowBox[{"0", ",", " ", 
+           RowBox[{"{", " ", 
+            RowBox[{
+             RowBox[{"Abs", "[", "sigFigures", "]"}], " ", "+", " ", 
+             RowBox[{"Abs", "[", "figsLOP", "]"}]}], " ", "}"}]}], " ", 
+          "]"}]}], " ", "]"}]}], ";", "\n", "  ", 
+      RowBox[{"exp", " ", "=", " ", 
+       RowBox[{
+        RowBox[{
+        "digits", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], " ",
+         "-", " ", "figsLOP"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"figsLOP", " ", "\[LessEqual]", " ", "0"}], ",", " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "negative", " ", "means", " ", "\"\<right of the point\>\""}], " ", 
+         "*)"}], "\n", "    ", 
+        RowBox[{
+         RowBox[{"mant", " ", "=", " ", 
+          RowBox[{"Join", "[", " ", 
+           RowBox[{
+            RowBox[{"Table", "[", " ", 
+             RowBox[{"0", ",", " ", 
+              RowBox[{"{", " ", 
+               RowBox[{"1", " ", "-", " ", "figsLOP"}], " ", "}"}]}], " ", 
+             "]"}], ",", " ", "mant"}], " ", "]"}]}], ";", "\n", "    ", 
+         RowBox[{"sigFigures", " ", "+=", " ", 
+          RowBox[{"1", " ", "-", " ", "figsLOP"}]}], ";", "\n", "    ", 
+         RowBox[{"figsLOP", " ", "=", " ", "1"}], ";"}]}], "\n", "  ", "]"}], 
+      ";", "\n", "\n", "  ", 
+      RowBox[{"mant", " ", "=", " ", 
+       RowBox[{"ToString", " ", "/@", " ", "mant"}]}], ";", "\n", "  ", 
+      RowBox[{"mant", " ", "=", " ", 
+       RowBox[{"Insert", "[", " ", 
+        RowBox[{"mant", ",", " ", "numberPoint", ",", " ", 
+         RowBox[{"figsLOP", " ", "+", " ", "1"}]}], " ", "]"}]}], ";", "\n", 
+      "  ", 
+      RowBox[{"mant", " ", "=", " ", 
+       RowBox[{"Take", "[", " ", 
+        RowBox[{"mant", ",", " ", 
+         RowBox[{
+          RowBox[{"Max", "[", " ", 
+           RowBox[{"sigFigures", ",", " ", "figsLOP"}], " ", "]"}], " ", "+", 
+          " ", "1"}]}], " ", "]"}]}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"remove", " ", "trailing", " ", "zeros"}], " ", "*)"}], "\n", 
+      "  ", 
+      RowBox[{"If", " ", "[", " ", 
+       RowBox[{
+        RowBox[{"OptionValue", "[", " ", "EatZeros", " ", "]"}], ",", "\n", 
+        "     ", 
+        RowBox[{
+         RowBox[{"While", "[", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Length", "[", " ", "mant", " ", "]"}], " ", ">", " ", 
+             "0"}], " ", "&&", " ", 
+            RowBox[{
+             RowBox[{"Last", "[", " ", "mant", " ", "]"}], " ", "\[Equal]", 
+             " ", "\"\<0\>\""}]}], ",", " ", 
+           RowBox[{"mant", " ", "=", " ", 
+            RowBox[{"Most", "[", " ", "mant", " ", "]"}]}]}], " ", "]"}], 
+         ";"}]}], "\n", "  ", "]"}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"remove", " ", "the", " ", "decimal", " ", "point"}], ",", 
+        " ", 
+        RowBox[{
+        "if", " ", "it", " ", "is", " ", "last", " ", "on", " ", "the", " ", 
+         "right"}]}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"If", " ", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", " ", "mant", " ", "]"}], " ", "\[Equal]", " ",
+          
+         RowBox[{"figsLOP", " ", "+", " ", "1"}]}], ",", " ", 
+        RowBox[{"mant", " ", "=", " ", 
+         RowBox[{"Drop", "[", " ", 
+          RowBox[{"mant", ",", " ", 
+           RowBox[{"-", "1"}]}], " ", "]"}]}]}], " ", "]"}], ";", "\n", "\n", 
+      "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "remove", " ", "leading", " ", "zeros", " ", "before", " ", "the", " ",
+         "decimal", " ", "point"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"While", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", " ", "mant", " ", "]"}], " ", ">", " ", 
+          "0"}], " ", "&&", " ", 
+         RowBox[{
+          RowBox[{"First", "[", " ", "mant", " ", "]"}], " ", "\[Equal]", 
+          " ", "\"\<0\>\""}]}], ",", " ", 
+        RowBox[{"mant", " ", "=", " ", 
+         RowBox[{"Rest", "[", " ", "mant", " ", "]"}]}]}], " ", "]"}], ";", 
+      "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Length", "[", " ", "mant", " ", "]"}], " ", "\[Equal]", 
+          " ", "0"}], " ", "||", " ", 
+         RowBox[{
+          RowBox[{
+          "mant", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], " ",
+           "==", " ", "numberPoint"}]}], ",", "\n", "     ", 
+        RowBox[{"mant", " ", "=", " ", 
+         RowBox[{"Prepend", "[", " ", 
+          RowBox[{"mant", ",", " ", "\"\<0\>\""}], " ", "]"}]}]}], "\n", "  ",
+        "]"}], ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{"add", " ", "sign"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"x", " ", "<", " ", "0"}], ",", " ", 
+        RowBox[{"mant", " ", "=", " ", 
+         RowBox[{"Prepend", "[", " ", 
+          RowBox[{"mant", ",", " ", "\"\<-\>\""}], " ", "]"}]}]}], " ", "]"}],
+       ";", "\n", "\n", "  ", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "return", " ", "mantissa", " ", "as", " ", "string", " ", "and", " ", 
+        "exponent"}], " ", "*)"}], "\n", "  ", 
+      RowBox[{"{", " ", 
+       RowBox[{
+        RowBox[{"StringJoin", "[", " ", "mant", " ", "]"}], ",", " ", "exp"}],
+        " ", "}"}]}]}], "\n", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DigitsOf", "[", " ", "x_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"DigitsOf", "[", " ", 
+    RowBox[{"x", ",", " ", "Null"}], " ", "]"}]}], ";"}]], "Code"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End Package", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]], "Code"]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+ScreenStyleEnvironment->"Presentation",
+WindowToolbars->"RulerBar",
+WindowSize->{994, 1067},
+WindowMargins->{{5, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PrintingMargins"->39.6875},
+TrackCellChangeTimes->False,
+Magnification->1.,
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->"UCA-Stylesheet.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 56, 0, 67, "Title"],
+Cell[649, 25, 92, 2, 41, "Subtitle"],
+Cell[744, 29, 613, 15, 137, "Code"],
+Cell[CellGroupData[{
+Cell[1382, 48, 32, 0, 63, "Section"],
+Cell[1417, 50, 193, 5, 36, "Code"],
+Cell[1613, 57, 185, 5, 36, "Code"],
+Cell[1801, 64, 215, 6, 57, "Code"],
+Cell[CellGroupData[{
+Cell[2041, 74, 38, 0, 45, "Subsection"],
+Cell[CellGroupData[{
+Cell[2104, 78, 34, 0, 35, "Subsubsection"],
+Cell[2141, 80, 125, 4, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2303, 89, 44, 0, 35, "Subsubsection"],
+Cell[2350, 91, 209, 5, 36, "Code"],
+Cell[2562, 98, 400, 9, 77, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2999, 112, 60, 0, 35, "Subsubsection"],
+Cell[3062, 114, 139, 3, 36, "Code"],
+Cell[3204, 119, 166, 3, 36, "Code"],
+Cell[3373, 124, 716, 14, 217, "Code"],
+Cell[4092, 140, 156, 4, 36, "Code"],
+Cell[4251, 146, 167, 3, 36, "Code"],
+Cell[4421, 151, 189, 4, 36, "Code"],
+Cell[4613, 157, 375, 8, 57, "Code"],
+Cell[4991, 167, 414, 10, 77, "Code"],
+Cell[5408, 179, 185, 4, 36, "Code"],
+Cell[5596, 185, 211, 6, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5844, 196, 54, 0, 35, "Subsubsection"],
+Cell[5901, 198, 1304, 32, 177, "Code"],
+Cell[7208, 232, 186, 4, 36, "Code"],
+Cell[7397, 238, 359, 8, 57, "Code"],
+Cell[7759, 248, 395, 9, 137, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8191, 262, 34, 0, 35, "Subsubsection"],
+Cell[8228, 264, 101, 2, 36, "Code"],
+Cell[8332, 268, 146, 3, 36, "Code"],
+Cell[8481, 273, 188, 4, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8706, 282, 33, 0, 35, "Subsubsection"],
+Cell[8742, 284, 212, 4, 57, "Code"],
+Cell[8957, 290, 264, 5, 57, "Code"],
+Cell[9224, 297, 181, 4, 36, "Code"],
+Cell[9408, 303, 143, 3, 36, "Code"],
+Cell[9554, 308, 172, 4, 36, "Code"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9787, 319, 34, 0, 63, "Section"],
+Cell[9824, 321, 114, 3, 36, "Code"],
+Cell[CellGroupData[{
+Cell[9963, 328, 77, 2, 45, "Subsection"],
+Cell[CellGroupData[{
+Cell[10065, 334, 54, 0, 35, "Subsubsection"],
+Cell[10122, 336, 117, 3, 33, "Text"],
+Cell[10242, 341, 219, 8, 33, "Text"],
+Cell[10464, 351, 161, 3, 33, "Text"],
+Cell[10628, 356, 475, 13, 81, "Text"],
+Cell[11106, 371, 32, 0, 33, "Text"],
+Cell[11141, 373, 354, 11, 81, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11532, 389, 56, 0, 35, "Subsubsection"],
+Cell[11591, 391, 602, 12, 129, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12242, 409, 77, 2, 45, "Subsection"],
+Cell[CellGroupData[{
+Cell[12344, 415, 112, 3, 35, "Subsubsection"],
+Cell[12459, 420, 390, 11, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12886, 436, 135, 3, 35, "Subsubsection"],
+Cell[13024, 441, 1306, 31, 137, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14367, 477, 127, 3, 35, "Subsubsection"],
+Cell[14497, 482, 687, 17, 57, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15221, 504, 143, 3, 35, "Subsubsection"],
+Cell[15367, 509, 723, 18, 57, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16127, 532, 97, 2, 35, "Subsubsection"],
+Cell[16227, 536, 335, 9, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16599, 550, 123, 3, 35, "Subsubsection"],
+Cell[16725, 555, 354, 9, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17116, 569, 114, 3, 35, "Subsubsection"],
+Cell[17233, 574, 357, 9, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17627, 588, 114, 3, 35, "Subsubsection"],
+Cell[17744, 593, 155, 5, 33, "Text"],
+Cell[17902, 600, 435, 10, 57, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18374, 615, 116, 3, 35, "Subsubsection"],
+Cell[18493, 620, 1679, 40, 217, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20209, 665, 116, 3, 35, "Subsubsection"],
+Cell[20328, 670, 1679, 40, 217, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22044, 715, 126, 3, 35, "Subsubsection"],
+Cell[22173, 720, 1701, 40, 217, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23911, 765, 132, 3, 35, "Subsubsection"],
+Cell[24046, 770, 2193, 47, 337, "Code"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26288, 823, 54, 0, 45, "Subsection"],
+Cell[26345, 825, 152, 4, 36, "Code"],
+Cell[CellGroupData[{
+Cell[26522, 833, 127, 3, 35, "Subsubsection"],
+Cell[26652, 838, 4037, 91, 557, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30726, 934, 120, 3, 35, "Subsubsection"],
+Cell[30849, 939, 1706, 37, 237, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32592, 981, 123, 3, 35, "Subsubsection"],
+Cell[32718, 986, 4100, 95, 557, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36855, 1086, 81, 2, 35, "Subsubsection"],
+Cell[36939, 1090, 3728, 86, 477, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40704, 1181, 91, 2, 35, "Subsubsection"],
+Cell[40798, 1185, 999, 24, 157, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41834, 1214, 99, 2, 35, "Subsubsection"],
+Cell[41936, 1218, 1008, 24, 157, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42981, 1247, 82, 2, 35, "Subsubsection"],
+Cell[43066, 1251, 835, 21, 117, "Code"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43950, 1278, 89, 2, 45, "Subsection"],
+Cell[44042, 1282, 691, 22, 57, "Text"],
+Cell[CellGroupData[{
+Cell[44758, 1308, 68, 0, 35, "Subsubsection"],
+Cell[44829, 1310, 942, 23, 137, "Code"],
+Cell[45774, 1335, 928, 21, 137, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[46739, 1361, 537, 17, 36, "Subsubsection"],
+Cell[47279, 1380, 2543, 56, 437, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49859, 1441, 469, 15, 36, "Subsubsection"],
+Cell[50331, 1458, 2143, 49, 377, "Code"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52523, 1513, 58, 0, 45, "Subsection"],
+Cell[CellGroupData[{
+Cell[52606, 1517, 33, 0, 35, "Subsubsection"],
+Cell[52642, 1519, 257, 7, 36, "Code"],
+Cell[52902, 1528, 405, 12, 36, "Code"],
+Cell[53310, 1542, 205, 5, 36, "Code"],
+Cell[53518, 1549, 239, 6, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53794, 1560, 36, 0, 35, "Subsubsection"],
+Cell[53833, 1562, 187, 5, 36, "Code"],
+Cell[54023, 1569, 408, 12, 36, "Code"],
+Cell[54434, 1583, 208, 5, 36, "Code"],
+Cell[54645, 1590, 245, 6, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54927, 1601, 35, 0, 35, "Subsubsection"],
+Cell[54965, 1603, 259, 7, 36, "Code"],
+Cell[55227, 1612, 561, 16, 36, "Code"],
+Cell[55791, 1630, 207, 5, 36, "Code"],
+Cell[56001, 1637, 243, 6, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56281, 1648, 35, 0, 35, "Subsubsection"],
+Cell[56319, 1650, 259, 7, 36, "Code"],
+Cell[56581, 1659, 561, 16, 36, "Code"],
+Cell[57145, 1677, 207, 5, 36, "Code"],
+Cell[57355, 1684, 243, 6, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57635, 1695, 39, 0, 35, "Subsubsection"],
+Cell[57677, 1697, 190, 5, 36, "Code"],
+Cell[57870, 1704, 1503, 36, 257, "Code"],
+Cell[59376, 1742, 211, 5, 36, "Code"],
+Cell[59590, 1749, 251, 6, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59878, 1760, 39, 0, 35, "Subsubsection"],
+Cell[59920, 1762, 190, 5, 36, "Code"],
+Cell[60113, 1769, 1543, 35, 257, "Code"],
+Cell[61659, 1806, 211, 5, 36, "Code"],
+Cell[61873, 1813, 251, 6, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62161, 1824, 37, 0, 35, "Subsubsection"],
+Cell[62201, 1826, 2302, 57, 217, "Code"],
+Cell[64506, 1885, 2739, 62, 357, "Code"],
+Cell[67248, 1949, 209, 5, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[67494, 1959, 34, 0, 35, "Subsubsection"],
+Cell[67531, 1961, 156, 3, 33, "Text"],
+Cell[67690, 1966, 228, 6, 36, "Code"],
+Cell[67921, 1974, 4669, 108, 717, "Code"],
+Cell[72593, 2084, 249, 7, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[72879, 2096, 44, 0, 35, "Subsubsection"],
+Cell[72926, 2098, 237, 6, 57, "Code"],
+Cell[73166, 2106, 534, 13, 57, "Code"],
+Cell[73703, 2121, 219, 5, 57, "Code"],
+Cell[73925, 2128, 2295, 56, 417, "Code"],
+Cell[76223, 2186, 174, 4, 36, "Code"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76446, 2196, 68, 0, 45, "Subsection"],
+Cell[CellGroupData[{
+Cell[76539, 2200, 89, 2, 35, "Subsubsection"],
+Cell[76631, 2204, 133, 3, 36, "Code"],
+Cell[76767, 2209, 3041, 68, 497, "Code"],
+Cell[79811, 2279, 8132, 187, 1177, "Code"],
+Cell[87946, 2468, 1546, 40, 217, "Code"],
+Cell[89495, 2510, 912, 23, 177, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[90444, 2538, 51, 0, 35, "Subsubsection"],
+Cell[90498, 2540, 165, 4, 36, "Code"],
+Cell[90666, 2546, 15496, 319, 1844, "Code"],
+Cell[106165, 2867, 9736, 205, 1084, "Code"],
+Cell[115904, 3074, 1234, 29, 297, "Code"],
+Cell[117141, 3105, 26, 0, 29, "Input"],
+Cell[117170, 3107, 840, 21, 97, "Code"],
+Cell[118013, 3130, 958, 22, 177, "Code"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[119020, 3158, 39, 0, 45, "Subsection"],
+Cell[CellGroupData[{
+Cell[119084, 3162, 42, 0, 35, "Subsubsection"],
+Cell[119129, 3164, 929, 27, 57, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120095, 3196, 98, 2, 35, "Subsubsection"],
+Cell[120196, 3200, 393, 10, 57, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[120626, 3215, 94, 2, 35, "Subsubsection"],
+Cell[120723, 3219, 123, 3, 36, "Code"],
+Cell[120849, 3224, 12240, 283, 1577, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[133126, 3512, 68, 0, 35, "Subsubsection"],
+Cell[133197, 3514, 918, 22, 117, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[134152, 3541, 40, 0, 35, "Subsubsection"],
+Cell[134195, 3543, 4727, 113, 717, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[138959, 3661, 33, 0, 35, "Subsubsection"],
+Cell[138995, 3663, 481, 11, 157, "Code"],
+Cell[139479, 3676, 9311, 221, 1097, "Code"],
+Cell[148793, 3899, 203, 5, 36, "Code"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[149057, 3911, 30, 0, 63, "Section"],
+Cell[149090, 3913, 68, 2, 36, "Code"],
+Cell[149161, 3917, 75, 2, 36, "Code"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
