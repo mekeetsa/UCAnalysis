@@ -1,0 +1,868 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     37361,        859]
+NotebookOptionsPosition[     33840,        767]
+NotebookOutlinePosition[     36418,        826]
+CellTagsIndexPosition[     36375,        823]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["CODATA Browser \[MathematicaIcon]", "Title"],
+
+Cell["Package for browsing and searching CODATA values", "Subtitle"],
+
+Cell[BoxData[
+ RowBox[{"(*", "\n", 
+  StyleBox["   ", "Comment"], 
+  StyleBox[
+   RowBox[{
+    RowBox[{
+    "CODATA", " ", "Browser", "\n", "   ", "Package", " ", "for", " ", 
+     "browsing", " ", "CODATA", " ", "values", "\n", "   ", 
+     RowBox[{"Author", ":", " ", 
+      RowBox[{"Mikica", " ", "B", " ", "Kocic", "\n", "   ", 
+       RowBox[{"Version", ":", " ", "2.5"}]}]}]}], ",", " ", 
+    RowBox[{"2011", "-", "10", "-", "15"}]}], "Comment"], 
+  StyleBox["\n", "Comment"], "*)"}]], "Code"],
+
+Cell[CellGroupData[{
+
+Cell["Begin Package", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeginPackage", "[", " ", 
+   RowBox[{"\"\<CodataBrowser`\>\"", ",", " ", 
+    RowBox[{"{", " ", 
+     RowBox[{"\"\<UCQuantity`\>\"", ",", " ", "\"\<UCAnalysis`\>\""}], " ", 
+     "}"}]}], " ", "]"}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Begin", "[", " ", "\"\<CodataBrowser`Private`\>\"", " ", "]"}], 
+  ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Parameters", "Section"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"codataHeader", "=", " ", "\"\<CODATA 2010 v6.2\>\""}], 
+  ";"}], "\n", 
+ RowBox[{
+  RowBox[{"codataRelease", " ", "=", " ", "\"\<Released 30 June 2011\>\""}], 
+  ";"}]}], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"csvFileName", " ", "=", " ", 
+   RowBox[{"ToFileName", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"Global`$UcAnalysisRoot", ",", " ", "\"\<CODATA\>\""}], " ", 
+      "}"}], ",", "\n", "  ", "\"\<CODATA-Symbol-Map.csv\>\""}], "\n", 
+    "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load map between CODATA symbol IDs and comments", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"If", "[", " ", 
+   RowBox[{
+    RowBox[{"!", " ", 
+     RowBox[{"ListQ", "[", "nameMap", "]"}]}], ",", "\n", "  ", 
+    RowBox[{
+     RowBox[{"nameMap", " ", "=", " ", 
+      RowBox[{"ReadList", "[", " ", 
+       RowBox[{"csvFileName", ",", " ", "String"}], " ", "]"}]}], ";", "\n", 
+     "  ", 
+     RowBox[{"nameMap", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Function", "[", " ", 
+        RowBox[{"line", ",", "\n", "    ", 
+         RowBox[{"If", "[", " ", 
+          RowBox[{
+           RowBox[{"StringQ", "[", " ", "line", " ", "]"}], ",", " ", "\n", 
+           "      ", 
+           RowBox[{"StringSplit", "[", " ", 
+            RowBox[{"line", ",", " ", 
+             RowBox[{
+             "RegularExpression", "[", "\"\<\\\\s*\\;\\\\s*\>\"", "]"}], ",", 
+             " ", "All"}], " ", "]"}]}], "\n", "    ", "]"}]}], "\n", "  ", 
+        "]"}], " ", "/@", " ", "nameMap"}]}]}]}], "\n", "]"}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Search comments", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"codataMatchQ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"name_", ",", " ", "comment_"}], " ", "}"}], ",", " ", 
+     "pattern_"}], " ", "]"}], " ", ":=", "\[IndentingNewLine]", "  ", 
+   RowBox[{
+    RowBox[{"StringMatchQ", "[", " ", 
+     RowBox[{"name", ",", " ", 
+      RowBox[{
+      "\"\<*\>\"", " ", "<>", " ", "pattern", " ", "<>", " ", "\"\<*\>\""}], 
+      ",", " ", 
+      RowBox[{"IgnoreCase", " ", "\[Rule]", " ", "True"}]}], " ", "]"}], " ", 
+    "||", "\n", "  ", 
+    RowBox[{"StringMatchQ", "[", " ", 
+     RowBox[{"comment", ",", " ", 
+      RowBox[{
+      "\"\<*\>\"", " ", "<>", " ", "pattern", " ", "<>", " ", "\"\<*\>\""}], 
+      ",", " ", 
+      RowBox[{"IgnoreCase", " ", "\[Rule]", " ", "True"}]}], " ", "]"}]}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SearchV", "[", " ", "pattern_", " ", "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+      "str", ",", " ", "qty", ",", " ", "results", ",", " ", "nbGrid", ",", 
+       " ", 
+       RowBox[{"maxResults", " ", "=", " ", "30"}]}], " ", "}"}], ",", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "  ", 
+     RowBox[{
+      RowBox[{"str", " ", "=", " ", 
+       RowBox[{"StringReplace", "[", " ", 
+        RowBox[{"pattern", ",", " ", 
+         RowBox[{"{", " ", "\n", "          ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"StartOfString", " ", "~~", "Whitespace"}], ")"}], " ", 
+             "|", " ", 
+             RowBox[{"(", 
+              RowBox[{"Whitespace", " ", "~~", " ", "EndOfString"}], ")"}]}], 
+            " ", "\[Rule]", " ", "\"\<\>\""}], ",", "\[IndentingNewLine]", 
+           "          ", 
+           RowBox[{
+            RowBox[{"Whitespace", ".."}], " ", "\[Rule]", " ", 
+            "\"\< \>\""}]}], " ", "\n", "        ", "}"}]}], " ", "]"}]}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"str", " ", "===", " ", "\"\<\>\""}], ",", " ", 
+        RowBox[{"Return", "[", " ", 
+         RowBox[{
+         "ToBoxes", "[", "\"\<Enter search pattern, then press enter...\>\"", 
+          "]"}], " ", "]"}]}], " ", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"str", " ", "===", " ", "\"\<*\>\""}], ",", " ", 
+        RowBox[{"maxResults", " ", "=", " ", "Infinity"}]}], " ", "]"}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "  ", 
+      RowBox[{"qty", " ", "=", " ", 
+       RowBox[{"Cases", "[", " ", 
+        RowBox[{"nameMap", ",", " ", 
+         RowBox[{
+          RowBox[{"e_", " ", "/;", " ", 
+           RowBox[{"codataMatchQ", "[", " ", 
+            RowBox[{"e", ",", " ", "pattern"}], " ", "]"}]}], " ", 
+          "\[RuleDelayed]", " ", 
+          RowBox[{
+          "e", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}]}], 
+        " ", "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", "  ",
+       
+      RowBox[{"results", " ", "=", " ", 
+       RowBox[{"Table", "[", " ", "\[IndentingNewLine]", "    ", 
+        RowBox[{
+         RowBox[{"Module", "[", " ", "\[IndentingNewLine]", "      ", 
+          RowBox[{
+           RowBox[{"{", " ", 
+            RowBox[{"v", ",", " ", "name", ",", " ", "nameBox"}], " ", "}"}], 
+           ",", "\[IndentingNewLine]", "      ", 
+           RowBox[{
+            RowBox[{"Quiet", "[", " ", 
+             RowBox[{"v", " ", "=", " ", 
+              RowBox[{"CODATA", "@", " ", 
+               RowBox[{"Evaluate", "[", " ", 
+                RowBox[{
+                "qty", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+                 " ", "]"}]}]}], " ", "]"}], ";", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", "      ", 
+            RowBox[{"If", " ", "[", " ", 
+             RowBox[{
+              RowBox[{"!", " ", 
+               RowBox[{"Uc\[ScriptCapitalV]Q", "[", "v", "]"}]}], ",", " ", 
+              RowBox[{"(*", " ", 
+               RowBox[{
+               "if", " ", "not", " ", "found", " ", "CODATA", " ", "for", " ",
+                 "the", " ", "symbol"}], " ", "*)"}], "\[IndentingNewLine]", 
+              "         ", 
+              RowBox[{"v", " ", "=", " ", 
+               RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+                RowBox[{
+                "\"\<\>\"", ",", " ", "Null", ",", " ", "Null", ",", 
+                 "\[IndentingNewLine]", "                   ", 
+                 RowBox[{"Name", " ", "\[Rule]", " ", 
+                  RowBox[{
+                  "qty", "\[LeftDoubleBracket]", "i", 
+                   "\[RightDoubleBracket]"}]}], ",", " ", 
+                 RowBox[{"Comment", " ", "\[Rule]", " ", 
+                  RowBox[{"\"\<Not found \>\"", " ", "<>", " ", 
+                   RowBox[{
+                   "qty", "\[LeftDoubleBracket]", "i", 
+                    "\[RightDoubleBracket]"}]}]}], ",", " ", 
+                 "\[IndentingNewLine]", "                   ", 
+                 RowBox[{"Unit", " ", "\[Rule]", " ", "\"\<\>\""}], ",", " ", 
+                 
+                 RowBox[{"Distribution", " ", "\[Rule]", " ", "\"\<\>\""}]}], 
+                " ", "\n", "             ", "]"}]}]}], "\[IndentingNewLine]", 
+             "      ", "]"}], ";", "\[IndentingNewLine]", "\n", "      ", 
+            RowBox[{"name", " ", "=", " ", 
+             RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+              RowBox[{"v", ",", " ", "Name"}], " ", "]"}]}], ";", "\n", 
+            "\[IndentingNewLine]", "      ", 
+            RowBox[{"(*", " ", 
+             RowBox[{"return", " ", "gridbox", " ", "row"}], " ", "*)"}], 
+            "\[IndentingNewLine]", "      ", 
+            RowBox[{"{", "\[IndentingNewLine]", "         ", 
+             RowBox[{
+              RowBox[{
+              "ButtonBox", "[", "\[IndentingNewLine]", "           ", 
+               RowBox[{
+                RowBox[{"ToBoxes", "@", " ", 
+                 RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+                  RowBox[{"v", ",", " ", "Comment"}], " ", "]"}]}], ",", 
+                "\[IndentingNewLine]", "           ", 
+                RowBox[{"BaseStyle", "\[Rule]", "\"\<Hyperlink\>\""}], " ", 
+                ",", 
+                RowBox[{"Alignment", "\[Rule]", "Left"}], ",", 
+                "\[IndentingNewLine]", "           ", 
+                RowBox[{"ButtonData", "\[Rule]", 
+                 RowBox[{"{", " ", 
+                  RowBox[{
+                   RowBox[{
+                   "URL", "[", "\[IndentingNewLine]", "             ", 
+                    RowBox[{
+                    "\"\<http://physics.nist.gov/cgi-bin/cuu/Value?\>\"", " ",
+                     "<>", " ", "name"}], "\[IndentingNewLine]", 
+                    "           ", "]"}], ",", "None"}], " ", "}"}]}]}], 
+               "\[IndentingNewLine]", "         ", "]"}], ",", "\n", 
+              "         ", 
+              RowBox[{"InterpretationBox", "@@", " ", 
+               RowBox[{"{", "\n", "           ", 
+                RowBox[{
+                 RowBox[{"RowBox", "[", 
+                  RowBox[{"{", " ", 
+                   RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+                    RowBox[{"v", ",", " ", "Expression"}], " ", "]"}], " ", 
+                   "}"}], "]"}], ",", "\n", "           ", 
+                 RowBox[{"CODATA", "@@", " ", 
+                  RowBox[{"{", " ", "name", " ", "}"}]}], ",", "\n", 
+                 "           ", 
+                 RowBox[{"Editable", " ", "\[Rule]", " ", "False"}], ",", " ",
+                  
+                 RowBox[{"Selectable", " ", "\[Rule]", " ", "False"}]}], "\n",
+                 "         ", "}"}]}], ",", "\n", "         ", "name", ",", 
+              "\n", "         ", 
+              RowBox[{"UcBox", "[", " ", 
+               RowBox[{"v", ",", " ", 
+                RowBox[{"Condensed", " ", "\[Rule]", " ", "True"}]}], " ", 
+               "]"}], ",", "\n", "         ", 
+              RowBox[{"If", "[", " ", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Uc\[ScriptCapitalV]$Option", "[", 
+                  RowBox[{"v", ",", " ", "Distribution"}], " ", "]"}], " ", "=!=",
+                  " ", "Null"}], ",", "\[IndentingNewLine]", "           ", 
+                RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+                RowBox[{"ToBoxes", "[", " ", 
+                 RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+                  RowBox[{"v", ",", " ", "Distribution"}], " ", "]"}], " ", 
+                 "]"}], ",", " ", "\[IndentingNewLine]", "           ", 
+                RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+                RowBox[{"RowBox", "[", 
+                 RowBox[{"{", "\"\<\>\"", "}"}], "]"}]}], 
+               "\[IndentingNewLine]", "         ", "]"}], ",", 
+              "\[IndentingNewLine]", "         ", 
+              RowBox[{"If", "[", " ", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Uc\[ScriptCapitalV]$Option", "[", 
+                  RowBox[{"v", ",", " ", "Unit"}], " ", "]"}], " ", "=!=", 
+                 " ", "Null"}], ",", "\[IndentingNewLine]", "           ", 
+                RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+                RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+                 RowBox[{"v", ",", " ", "Unit"}], " ", "]"}], ",", 
+                "\[IndentingNewLine]", "           ", 
+                RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+                RowBox[{"RowBox", "[", 
+                 RowBox[{"{", "\"\<\>\"", "}"}], "]"}]}], 
+               "\[IndentingNewLine]", "         ", "]"}]}], 
+             "\[IndentingNewLine]", "       ", "}"}]}]}], 
+          "\[IndentingNewLine]", "    ", "]"}], ",", "\[IndentingNewLine]", 
+         "    ", 
+         RowBox[{"{", " ", 
+          RowBox[{"i", ",", " ", 
+           RowBox[{"Min", "[", " ", 
+            RowBox[{"maxResults", ",", " ", 
+             RowBox[{"Length", "[", "qty", "]"}]}], " ", "]"}]}], " ", 
+          "}"}]}], "\[IndentingNewLine]", "  ", "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", "  ", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "results", "]"}], " ", "\[Equal]", " ", "0"}],
+         ",", " ", "\[IndentingNewLine]", "     ", 
+        RowBox[{"Return", "[", " ", 
+         RowBox[{
+         "ToBoxes", "[", " ", "\"\<No quantities found.\>\"", " ", "]"}], " ",
+          "]"}]}], "\[IndentingNewLine]", "  ", "]"}], ";", "\n", 
+      "\[IndentingNewLine]", "  ", 
+      RowBox[{"GridBox", "[", "\n", "    ", 
+       RowBox[{
+        RowBox[{"{", "\n", "      ", 
+         RowBox[{
+          RowBox[{"Sequence", " ", "@@", " ", 
+           RowBox[{"If", "[", " ", 
+            RowBox[{
+             RowBox[{"maxResults", " ", "===", " ", "Infinity"}], ",", " ", 
+             "\n", "      ", 
+             RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+             RowBox[{"{", "}"}], ",", "\n", "      ", 
+             RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+             RowBox[{"{", "\n", "        ", 
+              RowBox[{
+               RowBox[{"{", " ", "\"\<\>\"", " ", "}"}], ",", "\n", 
+               "        ", 
+               RowBox[{"{", " ", 
+                RowBox[{"ToBoxes", "[", " ", 
+                 RowBox[{
+                  RowBox[{"ToString", "[", " ", 
+                   RowBox[{"Length", "[", "qty", "]"}], " ", "]"}], " ", "<>",
+                   " ", "\n", "          ", 
+                  "\"\< quantities found matching '*\>\"", " ", "<>", " ", 
+                  "str", " ", "<>", " ", "\"\<*':\>\""}], " ", "]"}], "\n", 
+                "        ", "}"}]}], "\n", "      ", "}"}]}], "]"}]}], ",", 
+          "\n", "      ", 
+          RowBox[{"{", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"GridBox", "[", " ", 
+             RowBox[{"results", ",", "\[IndentingNewLine]", "          ", 
+              RowBox[{"GridBoxAlignment", " ", "\[Rule]", " ", 
+               RowBox[{"{", 
+                RowBox[{"\"\<Columns\>\"", "\[Rule]", 
+                 RowBox[{"{", 
+                  RowBox[{"{", "Left", "}"}], "}"}]}], "}"}]}], ",", 
+              "\[IndentingNewLine]", "          ", 
+              RowBox[{"GridBoxFrame", " ", "\[Rule]", " ", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"\"\<Columns\>\"", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{"{", "True", "}"}], "}"}]}], ",", 
+                 RowBox[{"\"\<Rows\>\"", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{"{", "True", "}"}], "}"}]}]}], "}"}]}], ",", "\n", 
+              "          ", 
+              RowBox[{"GridBoxItemSize", " ", "\[Rule]", " ", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"\"\<Columns\>\"", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{"{", "Automatic", "}"}], "}"}]}], ",", 
+                 RowBox[{"\"\<Rows\>\"", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{"{", "Automatic", "}"}], "}"}]}]}], "}"}]}], ",", 
+              "\[IndentingNewLine]", "          ", 
+              RowBox[{"ColumnsEqual", " ", "\[Rule]", " ", "False"}], ",", 
+              " ", 
+              RowBox[{"RowsEqual", " ", "\[Rule]", " ", "False"}], ",", 
+              "\[IndentingNewLine]", "          ", 
+              RowBox[{"GridBoxSpacings", " ", "\[Rule]", " ", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"\"\<Columns\>\"", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{"{", "1", "}"}], "}"}]}], ",", 
+                 RowBox[{"\"\<Rows\>\"", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{"{", "0.4", "}"}], "}"}]}]}], "}"}]}], ",", 
+              "\[IndentingNewLine]", "          ", 
+              RowBox[{"FrameStyle", " ", "\[Rule]", " ", 
+               RowBox[{"Directive", "[", 
+                RowBox[{"GrayLevel", "[", "0.9`", "]"}], "]"}]}]}], " ", 
+             "\[IndentingNewLine]", "        ", "]"}], " ", "//.", 
+            RowBox[{
+             RowBox[{"TagBox", "[", " ", 
+              RowBox[{"e_", ",", "DisplayForm"}], " ", "]"}], " ", 
+             "\[RuleDelayed]", " ", "e"}]}], "\n", "      ", "}"}], ",", "\n",
+           "      ", 
+          RowBox[{"Sequence", " ", "@@", " ", 
+           RowBox[{"If", "[", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{"Length", "[", "qty", "]"}], " ", "<=", " ", 
+               RowBox[{"Length", "[", "results", "]"}]}], " ", "||", " ", 
+              RowBox[{"maxResults", " ", "===", " ", "Infinity"}]}], ",", " ",
+              "\n", "      ", 
+             RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+             RowBox[{"{", "\n", "        ", 
+              RowBox[{"{", " ", 
+               RowBox[{"ToBoxes", "[", " ", 
+                RowBox[{"\"\<Total \>\"", " ", "<>", " ", 
+                 RowBox[{"ToString", "[", " ", 
+                  RowBox[{"Length", "[", "qty", "]"}], " ", "]"}], " ", "<>", 
+                 " ", "\n", "          ", 
+                 "\"\< quantities found in database.\>\""}], " ", "]"}], "\n",
+                "        ", "}"}], "\n", "      ", "}"}], ",", " ", "\n", 
+             "      ", 
+             RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+             RowBox[{"{", "\n", "        ", 
+              RowBox[{"{", " ", 
+               RowBox[{"StyleBox", "[", " ", 
+                RowBox[{
+                 RowBox[{"ToBoxes", "[", " ", 
+                  RowBox[{"\"\<(Query truncated to \>\"", " ", "<>", " ", 
+                   RowBox[{"ToString", "[", " ", 
+                    RowBox[{"Length", "[", "results", "]"}], " ", "]"}], " ", 
+                   "<>", " ", "\n", "          ", "\"\< quantities)\>\""}], 
+                  " ", "]"}], ",", " ", 
+                 RowBox[{"FontColor", " ", "\[Rule]", " ", "Red"}]}], " ", 
+                "]"}], " ", "\n", "        ", "}"}], "\n", "      ", "}"}]}], 
+            "]"}]}]}], "\n", "    ", "}"}], ",", "\n", "    ", 
+        RowBox[{"ColumnAlignments", " ", "\[Rule]", " ", 
+         RowBox[{"{", 
+          RowBox[{"{", "Left", "}"}], "}"}]}]}], "\n", "  ", "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Create non-saveable notebook as searching interface", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"queryWildcards", " ", "=", " ", "\"\<\>\""}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fontWorking", " ", "=", " ", 
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"FontColor", " ", "\[Rule]", " ", "Black"}], ",", " ", 
+     RowBox[{"FontWeight", " ", "\[Rule]", " ", "Bold"}], ",", " ", "\n", 
+     "  ", 
+     RowBox[{"FontSize", " ", "\[Rule]", " ", "14"}]}], "\n", "}"}]}], 
+  ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fontPrintout", " ", "=", " ", 
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"FontColor", "\[Rule]", " ", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.8", ",", "0", ",", "0"}], "]"}]}], ",", " ", 
+     RowBox[{"FontWeight", " ", "\[Rule]", " ", "Bold"}], ",", " ", "\n", 
+     "  ", 
+     RowBox[{"FontSize", " ", "\[Rule]", " ", "12"}], ",", " ", 
+     RowBox[{"FontFamily", " ", "\[Rule]", " ", "\"\<Euclid\>\""}]}], "\n", 
+    "}"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nb", " ", "=", " ", 
+   RowBox[{"CreateDocument", "[", "\[IndentingNewLine]", "  ", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", "    ", 
+      RowBox[{"Cell", "[", "\[IndentingNewLine]", "      ", 
+       RowBox[{
+        RowBox[{"BoxData", "[", " ", 
+         RowBox[{"DynamicBox", "[", " ", 
+          RowBox[{"SearchV", "[", "queryWildcards", "]"}], " ", "]"}], " ", 
+         "]"}], ",", "\[IndentingNewLine]", "      ", "\"\<Input\>\"", ",", 
+        "\n", "      ", 
+        RowBox[{"ShowStringCharacters", " ", "\[Rule]", " ", "False"}], ",", 
+        " ", "\n", "      ", 
+        RowBox[{"Editable", " ", "\[Rule]", " ", "False"}], ",", " ", 
+        RowBox[{"Evaluatable", " ", "\[Rule]", " ", "False"}], ",", " ", 
+        RowBox[{"Deletable", " ", "\[Rule]", " ", "False"}]}], 
+       "\[IndentingNewLine]", "    ", "]"}], "\[IndentingNewLine]", "  ", 
+      "}"}], ",", "\n", "  ", 
+     RowBox[{"DockedCells", " ", "\[Rule]", " ", 
+      RowBox[{"Cell", "[", "\[IndentingNewLine]", "    ", 
+       RowBox[{
+        RowBox[{"BoxData", "[", "\[IndentingNewLine]", "      ", 
+         RowBox[{"GridBox", "[", "\[IndentingNewLine]", "        ", 
+          RowBox[{
+           RowBox[{"{", "\n", "          ", 
+            RowBox[{"{", " ", "\n", "            ", 
+             RowBox[{
+              RowBox[{"RowBox", "[", 
+               RowBox[{"{", "\"\<\>\"", "}"}], "]"}], ",", "\n", 
+              "            ", 
+              RowBox[{"StyleBox", "[", " ", 
+               RowBox[{"\"\<\\\"Pattern:\\\"\>\"", ",", " ", 
+                RowBox[{
+                "FontFamily", " ", "\[Rule]", " ", "\"\<Verdana\>\""}], ",", 
+                " ", 
+                RowBox[{"FontSize", " ", "\[Rule]", " ", "Medium"}]}], " ", 
+               "]"}], ",", "\[IndentingNewLine]", "            ", 
+              RowBox[{"StyleBox", "[", " ", 
+               RowBox[{
+                RowBox[{"InputFieldBox", "[", " ", 
+                 RowBox[{
+                  RowBox[{"Dynamic", "[", "queryWildcards", "]"}], ",", " ", 
+                  "String", ",", " ", "\n", 
+                  "                                     ", 
+                  RowBox[{"FieldSize", " ", "\[Rule]", " ", 
+                   RowBox[{"{", 
+                    RowBox[{"30", ",", "1.2"}], "}"}]}], ",", " ", 
+                  RowBox[{"ImageMargins", " ", "\[Rule]", " ", "5"}]}], " ", 
+                 "]"}], ",", " ", "\n", "                      ", 
+                RowBox[{
+                "FontFamily", " ", "\[Rule]", " ", "\"\<Verdana\>\""}], ",", 
+                " ", 
+                RowBox[{"FontSize", " ", "\[Rule]", " ", "Medium"}]}], " ", 
+               "]"}]}], "\[IndentingNewLine]", "          ", "}"}], 
+            "\[IndentingNewLine]", "        ", "}"}], ",", 
+           "\[IndentingNewLine]", "        ", 
+           RowBox[{"GridBoxAlignment", " ", "\[Rule]", " ", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"{", "Left", "}"}], "}"}], ",", " ", 
+              RowBox[{"{", 
+               RowBox[{"{", "Baseline", "}"}], "}"}]}], " ", "}"}]}], ",", 
+           "\n", "        ", 
+           RowBox[{"ColumnSpacings", " ", "\[Rule]", " ", 
+            RowBox[{"{", " ", 
+             RowBox[{"{", 
+              RowBox[{"{", "1", "}"}], "}"}], " ", "}"}]}]}], 
+          "\[IndentingNewLine]", "      ", "]"}], "\[IndentingNewLine]", 
+         "    ", "]"}], ",", "\[IndentingNewLine]", "    ", 
+        "\"\<DockedCell\>\"", ",", "\n", "    ", 
+        RowBox[{"Editable", " ", "\[Rule]", " ", "False"}], ",", " ", 
+        RowBox[{"Evaluatable", " ", "\[Rule]", " ", "False"}], ",", "\n", 
+        "    ", 
+        RowBox[{"CellFrameMargins", " ", "\[Rule]", " ", 
+         RowBox[{"{", " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"10", ",", "10"}], "}"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"10", ",", "10"}], "}"}]}], " ", "}"}]}]}], 
+       "\[IndentingNewLine]", "  ", "]"}]}], ",", "\[IndentingNewLine]", "  ",
+      
+     RowBox[{"WindowTitle", " ", "\[Rule]", " ", 
+      RowBox[{
+      "codataHeader", " ", "<>", " ", "\"\<, \>\"", " ", "<>", " ", 
+       "codataRelease"}]}], ",", "\[IndentingNewLine]", "  ", 
+     RowBox[{"WindowSize", " ", "\[Rule]", " ", 
+      RowBox[{"{", " ", 
+       RowBox[{"1100", ",", " ", "800"}], " ", "}"}]}], ",", 
+     "\[IndentingNewLine]", "  ", 
+     RowBox[{"Editable", " ", "\[Rule]", " ", "True"}], ",", 
+     "\[IndentingNewLine]", "  ", 
+     RowBox[{"Saveable", " ", "\[Rule]", " ", "False"}], ",", 
+     "\[IndentingNewLine]", "  ", 
+     RowBox[{"PageHeaders", " ", "\[Rule]", " ", "\n", "  ", 
+      RowBox[{"{", "\[IndentingNewLine]", "    ", 
+       RowBox[{
+        RowBox[{"{", " ", 
+         RowBox[{"None", ",", " ", "None", ",", " ", "None"}], " ", "}"}], 
+        ",", "\[IndentingNewLine]", "    ", 
+        RowBox[{"{", " ", 
+         RowBox[{
+          RowBox[{"Cell", "[", " ", 
+           RowBox[{
+            RowBox[{"TextData", "[", 
+             RowBox[{"{", " ", "codataHeader", " ", "}"}], "]"}], ",", 
+            "\"\<Header\>\""}], " ", "]"}], ",", " ", "Inherited", ",", " ", 
+          "Inherited"}], " ", "}"}]}], "\[IndentingNewLine]", "  ", "}"}]}], 
+     ",", "\n", "  ", 
+     RowBox[{"PrintingOptions", " ", "\[Rule]", " ", 
+      RowBox[{"{", "\[IndentingNewLine]", "    ", 
+       RowBox[{
+        RowBox[{"\"\<FacingPages\>\"", " ", "\[Rule]", " ", "False"}], ",", 
+        "\n", "    ", 
+        RowBox[{"\"\<FirstPageHeader\>\"", " ", "\[Rule]", " ", "True"}], ",",
+         "\[IndentingNewLine]", "    ", 
+        RowBox[{
+        "\"\<PaperOrientation\>\"", " ", "\[Rule]", " ", 
+         "\"\<Landscape\>\""}], ",", "\[IndentingNewLine]", "    ", 
+        RowBox[{"\"\<PrintingMargins\>\"", " ", "\[Rule]", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"72", ",", "72"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"24", ",", "48"}], "}"}]}], "}"}]}]}], 
+       "\[IndentingNewLine]", "  ", "}"}]}], ",", "\[IndentingNewLine]", "  ",
+      
+     RowBox[{"StyleDefinitions", " ", "\[Rule]", " ", 
+      RowBox[{"Notebook", "[", "\n", "    ", 
+       RowBox[{
+        RowBox[{"{", "\[IndentingNewLine]", "      ", 
+         RowBox[{
+          RowBox[{"Cell", "[", "\n", "        ", 
+           RowBox[{"StyleData", "[", 
+            RowBox[{"StyleDefinitions", "\[Rule]", "\"\<Default.nb\>\""}], 
+            "]"}], "\n", "      ", "]"}], ",", "\[IndentingNewLine]", 
+          "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<Input\>\"", ",", " ", "\"\<Working\>\""}], " ", 
+             "]"}], ",", "\[IndentingNewLine]", "        ", 
+            RowBox[{"CellMargins", " ", "\[Rule]", " ", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"10", ",", "0"}], "}"}], ",", " ", 
+               RowBox[{"{", 
+                RowBox[{"Inherited", ",", "Inherited"}], "}"}]}], " ", 
+              "}"}]}], ",", "\[IndentingNewLine]", "        ", 
+            RowBox[{"FontColor", " ", "\[Rule]", " ", "Black"}], ",", " ", 
+            RowBox[{"FontSize", " ", "\[Rule]", " ", "14"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\[IndentingNewLine]",
+           "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<TSYMB\>\"", ",", " ", "\"\<Working\>\""}], " ", 
+             "]"}], ",", " ", 
+            RowBox[{"Sequence", " ", "@@", " ", "fontWorking"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\[IndentingNewLine]",
+           "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<TR\>\"", ",", " ", "\"\<Working\>\""}], " ", "]"}], 
+            ",", " ", 
+            RowBox[{"Sequence", " ", "@@", " ", "fontWorking"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\[IndentingNewLine]",
+           "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<TI\>\"", ",", " ", "\"\<Working\>\""}], " ", "]"}], 
+            ",", " ", 
+            RowBox[{"Sequence", " ", "@@", " ", "fontWorking"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\[IndentingNewLine]",
+           "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<Hyperlink\>\"", ",", " ", "\"\<Working\>\""}], " ", 
+             "]"}], ",", "\[IndentingNewLine]", "        ", 
+            RowBox[{"ShowStringCharacters", " ", "\[Rule]", " ", "False"}], 
+            ",", " ", 
+            RowBox[{"FontFamily", " ", "\[Rule]", " ", "\"\<Verdana\>\""}], 
+            ",", "\[IndentingNewLine]", "        ", 
+            RowBox[{"FontWeight", " ", "\[Rule]", " ", "Plain"}], ",", " ", 
+            RowBox[{"FontColor", " ", "\[Rule]", " ", 
+             RowBox[{"Darker", "[", "Red", "]"}]}], ",", 
+            "\[IndentingNewLine]", "        ", 
+            RowBox[{"FontSize", " ", "\[Rule]", " ", "12"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\n", "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<Input\>\"", ",", " ", "\"\<Printout\>\""}], " ", 
+             "]"}], ",", " ", 
+            RowBox[{"FontColor", " ", "\[Rule]", " ", "Black"}], ",", " ", 
+            RowBox[{"FontSize", " ", "\[Rule]", " ", "10.6"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\[IndentingNewLine]",
+           "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<TSYMB\>\"", ",", " ", "\"\<Printout\>\""}], " ", 
+             "]"}], ",", " ", 
+            RowBox[{"Sequence", " ", "@@", " ", "fontPrintout"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\[IndentingNewLine]",
+           "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<TR\>\"", ",", " ", "\"\<Printout\>\""}], " ", "]"}],
+             ",", " ", 
+            RowBox[{"Sequence", " ", "@@", " ", "fontPrintout"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\[IndentingNewLine]",
+           "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<TI\>\"", ",", " ", "\"\<Printout\>\""}], " ", "]"}],
+             ",", 
+            RowBox[{"Sequence", " ", "@@", " ", "fontPrintout"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}], ",", "\[IndentingNewLine]",
+           "      ", 
+          RowBox[{"Cell", "[", "\[IndentingNewLine]", "        ", 
+           RowBox[{
+            RowBox[{"StyleData", "[", " ", 
+             RowBox[{"\"\<Hyperlink\>\"", ",", " ", "\"\<Printout\>\""}], " ",
+              "]"}], ",", "\[IndentingNewLine]", "        ", 
+            RowBox[{"ShowStringCharacters", " ", "\[Rule]", " ", "False"}], 
+            ",", " ", 
+            RowBox[{"FontFamily", " ", "\[Rule]", " ", "\"\<Verdana\>\""}], 
+            ",", "\[IndentingNewLine]", "        ", 
+            RowBox[{"FontWeight", " ", "\[Rule]", " ", "Plain"}], ",", " ", 
+            RowBox[{"FontColor", " ", "\[Rule]", " ", "Black"}], ",", 
+            "\[IndentingNewLine]", "        ", 
+            RowBox[{"FontSize", " ", "\[Rule]", " ", "10"}]}], 
+           "\[IndentingNewLine]", "      ", "]"}]}], "\[IndentingNewLine]", 
+         "    ", "}"}], ",", "\[IndentingNewLine]", "    ", 
+        RowBox[{"Visible", " ", "\[Rule]", " ", "False"}], ",", 
+        "\[IndentingNewLine]", "    ", 
+        RowBox[{
+        "StyleDefinitions", " ", "\[Rule]", " ", 
+         "\"\<PrivateStylesheetFormatting.nb\>\""}]}], "\[IndentingNewLine]", 
+       "  ", "]"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Code"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NotebookLocate", "[", " ", "\"\<query\>\"", " ", "]"}], 
+  ";"}]], "Code"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["End Package", "Section"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"End", "[", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"EndPackage", "[", "]"}], ";"}]}], "Code"]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->Automatic,
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{899, 1009},
+WindowMargins->{{Automatic, 307}, {37, Automatic}},
+ShowSelection->True,
+InputAliases->{"intt" -> RowBox[{"\[Integral]", 
+     RowBox[{"\[SelectionPlaceholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "dintt" -> 
+  RowBox[{
+     SubsuperscriptBox[
+     "\[Integral]", "\[SelectionPlaceholder]", "\[Placeholder]"], 
+     RowBox[{"\[Placeholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "sumt" -> RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "prodt" -> RowBox[{
+     UnderoverscriptBox["\[Product]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "dt" -> RowBox[{
+     SubscriptBox["\[PartialD]", "\[Placeholder]"], " ", 
+     "\[SelectionPlaceholder]"}], "notation" -> RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation>" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation<" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "symb" -> 
+  RowBox[{"Symbolize", "[", 
+     TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], "]"}], 
+  "infixnotation" -> RowBox[{"InfixNotation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], ",", 
+       "\[Placeholder]"}], "]"}], "addia" -> RowBox[{"AddInputAlias", "[", 
+     RowBox[{"\"\[SelectionPlaceholder]\"", "\[Rule]", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "pattwraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationPatternTag"], "madeboxeswraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationMadeBoxesTag"]},
+TrackCellChangeTimes->False,
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->"UCA-Stylesheet.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 50, 0, 67, "Title"],
+Cell[643, 25, 68, 0, 41, "Subtitle"],
+Cell[714, 27, 499, 12, 137, "Code"],
+Cell[CellGroupData[{
+Cell[1238, 43, 32, 0, 63, "Section"],
+Cell[1273, 45, 250, 6, 36, "Code"],
+Cell[1526, 53, 117, 3, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1680, 61, 29, 0, 63, "Section"],
+Cell[1712, 63, 214, 6, 57, "Code"],
+Cell[1929, 71, 314, 8, 77, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2280, 84, 66, 0, 63, "Section"],
+Cell[2349, 86, 960, 24, 177, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3346, 115, 34, 0, 63, "Section"],
+Cell[3383, 117, 826, 22, 77, "Code"],
+Cell[4212, 141, 15745, 320, 1957, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19994, 466, 70, 0, 63, "Section"],
+Cell[20067, 468, 96, 2, 36, "Code"],
+Cell[20166, 472, 345, 9, 77, "Code"],
+Cell[20514, 483, 497, 12, 77, "Code"],
+Cell[21014, 497, 12486, 250, 1857, "Code"],
+Cell[33503, 749, 109, 3, 36, "Code"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33649, 757, 30, 0, 63, "Section"],
+Cell[33682, 759, 130, 4, 57, "Code"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

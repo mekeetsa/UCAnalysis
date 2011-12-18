@@ -1,0 +1,2148 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     74772,       2139]
+NotebookOptionsPosition[     67030,       1915]
+NotebookOutlinePosition[     69969,       1982]
+CellTagsIndexPosition[     69926,       1979]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Create UCA-CODATA", "Title"],
+
+Cell[BoxData[
+ RowBox[{"(*", "\n", 
+  StyleBox["   ", "Comment"], 
+  StyleBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{
+     "Creates", " ", "CODATA", " ", "package", " ", "with", " ", "uc"}], "-", 
+     "values"}], "\n", "   ", 
+    RowBox[{"Author", ":", " ", 
+     RowBox[{"Mikica", " ", "B", " ", "Kocic"}]}], "\n", "   ", 
+    RowBox[{
+     RowBox[{"Version", ":", " ", "2.5"}], ",", " ", 
+     RowBox[{"2011", "-", "10", "-", "15"}]}]}], "Comment"], 
+  StyleBox["\n", "Comment"], "*)"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"codataHeader", "=", " ", "\"\<CODATA 2010 v6.2\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"codataRelease", " ", "=", " ", 
+   RowBox[{
+   "\"\<Released 30 June 2011; Retrieved \>\"", " ", "<>", 
+    "\[IndentingNewLine]", 
+    RowBox[{"DateString", "[", " ", 
+     RowBox[{"{", " ", 
+      RowBox[{
+      "\"\<Year\>\"", ",", " ", "\"\<-\>\"", ",", " ", "\"\<Month\>\"", ",", 
+       " ", "\"\<-\>\"", ",", " ", "\"\<Day\>\"", ",", " ", "\"\< \>\"", ",", 
+       " ", "\"\<Hour24\>\"", ",", " ", "\"\<:\>\"", ",", " ", 
+       "\"\<Minute\>\""}], " ", "}"}], "]"}]}]}], ";"}]}], "Input",
+ InitializationCell->True],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{"<<", "UCAnalysis`"}]], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Parameters", "Subsubsection"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "symbolMapCsvFile", " ", "=", " ", "\"\<CODATA-Symbol-Map.csv\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "texSymbolsMapFile", " ", "=", "\"\<CODATA-SymbolExpressions.mx\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "inputCodataAsciiFile", " ", "=", " ", 
+   "\"\<CODATA 2010 (all values; ascii).txt\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"outputPackageFile", " ", "=", "  ", 
+   RowBox[{"ToFileName", "[", " ", 
+    RowBox[{"\"\<..\>\"", ",", " ", "\"\<UCA-CODATA.m\>\""}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"saveOutputFiles", " ", "=", " ", "True"}], ";"}]}], "Input",
+ InitializationCell->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Exceptions (calculated exact values)", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"c", "=", "299792458"}], ";"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"speed", " ", "of", " ", "light"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Quiet", "@", " ", 
+   RowBox[{"Remove", "[", " ", "ucValue", " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "___", "]"}], ":=", "Null"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<c\>\"", "]"}], "=", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{"c", ",", "Null", ",", "Null", ",", 
+     RowBox[{"Interpretation", "\[Rule]", "c"}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<mu0\>\"", "]"}], "=", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"4", "\[Pi]", "\[Times]", 
+      SuperscriptBox["10", 
+       RowBox[{"-", "7"}]]}], ",", "Null", ",", "Null", ",", 
+     RowBox[{
+     "Interpretation", "\[Rule]", 
+      "\"\<4\[Pi]\[MediumSpace]\!\(\*SuperscriptBox[\(10\), \
+\(-7\)]\)\>\""}]}], " ", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<ep0\>\"", "]"}], "=", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["10", "7"], "/", 
+      RowBox[{"(", 
+       RowBox[{"4", "\[Pi]", " ", 
+        SuperscriptBox["c", "2"]}], ")"}]}], ",", "Null", ",", "Null", ",", 
+     RowBox[{
+     "Interpretation", "\[Rule]", 
+      "\"\<1/(\!\(\*SubscriptBox[\(\[Mu]\), \
+\(0\)]\)\[MediumSpace]\!\(\*SuperscriptBox[\(c\), \(2\)]\))\>\""}]}], " ", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<z0\>\"", "]"}], "=", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"4", "\[Pi]", "\[Times]", 
+      SuperscriptBox["10", 
+       RowBox[{"-", "7"}]], "*", "c"}], ",", "Null", ",", "Null", ",", 
+     RowBox[{
+     "Interpretation", "\[Rule]", 
+      "\"\<\!\(\*SubscriptBox[\(\[Mu]\), \(0\)]\)\[MediumSpace]c\>\""}]}], 
+    " ", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<hzminv\>\"", "]"}], "=", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"1", "/", "c"}], ",", "Null", ",", "Null", ",", 
+     RowBox[{"Interpretation", "\[Rule]", "\"\<1/c\>\""}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<jkg\>\"", "]"}], "=", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"1", "/", 
+      SuperscriptBox["c", "2"]}], ",", "Null", ",", "Null", ",", 
+     RowBox[{
+     "Interpretation", "\[Rule]", 
+      "\"\<1/\!\(\*SuperscriptBox[\(c\), \(2\)]\)\>\""}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<kgj\>\"", "]"}], "=", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     SuperscriptBox["c", "2"], ",", "Null", ",", "Null", ",", 
+     RowBox[{
+     "Interpretation", "\[Rule]", 
+      "\"\<\!\(\*SuperscriptBox[\(c\), \(2\)]\)\>\""}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<auperm\>\"", "]"}], "=", " ", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["10", "7"], "/", 
+      SuperscriptBox["c", "2"]}], ",", "Null", ",", "Null", ",", 
+     RowBox[{
+     "Interpretation", "\[Rule]", 
+      "\"\<4\[Pi]/(\!\(\*SubscriptBox[\(\[Mu]\), \
+\(0\)]\)\[MediumSpace]\!\(\*SuperscriptBox[\(c\), \(2\)]\))\>\""}]}], " ", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<mu\>\"", "]"}], "=", " ", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     SuperscriptBox["10", 
+      RowBox[{"-", "3"}]], ",", "Null", ",", "Null", ",", 
+     RowBox[{"Interpretation", "\[Rule]", "\"\<0.001\>\""}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"ucValue", "[", "\"\<mm12c\>\"", "]"}], "=", " ", 
+   RowBox[{"Uc\[ScriptCapitalV]", "[", " ", 
+    RowBox[{
+     RowBox[{"12", "\[Times]", 
+      SuperscriptBox["10", 
+       RowBox[{"-", "3"}]]}], ",", "Null", ",", "Null", ",", 
+     RowBox[{"Interpretation", "\[Rule]", "\"\<0.012\>\""}]}], " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"DisplayUc\[ScriptCapitalV]", "@", " ", 
+  RowBox[{"ToUc\[ScriptCapitalV]", "[", " ", 
+   RowBox[{
+    RowBox[{"ucValue", "[", "\"\<ep0\>\"", "]"}], ",", " ", 
+    RowBox[{"Name", "\[Rule]", 
+     SubscriptBox["\[CurlyEpsilon]", "0"]}]}], " ", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=."}], ";"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     SubscriptBox["\[CurlyEpsilon]", "0"], "=", 
+     InterpretationBox[
+      RowBox[{
+       RowBox[{"1", "/", 
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["\[Mu]", "0"], "\[MediumSpace]", 
+          SuperscriptBox["c", "2"]}], ")"}]}], "\[MediumSpace]", 
+       RowBox[{"(", "exact", ")"}]}],
+      Rational[625000, 22468879468420441]/Pi,
+      Editable->False,
+      Selectable->False]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     StyleBox[
+      RowBox[{"8.85418781762038985053656303171", "\[Times]", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "12"}]]}],
+      FontWeight->Bold]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Utilities", "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"MyFile", "[", " ", "fileName_", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"ToFileName", "[", " ", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "fileName"}], " ", 
+    "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"lookupName", "[", " ", "comment_", " ", "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"match", ",", " ", "result"}], " ", "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"match", " ", "=", " ", 
+       RowBox[{"StringReplace", "[", " ", 
+        RowBox[{"comment", ",", "\[IndentingNewLine]", 
+         RowBox[{"{", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"x", ":", 
+             RowBox[{"WordCharacter", ".."}]}], " ", "\[RuleDelayed]", " ", 
+            RowBox[{"ToLowerCase", "[", "x", "]"}]}], ",", " ", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "all", " ", "word", " ", "characters", " ", "to", " ", 
+             "lowercase"}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Whitespace", ".."}], "\[RuleDelayed]", " ", 
+            "\"\<\\\\s*\>\""}], " ", ",", " ", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "replace", " ", "whitespaces", " ", "with", " ", "whitespace", 
+             " ", "wildcard"}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+           "\"\<.\>\"", " ", "\[RuleDelayed]", " ", 
+            "\"\<(\\\\.|\\\\w+)\>\""}], ",", " ", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "dot", " ", "may", " ", "function", " ", "as", " ", "a", " ", 
+             "wildcard"}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"x", ":", 
+             RowBox[{
+              RowBox[{"Except", "[", "WordCharacter", "]"}], ".."}]}], " ", 
+            "\[RuleDelayed]", "  ", "\"\<\\\\W+?\>\""}]}], " ", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{"replace", " ", "non"}], "-", 
+            RowBox[{"word", " ", "chars", " ", "with", " ", "wildcard"}]}], 
+           " ", "*)"}], "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]",
+         "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Print", "[", " ", 
+         RowBox[{"\"\<Comparing with: \>\"", ",", " ", "match"}], " ", "]"}], 
+        ";"}], "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"result", " ", "=", " ", 
+       RowBox[{"Cases", "[", " ", 
+        RowBox[{"nameMap", ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"map_", " ", "/;", " ", 
+           RowBox[{"StringMatchQ", "[", 
+            RowBox[{
+             RowBox[{
+             "map", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+             ",", 
+             RowBox[{"RegularExpression", "[", "match", "]"}], ",", " ", 
+             RowBox[{"IgnoreCase", "\[Rule]", "True"}]}], " ", "]"}]}], " ", 
+          "\[RuleDelayed]", " ", "map"}]}], "\[IndentingNewLine]", "]"}]}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "result", "]"}], " ", "\[Equal]", " ", "1"}], 
+        ",", " ", 
+        RowBox[{"Return", "[", " ", 
+         RowBox[{
+         "result", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+         " ", "]"}]}], " ", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", " ", 
+       RowBox[{"\"\<Error: lookupName for: \>\"", ",", " ", "comment"}], " ", 
+       "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "result", "]"}], " ", "\[Equal]", " ", "0"}], 
+        ",", "\[IndentingNewLine]", 
+        RowBox[{
+        "Print", "[", " ", "\"\<returned no symbols!\>\"", "  ", "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", " ", 
+         RowBox[{"\"\<returned multilple symbols:\\n\>\"", ",", " ", 
+          RowBox[{"TableForm", "@", " ", "result"}]}], " ", "]"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"FrontEndExecute", "[", " ", 
+       RowBox[{
+       "FrontEndToken", "[", " ", "\"\<EvaluatorAbort\>\"", " ", "]"}], " ", 
+       "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"getSymbolFromWeb", "[", " ", "name_", " ", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", "tex", " ", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"PrintTemporary", "[", " ", 
+       RowBox[{"\"\<Fetching \>\"", " ", "<>", " ", "name"}], " ", "]"}], ";",
+       "\[IndentingNewLine]", 
+      RowBox[{"tex", "=", 
+       RowBox[{"StringCases", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"Import", "[", 
+          RowBox[{
+          "\"\<http://physics.nist.gov/cgi-bin/cuu/Value?\>\"", " ", "<>", 
+           " ", "name"}], " ", "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"\"\<$\>\"", "~~", 
+          RowBox[{
+           RowBox[{"Except", "[", "\"\<$\>\"", "]"}], ".."}], "~~", 
+          "\"\<$\>\""}]}], " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{"TeX", " ", "epression"}], " ", "*)"}], 
+        "\[IndentingNewLine]", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", "tex", "]"}], " ", "\[NotEqual]", " ", "0"}], 
+        ",", " ", 
+        RowBox[{
+        "tex", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], " ", 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"malsme", "=", "77"}], ";"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "to", " ", "test", " ", "preservation", " ", "of", " ", "symbol", " ", 
+    "names"}], " ", "*)"}]}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load, parse and export CODATA values", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Load and parse CODATA values", "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell["Load CODATA name map from CSV file", "Subsubsection"],
+
+Cell["\<\
+Load CODATA map from CSV file, where columns are separated with \";\".\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nameMap", " ", "=", " ", 
+   RowBox[{"ReadList", "[", " ", 
+    RowBox[{
+     RowBox[{"MyFile", "@", " ", "symbolMapCsvFile"}], ",", " ", "String"}], 
+    " ", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nameMap", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"Function", "[", " ", 
+     RowBox[{"line", ",", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{"StringQ", "[", " ", "line", " ", "]"}], ",", 
+        RowBox[{"StringSplit", "[", " ", 
+         RowBox[{"line", ",", " ", 
+          RowBox[{"RegularExpression", "[", "\"\<\\\\s*\\;\\\\s*\>\"", "]"}], 
+          ",", " ", "All"}], " ", "]"}]}], " ", "]"}]}], " ", "]"}], " ", "/@",
+     " ", "nameMap"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "nameMap", "]"}]], "Input"],
+
+Cell[BoxData["335"], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nameMap", "\[LeftDoubleBracket]", 
+   RowBox[{";;", "2"}], "\[RightDoubleBracket]"}], "//", 
+  "TableForm"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"mal\"\>", "\<\"alpha particle mass\"\>"},
+    {"\<\"malc2\"\>", "\<\"alpha particle mass energy equivalent\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nameMap", "\[LeftDoubleBracket]", 
+   RowBox[{
+    RowBox[{"-", "2"}], ";;"}], "\[RightDoubleBracket]"}], "//", 
+  "TableForm"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"bwien\"\>", "\<\"Wien wavelength displacement law constant\"\>"},
+    {"\<\"d220sil\"\>", "\<\"{220} lattice spacing of silicon\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"lookupName", "[", "\"\<alpha part. mass ener. equ. in mev\>\"", " ",
+   "]"}], "\[IndentingNewLine]", 
+ RowBox[{"lookupName", "[", "\"\<neutron-proton mag. mom. ratio\>\"", " ", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"lookupName", "[", "\"\<Loschmidt constant (273.15 K, 100 kPa)\>\"", 
+  "]"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"malc2mev\"\>", 
+   ",", "\<\"alpha particle mass energy equivalent in MeV\"\>"}], 
+  "}"}]], "Output",
+ CellLabelAutoDelete->True],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"munsmup\"\>", 
+   ",", "\<\"neutron-proton magnetic moment ratio\"\>"}], "}"}]], "Output",
+ CellLabelAutoDelete->True],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"n0\"\>", 
+   ",", "\<\"Loschmidt constant (273.15 K, 100 kPa)\"\>"}], "}"}]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Get ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"T", 
+     AdjustmentBox["E",
+      BoxBaselineShift->0.5,
+      BoxMargins->{{-0.3, 0}, {0, 0}}], "X"}],
+    SingleLetterItalics->False], TraditionalForm]]],
+ " symbols from the internet"
+}], "Subsubsection"],
+
+Cell[BoxData[
+ RowBox[{"If", "[", " ", 
+  RowBox[{"False", ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"webSymbolMap", "=", 
+     RowBox[{"Table", "[", " ", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{
+         RowBox[{"nameMap", "\[LeftDoubleBracket]", " ", 
+          RowBox[{"i", ",", "1"}], " ", "\[RightDoubleBracket]"}], ",", " ", 
+         RowBox[{"getSymbolFromWeb", "[", " ", 
+          RowBox[{"nameMap", "\[LeftDoubleBracket]", " ", 
+           RowBox[{"i", ",", "1"}], " ", "\[RightDoubleBracket]"}], " ", 
+          "]"}]}], " ", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", " ", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "nameMap", "]"}]}], " ", "}"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ImportLaTeX", "[", " ", 
+    RowBox[{"expr_", ",", " ", 
+     RowBox[{"asQuoted_:", "False"}]}], " ", "]"}], ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", " ", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{"t", " ", "=", " ", "expr"}], " ", "}"}], ",", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", " ", 
+      RowBox[{"handle", " ", "unrecognized", " ", "symbols", " ", 
+       RowBox[{"(", 
+        RowBox[{"part", " ", "1", " ", "of", " ", "2"}], ")"}]}], " ", "*)"}],
+      "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"StringReplace", "[", " ", 
+        RowBox[{"t", ",", " ", 
+         RowBox[{"{", " ", 
+          RowBox[{
+           RowBox[{"\"\<\\\\hbar\>\"", "\[Rule]", "\"\<\\\\natural\>\""}], 
+           ",", " ", 
+           RowBox[{
+           "\"\<\\\\lbar\>\"", " ", "\[Rule]", " ", "\"\<\\\\flat\>\""}]}], 
+          " ", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+       "convert", " ", "LaTeX", " ", "string", " ", "to", " ", "notebook"}], 
+       " ", "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"Quiet", "[", " ", 
+       RowBox[{"t", "=", 
+        RowBox[{"ImportString", "[", "  ", 
+         RowBox[{"t", ",", " ", "\"\<LaTeX\>\""}], " ", "]"}]}], " ", "]"}], 
+      ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"get", " ", "rid", " ", "of", " ", 
+        RowBox[{"FormBox", ":", "es"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+      
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", " ", "/.", " ", 
+        RowBox[{
+         RowBox[{"FormBox", "[", " ", 
+          RowBox[{"e_", ",", " ", "_"}], " ", "]"}], " ", "\[RuleDelayed]", 
+         " ", "e"}]}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{
+        RowBox[{"get", " ", "rid", " ", "of", " ", "inner", " ", "BoxData"}], 
+        ";", " ", 
+        RowBox[{
+        "return", " ", "Null", " ", "in", " ", "case", " ", "if", " ", 
+         "there", " ", "is", " ", "no", " ", "BoxData"}]}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"Cases", "[", " ", 
+        RowBox[{"t", ",", "_BoxData", ",", "Infinity"}], " ", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"!", " ", 
+          RowBox[{"ListQ", "[", " ", "t", " ", "]"}]}], " ", "||", " ", 
+         RowBox[{
+          RowBox[{"Length", "[", "t", "]"}], " ", "\[Equal]", " ", "0"}]}], 
+        ",", 
+        RowBox[{"Return", "[", "]"}]}], " ", "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{
+        RowBox[{"t", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+        "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"handle", " ", "unrecognized", " ", "symbols", " ", 
+        RowBox[{"(", 
+         RowBox[{"part", " ", "2", " ", "of", " ", "2"}], ")"}]}], " ", 
+       "*)"}], "\[IndentingNewLine]", 
+      RowBox[{"t", "=", " ", 
+       RowBox[{"t", "/.", 
+        RowBox[{"{", " ", 
+         RowBox[{
+          RowBox[{
+          "\"\<\[Natural]\>\"", " ", "\[Rule]", " ", "\"\<\[HBar]\>\""}], ",",
+           " ", 
+          RowBox[{"\"\<\[Flat]\>\"", " ", "\[Rule]", " ", 
+           RowBox[{"OverscriptBox", "[", " ", 
+            RowBox[{"\"\<\[Lambda]\>\"", ",", " ", "\"\<_\>\""}], " ", 
+            "]"}]}]}], " ", "}"}]}]}], " ", ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"Return", "[", "t", "]"}], ";"}], "*)"}], 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"convert", " ", "to", " ", "string", " ", 
+        RowBox[{"(", 
+         RowBox[{
+         "also", " ", "converting", " ", "inner", " ", "strings", " ", "to", 
+          " ", "quoted", " ", "strings"}], ")"}]}], " ", "*)"}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"t", " ", "=", " ", 
+       RowBox[{"t", "/.", " ", 
+        RowBox[{"e_String", " ", "\[RuleDelayed]", " ", 
+         RowBox[{
+         "\"\<\\\"\>\"", " ", "<>", " ", "e", " ", "<>", " ", 
+          "\"\<\\\"\>\""}]}]}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"t", " ", "=", "  ", 
+       RowBox[{"ToString", "[", " ", "t", " ", "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"(*", " ", 
+       RowBox[{"to", " ", "expression"}], " ", "*)"}], "\[IndentingNewLine]", 
+      
+      RowBox[{"If", "[", " ", 
+       RowBox[{"asQuoted", ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+        RowBox[{
+        "\"\<\\\"\\!\\(\\*\>\"", " ", "<>", " ", "t", " ", "<>", " ", 
+         "\"\<\\)\\\"\>\""}], ",", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+        RowBox[{
+        "\"\<\\!\\(\\*\>\"", " ", "<>", " ", "t", " ", "<>", " ", 
+         "\"\<\\)\>\""}]}], "\[IndentingNewLine]", "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"If", "[", " ", 
+  RowBox[{"False", ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Function", "[", " ", 
+      RowBox[{"e", ",", "\[IndentingNewLine]", 
+       RowBox[{"Module", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"t", " ", "=", " ", 
+           RowBox[{"ImportLaTeX", "[", " ", 
+            RowBox[{
+             RowBox[{
+             "e", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",",
+              " ", 
+             RowBox[{"(*", " ", "quoted", " ", "*)"}], " ", "True"}], " ", 
+            "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"PrintTemporary", "[", " ", 
+           RowBox[{"e", " ", "\[LongRightArrow]", " ", "t"}], " ", "]"}], ";",
+           "\[IndentingNewLine]", 
+          RowBox[{"{", " ", 
+           RowBox[{
+            RowBox[{
+            "e", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], ",", 
+            
+            RowBox[{
+            "e", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], ",", 
+            
+            RowBox[{"If", "[", " ", 
+             RowBox[{
+              RowBox[{"t", " ", "===", " ", "Null"}], ",", "\"\<-\>\"", ",", 
+              "t"}], " ", "]"}]}], " ", "}"}]}]}], "\[IndentingNewLine]", 
+        "]"}]}], " ", "]"}], "/@", "webSymbolMap"}], "//", "TableForm"}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Load ",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"T", 
+     AdjustmentBox["E",
+      BoxBaselineShift->0.5,
+      BoxMargins->{{-0.3, 0}, {0, 0}}], "X"}],
+    SingleLetterItalics->False], TraditionalForm]]],
+ " symbols from the cache"
+}], "Subsubsection"],
+
+Cell[TextData[{
+ "Note: The cache is generated in ",
+ StyleBox["UCA-CODATA-Symbols.nb",
+  FontWeight->"Bold"],
+ " notebook."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Get", "[", " ", 
+   RowBox[{"MyFile", "@", " ", "texSymbolsMapFile"}], " ", "]"}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"NIST$ExpressionBox", "[", " ", "name_", " ", "]"}], ":=", 
+   RowBox[{"\"\<\\\"\\!\\(\\*\>\"", " ", "<>", " ", "\[IndentingNewLine]", 
+    RowBox[{"ToString", "[", " ", 
+     RowBox[{
+      RowBox[{"StyleBox", "[", " ", 
+       RowBox[{
+        RowBox[{"exprBox", "[", " ", "name", " ", "]"}], ",", 
+        "\"\<TSYMB\>\""}], " ", "]"}], ",", " ", "InputForm"}], " ", "]"}], 
+    " ", "<>", " ", "\[IndentingNewLine]", "\"\<\\)\\\"\>\""}]}], 
+  ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"NIST$ExpressionBox", "[", " ", "\"\<malc2mev\>\"", " ", "]"}], " ",
+   "\[LeftRightArrow]", " ", 
+  RowBox[{
+  "exprBox", "[", " ", "\"\<malc2mev\>\"", " ", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NIST$ExpressionBox", "[", " ", "\"\<hbar\>\"", " ", "]"}], " ", 
+  "\[LeftRightArrow]", " ", 
+  RowBox[{"exprBox", "[", " ", "\"\<hbar\>\"", " ", "]"}]}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"\<\"\\\"\\!\\(\\*StyleBox[\\\\(\\\\(\\\\*StyleBox[\\\"m\\\", \\\"TI\
+\\\"]\\\\)\\\\_\[Alpha] \\\\*StyleBox[\\\"c\\\", \\\"TI\\\"]\\\\^2\\\\), \
+\\\"TSYMB\\\"]\\)\\\"\"\>", "\[LeftRightArrow]", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\<\"m\"\>", ",", "\<\"TI\"\>"}], "]"}], 
+       ",", "\<\"\[Alpha]\"\>"}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\<\"c\"\>", ",", "\<\"TI\"\>"}], "]"}], ",", "\<\"2\"\>"}], 
+      "]"}]}], "}"}], "]"}]}]], "Output",
+ CellLabelAutoDelete->True],
+
+Cell[BoxData[
+ RowBox[{"\<\"\\\"\\!\\(\\*StyleBox[StyleBox[\\\"\[HBar]\\\", \\\"TR\\\"], \\\
+\"TSYMB\\\"]\\)\\\"\"\>", "\[LeftRightArrow]", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\<\"\[HBar]\"\>", ",", "\<\"TR\"\>"}], "]"}]}]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Load CODATA values from an ascii file", "Subsubsection"],
+
+Cell["\<\
+Load CODATA from ascii file, where columns are separated with \";\".\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"codata", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"ReadList", "[", " ", 
+     RowBox[{
+      RowBox[{"MyFile", "@", " ", "inputCodataAsciiFile"}], ",", " ", 
+      "String"}], " ", "]"}], "\[LeftDoubleBracket]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"skip", " ", "first", " ", "10", " ", "rows"}], " ", "*)"}], 
+    RowBox[{"11", ";;"}], "\[RightDoubleBracket]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"n", "=", 
+  RowBox[{"Length", "[", "codata", "]"}]}]], "Input"],
+
+Cell[BoxData["335"], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"codata", "\[LeftDoubleBracket]", 
+    RowBox[{";;", "2"}], "\[RightDoubleBracket]"}], " ", "//", 
+   "TableForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {"\<\"{220} lattice spacing of silicon                        ; 192.015 \
+5714 e-12      ; 0.000 0032 e-12        ; m\"\>"},
+     {"\<\"alpha particle-electron mass ratio                      ; 7294.299 \
+5361          ; 0.000 0029             ; \"\>"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   Column],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"codata", "\[LeftDoubleBracket]", 
+   RowBox[{
+    RowBox[{"-", "2"}], ";;"}], "\[RightDoubleBracket]"}], " ", "//", 
+  "TableForm"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {"\<\"Wien frequency displacement law constant                ; 5.878 \
+9254 e10         ; 0.000 0053 e10         ; Hz K^-1\"\>"},
+     {"\<\"Wien wavelength displacement law constant               ; 2.897 \
+7721 e-3         ; 0.000 0026 e-3         ; m K\"\>"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   Column],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell["Split columns.", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"origCodata", " ", "=", " ", 
+   RowBox[{"codata", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"Function", "[", " ", 
+      RowBox[{"line", ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", " ", 
+        RowBox[{
+         RowBox[{"StringQ", "[", " ", "line", " ", "]"}], ",", 
+         RowBox[{"StringSplit", "[", " ", 
+          RowBox[{"line", ",", " ", 
+           RowBox[{"RegularExpression", "[", "\"\<\\\\s*\\;\\\\s*\>\"", "]"}],
+            ",", " ", "All"}], " ", "]"}]}], " ", "]"}]}], " ", "]"}], " ", "/@",
+      " ", "codata"}]}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"If", "[", " ", 
+  RowBox[{
+   RowBox[{"!", " ", 
+    RowBox[{"MatrixQ", "[", "codata", "]"}]}], ",", " ", 
+   RowBox[{"FrontEndExecute", "[", " ", 
+    RowBox[{"FrontEndToken", "[", " ", "\"\<EvaluatorAbort\>\"", " ", "]"}], 
+    " ", "]"}]}], " ", "]"}]], "Input"],
+
+Cell["\<\
+Remove whitespaces in column 2 and make the correct exponent syntax.\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"codata", "\[LeftDoubleBracket]", 
+    RowBox[{"All", ",", "2"}], "\[RightDoubleBracket]"}], "=", 
+   RowBox[{
+    RowBox[{"Function", "[", " ", 
+     RowBox[{"s", ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"StringReplace", "[", " ", 
+       RowBox[{"s", ",", " ", 
+        RowBox[{"{", " ", 
+         RowBox[{
+          RowBox[{"Whitespace", " ", "\[Rule]", " ", "\"\<\>\""}], ",", " ", 
+          RowBox[{"\"\<e\>\"", " ", "\[Rule]", " ", "\"\<*^\>\""}]}], " ", 
+         "}"}]}], " ", "]"}]}], " ", "\[IndentingNewLine]", "]"}], " ", "/@", 
+    " ", 
+    RowBox[{"codata", "\[LeftDoubleBracket]", 
+     RowBox[{"All", ",", "2"}], "\[RightDoubleBracket]"}]}]}], ";"}]], "Input"],
+
+Cell["\<\
+Remove whitespaces in column 3 and make the correct exponent syntax.\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"codata", "\[LeftDoubleBracket]", 
+    RowBox[{"All", ",", "3"}], "\[RightDoubleBracket]"}], "=", 
+   RowBox[{
+    RowBox[{"Function", "[", " ", 
+     RowBox[{"s", ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"StringReplace", "[", " ", 
+       RowBox[{"s", ",", " ", 
+        RowBox[{"{", " ", 
+         RowBox[{
+          RowBox[{"Whitespace", " ", "\[Rule]", " ", "\"\<\>\""}], ",", " ", 
+          RowBox[{"\"\<(exact)\>\"", " ", "\[Rule]", " ", "\"\<(exact)\>\""}],
+           ",", " ", 
+          RowBox[{"\"\<e\>\"", " ", "\[Rule]", " ", "\"\<*^\>\""}]}], " ", 
+         "}"}]}], " ", "]"}]}], " ", "\[IndentingNewLine]", "]"}], " ", "/@", 
+    " ", 
+    RowBox[{"codata", "\[LeftDoubleBracket]", 
+     RowBox[{"All", ",", "3"}], "\[RightDoubleBracket]"}]}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"codata", "\[LeftDoubleBracket]", 
+    RowBox[{";;", "2"}], "\[RightDoubleBracket]"}], " ", "//", 
+   "TableForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"{220} lattice spacing of silicon\"\>", "\<\"192.0155714*^-12\"\>", \
+"\<\"0.0000032*^-12\"\>", "\<\"m\"\>"},
+    {"\<\"alpha particle-electron mass ratio\"\>", "\<\"7294.2995361\"\>", \
+"\<\"0.0000029\"\>", "\<\"\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"codata", "\[LeftDoubleBracket]", 
+   RowBox[{
+    RowBox[{"-", "2"}], ";;"}], "\[RightDoubleBracket]"}], " ", "//", 
+  "TableForm"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"Wien frequency displacement law constant\"\>", "\<\"5.8789254*^10\"\
+\>", "\<\"0.0000053*^10\"\>", "\<\"Hz K^-1\"\>"},
+    {"\<\"Wien wavelength displacement law constant\"\>", \
+"\<\"2.8977721*^-3\"\>", "\<\"0.0000026*^-3\"\>", "\<\"m K\"\>"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.7]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Convert ascii codata to Uc\[ScriptCapitalV] objects\
+\>", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ucData", " ", "=", " ", 
+   RowBox[{"Table", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Module", "[", " ", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", " ", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"s", " ", "=", " ", 
+          RowBox[{
+          "codata", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         " ", ",", " ", "\[IndentingNewLine]", "est", ",", " ", "uc", ",", 
+         " ", "comment", ",", " ", "name", ",", " ", "unit", ",", " ", "sf", 
+         ",", " ", "qty", ",", " ", "hasElipsis"}], "\[IndentingNewLine]", 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"comment", "=", " ", 
+         RowBox[{
+         "s", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"est", " ", "=", " ", 
+         RowBox[{
+         "s", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"uc", " ", "=", " ", 
+         RowBox[{
+         "s", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"unit", " ", "=", " ", 
+         RowBox[{
+         "s", "\[LeftDoubleBracket]", "4", "\[RightDoubleBracket]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"name", " ", "=", " ", 
+         RowBox[{"lookupName", "[", " ", "comment", " ", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"ListQ", "[", "name", "]"}], ",", " ", 
+          RowBox[{"(*", " ", 
+           RowBox[{"got", " ", "result", " ", "in", " ", "form", " ", 
+            RowBox[{"{", " ", 
+             RowBox[{"name", ",", " ", 
+              RowBox[{"actual", " ", "comment"}]}], " ", "}"}]}], " ", "*)"}],
+           "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+          RowBox[{
+           RowBox[{"{", " ", 
+            RowBox[{"name", ",", " ", "comment"}], " ", "}"}], " ", "=", " ", 
+           "name"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+          RowBox[{"name", " ", "=", " ", 
+           RowBox[{"\"\<\[LeftGuillemet]\>\"", " ", "<>", " ", 
+            RowBox[{"ToString", "[", "i", "]"}], " ", "<>", " ", 
+            "\"\<\[RightGuillemet]\>\""}]}]}], "\[IndentingNewLine]", "]"}], 
+        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"unit", "=", 
+         RowBox[{"If", "[", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"unit", " ", "===", " ", "Null"}], " ", "||", " ", 
+            RowBox[{"unit", "\[Equal]", " ", "\"\<\>\""}]}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", "Then", " ", "*)"}], " ", 
+           RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+           RowBox[{"{", " ", 
+            RowBox[{"Unit", "->", 
+             RowBox[{"ImportUnits", "[", " ", "unit", " ", "]"}]}], "  ", 
+            "}"}]}], "\[IndentingNewLine]", "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"(*", " ", 
+         RowBox[{"overriden", " ", "values"}], " ", "*)"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"qty", " ", "=", " ", 
+         RowBox[{"ucValue", "[", " ", "name", " ", "]"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"qty", " ", "=!=", " ", "Null"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", "Then", " ", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"hasElipsis", "=", "False"}], ";", "\[IndentingNewLine]", 
+           RowBox[{"est", " ", "=", " ", "qty"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", "Else", " ", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"hasElipsis", " ", "=", " ", 
+            RowBox[{
+             RowBox[{"StringQ", "[", " ", "est", " ", "]"}], " ", "&&", " ", 
+             RowBox[{"StringMatchQ", "[", " ", 
+              RowBox[{"est", ",", " ", "\"\<*...*\>\""}], " ", "]"}]}]}], ";",
+            "\[IndentingNewLine]", 
+           RowBox[{"If", "[", " ", 
+            RowBox[{"hasElipsis", ",", " ", 
+             RowBox[{"est", " ", "=", " ", 
+              RowBox[{"StringReplace", "[", " ", 
+               RowBox[{"est", ",", " ", 
+                RowBox[{"\"\<...\>\"", " ", "\[Rule]", "\"\<\>\""}]}], " ", 
+               "]"}]}]}], " ", "]"}]}]}], "\[IndentingNewLine]", "]"}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"sf", " ", "=", " ", 
+         RowBox[{"If", "[", " ", 
+          RowBox[{
+           RowBox[{"uc", " ", "===", " ", "\"\<(exact)\>\""}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", "Then", " ", "*)"}], " ", "Infinity", ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", "Else", " ", "*)"}], " ", 
+           RowBox[{"StringLength", "[", "\[IndentingNewLine]", 
+            RowBox[{"StringReplace", "[", " ", 
+             RowBox[{"uc", ",", "\[IndentingNewLine]", 
+              RowBox[{"{", "\[IndentingNewLine]", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"StartOfString", "~~", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{"\"\<0\>\"", "..."}], "~~", "\"\<.\>\"", "~~", 
+                    RowBox[{"\"\<0\>\"", "..."}]}], ")"}], "|", 
+                    RowBox[{"(", 
+                    RowBox[{"\"\<0\>\"", "..."}], ")"}]}], ")"}]}], "\[Rule]",
+                  " ", "\"\<\>\""}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"\"\<*^\>\"", "~~", 
+                  RowBox[{"(", 
+                   RowBox[{"NumberString", "|", "\"\<\>\""}], ")"}], "~~", 
+                  "EndOfString"}], "\[Rule]", "\"\<\>\""}]}], 
+               "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "]"}], 
+            "]"}]}], "\[IndentingNewLine]", "]"}]}], ";", 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", " ", 
+         RowBox[{
+          RowBox[{"sf", " ", "=!=", " ", "Infinity"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"uc", "=", 
+            RowBox[{"StringReplace", "[", " ", 
+             RowBox[{"uc", ",", " ", 
+              RowBox[{"\"\<*^\>\"", " ", "\[Rule]", " ", 
+               RowBox[{"\"\<`\>\"", " ", "<>", " ", 
+                RowBox[{"ToString", "[", "sf", "]"}], " ", "<>", " ", 
+                "\"\<*^\>\""}]}]}], " ", "]"}]}], ";", "\[IndentingNewLine]", 
+           
+           RowBox[{"If", "[", " ", 
+            RowBox[{
+             RowBox[{"!", " ", 
+              RowBox[{"StringMatchQ", "[", " ", 
+               RowBox[{"uc", ",", " ", "\"\<*\\\\*^*\>\""}], " ", "]"}]}], 
+             ",", "\[IndentingNewLine]", 
+             RowBox[{"uc", "=", 
+              RowBox[{"StringReplace", "[", " ", 
+               RowBox[{"uc", ",", 
+                RowBox[{"EndOfString", "\[Rule]", 
+                 RowBox[{"\"\<`\>\"", " ", "<>", " ", 
+                  RowBox[{"ToString", "[", "sf", "]"}]}]}]}], " ", "]"}]}]}], 
+            "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+        ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", "  ", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Uc\[ScriptCapitalV]Q", "[", " ", "est", " ", "]"}], " ", "||",
+            " ", 
+           RowBox[{"sf", " ", "===", " ", "Infinity"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"ToUc\[ScriptCapitalV]", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"If", "[", " ", 
+             RowBox[{
+              RowBox[{"Uc\[ScriptCapitalV]Q", "[", "est", "]"}], ",", " ", 
+              "est", ",", " ", 
+              RowBox[{"ToExpression", "[", "est", "]"}]}], " ", "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Name", "\[Rule]", "name"}], ",", " ", 
+            RowBox[{"Comment", "\[Rule]", "comment"}], ",", " ", 
+            RowBox[{"Expression", "\[Rule]", 
+             RowBox[{"NIST$ExpressionBox", "[", " ", "name", " ", "]"}]}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"Distribution", " ", "\[Rule]", " ", 
+             RowBox[{"If", "[", " ", 
+              RowBox[{"hasElipsis", ",", 
+               RowBox[{"DisplayForm", "@", 
+                RowBox[{"RowBox", "[", 
+                 RowBox[{"{", 
+                  RowBox[{
+                  "\"\<(\>\"", ",", "\"\<calc\>\"", ",", "\"\<)\>\""}], "}"}],
+                  "]"}]}]}], " ", "]"}]}], ",", "\[IndentingNewLine]", 
+            RowBox[{"Sequence", "@@", "unit"}]}], " ", "\[IndentingNewLine]", 
+           "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", "Else", " ", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"ToUc\[ScriptCapitalV]", "[", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"ToExpression", "[", "est", "]"}], " ", "\[PlusMinus]", 
+             " ", 
+             RowBox[{"ToExpression", "[", "uc", "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Name", "\[Rule]", "name"}], ",", 
+            RowBox[{"Comment", "\[Rule]", "comment"}], ",", " ", 
+            RowBox[{"Expression", "\[Rule]", 
+             RowBox[{"NIST$ExpressionBox", "[", " ", "name", " ", "]"}]}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"Distribution", "\[Rule]", "Normal\[ScriptCapitalD]"}], 
+            ",", "\[IndentingNewLine]", 
+            RowBox[{"Sequence", "@@", "unit"}]}], " ", "\[IndentingNewLine]", 
+           "]"}]}], "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+      "]"}], " ", ",", "\[IndentingNewLine]", 
+     RowBox[{"{", " ", 
+      RowBox[{"i", ",", " ", "1", ",", " ", "n"}], " ", "}"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"ucData", "\[LeftDoubleBracket]", 
+    RowBox[{";;", "2"}], "\[RightDoubleBracket]"}], "//", 
+   "TableForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      RowBox[{"Uc\[ScriptCapitalV]", "[", 
+       RowBox[{"1920155714", ",", "32", ",", 
+        RowBox[{"-", "19"}], ",", 
+        RowBox[{"Name", "\[Rule]", "\<\"d220sil\"\>"}], ",", 
+        RowBox[{
+        "Comment", "\[Rule]", "\<\"{220} lattice spacing of silicon\"\>"}], 
+        ",", 
+        RowBox[{
+        "Expression", 
+         "\[Rule]", \
+"\<\"\\\"\\!\\(\\*StyleBox[\\\\(\\\\(\\\\*StyleBox[\\\"d\\\", \
+\\\"TI\\\"]\\\\)\\\\_220\\\\), \\\"TSYMB\\\"]\\)\\\"\"\>"}], ",", 
+        RowBox[{"Distribution", "\[Rule]", "Normal\[ScriptCapitalD]"}], ",", 
+        RowBox[{
+        "Unit", "\[Rule]", "\<\"\\!\\(\\*StyleBox[\\\"m\\\"]\\)\"\>"}]}], 
+       "]"}]},
+     {
+      RowBox[{"Uc\[ScriptCapitalV]", "[", 
+       RowBox[{"72942995361", ",", "29", ",", 
+        RowBox[{"-", "7"}], ",", 
+        RowBox[{"Name", "\[Rule]", "\<\"malsme\"\>"}], ",", 
+        RowBox[{
+        "Comment", "\[Rule]", "\<\"alpha particle-electron mass ratio\"\>"}], 
+        ",", 
+        RowBox[{
+        "Expression", 
+         "\[Rule]", \
+"\<\"\\\"\\!\\(\\*StyleBox[\\\\(\\\\(\\\\*StyleBox[\\\"m\\\", \
+\\\"TI\\\"]\\\\)\\\\_\[Alpha]/\\\\(\\\\*StyleBox[\\\"m\\\", \
+\\\"TI\\\"]\\\\)\\\\_e\\\\), \\\"TSYMB\\\"]\\)\\\"\"\>"}], ",", 
+        RowBox[{"Distribution", "\[Rule]", "Normal\[ScriptCapitalD]"}]}], 
+       "]"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   Column],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ucData", "\[LeftDoubleBracket]", 
+   RowBox[{
+    RowBox[{"-", "2"}], ";;"}], "\[RightDoubleBracket]"}], "//", 
+  "TableForm"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      RowBox[{"Uc\[ScriptCapitalV]", "[", 
+       RowBox[{"58789254", ",", "53", ",", "3", ",", 
+        RowBox[{"Name", "\[Rule]", "\<\"bpwien\"\>"}], ",", 
+        RowBox[{
+        "Comment", 
+         "\[Rule]", "\<\"Wien frequency displacement law constant\"\>"}], ",",
+         
+        RowBox[{
+        "Expression", 
+         "\[Rule]", "\<\"\\\"\\!\\(\\*StyleBox[\\\\(\\\\*StyleBox[\\\"b\\\", \
+\\\"TI\\\"]\\\\^\[Prime]\\\\), \\\"TSYMB\\\"]\\)\\\"\"\>"}], ",", 
+        RowBox[{"Distribution", "\[Rule]", "Normal\[ScriptCapitalD]"}], ",", 
+        RowBox[{
+        "Unit", "\[Rule]", "\<\"\\!\\(\\*StyleBox[\\\\(Hz\[MediumSpace]K\\\\^\
+\\\\(-1\\\\)\\\\)]\\)\"\>"}]}], "]"}]},
+     {
+      RowBox[{"Uc\[ScriptCapitalV]", "[", 
+       RowBox[{"28977721", ",", "26", ",", 
+        RowBox[{"-", "10"}], ",", 
+        RowBox[{"Name", "\[Rule]", "\<\"bwien\"\>"}], ",", 
+        RowBox[{
+        "Comment", 
+         "\[Rule]", "\<\"Wien wavelength displacement law constant\"\>"}], 
+        ",", 
+        RowBox[{
+        "Expression", 
+         "\[Rule]", "\<\"\\\"\\!\\(\\*StyleBox[StyleBox[\\\"b\\\", \
+\\\"TI\\\"], \\\"TSYMB\\\"]\\)\\\"\"\>"}], ",", 
+        RowBox[{"Distribution", "\[Rule]", "Normal\[ScriptCapitalD]"}], ",", 
+        RowBox[{
+        "Unit", "\[Rule]", "\<\"\\!\\(\\*StyleBox[\\\\(m\[MediumSpace]K\\\\)]\
+\\)\"\>"}]}], "]"}]}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.5599999999999999]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   Column],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Generate and save ucData as UCA-CODATA package", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", " ", "CODATA", " ", "]"}]], "Input"],
+
+Cell["Save definitions to file:", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"opf", "=", 
+   RowBox[{"OpenWrite", "[", " ", 
+    RowBox[{
+     RowBox[{"MyFile", "@", " ", "outputPackageFile"}], ",", " ", 
+     RowBox[{"PageWidth", " ", "\[Rule]", " ", "90"}]}], "  ", "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WriteString", "[", "  ", 
+   RowBox[{
+   "opf", ",", "\[IndentingNewLine]", "\"\<\\n\>\"", ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+    "\"\<(* \>\"", " ", "<>", " ", "codataHeader", " ", "<>", " ", 
+     "\"\< *)\\n\>\""}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+    "\"\<(* \>\"", " ", "<>", " ", "codataRelease", " ", "<>", " ", 
+     "\"\< *)\\n\>\""}], ",", "\[IndentingNewLine]", "\"\<\\n\>\"", ",", 
+    "\[IndentingNewLine]", 
+    "\"\<(* This file was generated automatically by the UCA-CODATA notebook. \
+*)\\n\>\"", ",", "\[IndentingNewLine]", "\"\<\\n\\n\>\""}], 
+   "\[IndentingNewLine]", "]"}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"(", " ", 
+    RowBox[{
+     RowBox[{"WriteString", "[", " ", 
+      RowBox[{"opf", ",", " ", "#1", ",", "\"\<\\n\\n\>\""}], " ", "]"}], " ",
+      "&"}], " ", ")"}], " ", "/@", " ", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+     "\"\<Quiet[ Clear[ CODATA ] ];\>\"", " ", ",", "\[IndentingNewLine]", 
+      "\"\<SetAttributes[ CODATA, HoldAll ];\>\"", ",", 
+      "\[IndentingNewLine]", 
+      "\"\<CODATA::unrec = \\\"Unrecognized CODATA symbol ID: `1`\\\";\>\"", 
+      ",", "\[IndentingNewLine]", 
+      "\"\<CODATA[ symb_Symbol ] := CODATA[ Evaluate[ SymbolName[ \
+Unevaluated[symb] ] ] ];\>\"", ",", "\[IndentingNewLine]", 
+      "\"\<CODATA[ e___ ] := Message[ CODATA::unrec, { e } ];\\n\>\""}], " ", 
+     "\[IndentingNewLine]", "}"}], "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"AbsoluteTiming", "[", " ", 
+   RowBox[{"Do", "[", " ", 
+    RowBox[{
+     RowBox[{"Module", "[", " ", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{"qty", " ", "=", " ", 
+         RowBox[{
+         "ucData", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        " ", "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"WriteString", "[", " ", 
+         RowBox[{"opf", ",", " ", "\[IndentingNewLine]", 
+          RowBox[{"\"\<CODATA[ \>\"", " ", "<>", " ", 
+           RowBox[{"ToString", "[", " ", 
+            RowBox[{
+             RowBox[{"Uc\[ScriptCapitalV]$Option", "[", " ", 
+              RowBox[{"qty", ",", "Name"}], " ", "]"}], ",", " ", 
+             "InputForm"}], " ", "]"}], " ", "<>", " ", "\"\< ] = \>\""}]}], 
+         " ", "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Write", "[", " ", 
+         RowBox[{"opf", ",", "  ", "qty"}], " ", "]"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"WriteString", "[", " ", 
+         RowBox[{"opf", ",", " ", "\"\<\\n\>\""}], " ", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", " ", 
+      RowBox[{"i", ",", " ", 
+       RowBox[{"Length", "[", "ucData", "]"}]}], " ", "}"}]}], " ", 
+    "\[IndentingNewLine]", "]"}], " ", "]"}], "\[LeftDoubleBracket]", "1", 
+  "\[RightDoubleBracket]"}]], "Input"],
+
+Cell[BoxData["3.203125`7.95711888056784"], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WriteString", "[", "  ", 
+   RowBox[{
+   "opf", ",", "\[IndentingNewLine]", 
+    "\"\<(* End of File (terminated with Null expression) *)\\n\>\"", ",", 
+    "\[IndentingNewLine]", "\"\<Null;\\n\\n\>\""}], "\[IndentingNewLine]", 
+   "]"}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Close", "[", " ", "opf", " ", "]"}]], "Input"],
+
+Cell[BoxData["\<\"W:\\\\KTH\\\\Uncertainty \
+Analysis\\\\CODATA\\\\..\\\\UCA-CODATA.m\"\>"], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Reload CODATA package and do sanity checks", "Subsection"],
+
+Cell[BoxData[
+ RowBox[{"Get", "[", " ", 
+  RowBox[{"MyFile", "@", " ", "outputPackageFile"}], " ", "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"CODATA", "[", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"CODATA", "[", " ", 
+  RowBox[{"s", ",", "s", ",", "s"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"CODATA", "[", "blabla", "]"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CODATA", "::", "\<\"unrec\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Unrecognized CODATA symbol ID: \\!\\({}\\)\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CODATA", "::", "\<\"unrec\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Unrecognized CODATA symbol ID: \\!\\({s, s, s}\\)\"\>"}]], \
+"Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CODATA", "::", "\<\"unrec\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Unrecognized CODATA symbol ID: \\!\\({\\\"blabla\\\"}\\)\"\
+\>"}]], "Message", "MSG"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"DisplayUc\[ScriptCapitalV]", "@", " ", 
+  RowBox[{"CODATA", "[", "h", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"DisplayUc\[ScriptCapitalV]", "@", " ", 
+  RowBox[{"ToUc\[ScriptCapitalV]", "[", 
+   RowBox[{
+    RowBox[{"CODATA", "[", "malsme", "]"}], ",", 
+    RowBox[{
+    "Name", "\[Rule]", 
+     "\"\<\!\(\*SubscriptBox[\(m\), \(\[Alpha]\)]\)/\!\(\*SubscriptBox[\(m\), \
+\(e\)]\)\>\""}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"DisplayUc\[ScriptCapitalV]", "@", " ", 
+  RowBox[{"CODATA", "[", "\"\<mm12c\>\"", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"DisplayUc\[ScriptCapitalV]", "@", " ", 
+  RowBox[{"CODATA", "[", "c", "]"}]}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["h",
+      HoldForm], "\[RightTriangle]", 
+     RowBox[{"\<\"Planck constant\"\>", 
+      RowBox[{";", " "}], 
+      StyleBox["\<\"\!\(\*StyleBox[StyleBox[\"h\", \"TI\"], \"TSYMB\"]\)\"\>",
+       
+       ShowStringCharacters->False], 
+      RowBox[{"[", 
+       RowBox[{"J", "\[MediumSpace]", "s"}], "]"}]}]},
+    {"\[SpanFromAbove]", "=", 
+     RowBox[{"(", 
+      RowBox[{"6.62606957", "\[Times]", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "34"}]]}], "\[ThinSpace]", "\[PlusMinus]", 
+      "\[ThinSpace]", 
+      RowBox[{"2.9", "\[Times]", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "41"}]]}], ")", 
+      RowBox[{"J", "\[MediumSpace]", "s"}]}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{
+        RowBox[{"6.62606928", "\[Times]", 
+         SuperscriptBox["10", 
+          RowBox[{"-", "34"}]]}], ";", 
+        RowBox[{"6.62606986", "\[Times]", 
+         SuperscriptBox["10", 
+          RowBox[{"-", "34"}]]}]}], "]"}], 
+      RowBox[{"J", "\[MediumSpace]", "s"}], ";", " ", 
+      RowBox[{"Normal\[ScriptCapitalD]", ",", " ", 
+       RowBox[{"68.3", "\[MediumSpace]", "%"}]}]}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      RowBox[{
+       StyleBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"6.62606957", "\[PlusMinus]", "0.00000029"}], ")"}], 
+         "\[Times]", 
+         SuperscriptBox["10", 
+          RowBox[{"-", "34"}]]}],
+        FontWeight->Bold], 
+       RowBox[{"J", "\[MediumSpace]", "s"}]}], " ", "=", 
+      RowBox[{
+       StyleBox[
+        RowBox[{
+         RowBox[{"6.62606957", "\[InvisibleApplication]", 
+          RowBox[{"(", "29", ")"}]}], "\[Times]", 
+         SuperscriptBox["10", 
+          RowBox[{"-", "34"}]]}],
+        FontWeight->Bold], 
+       RowBox[{"J", "\[MediumSpace]", "s"}]}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{
+      SubscriptBox["m", "\[Alpha]"], "/", 
+      SubscriptBox["m", "e"]}], "\[RightTriangle]", 
+     RowBox[{"\<\"alpha particle-electron mass ratio\"\>", 
+      RowBox[{";", " "}], 
+      StyleBox["\<\"\!\(\*StyleBox[\\(\\(\\*StyleBox[\"m\", \"TI\"]\\)\\_\
+\[Alpha]/\\(\\*StyleBox[\"m\", \"TI\"]\\)\\_e\\), \"TSYMB\"]\)\"\>",
+       ShowStringCharacters->False]}]},
+    {"\[SpanFromAbove]", "=", 
+     RowBox[{"7294.2995361", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", 
+      RowBox[{"2.9", "\[Times]", 
+       SuperscriptBox["10", 
+        RowBox[{"-", "6"}]]}]}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"7294.2995332", ";", "7294.299539"}], "]"}], ";", " ", 
+      RowBox[{"Normal\[ScriptCapitalD]", ",", " ", 
+       RowBox[{"68.3", "\[MediumSpace]", "%"}]}]}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"7.2942995361", "\[PlusMinus]", "0.0000000029"}], ")"}], 
+        "\[Times]", 
+        SuperscriptBox["10", "3"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{
+        RowBox[{"7.2942995361", "\[InvisibleApplication]", 
+         RowBox[{"(", "29", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "3"]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["mm12c",
+      HoldForm], "\[RightTriangle]", 
+     RowBox[{"\<\"molar mass of carbon-12\"\>", 
+      RowBox[{";", " "}], 
+      StyleBox["\<\"\!\(\*StyleBox[RowBox[{StyleBox[\"M\", \"TI\"], \"\
+\[InvisibleApplication]\", RowBox[{\"(\", \"\[NegativeThinSpace]\", \
+SuperscriptBox[\"\", \"12\"], \"\[NegativeVeryThinSpace]\", \"C\", \")\"}]}], \
+\"TSYMB\"]\)\"\>",
+       ShowStringCharacters->False], 
+      RowBox[{"[", 
+       RowBox[{"kg", "\[MediumSpace]", 
+        SuperscriptBox["mol", 
+         RowBox[{"-", "1"}]]}], "]"}]}]},
+    {"\[SpanFromAbove]", "=", 
+     RowBox[{
+      InterpretationBox[
+       RowBox[{"0.012", "\[MediumSpace]", 
+        RowBox[{"(", "exact", ")"}]}],
+       Rational[3, 250],
+       Editable->False,
+       Selectable->False], 
+      RowBox[{"kg", "\[MediumSpace]", 
+       SuperscriptBox["mol", 
+        RowBox[{"-", "1"}]]}]}]},
+    {"\[SpanFromAbove]", "=", 
+     RowBox[{
+      StyleBox["0.012",
+       FontWeight->Bold], 
+      RowBox[{"kg", "\[MediumSpace]", 
+       SuperscriptBox["mol", 
+        RowBox[{"-", "1"}]]}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["c",
+      HoldForm], "\[RightTriangle]", 
+     RowBox[{"\<\"speed of light in vacuum\"\>", 
+      RowBox[{";", " "}], 
+      StyleBox["\<\"\!\(\*StyleBox[\\(\\*StyleBox[\"c\", \"TI\"], \
+\\(\\*StyleBox[\"c\", \"TI\"]\\)\\_0\\), \"TSYMB\"]\)\"\>",
+       ShowStringCharacters->False], 
+      RowBox[{"[", 
+       RowBox[{"m", "\[MediumSpace]", 
+        SuperscriptBox["s", 
+         RowBox[{"-", "1"}]]}], "]"}]}]},
+    {"\[SpanFromAbove]", "=", 
+     RowBox[{
+      InterpretationBox[
+       RowBox[{"299792458", "\[MediumSpace]", 
+        RowBox[{"(", "exact", ")"}]}],
+       299792458,
+       Editable->False,
+       Selectable->False], 
+      RowBox[{"m", "\[MediumSpace]", 
+       SuperscriptBox["s", 
+        RowBox[{"-", "1"}]]}]}]},
+    {"\[SpanFromAbove]", "=", 
+     RowBox[{
+      StyleBox[
+       RowBox[{"2.99792458", "\[Times]", 
+        SuperscriptBox["10", "8"]}],
+       FontWeight->Bold], 
+      RowBox[{"m", "\[MediumSpace]", 
+       SuperscriptBox["s", 
+        RowBox[{"-", "1"}]]}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"DisplayUc\[ScriptCapitalV]", "@", " ", 
+  RowBox[{"CODATA", "[", "mu0", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"DisplayUc\[ScriptCapitalV]", "@", " ", 
+  RowBox[{"CODATA", "[", "ep0", "]"}]}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["mu0",
+      HoldForm], "\[RightTriangle]", 
+     RowBox[{"\<\"magnetic constant\"\>", 
+      RowBox[{";", " "}], 
+      StyleBox["\<\"\!\(\*StyleBox[\\(\[Mu]\\_0\\), \"TSYMB\"]\)\"\>",
+       ShowStringCharacters->False], 
+      RowBox[{"[", 
+       RowBox[{"N", "\[MediumSpace]", 
+        SuperscriptBox["A", 
+         RowBox[{"-", "2"}]]}], "]"}]}]},
+    {"\[SpanFromAbove]", "=", 
+     RowBox[{
+      InterpretationBox[
+       RowBox[{
+        RowBox[{"4", "\[Pi]", "\[MediumSpace]", 
+         SuperscriptBox["10", 
+          RowBox[{"-", "7"}]]}], "\[MediumSpace]", 
+        RowBox[{"(", "exact", ")"}]}],
+       Rational[1, 2500000] Pi,
+       Editable->False,
+       Selectable->False], 
+      RowBox[{"N", "\[MediumSpace]", 
+       SuperscriptBox["A", 
+        RowBox[{"-", "2"}]]}]}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{"1.25663706143591729538505735331", "\[Times]", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "6"}]]}],
+       FontWeight->Bold], 
+      RowBox[{"N", "\[MediumSpace]", 
+       SuperscriptBox["A", 
+        RowBox[{"-", "2"}]]}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["ep0",
+      HoldForm], "\[RightTriangle]", 
+     RowBox[{"\<\"electric constant\"\>", 
+      RowBox[{";", " "}], 
+      StyleBox["\<\"\!\(\*StyleBox[\\(\[CurlyEpsilon]\\_0\\), \
+\"TSYMB\"]\)\"\>",
+       ShowStringCharacters->False], 
+      RowBox[{"[", 
+       RowBox[{"F", "\[MediumSpace]", 
+        SuperscriptBox["m", 
+         RowBox[{"-", "1"}]]}], "]"}]}]},
+    {"\[SpanFromAbove]", "=", 
+     RowBox[{
+      InterpretationBox[
+       RowBox[{
+        RowBox[{"1", "/", 
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["\[Mu]", "0"], "\[MediumSpace]", 
+           SuperscriptBox["c", "2"]}], ")"}]}], "\[MediumSpace]", 
+        RowBox[{"(", "exact", ")"}]}],
+       Rational[625000, 22468879468420441]/Pi,
+       Editable->False,
+       Selectable->False], 
+      RowBox[{"F", "\[MediumSpace]", 
+       SuperscriptBox["m", 
+        RowBox[{"-", "1"}]]}]}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{"8.85418781762038985053656303171", "\[Times]", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "12"}]]}],
+       FontWeight->Bold], 
+      RowBox[{"F", "\[MediumSpace]", 
+       SuperscriptBox["m", 
+        RowBox[{"-", "1"}]]}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->None,
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1050, 1050},
+WindowMargins->{{Automatic, 289}, {Automatic, 9}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"FacingPages"->False,
+"FirstPageHeader"->True,
+"PrintingMargins"->{{28.375, 28.375}, {54., 54.}}},
+InputAliases->{"intt" -> RowBox[{"\[Integral]", 
+     RowBox[{"\[SelectionPlaceholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "dintt" -> 
+  RowBox[{
+     SubsuperscriptBox[
+     "\[Integral]", "\[SelectionPlaceholder]", "\[Placeholder]"], 
+     RowBox[{"\[Placeholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "sumt" -> RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "prodt" -> RowBox[{
+     UnderoverscriptBox["\[Product]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "dt" -> RowBox[{
+     SubscriptBox["\[PartialD]", "\[Placeholder]"], " ", 
+     "\[SelectionPlaceholder]"}], "notation" -> RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation>" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation<" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "symb" -> 
+  RowBox[{"Symbolize", "[", 
+     TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], "]"}], 
+  "infixnotation" -> RowBox[{"InfixNotation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], ",", 
+       "\[Placeholder]"}], "]"}], "addia" -> RowBox[{"AddInputAlias", "[", 
+     RowBox[{"\"\[SelectionPlaceholder]\"", "\[Rule]", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "pattwraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationPatternTag"], "madeboxeswraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationMadeBoxesTag"]},
+TrackCellChangeTimes->False,
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "UCA-Stylesheet.nb"]]}, Visible -> False, 
+  FrontEndVersion -> "6.0 for Microsoft Windows (32-bit) (May 21, 2008)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 34, 0, 67, "Title"],
+Cell[627, 25, 501, 14, 110, "Input"],
+Cell[1131, 41, 669, 16, 70, "Input",
+ InitializationCell->True],
+Cell[CellGroupData[{
+Cell[1825, 61, 39, 0, 35, "Subsubsection"],
+Cell[1867, 63, 82, 2, 29, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1986, 70, 35, 0, 35, "Subsubsection"],
+Cell[2024, 72, 732, 21, 110, "Input",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2793, 98, 61, 0, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[2879, 102, 4698, 130, 350, "Input"],
+Cell[7580, 234, 979, 30, 59, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8608, 270, 34, 0, 35, "Subsubsection"],
+Cell[8645, 272, 262, 7, 29, "Input"],
+Cell[8910, 281, 4261, 97, 530, "Input"],
+Cell[13174, 380, 1354, 33, 190, "Input"],
+Cell[14531, 415, 230, 7, 29, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14798, 427, 55, 0, 63, "Section"],
+Cell[CellGroupData[{
+Cell[14878, 431, 50, 0, 45, "Subsection"],
+Cell[CellGroupData[{
+Cell[14953, 435, 59, 0, 35, "Subsubsection"],
+Cell[15015, 437, 94, 2, 33, "Text"],
+Cell[15112, 441, 220, 6, 29, "Input"],
+Cell[15335, 449, 546, 13, 50, "Input"],
+Cell[CellGroupData[{
+Cell[15906, 466, 65, 1, 29, "Input"],
+Cell[15974, 469, 58, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16069, 475, 154, 4, 29, "Input"],
+Cell[16226, 481, 638, 17, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16901, 503, 174, 5, 29, "Input"],
+Cell[17078, 510, 659, 17, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17774, 532, 335, 6, 70, "Input"],
+Cell[18112, 540, 174, 5, 31, "Output"],
+Cell[18289, 547, 162, 4, 31, "Output"],
+Cell[18454, 553, 159, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18662, 563, 285, 11, 38, "Subsubsection"],
+Cell[18950, 576, 834, 19, 130, "Input"],
+Cell[19787, 597, 5296, 125, 670, "Input"],
+Cell[25086, 724, 1434, 35, 170, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26557, 764, 283, 11, 38, "Subsubsection"],
+Cell[26843, 777, 136, 5, 33, "Text"],
+Cell[26982, 784, 137, 4, 29, "Input"],
+Cell[27122, 790, 509, 12, 70, "Input"],
+Cell[CellGroupData[{
+Cell[27656, 806, 416, 10, 50, "Input"],
+Cell[28075, 818, 694, 17, 33, "Output"],
+Cell[28772, 837, 267, 5, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29088, 848, 62, 0, 35, "Subsubsection"],
+Cell[29153, 850, 92, 2, 33, "Text"],
+Cell[29248, 854, 417, 10, 29, "Input"],
+Cell[CellGroupData[{
+Cell[29690, 868, 87, 2, 29, "Input"],
+Cell[29780, 872, 58, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29875, 878, 179, 5, 29, "Input"],
+Cell[30057, 885, 821, 21, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30915, 911, 178, 5, 29, "Input"],
+Cell[31096, 918, 830, 21, 47, "Output"]
+}, Open  ]],
+Cell[31941, 942, 30, 0, 33, "Text"],
+Cell[31974, 944, 598, 14, 50, "Input"],
+Cell[32575, 960, 289, 7, 29, "Input"],
+Cell[32867, 969, 92, 2, 33, "Text"],
+Cell[32962, 973, 731, 17, 70, "Input"],
+Cell[33696, 992, 92, 2, 33, "Text"],
+Cell[33791, 996, 832, 19, 70, "Input"],
+Cell[CellGroupData[{
+Cell[34648, 1019, 179, 5, 29, "Input"],
+Cell[34830, 1026, 744, 19, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35611, 1050, 178, 5, 29, "Input"],
+Cell[35792, 1057, 769, 19, 47, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36622, 1083, 81, 2, 45, "Subsection"],
+Cell[36706, 1087, 10139, 212, 1390, "Input"],
+Cell[CellGroupData[{
+Cell[46870, 1303, 174, 5, 29, "Input"],
+Cell[47047, 1310, 1886, 50, 49, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48970, 1365, 173, 5, 29, "Input"],
+Cell[49146, 1372, 1923, 50, 53, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[51118, 1428, 68, 0, 45, "Subsection"],
+Cell[51189, 1430, 73, 1, 29, "Input"],
+Cell[51265, 1433, 41, 0, 33, "Text"],
+Cell[51309, 1435, 253, 7, 29, "Input"],
+Cell[51565, 1444, 669, 15, 170, "Input"],
+Cell[52237, 1461, 856, 19, 150, "Input"],
+Cell[CellGroupData[{
+Cell[53118, 1484, 1447, 32, 210, "Input"],
+Cell[54568, 1518, 80, 1, 31, "Output"]
+}, Open  ]],
+Cell[54663, 1522, 290, 7, 90, "Input"],
+Cell[CellGroupData[{
+Cell[54978, 1533, 70, 1, 29, "Input"],
+Cell[55051, 1536, 130, 2, 31, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55230, 1544, 64, 0, 45, "Subsection"],
+Cell[55297, 1546, 115, 2, 29, "Input"],
+Cell[CellGroupData[{
+Cell[55437, 1552, 219, 4, 70, "Input"],
+Cell[55659, 1558, 171, 5, 21, "Message"],
+Cell[55833, 1565, 178, 5, 21, "Message"],
+Cell[56014, 1572, 185, 5, 21, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56236, 1582, 674, 14, 90, "Input"],
+Cell[56913, 1598, 2198, 65, 107, "Output"],
+Cell[59114, 1665, 1687, 46, 99, "Output"],
+Cell[60804, 1713, 1439, 43, 83, "Output"],
+Cell[62246, 1758, 1382, 43, 83, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63665, 1806, 231, 4, 50, "Input"],
+Cell[63899, 1812, 1493, 46, 83, "Output"],
+Cell[65395, 1860, 1583, 49, 83, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

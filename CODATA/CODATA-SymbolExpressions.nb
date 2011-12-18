@@ -1,0 +1,5803 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    185917,       5794]
+NotebookOptionsPosition[    169153,       5387]
+NotebookOutlinePosition[    172084,       5454]
+CellTagsIndexPosition[    172041,       5451]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["CODATA: Expression Boxes for Symbols", "Section"],
+
+Cell[TextData[{
+ "Creates ",
+ StyleBox["CODATA-SymbolExpressions.mx",
+  FontWeight->"Bold"]
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Quite", "@", " ", 
+   RowBox[{"Remove", "[", " ", "exprBox", " ", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", "name_Symbol", " ", "]"}], " ", ":=", " ", 
+   RowBox[{"exprBox", "[", " ", 
+    RowBox[{"SymbolName", "[", " ", "name", " ", "]"}], " ", "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", 
+    RowBox[{"name_", "?", "StringQ"}], " ", "]"}], " ", ":=", " ", 
+   RowBox[{"\"\<undefined \>\"", " ", "<>", " ", "name"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mal\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+    "\"\<\[Alpha]\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<malc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Alpha]\>\""}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<malc2mev\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Alpha]\>\""}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<malu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+    "\"\<\[Alpha]\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmal\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+        "\"\<\[InvisibleApplication]\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", "\"\<\[Alpha]\>\"", ",", "\"\<)\>\""}], 
+          "}"}], "]"}]}], "}"}], "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Alpha]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<malsme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Alpha]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<malsmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Alpha]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<angstar\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{"\"\<\[Angstrom]\>\"", ",", "\"\<*\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<u\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<u\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tuj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<u\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muc2mev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<u\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<uev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<u\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<uhr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<u\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<uhz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<u\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{
+          RowBox[{"StyleBox", "[", 
+           RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+          "\"\<2\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<uminv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<u\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<uj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<u\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<uk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<u\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{
+          RowBox[{"StyleBox", "[", 
+           RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+          "\"\<2\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ukg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1\>\"", ",", "\"\<u\>\""}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auhypol\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<3\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", 
+       ",", "\"\<3\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\"", 
+       ",", "\"\<2\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<au2hypol\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<4\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", 
+       ",", "\"\<4\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\"", 
+       ",", "\"\<3\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tthbar\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<te\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<aucd\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", 
+       ",", "\"\<3\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<aucur\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auedm\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auefld\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auefg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", 
+       ",", "\"\<2\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auepol\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", 
+       ",", "\"\<2\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auep\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<aueqm\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", 
+       ",", "\"\<2\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<thr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auforce\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tbohrrada0\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<aumdm\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<aumfd\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ",", "\"\</\>\"",
+      ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", 
+       ",", "\"\<2\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<aumag\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", 
+       ",", "\"\<2\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ttme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<aumom\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ",", "\"\</\>\"",
+      ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auperm\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<aut\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ",", "\"\</\>\"",
+      ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<auvel\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<na\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<N\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<A\>\""}], 
+      "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<L\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mub\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mubev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mubshhz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mubshcminv\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mubskk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<bohrrada0\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<k\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tkev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kshhz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kshcminv\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<z0\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<Z\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<re\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<r\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ecomwl\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Lambda]\>\"", ",", "\"\<C\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ecomwlbar\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<\[Lambda]\>\"", ",", "\"\<_\>\""}], "]"}], ",", 
+    "\"\<C\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<conqu2e2sh\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<G\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kj90\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<K\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<J\>\"", ",", "\"\<-\>\"", ",", "\"\<90\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<rk90\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<K\>\"", ",", "\"\<-\>\"", ",", "\"\<90\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<xucukalph1\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<xu\>\"", ",", "\"\<(\>\"", ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<CuK\>\"", ",", 
+        RowBox[{"SubscriptBox", "[", 
+         RowBox[{"\"\<\[Alpha]\>\"", ",", "\"\<1\>\""}], "]"}]}], "}"}], 
+      "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gdn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<g\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mud\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<d\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mudsmub\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<d\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mudsmun\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<d\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<md\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mdc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mdc2mev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mdu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmd\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+        "\"\<\[InvisibleApplication]\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", "\"\<d\>\"", ",", "\"\<)\>\""}], "}"}], 
+         "]"}]}], "}"}], "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<rd\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<r\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mudsmuem\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<d\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mdsme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mudsmunn\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<d\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mudsmup\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<d\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mdsmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ep0\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[CurlyEpsilon]\>\"", ",", "\"\<0\>\""}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<esme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<-\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gem\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<g\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammae\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<e\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammaebar\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"",
+      ",", "\"\<2\>\"", ",", "\"\<\[Pi]\>\""}], "}"}], "]"}], ";"}]], "Input",\
+
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muem\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ae\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muemsmub\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muemsmun\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<me\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mec2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mec2mev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<meu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+        "\"\<\[InvisibleApplication]\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", "\"\<e\>\"", ",", "\"\<)\>\""}], "}"}], 
+         "]"}]}], "}"}], "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mesmalpha\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Alpha]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muemsmuhp\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muemsmupp\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", "\"\<tevj\>\"", " ", "]"}], " ", "=", " ", 
+   RowBox[{"RowBox", "[", 
+    RowBox[{"{", 
+     RowBox[{"\"\<(\>\"", ",", 
+      RowBox[{"RowBox", "[", 
+       RowBox[{"{", 
+        RowBox[{"\"\<1\>\"", ",", "\"\<eV\>\""}], "}"}], "]"}], ",", 
+      "\"\<)\>\""}], "}"}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<evu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<eV\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<evhr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1\>\"", ",", "\"\<eV\>\""}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<evhz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<eV\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<evminv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<eV\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<hc\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<evj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1\>\"", ",", "\"\<eV\>\""}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<evk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<eV\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<evkg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<eV\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muemsmud\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<d\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mesmd\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<d\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mesmh\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muemsmumum\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<\[Mu]\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mesmmu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muemsmunn\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mesmn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muemsmup\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mesmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mesmtau\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mesmt\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<e\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<esh\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<f\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<F\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<f90\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<F\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<*\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gf\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<G\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<F\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"RowBox", "[", 
+        RowBox[{"{", 
+         RowBox[{"\"\<(\>\"", ",", 
+          RowBox[{"RowBox", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ",", 
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}],
+           ",", "\"\<)\>\""}], "}"}], "]"}], ",", "\"\<3\>\""}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<alph\>\"", " ", "]"}], " ", "=", " ", 
+  "\"\<\[Alpha]\>\"", ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<c11strc\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<1\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", "\"\<c1l\>\"", " ", "]"}], " ", "=", " ", 
+   RowBox[{"SubscriptBox", "[", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", "\"\<1L\>\"", "}"}], "]"}]}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<threv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hru\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SubscriptBox", "[", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+             "\"\<h\>\""}], "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hrev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hrhz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SubscriptBox", "[", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+             "\"\<h\>\""}], "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hrminv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", 
+           RowBox[{"RowBox", "[", 
+            RowBox[{"{", 
+             RowBox[{"\"\<1\>\"", ",", 
+              RowBox[{"SubscriptBox", "[", 
+               RowBox[{
+                RowBox[{"StyleBox", "[", 
+                 RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+                "\"\<h\>\""}], "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], 
+          "}"}], "]"}], ",", "\"\</\>\"", ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], ",",
+      
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hrj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hrk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SubscriptBox", "[", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+             "\"\<h\>\""}], "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hrkg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SubscriptBox", "[", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<E\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+             "\"\<h\>\""}], "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ghn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<g\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muh\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muhsmub\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muhsmun\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mh\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mhc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mhc2mev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mhu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmh\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+        "\"\<\[InvisibleApplication]\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", "\"\<h\>\"", ",", "\"\<)\>\""}], "}"}], 
+         "]"}]}], "}"}], "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mhsme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mhsmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<h\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hzu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<Hz\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{
+          RowBox[{"StyleBox", "[", 
+           RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+          "\"\<2\>\""}], "]"}]}], "}"}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hzev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<Hz\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hzhr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<Hz\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hzminv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<Hz\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hzj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<Hz\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hzk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<Hz\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hzkg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<Hz\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{
+          RowBox[{"StyleBox", "[", 
+           RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+          "\"\<2\>\""}], "]"}]}], "}"}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<alphinv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{"\"\<\[Alpha]\>\"", ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<minvu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SuperscriptBox", "[", 
+            RowBox[{"\"\<m\>\"", ",", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], 
+            "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<minvev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SuperscriptBox", "[", 
+            RowBox[{"\"\<m\>\"", ",", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], 
+            "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<minvhr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SuperscriptBox", "[", 
+            RowBox[{"\"\<m\>\"", ",", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], 
+            "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<minvhz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SuperscriptBox", "[", 
+            RowBox[{"\"\<m\>\"", ",", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], 
+            "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<minvj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SuperscriptBox", "[", 
+            RowBox[{"\"\<m\>\"", ",", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], 
+            "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<minvk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SuperscriptBox", "[", 
+            RowBox[{"\"\<m\>\"", ",", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], 
+            "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<minvkg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", 
+           RowBox[{"SuperscriptBox", "[", 
+            RowBox[{"\"\<m\>\"", ",", 
+             RowBox[{"RowBox", "[", 
+              RowBox[{"{", 
+               RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], 
+            "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<invconqu\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"SubsuperscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<G\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\"", ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<-\>\"", ",", "\"\<1\>\""}], "}"}], "]"}]}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kjos\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<K\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<J\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ju\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<J\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", "\"\<jev\>\"", " ", "]"}], " ", "=", " ", 
+   RowBox[{"RowBox", "[", 
+    RowBox[{"{", 
+     RowBox[{"\"\<1\>\"", ",", "\"\<J\>\""}], "}"}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", "\"\<jhr\>\"", " ", "]"}], " ", "=", " ", 
+   RowBox[{"RowBox", "[", 
+    RowBox[{"{", 
+     RowBox[{"\"\<1\>\"", ",", "\"\<J\>\""}], "}"}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<jhz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<J\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<jminv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<J\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<hc\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<jk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<J\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<jkg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<J\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ku\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<K\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{
+          RowBox[{"StyleBox", "[", 
+           RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+          "\"\<2\>\""}], "]"}]}], "}"}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<K\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<khr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<K\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<khz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<K\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kminv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<K\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<hc\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<K\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kkg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<K\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{
+          RowBox[{"StyleBox", "[", 
+           RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+          "\"\<2\>\""}], "]"}]}], "}"}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kgu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<1\>\"", ",", "\"\<kg\>\""}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kgev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<kg\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kghr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<kg\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kghz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<kg\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{
+          RowBox[{"StyleBox", "[", 
+           RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+          "\"\<2\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kgminv\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<kg\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", 
+        ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kgj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<kg\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<kgk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<1\>\"", ",", "\"\<kg\>\""}], "}"}], "]"}], ",", 
+        "\"\<)\>\""}], "}"}], "]"}], ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{
+          RowBox[{"StyleBox", "[", 
+           RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+          "\"\<2\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}]}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<asil\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<n0\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<n\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<n0std\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<n\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mu0\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<0\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<flxquhs2e\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[CapitalPhi]\>\"", ",", "\"\<0\>\""}], "]"}], ";"}]], "Input",\
+
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<xumokalph1\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{"\"\<xu\>\"", ",", "\"\<(\>\"", ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<MoK\>\"", ",", 
+        RowBox[{"SubscriptBox", "[", 
+         RowBox[{"\"\<\[Alpha]\>\"", ",", "\"\<1\>\""}], "]"}]}], "}"}], 
+      "]"}], ",", "\"\<)\>\""}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<r\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<u\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mm12c\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     "\"\<\[InvisibleApplication]\>\"", ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", "\"\<\[NegativeThinSpace]\>\"", ",", 
+        RowBox[{"SuperscriptBox", "[", 
+         RowBox[{"\"\<\>\"", ",", "\"\<12\>\""}], "]"}], ",", 
+        "\"\<\[NegativeVeryThinSpace]\>\"", ",", "\"\<C\>\"", ",", 
+        "\"\<)\>\""}], "}"}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<nah\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<N\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<A\>\""}], 
+      "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<nahc\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<N\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<A\>\""}], 
+      "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mvol\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<V\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<m\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mvolstd\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<V\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<m\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mvolsil\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<V\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<m\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mcomwl\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Lambda]\>\"", ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<C\>\"", ",", "\"\<,\>\"", ",", "\"\<\[Mu]\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", "\"\<mcomwlbar\>\"", " ", "]"}], " ", "=", 
+   " ", 
+   RowBox[{"SubscriptBox", "[", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"OverscriptBox", "[", 
+        RowBox[{"\"\<\[Lambda]\>\"", ",", "\"\<_\>\""}], "]"}], "}"}], "]"}], 
+     ",", 
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<C\>\"", ",", "\"\<,\>\"", ",", "\"\<\[Mu]\>\""}], "}"}], 
+      "]"}]}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gmum\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<g\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<\[Mu]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mumum\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<\[Mu]\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<amu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<a\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<\[Mu]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mumumsmub\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<\[Mu]\>\""}], "]"}], ",", 
+     "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mumumsmun\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<\[Mu]\>\""}], "]"}], ",", 
+     "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<\[Mu]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmuc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmuc2mev\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmuu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<\[Mu]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmmu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+        "\"\<\[InvisibleApplication]\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", "\"\<\[Mu]\>\"", ",", "\"\<)\>\""}], 
+          "}"}], "]"}]}], "}"}], "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmusme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmusmn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mumumsmup\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<\[Mu]\>\""}], "]"}], ",", 
+     "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmusmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmusmtau\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<thbar\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<thbarev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tmec2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tmec2mev\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tecomwlbar\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<\[Lambda]\>\"", ",", "\"\<_\>\""}], "]"}], ",", 
+    "\"\<C\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mec\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mecmevsc\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<nut\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ",", "\"\</\>\"",
+      ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tc\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<,\>\"", ",", 
+     
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ncomwl\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Lambda]\>\"", ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<C\>\"", ",", "\"\<,\>\"", ",", "\"\<n\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ncomwlbar\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<\[Lambda]\>\"", ",", "\"\<_\>\""}], "]"}], ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<C\>\"", ",", "\"\<,\>\"", ",", "\"\<n\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gnn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<g\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gamman\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<n\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammanbar\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<n\>\""}], "]"}], ",", "\"\</\>\"",
+      ",", "\"\<2\>\"", ",", "\"\<\[Pi]\>\""}], "}"}], "]"}], ";"}]], "Input",\
+
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munsmub\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munsmun\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnc2mev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+        "\"\<\[InvisibleApplication]\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", "\"\<n\>\"", ",", "\"\<)\>\""}], "}"}], 
+         "]"}]}], "}"}], "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munsmupp\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munsmue\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<e\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnsme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnsmmu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munsmup\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnmmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}], ",", "\"\<-\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnmmpc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"SubscriptBox", "[", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+             "\"\<n\>\""}], "]"}], ",", "\"\<-\>\"", ",", 
+           RowBox[{"SubscriptBox", "[", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+             "\"\<p\>\""}], "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnmmpc2mev\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{"\"\<(\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"SubscriptBox", "[", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+             "\"\<n\>\""}], "]"}], ",", "\"\<-\>\"", ",", 
+           RowBox[{"SubscriptBox", "[", 
+            RowBox[{
+             RowBox[{"StyleBox", "[", 
+              RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+             "\"\<p\>\""}], "]"}]}], "}"}], "]"}], ",", "\"\<)\>\""}], "}"}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnmmpu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}], ",", "\"\<-\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnsmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mnsmtau\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<bg\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<G\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<bgspu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<G\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mun\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munshcminv\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munskk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<k\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<munshhz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<h\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hbar\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hbarev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hbcmevf\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<\[HBar]\>\"", ",", "\"\<TR\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<plkl\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<l\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<P\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<plkm\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<P\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<plkmc2gev\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<P\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<plktmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<T\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<P\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<plkt\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<t\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<P\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<esmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<e\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<pcomwl\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Lambda]\>\"", ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<C\>\"", ",", "\"\<,\>\"", ",", "\"\<p\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<pcomwlbar\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<\[Lambda]\>\"", ",", "\"\<_\>\""}], "]"}], ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<C\>\"", ",", "\"\<,\>\"", ",", "\"\<p\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<g\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammap\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<p\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammapbar\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<p\>\""}], "]"}], ",", "\"\</\>\"",
+      ",", "\"\<2\>\"", ",", "\"\<\[Pi]\>\""}], "}"}], "]"}], ";"}]], "Input",\
+
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mup\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mupsmub\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mupsmun\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<sigmapp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubsuperscriptBox", "[", 
+   RowBox[{"\"\<\[Sigma]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mpc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mpc2mev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mpu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<rp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<r\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mpsme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mpsmmu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mupsmunn\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<n\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mpsmn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mpsmtau\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<qucirchs2me\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     "\"\<2\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<hsme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<ryd\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+    "\"\<\[Infinity]\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<rydchz\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Infinity]\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<rydhcev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Infinity]\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<rydhcj\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Infinity]\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<h\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<s0sr\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<S\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<s0srstd\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<S\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<c22ndrc\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammahp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubsuperscriptBox", "[", 
+   RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<h\>\"", ",", "\"\<\[Prime]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammahpbar\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<h\>\"", ",", "\"\<\[Prime]\>\""}],
+       "]"}], ",", "\"\</\>\"", ",", "\"\<2\>\"", ",", "\"\<\[Pi]\>\""}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muhp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubsuperscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\"", ",", "\"\<\[Prime]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muhpsmub\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muhpsmun\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muhpsmup\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muhpsmupp\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<h\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammapp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubsuperscriptBox", "[", 
+   RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gammappbar\>\"", " ", "]"}], " ", "=", 
+  " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Gamma]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}],
+       "]"}], ",", "\"\</\>\"", ",", "\"\<2\>\"", ",", "\"\<\[Pi]\>\""}], 
+    "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mupp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubsuperscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muppsmub\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<muppsmun\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubsuperscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<p\>\"", ",", "\"\<\[Prime]\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<c\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"StyleBox", "[", 
+      RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<,\>\"", ",", 
+     
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<0\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<g\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", "\"\<stdatm\>\"", " ", "]"}], " ", "=", " ", 
+   "\"\<atm\>\""}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"exprBox", "[", " ", "\"\<stdspr\>\"", " ", "]"}], " ", "=", " ", 
+   "\"\<ssp\>\""}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<sigma\>\"", " ", "]"}], " ", "=", " ", 
+  "\"\<\[Sigma]\>\"", ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tcomwl\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Lambda]\>\"", ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<C\>\"", ",", "\"\<,\>\"", ",", "\"\<\[Tau]\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tcomwlbar\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"OverscriptBox", "[", 
+     RowBox[{"\"\<\[Lambda]\>\"", ",", "\"\<_\>\""}], "]"}], ",", 
+    RowBox[{"RowBox", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<C\>\"", ",", "\"\<,\>\"", ",", "\"\<\[Tau]\>\""}], "}"}], 
+     "]"}]}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtau\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<\[Tau]\>\""}],
+    "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtauc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtauc2mev\>\"", " ", "]"}], " ", "=", " ",
+   
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtauu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<\[Tau]\>\""}],
+    "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmtau\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+        "\"\<\[InvisibleApplication]\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", "\"\<\[Tau]\>\"", ",", "\"\<)\>\""}], 
+          "}"}], "]"}]}], "}"}], "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtausme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtausmmu\>\"", " ", "]"}], " ", "=", " ", 
+  
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Mu]\>\""}], "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtausmn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<n\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtausmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+       "\"\<\[Tau]\>\""}], "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<sigmae\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Sigma]\>\"", ",", "\"\<e\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<gtn\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<g\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mut\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<t\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mutsmub\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<t\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<B\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mutsmun\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<t\>\""}], "]"}], ",", "\"\</\>\"", 
+     ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Mu]\>\"", ",", "\"\<N\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mt\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtc2\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtc2mev\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+      "]"}], ",", 
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<c\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<2\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtu\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mmt\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"RowBox", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"StyleBox", "[", 
+         RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+        "\"\<\[InvisibleApplication]\>\"", ",", 
+        RowBox[{"RowBox", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<(\>\"", ",", "\"\<t\>\"", ",", "\"\<)\>\""}], "}"}], 
+         "]"}]}], "}"}], "]"}], ",", "\"\<,\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<M\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtsme\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<e\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<mtsmp\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<t\>\""}], 
+      "]"}], ",", "\"\</\>\"", ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{
+       RowBox[{"StyleBox", "[", 
+        RowBox[{"\"\<m\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<p\>\""}], 
+      "]"}]}], "}"}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<tukg\>\"", " ", "]"}], " ", "=", " ", 
+  "\"\<u\>\"", ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<rk\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<R\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<K\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<sin2th\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"RowBox", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"SuperscriptBox", "[", 
+      RowBox[{"\"\<sin\>\"", ",", "\"\<2\>\""}], "]"}], ",", 
+     RowBox[{"SubscriptBox", "[", 
+      RowBox[{"\"\<\[Theta]\>\"", ",", "\"\<W\>\""}], "]"}]}], "}"}], "]"}], 
+  ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<bpwien\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SuperscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<b\>\"", ",", "\"\<TI\>\""}], "]"}], ",", 
+    "\"\<\[Prime]\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<bwien\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"StyleBox", "[", 
+   RowBox[{"\"\<b\>\"", ",", "\"\<TI\>\""}], "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"exprBox", "[", " ", "\"\<d220sil\>\"", " ", "]"}], " ", "=", " ", 
+  RowBox[{"SubscriptBox", "[", 
+   RowBox[{
+    RowBox[{"StyleBox", "[", 
+     RowBox[{"\"\<d\>\"", ",", "\"\<TI\>\""}], "]"}], ",", "\"\<220\>\""}], 
+   "]"}], ";"}]], "Input",
+ GeneratedCell->True,
+ CellAutoOverwrite->True],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DumpSave", "[", " ", 
+   RowBox[{
+    RowBox[{"ToFileName", "[", " ", 
+     RowBox[{
+      RowBox[{"NotebookDirectory", "[", "]"}], ",", 
+      "\"\<CODATA-SymbolExpressions.mx\>\""}], " ", "]"}], ",", " ", 
+    "exprBox"}], " ", "]"}], ";"}]], "Input"]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1028, 1050},
+WindowMargins->{{6, Automatic}, {Automatic, 16}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"FacingPages"->False,
+"FirstPageHeader"->True,
+"PrintingMargins"->{{54., 54.}, {28.375, 28.375}}},
+ShowSelection->True,
+InputAliases->{"intt" -> RowBox[{"\[Integral]", 
+     RowBox[{"\[SelectionPlaceholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "dintt" -> 
+  RowBox[{
+     SubsuperscriptBox[
+     "\[Integral]", "\[SelectionPlaceholder]", "\[Placeholder]"], 
+     RowBox[{"\[Placeholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "sumt" -> RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "prodt" -> RowBox[{
+     UnderoverscriptBox["\[Product]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "dt" -> RowBox[{
+     SubscriptBox["\[PartialD]", "\[Placeholder]"], " ", 
+     "\[SelectionPlaceholder]"}], "notation" -> RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation>" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation<" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "symb" -> 
+  RowBox[{"Symbolize", "[", 
+     TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], "]"}], 
+  "infixnotation" -> RowBox[{"InfixNotation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], ",", 
+       "\[Placeholder]"}], "]"}], "addia" -> RowBox[{"AddInputAlias", "[", 
+     RowBox[{"\"\[SelectionPlaceholder]\"", "\[Rule]", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "pattwraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationPatternTag"], "madeboxeswraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationMadeBoxesTag"]},
+TrackCellChangeTimes->False,
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "UCA-Stylesheet.nb"]]}, Visible -> False, 
+  FrontEndVersion -> "6.0 for Microsoft Windows (32-bit) (May 21, 2008)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 55, 0, 63, "Section"],
+Cell[648, 25, 103, 4, 33, "Text"],
+Cell[754, 31, 126, 3, 29, "Input"],
+Cell[883, 36, 233, 6, 29, "Input"],
+Cell[1119, 44, 213, 5, 29, "Input"],
+Cell[1335, 51, 329, 9, 29, "Input"],
+Cell[1667, 62, 600, 17, 29, "Input"],
+Cell[2270, 81, 606, 18, 50, "Input"],
+Cell[2879, 101, 330, 9, 29, "Input"],
+Cell[3212, 112, 825, 22, 70, "Input"],
+Cell[4040, 136, 617, 17, 50, "Input"],
+Cell[4660, 155, 617, 17, 50, "Input"],
+Cell[5280, 174, 261, 6, 29, "Input"],
+Cell[5544, 182, 319, 9, 29, "Input"],
+Cell[5866, 193, 590, 17, 29, "Input"],
+Cell[6459, 212, 594, 17, 50, "Input"],
+Cell[7056, 231, 662, 19, 29, "Input"],
+Cell[7721, 252, 662, 19, 29, "Input"],
+Cell[8386, 273, 880, 25, 70, "Input"],
+Cell[9269, 300, 791, 23, 50, "Input"],
+Cell[10063, 325, 661, 19, 29, "Input"],
+Cell[10727, 346, 879, 25, 70, "Input"],
+Cell[11609, 373, 264, 7, 29, "Input"],
+Cell[11876, 382, 840, 22, 70, "Input"],
+Cell[12719, 406, 844, 23, 70, "Input"],
+Cell[13566, 431, 251, 6, 29, "Input"],
+Cell[13820, 439, 241, 6, 29, "Input"],
+Cell[14064, 447, 549, 15, 29, "Input"],
+Cell[14616, 464, 621, 17, 50, "Input"],
+Cell[15240, 483, 502, 14, 29, "Input"],
+Cell[15745, 499, 701, 19, 70, "Input"],
+Cell[16449, 520, 724, 19, 70, "Input"],
+Cell[17176, 541, 815, 22, 70, "Input"],
+Cell[17994, 565, 522, 15, 29, "Input"],
+Cell[18519, 582, 526, 14, 29, "Input"],
+Cell[19048, 598, 321, 9, 29, "Input"],
+Cell[19372, 609, 610, 17, 50, "Input"],
+Cell[19985, 628, 331, 10, 29, "Input"],
+Cell[20319, 640, 624, 17, 50, "Input"],
+Cell[20946, 659, 648, 17, 50, "Input"],
+Cell[21597, 678, 814, 22, 70, "Input"],
+Cell[22414, 702, 322, 9, 29, "Input"],
+Cell[22739, 713, 532, 15, 29, "Input"],
+Cell[23274, 730, 791, 22, 70, "Input"],
+Cell[24068, 754, 530, 15, 29, "Input"],
+Cell[24601, 771, 709, 20, 70, "Input"],
+Cell[25313, 793, 520, 15, 29, "Input"],
+Cell[25836, 810, 249, 6, 29, "Input"],
+Cell[26088, 818, 251, 6, 29, "Input"],
+Cell[26342, 826, 450, 13, 29, "Input"],
+Cell[26795, 841, 548, 16, 29, "Input"],
+Cell[27346, 859, 449, 13, 29, "Input"],
+Cell[27798, 874, 330, 10, 29, "Input"],
+Cell[28131, 886, 240, 6, 29, "Input"],
+Cell[28374, 894, 243, 6, 29, "Input"],
+Cell[28620, 902, 441, 13, 29, "Input"],
+Cell[29064, 917, 539, 16, 29, "Input"],
+Cell[29606, 935, 320, 9, 29, "Input"],
+Cell[29929, 946, 320, 9, 29, "Input"],
+Cell[30252, 957, 256, 6, 29, "Input"],
+Cell[30511, 965, 343, 10, 29, "Input"],
+Cell[30857, 977, 331, 10, 29, "Input"],
+Cell[31191, 989, 439, 12, 29, "Input"],
+Cell[31633, 1003, 439, 12, 29, "Input"],
+Cell[32075, 1017, 509, 14, 29, "Input"],
+Cell[32587, 1033, 321, 9, 29, "Input"],
+Cell[32911, 1044, 249, 6, 29, "Input"],
+Cell[33163, 1052, 457, 13, 29, "Input"],
+Cell[33623, 1067, 457, 13, 29, "Input"],
+Cell[34083, 1082, 320, 9, 29, "Input"],
+Cell[34406, 1093, 591, 17, 29, "Input"],
+Cell[35000, 1112, 594, 17, 50, "Input"],
+Cell[35597, 1131, 321, 9, 29, "Input"],
+Cell[35921, 1142, 808, 22, 70, "Input"],
+Cell[36732, 1166, 320, 9, 29, "Input"],
+Cell[37055, 1177, 461, 14, 29, "Input"],
+Cell[37519, 1193, 608, 17, 50, "Input"],
+Cell[38130, 1212, 461, 14, 29, "Input"],
+Cell[38594, 1228, 457, 13, 29, "Input"],
+Cell[39054, 1243, 608, 17, 50, "Input"],
+Cell[39665, 1262, 262, 7, 29, "Input"],
+Cell[39930, 1271, 543, 15, 29, "Input"],
+Cell[40476, 1288, 321, 9, 29, "Input"],
+Cell[40800, 1299, 255, 6, 29, "Input"],
+Cell[41058, 1307, 405, 12, 29, "Input"],
+Cell[41466, 1321, 250, 6, 29, "Input"],
+Cell[41719, 1329, 320, 9, 29, "Input"],
+Cell[42042, 1340, 461, 14, 29, "Input"],
+Cell[42506, 1356, 461, 14, 29, "Input"],
+Cell[42970, 1372, 320, 9, 29, "Input"],
+Cell[43293, 1383, 591, 17, 29, "Input"],
+Cell[43887, 1402, 594, 17, 50, "Input"],
+Cell[44484, 1421, 321, 9, 29, "Input"],
+Cell[44808, 1432, 808, 22, 70, "Input"],
+Cell[45619, 1456, 623, 18, 50, "Input"],
+Cell[46245, 1476, 496, 14, 29, "Input"],
+Cell[46744, 1492, 496, 14, 29, "Input"],
+Cell[47243, 1508, 362, 10, 29, "Input"],
+Cell[47608, 1520, 681, 19, 50, "Input"],
+Cell[48292, 1541, 266, 7, 29, "Input"],
+Cell[48561, 1550, 595, 17, 29, "Input"],
+Cell[49159, 1569, 598, 17, 29, "Input"],
+Cell[49760, 1588, 265, 7, 29, "Input"],
+Cell[50028, 1597, 594, 17, 29, "Input"],
+Cell[50625, 1616, 682, 19, 50, "Input"],
+Cell[51310, 1637, 461, 14, 29, "Input"],
+Cell[51774, 1653, 608, 17, 50, "Input"],
+Cell[52385, 1672, 608, 17, 50, "Input"],
+Cell[52996, 1691, 467, 14, 29, "Input"],
+Cell[53466, 1707, 614, 17, 50, "Input"],
+Cell[54083, 1726, 462, 14, 29, "Input"],
+Cell[54548, 1742, 608, 17, 50, "Input"],
+Cell[55159, 1761, 461, 14, 29, "Input"],
+Cell[55623, 1777, 608, 17, 50, "Input"],
+Cell[56234, 1796, 616, 17, 50, "Input"],
+Cell[56853, 1815, 608, 17, 50, "Input"],
+Cell[57464, 1834, 240, 6, 29, "Input"],
+Cell[57707, 1842, 439, 13, 29, "Input"],
+Cell[58149, 1857, 240, 6, 29, "Input"],
+Cell[58392, 1865, 323, 9, 29, "Input"],
+Cell[58718, 1876, 961, 26, 70, "Input"],
+Cell[59682, 1904, 185, 5, 29, "Input"],
+Cell[59870, 1911, 325, 9, 29, "Input"],
+Cell[60198, 1922, 351, 9, 29, "Input"],
+Cell[60552, 1933, 320, 9, 29, "Input"],
+Cell[60875, 1944, 323, 9, 29, "Input"],
+Cell[61201, 1955, 871, 24, 70, "Input"],
+Cell[62075, 1981, 427, 12, 29, "Input"],
+Cell[62505, 1995, 785, 22, 50, "Input"],
+Cell[63293, 2019, 1009, 28, 90, "Input"],
+Cell[64305, 2049, 426, 12, 29, "Input"],
+Cell[64734, 2063, 784, 22, 50, "Input"],
+Cell[65521, 2087, 872, 24, 70, "Input"],
+Cell[66396, 2113, 321, 9, 29, "Input"],
+Cell[66720, 2124, 249, 6, 29, "Input"],
+Cell[66972, 2132, 457, 13, 29, "Input"],
+Cell[67432, 2147, 457, 13, 29, "Input"],
+Cell[67892, 2162, 320, 9, 29, "Input"],
+Cell[68215, 2173, 591, 17, 29, "Input"],
+Cell[68809, 2192, 594, 17, 50, "Input"],
+Cell[69406, 2211, 321, 9, 29, "Input"],
+Cell[69730, 2222, 808, 22, 70, "Input"],
+Cell[70541, 2246, 608, 17, 50, "Input"],
+Cell[71152, 2265, 608, 17, 50, "Input"],
+Cell[71763, 2284, 888, 26, 70, "Input"],
+Cell[72654, 2312, 577, 17, 29, "Input"],
+Cell[73234, 2331, 577, 17, 29, "Input"],
+Cell[73814, 2350, 597, 17, 29, "Input"],
+Cell[74414, 2369, 576, 17, 29, "Input"],
+Cell[74993, 2388, 790, 23, 50, "Input"],
+Cell[75786, 2413, 889, 26, 70, "Input"],
+Cell[76678, 2441, 357, 10, 29, "Input"],
+Cell[77038, 2453, 1009, 28, 70, "Input"],
+Cell[78050, 2483, 888, 24, 70, "Input"],
+Cell[78941, 2509, 888, 24, 70, "Input"],
+Cell[79832, 2535, 796, 22, 50, "Input"],
+Cell[80631, 2559, 887, 24, 70, "Input"],
+Cell[81521, 2585, 1101, 30, 70, "Input"],
+Cell[82625, 2617, 1010, 28, 70, "Input"],
+Cell[83638, 2647, 447, 13, 29, "Input"],
+Cell[84088, 2662, 322, 9, 29, "Input"],
+Cell[84413, 2673, 679, 19, 29, "Input"],
+Cell[85095, 2694, 233, 6, 29, "Input"],
+Cell[85331, 2702, 233, 6, 29, "Input"],
+Cell[85567, 2710, 593, 17, 29, "Input"],
+Cell[86163, 2729, 596, 17, 29, "Input"],
+Cell[86762, 2748, 592, 17, 29, "Input"],
+Cell[87357, 2767, 680, 19, 50, "Input"],
+Cell[88040, 2788, 886, 26, 70, "Input"],
+Cell[88929, 2816, 575, 17, 29, "Input"],
+Cell[89507, 2835, 575, 17, 29, "Input"],
+Cell[90085, 2854, 789, 23, 50, "Input"],
+Cell[90877, 2879, 792, 23, 50, "Input"],
+Cell[91672, 2904, 574, 17, 29, "Input"],
+Cell[92249, 2923, 887, 26, 70, "Input"],
+Cell[93139, 2951, 265, 7, 29, "Input"],
+Cell[93407, 2960, 664, 19, 29, "Input"],
+Cell[94074, 2981, 664, 19, 29, "Input"],
+Cell[94741, 3002, 882, 25, 70, "Input"],
+Cell[95626, 3029, 793, 23, 50, "Input"],
+Cell[96422, 3054, 663, 19, 29, "Input"],
+Cell[97088, 3075, 881, 25, 70, "Input"],
+Cell[97972, 3102, 243, 6, 29, "Input"],
+Cell[98218, 3110, 320, 9, 29, "Input"],
+Cell[98541, 3121, 323, 9, 29, "Input"],
+Cell[98867, 3132, 249, 6, 29, "Input"],
+Cell[99119, 3140, 268, 8, 29, "Input"],
+Cell[99390, 3150, 509, 14, 29, "Input"],
+Cell[99902, 3166, 240, 6, 29, "Input"],
+Cell[100145, 3174, 320, 9, 29, "Input"],
+Cell[100468, 3185, 702, 17, 29, "Input"],
+Cell[101173, 3204, 503, 15, 29, "Input"],
+Cell[101679, 3221, 596, 17, 29, "Input"],
+Cell[102278, 3240, 322, 9, 29, "Input"],
+Cell[102603, 3251, 325, 9, 29, "Input"],
+Cell[102931, 3262, 325, 9, 29, "Input"],
+Cell[103259, 3273, 380, 10, 29, "Input"],
+Cell[103642, 3285, 510, 15, 29, "Input"],
+Cell[104155, 3302, 326, 9, 29, "Input"],
+Cell[104484, 3313, 255, 6, 29, "Input"],
+Cell[104742, 3321, 325, 9, 29, "Input"],
+Cell[105070, 3332, 466, 14, 29, "Input"],
+Cell[105539, 3348, 466, 14, 29, "Input"],
+Cell[106008, 3364, 325, 9, 29, "Input"],
+Cell[106336, 3375, 597, 17, 29, "Input"],
+Cell[106936, 3394, 603, 18, 50, "Input"],
+Cell[107542, 3414, 326, 9, 29, "Input"],
+Cell[107871, 3425, 819, 22, 70, "Input"],
+Cell[108693, 3449, 614, 17, 50, "Input"],
+Cell[109310, 3468, 614, 17, 50, "Input"],
+Cell[109927, 3487, 466, 14, 29, "Input"],
+Cell[110396, 3503, 614, 17, 50, "Input"],
+Cell[111013, 3522, 625, 18, 50, "Input"],
+Cell[111641, 3542, 250, 6, 29, "Input"],
+Cell[111894, 3550, 252, 6, 29, "Input"],
+Cell[112149, 3558, 592, 17, 29, "Input"],
+Cell[112744, 3577, 598, 18, 50, "Input"],
+Cell[113345, 3597, 344, 10, 29, "Input"],
+Cell[113692, 3609, 321, 9, 29, "Input"],
+Cell[114016, 3620, 503, 15, 29, "Input"],
+Cell[114522, 3637, 511, 16, 29, "Input"],
+Cell[115036, 3655, 712, 20, 70, "Input"],
+Cell[115751, 3677, 523, 15, 29, "Input"],
+Cell[116277, 3694, 376, 10, 29, "Input"],
+Cell[116656, 3706, 458, 13, 29, "Input"],
+Cell[117117, 3721, 321, 9, 29, "Input"],
+Cell[117441, 3732, 255, 6, 29, "Input"],
+Cell[117699, 3740, 405, 12, 29, "Input"],
+Cell[118107, 3754, 250, 6, 29, "Input"],
+Cell[118360, 3762, 457, 13, 29, "Input"],
+Cell[118820, 3777, 457, 13, 29, "Input"],
+Cell[119280, 3792, 320, 9, 29, "Input"],
+Cell[119603, 3803, 591, 17, 29, "Input"],
+Cell[120197, 3822, 594, 17, 50, "Input"],
+Cell[120794, 3841, 321, 9, 29, "Input"],
+Cell[121118, 3852, 808, 22, 70, "Input"],
+Cell[121929, 3876, 495, 14, 29, "Input"],
+Cell[122427, 3892, 457, 13, 29, "Input"],
+Cell[122887, 3907, 608, 17, 50, "Input"],
+Cell[123498, 3926, 614, 17, 50, "Input"],
+Cell[124115, 3945, 457, 13, 29, "Input"],
+Cell[124575, 3960, 608, 17, 50, "Input"],
+Cell[125186, 3979, 1068, 29, 90, "Input"],
+Cell[126257, 4010, 1074, 30, 90, "Input"],
+Cell[127334, 4042, 609, 17, 50, "Input"],
+Cell[127946, 4061, 608, 17, 50, "Input"],
+Cell[128557, 4080, 616, 17, 50, "Input"],
+Cell[129176, 4099, 241, 6, 29, "Input"],
+Cell[129420, 4107, 539, 15, 29, "Input"],
+Cell[129962, 4124, 249, 6, 29, "Input"],
+Cell[130214, 4132, 251, 6, 29, "Input"],
+Cell[130468, 4140, 548, 16, 29, "Input"],
+Cell[131019, 4158, 449, 13, 29, "Input"],
+Cell[131471, 4173, 450, 13, 29, "Input"],
+Cell[131924, 4188, 240, 6, 29, "Input"],
+Cell[132167, 4196, 242, 6, 29, "Input"],
+Cell[132412, 4204, 249, 6, 29, "Input"],
+Cell[132664, 4212, 251, 6, 29, "Input"],
+Cell[132918, 4220, 425, 12, 29, "Input"],
+Cell[133346, 4234, 322, 9, 29, "Input"],
+Cell[133671, 4245, 322, 9, 29, "Input"],
+Cell[133996, 4256, 599, 18, 50, "Input"],
+Cell[134598, 4276, 324, 9, 29, "Input"],
+Cell[134925, 4287, 322, 9, 29, "Input"],
+Cell[135250, 4298, 525, 15, 29, "Input"],
+Cell[135778, 4315, 376, 10, 29, "Input"],
+Cell[136157, 4327, 458, 13, 29, "Input"],
+Cell[136618, 4342, 320, 9, 29, "Input"],
+Cell[136941, 4353, 255, 6, 29, "Input"],
+Cell[137199, 4361, 405, 12, 29, "Input"],
+Cell[137607, 4375, 249, 6, 29, "Input"],
+Cell[137859, 4383, 457, 13, 29, "Input"],
+Cell[138319, 4398, 457, 13, 29, "Input"],
+Cell[138779, 4413, 290, 7, 29, "Input"],
+Cell[139072, 4422, 320, 9, 29, "Input"],
+Cell[139395, 4433, 591, 17, 29, "Input"],
+Cell[139989, 4452, 594, 17, 50, "Input"],
+Cell[140586, 4471, 321, 9, 29, "Input"],
+Cell[140910, 4482, 242, 6, 29, "Input"],
+Cell[141155, 4490, 320, 9, 29, "Input"],
+Cell[141478, 4501, 608, 17, 50, "Input"],
+Cell[142089, 4520, 614, 17, 50, "Input"],
+Cell[142706, 4539, 461, 14, 29, "Input"],
+Cell[143170, 4555, 608, 17, 50, "Input"],
+Cell[143781, 4574, 616, 17, 50, "Input"],
+Cell[144400, 4593, 553, 16, 29, "Input"],
+Cell[144956, 4611, 525, 15, 29, "Input"],
+Cell[145484, 4628, 332, 9, 29, "Input"],
+Cell[145819, 4639, 517, 15, 29, "Input"],
+Cell[146339, 4656, 610, 17, 29, "Input"],
+Cell[146952, 4675, 609, 17, 29, "Input"],
+Cell[147564, 4694, 522, 15, 29, "Input"],
+Cell[148089, 4711, 525, 15, 29, "Input"],
+Cell[148617, 4728, 325, 9, 29, "Input"],
+Cell[148945, 4739, 290, 7, 29, "Input"],
+Cell[149238, 4748, 440, 12, 29, "Input"],
+Cell[149681, 4762, 284, 7, 29, "Input"],
+Cell[149968, 4771, 492, 14, 29, "Input"],
+Cell[150463, 4787, 492, 14, 29, "Input"],
+Cell[150958, 4803, 492, 14, 29, "Input"],
+Cell[151453, 4819, 527, 14, 29, "Input"],
+Cell[151983, 4835, 290, 7, 29, "Input"],
+Cell[152276, 4844, 440, 12, 29, "Input"],
+Cell[152719, 4858, 284, 7, 29, "Input"],
+Cell[153006, 4867, 492, 14, 29, "Input"],
+Cell[153501, 4883, 492, 14, 29, "Input"],
+Cell[153996, 4899, 522, 15, 29, "Input"],
+Cell[154521, 4916, 320, 9, 29, "Input"],
+Cell[154844, 4927, 149, 4, 29, "Input"],
+Cell[154996, 4933, 149, 4, 29, "Input"],
+Cell[155148, 4939, 186, 5, 29, "Input"],
+Cell[155337, 4946, 381, 10, 29, "Input"],
+Cell[155721, 4958, 463, 13, 29, "Input"],
+Cell[156187, 4973, 327, 9, 29, "Input"],
+Cell[156517, 4984, 599, 17, 29, "Input"],
+Cell[157119, 5003, 605, 18, 50, "Input"],
+Cell[157727, 5023, 328, 9, 29, "Input"],
+Cell[158058, 5034, 822, 22, 70, "Input"],
+Cell[158883, 5058, 616, 17, 50, "Input"],
+Cell[159502, 5077, 625, 18, 50, "Input"],
+Cell[160130, 5097, 616, 17, 50, "Input"],
+Cell[160749, 5116, 616, 17, 50, "Input"],
+Cell[161368, 5135, 255, 6, 29, "Input"],
+Cell[161626, 5143, 321, 9, 29, "Input"],
+Cell[161950, 5154, 249, 6, 29, "Input"],
+Cell[162202, 5162, 457, 13, 29, "Input"],
+Cell[162662, 5177, 457, 13, 29, "Input"],
+Cell[163122, 5192, 320, 9, 29, "Input"],
+Cell[163445, 5203, 591, 17, 29, "Input"],
+Cell[164039, 5222, 594, 17, 50, "Input"],
+Cell[164636, 5241, 321, 9, 29, "Input"],
+Cell[164960, 5252, 808, 22, 70, "Input"],
+Cell[165771, 5276, 608, 17, 50, "Input"],
+Cell[166382, 5295, 608, 17, 50, "Input"],
+Cell[166993, 5314, 178, 5, 29, "Input"],
+Cell[167174, 5321, 320, 9, 29, "Input"],
+Cell[167497, 5332, 435, 12, 29, "Input"],
+Cell[167935, 5346, 334, 9, 29, "Input"],
+Cell[168272, 5357, 244, 6, 29, "Input"],
+Cell[168519, 5365, 327, 9, 29, "Input"],
+Cell[168849, 5376, 288, 8, 29, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
