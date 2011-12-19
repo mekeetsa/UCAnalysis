@@ -1,0 +1,722 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     25530,        713]
+NotebookOptionsPosition[     23301,        645]
+NotebookOutlinePosition[     24318,        679]
+CellTagsIndexPosition[     24275,        676]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ StyleBox["Terminology ",
+  FontFamily->"Arial",
+  FontSize->24,
+  FontWeight->"Bold"],
+ StyleBox["in Uncertainty Analysis",
+  FontFamily->"Arial",
+  FontSize->24]
+}], "Subtitle",
+ TextAlignment->Center],
+
+Cell[TextData[{
+ "Excerpt from ",
+ StyleBox["Introductory Physics Students' Treatment of Measurement \
+Uncertainty",
+  FontSlant->"Italic"],
+ "\nby Duane Lee Deardorff, North Carolina State University, 2001. pp. 14-18\n\
+"
+}], "Text",
+ CellMargins->{{34, 10}, {6, 0}},
+ TextAlignment->Center],
+
+Cell["\<\
+Terminology and notation related to measurement uncertainty is not used \
+consistently among experts. In order to clarify the meaning of terms , and to \
+show the range of meanings, a compilation of key terms with definitions is \
+included here. The definitions are taken from a sample of reference sources \
+that represent the scope of this study (the three most popular reference \
+books in Table 2-2, plus the GUM Guide and an industrial metrology reference \
+book). Definitions from Webster's dictionary are also included for several of \
+the terms to show the contrast between common vernacular use and the specific \
+meanings of these terms as they relate to scientific measurements.\
+\>", "Text",
+ CellMargins->{{34.625, 13.9375}, {6., 0.}},
+ TextJustification->1.],
+
+Cell[TextData[{
+ StyleBox["uncertainty (of measurement)",
+  FontWeight->"Bold"],
+ " \[Dash] 1. parameter, associated with the result of a measurement, that \
+characterizes the dispersion of the values that could reasonably be \
+attributed to the measurand. The uncertainty generally includes many \
+components which may be evaluated from experimental standard deviations based \
+on repeated observations (Type A evaluation) or by standard deviations \
+evaluated from assumed probability distributions based on experience or other \
+information (Type B evaluation). The term uncertainty is preferred over \
+measurement error because the latter can never be known (GUM, p. 34). 2. An \
+estimate of the error in a measurement, often stated as a range of values \
+that contain the true value within a certain confidence level (usually \
+\[PlusMinus] 1\[Sigma] for 68% confidence interval) (Taylor, p. 14; Fluke, p. \
+G-15). 3. Based on either limitations of the measuring instruments or from \
+statistical fluctuations in the quantity being measured (Baird, p. 2). 4. \
+Indicates the precision of a measurement (Bevington, p. 2). (",
+ StyleBox["All but this last definition suggest that the uncertainty includes \
+an estimate of the precision and accuracy of the measured value.",
+  FontSlant->"Italic"],
+ ")"
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["(absolute) uncertainty",
+  FontWeight->"Bold"],
+ " \[Dash] 1. the amount (often stated in the form \[PlusMinus]\[Delta]",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ ") that along with the measured value, indicates the range in which the \
+desired or true value most likely lies (Baird, p. 14). 2. The total \
+uncertainty of a value (Fluke, p. G-3). 3. The error (Taylor, p. 14). (",
+ StyleBox["Taylor does not distinguish between the terms error and \
+uncertainty, which is an unfortunate source of confusion for anyone who \
+refers to this popular book.",
+  FontSlant->"Italic"],
+ ")"
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["relative (fractional) uncertainty",
+  FontWeight->"Bold"],
+ " \[Dash] the absolute uncertainty divided by the measured value, often \
+expressed as a percentage or in parts per million (ppm) (Taylor, p. 28; \
+Baird, p. 14)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["standard uncertainty",
+  FontWeight->"Bold"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["u", "i"], TraditionalForm]]],
+ " \[Dash] the uncertainty of the result of a measurement expressed as a \
+standard deviation (GUM, p. 3)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["combined standard uncertainty",
+  FontWeight->"Bold"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["u", "c"], "(", "y", ")"}], TraditionalForm]]],
+ " \[Dash] the standard deviation of the result of a measurement when the \
+result is obtained from the values of a number of other quantities. It is \
+obtained by combining the individual standard uncertainties ui (and \
+covariances as appropriate), using the law of propagation of uncertainties, \
+commonly called the \[OpenCurlyDoubleQuote]root-sum-of-squares\
+\[CloseCurlyDoubleQuote] or \
+\[OpenCurlyDoubleQuote]RSS\[CloseCurlyDoubleQuote] method. The combined \
+standard uncertainty is commonly used for reporting fundamental constants, \
+metrological research, and international comparisons of realizations of SI \
+units (GUM, p. 3)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["Type A evaluation of standard uncertainty",
+  FontWeight->"Bold"],
+ " \[Dash] method of evaluation of uncertainty by the statistical analysis of \
+a series of observations (GUM, p. 3)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["Type B evaluation of standard uncertainty",
+  FontWeight->"Bold"],
+ " \[Dash] method of evaluation of uncertainty by means other than the \
+statistical analysis of series of observations (GUM, p. 3)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["precision",
+  FontWeight->"Bold"],
+ " \[Dash] 1. the degree of consistency and agreement among independent \
+measurements of a quantity under the same conditions (Fluke, p. G-11). 2. \
+Indicated by the uncertainty (Bevington, p. 2), or 3. the fractional \
+(relative) uncertainty (Taylor, p. 28). 4. The degree of refinement with \
+which an operation is performed or a measurement stated (Webster). ",
+ StyleBox["Precision is a measure of how well the result has been determined \
+(without reference to a theoretical or true value), and the reproducibility \
+or reliability of the result. The fineness of scale of a measuring device \
+generally affects the consistency of repeated measurements, and therefore, \
+the precision. The GUM has banned the term precision for describing \
+scientific measuring instruments because of its many confusing everyday \
+connotations",
+  FontSlant->"Italic"],
+ " (Giordano 1997)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["accuracy (of measurement)",
+  FontWeight->"Bold"],
+ " \[Dash] 1. closeness of agreement between a measured value and a true \
+value (GUM, p. 33; Fluke, p. G-3; Bevington, p. 2; Taylor, p. 95). 2. The \
+term \[OpenCurlyDoubleQuote]precision\[CloseCurlyDoubleQuote] should not be \
+used for \[OpenCurlyDoubleQuote]accuracy\[CloseCurlyDoubleQuote] (GUM, p. \
+33). 3. A given accuracy implies an equivalent precision (Bevington, p. 3). \
+4. Freedom from mistake or error, correctness; degree of conformity of a \
+measure to a standard or a true value (Webster)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["true value (of a quantity)",
+  FontWeight->"Bold"],
+ " \[Dash] 1. value consistent with the definition of a given particular \
+quantity. A true value by nature is indeterminate; this is a value that would \
+be obtained by a perfect measurement (GUM, p. 32). 2. The correct value of \
+the measurand (Fluke, p. G-15). 3. The value that is approached by averaging \
+an increasing number of measurements with no systematic errors (Taylor, p. \
+130).\n",
+ StyleBox["Note",
+  FontSlant->"Italic"],
+ ": The indefinite article \[OpenCurlyDoubleQuote]a,\[CloseCurlyDoubleQuote] \
+rather than the definite article \[OpenCurlyDoubleQuote]the,\
+\[CloseCurlyDoubleQuote] is used in conjunction with \
+\[OpenCurlyDoubleQuote]true value\[CloseCurlyDoubleQuote] because there may \
+be many values consistent with the definition of a given particular quantity \
+(GUM, p. 32). (",
+ StyleBox["This distinction is not clear in other references that refer to ",
+  FontSlant->"Italic"],
+ "\[OpenCurlyDoubleQuote]",
+ StyleBox["the true value",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote]",
+ StyleBox[" of a quantity.",
+  FontSlant->"Italic"],
+ ")"
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["result of a measurement",
+  FontWeight->"Bold"],
+ " \[Dash] value attributed to a measurand, obtained by measurement. A \
+complete statement of the result of a measurement includes information about \
+the uncertainty of measurement (GUM, p. 33)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["error (of measurement)",
+  FontWeight->"Bold"],
+ " \[Dash] 1. result of a measurement minus a true value of the measurand \
+(which is never known exactly); sometimes referred to as the \
+\[OpenCurlyDoubleQuote]absolute error\[CloseCurlyDoubleQuote] to distinguish \
+from \[OpenCurlyDoubleQuote]relative error\[CloseCurlyDoubleQuote] (GUM, p. \
+34). 2. Deviation from the \
+\[OpenCurlyDoubleQuote]true\[CloseCurlyDoubleQuote] or nominal value \
+(Bevington, p. 5; Fluke, p. G-7). 3. The inevitable uncertainty inherent in \
+measurements, not to be confused with a mistake or blunder (Taylor, 3). 4. \
+The amount of deviation from a standard or specification; 5. mistake or \
+blunder (Webster). (",
+ StyleBox["Students often cite ",
+  FontSlant->"Italic"],
+ "\[OpenCurlyDoubleQuote]",
+ StyleBox["human error",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote]",
+ StyleBox[" as a source of experimental error, and the dictionary definition \
+of the term error only confuses this misused term. Here again, Taylor does \
+not distinguish between the terms error and uncertainty, which clearly have \
+different meanings according to the GUM.",
+  FontSlant->"Italic"],
+ ")"
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["random error",
+  FontWeight->"Bold"],
+ " \[Dash] 1. result of a measurement minus the mean that would result from \
+an infinite number of measurements of the same measurand carried out under \
+repeatable conditions (GUM, p. 34). 2. Statistical fluctuations (in either \
+direction) in the measured data due to the precision limitations of the \
+measurement device (Fluke, p. G-12; Taylor, p. 94)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["systematic error",
+  FontWeight->"Bold"],
+ " \[Dash] 1. mean that would result from an infinite number of measurements \
+of the same measurand carried out under repeatability conditions minus a true \
+value of the measurand; error minus random error (GUM, p. 34). 2. A \
+reproducible discrepancy between the result and \[OpenCurlyDoubleQuote]true\
+\[CloseCurlyDoubleQuote] value that is consistently in the same direction \
+(Baird, p. 14; Fluke, p. G-14). 3. A reproducible inaccuracy introduced by \
+faulty equipment, calibration, or technique (Bevington, p. 3, 14). 4. These \
+errors are difficult to detect and cannot be analyzed statistically (Taylor, \
+p. 11). 5. Systematic error is sometimes called \[OpenCurlyDoubleQuote]bias\
+\[CloseCurlyDoubleQuote] and can be reduced by applying a \
+\[OpenCurlyDoubleQuote]correction\[CloseCurlyDoubleQuote] or \
+\[OpenCurlyDoubleQuote]correction factor\[CloseCurlyDoubleQuote] to \
+compensate for an effect recognized when calibrating against a standard. \
+Unlike random errors, systematic errors cannot be reduced by increasing the \
+number of observations (GUM, p. 5)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["mistake or blunder",
+  FontWeight->"Bold"],
+ " \[Dash] a procedural error that should be avoided by careful attention \
+(Taylor, p. 3). These are illegitimate errors and can generally be corrected \
+by carefully repeating the operations (Bevington, p. 2). "
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["discrepancy",
+  FontWeight->"Bold"],
+ " \[Dash] a significant difference between two measured values of the same \
+quantity (Taylor, p. 17; Bevington, p. 5). (",
+ StyleBox["Neither of these references clearly defines what is meant by a \
+\[OpenCurlyDoubleQuote]significant difference,\[CloseCurlyDoubleQuote] but \
+the implication is that the difference between the measured values is clearly \
+greater than the combined experimental uncertainty.",
+  FontSlant->"Italic"],
+ ")"
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["relative error",
+  FontWeight->"Bold"],
+ " \[Dash] error of measurement divided by a true value of the measurand \
+(GUM, p. 34). (",
+ StyleBox["Relative error is often reported as a percentage. The relative or \
+",
+  FontSlant->"Italic"],
+ "\[OpenCurlyDoubleQuote]",
+ StyleBox["percent error",
+  FontSlant->"Italic"],
+ "\[CloseCurlyDoubleQuote]",
+ StyleBox[" could be 0% if the measured result happens to coincide with the \
+expected value, but such a statement suggests that somehow a perfect \
+measurement was made. Therefore, a statement of the uncertainty is also \
+necessary to properly convey the quality of the measurement.",
+  FontSlant->"Italic"],
+ ") "
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["significant figures",
+  FontWeight->"Bold"],
+ " \[Dash] all digits between and including the first non-zero digit from the \
+left, through the last digit (Bevington, p. 4). (",
+ StyleBox["e.g., 0.05070 has 4 significant figures.",
+  FontSlant->"Italic"],
+ ")"
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["sample standard deviation",
+  FontWeight->"Bold"],
+ " \[Dash] the positive square root of the sample variance (see standard \
+error) standard error (standard deviation of the mean) \[Dash] the sample \
+standard deviation divided by the square root of the number of observations:\n\
+\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"SE", "=", 
+    RowBox[{
+     SubscriptBox["s", 
+      OverscriptBox["x", "_"]], "=", 
+     FractionBox["s", 
+      SqrtBox["n"]]}]}], TraditionalForm]]],
+ "  where  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["s", "2"], "=", 
+    RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"i", "=", "1"}], "n"], 
+     FractionBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SubscriptBox["x", "i"], "-", 
+         OverscriptBox["x", "_"]}], ")"}], "2"], 
+      RowBox[{"n", "-", "1"}]]}]}], TraditionalForm]]],
+ "  is the sample variance (GUM, p.38).\nRandom errors are reduced by \
+averaging over a large number of observations, because the standard error \
+decreases as the sample size ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " increases (Taylor, p. 103). (",
+ StyleBox["Note: The GUM Guide and most statistics books use the letter s to \
+represent the sample standard deviation and ",
+  FontSlant->"Italic"],
+ "\[Sigma]",
+ StyleBox[" (sigma) to represent the standard deviation of the population; \
+however, s is often used in casual error analysis discussions to indicate the \
+sample standard deviation.",
+  FontSlant->"Italic"],
+ ")"
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["margin of error",
+  FontWeight->"Bold"],
+ " \[Dash] range of uncertainty. Public opinion polls generally use margin of \
+error to indicate a 95% confidence interval, corresponding to an uncertainty \
+range of ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " \[PlusMinus] 2\[Sigma] (Taylor, p. 14)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["tolerance",
+  FontWeight->"Bold"],
+ " \[Dash] the limits of the range of values (the uncertainty) that apply to \
+a properly functioning measuring instrument (Fluke, p. 3-7)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["coverage factor",
+  FontWeight->"Bold"],
+ ", ",
+ StyleBox["k",
+  FontSlant->"Italic"],
+ " \[Dash] numerical factor used as a multiplier of the combined standard \
+uncertainty in order to obtain an expanded uncertainty, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["U", "c"], TraditionalForm]]],
+ ". Note: ",
+ StyleBox["k",
+  FontSlant->"Italic"],
+ " is typically in the range 2 to 3 (GUM, p. 3; Fluke, p. 20-6). (e.g., If \
+the combined standard uncertainty is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["u", "c"], "=", "0.3"}], TraditionalForm]]],
+ "c and a coverage factor of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"k", "=", "2"}], TraditionalForm]]],
+ " is used, then the expanded uncertainty is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["U", "c"], "=", 
+    RowBox[{
+     RowBox[{"k", " ", 
+      SubscriptBox["u", "c"]}], "=", "0.6"}]}], TraditionalForm]]],
+ ")"
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["law of propagation of uncertainty",
+  FontWeight->"Bold"],
+ " - the uncertainty ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Sigma]", "y"], TraditionalForm]]],
+ " of a quantity ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"y", "=", 
+    RowBox[{"f", "(", 
+     RowBox[{
+      SubscriptBox["x", "1"], ",", 
+      SubscriptBox["x", "2"], ",", 
+      RowBox[{"...", 
+       SubscriptBox["x", "n"]}]}], ")"}]}], TraditionalForm]]],
+ " that depends on ",
+ StyleBox["n",
+  FontSlant->"Italic"],
+ " input quantities ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubscriptBox["x", "1"], ",", 
+    SubscriptBox["x", "2"], ",", 
+    RowBox[{"...", 
+     SubscriptBox["x", "n"]}]}], TraditionalForm]]],
+ " is found from\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SubsuperscriptBox["\[Sigma]", "y", "2"], "=", 
+    RowBox[{
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "n"], 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox[
+          RowBox[{"\[PartialD]", "f", " "}], 
+          RowBox[{"\[PartialD]", 
+           SubscriptBox["x", "i"]}]], ")"}], "2"], 
+       SubsuperscriptBox["\[Sigma]", "i", "2"]}]}], "+", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], 
+       RowBox[{"n", "-", "1"}]], 
+      RowBox[{
+       UnderoverscriptBox["\[Sum]", 
+        RowBox[{"j", "=", 
+         RowBox[{"i", "+", "1"}]}], "n"], 
+       RowBox[{
+        FractionBox[
+         RowBox[{"\[PartialD]", "f", " "}], 
+         RowBox[{"\[PartialD]", 
+          SubscriptBox["x", "i"]}]], 
+        FractionBox[
+         RowBox[{"\[PartialD]", "f", " "}], 
+         RowBox[{"\[PartialD]", 
+          SubscriptBox["x", "j"]}]], 
+        SubscriptBox["\[Sigma]", "i"], 
+        SubscriptBox["\[Sigma]", "j"], 
+        SubscriptBox["\[Rho]", 
+         RowBox[{"i", "\[InvisibleComma]", "j"}]]}]}]}]}]}], 
+   TraditionalForm]]],
+ "\nwhere ",
+ Cell[BoxData[
+  FormBox[
+   SubsuperscriptBox["\[Sigma]", "i", "2"], TraditionalForm]]],
+ " is the variance of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "i"], TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["\[Rho]", 
+    RowBox[{"i", "\[InvisibleComma]", "j"}]], TraditionalForm]]],
+ " is the correlation coefficient of ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "i"], TraditionalForm]]],
+ " and ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "j"], TraditionalForm]]],
+ ". If the input quantities are independent (as is often the case), then the \
+correlation is zero and the second term of the above equation vanishes. The \
+above equation is traditionally called the \[OpenCurlyDoubleQuote]general law \
+of error propagation,\[CloseCurlyDoubleQuote] but this equation actually \
+shows how the uncertainties (not the errors) of the input quantities combine \
+(GUM, p. 46; Bevington, p. 43; Taylor, p. 75)."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[CellGroupData[{
+
+Cell["References", "Section"],
+
+Cell[TextData[{
+ "Taylor, John - ",
+ StyleBox["An Introduction to Error Analysis",
+  FontSlant->"Italic"],
+ ", 2nd ed, University Science Books: Sausalito, 1997.\n",
+ StyleBox[ButtonBox["http://books.google.se/books?id=giFQcZub80oC&printsec=\
+frontcover#v=onepage&q&f=false",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://books.google.se/books?id=giFQcZub80oC&printsec=frontcover#v=\
+onepage&q&f=false"], None}],
+  FontFamily->"Verdana",
+  FontSize->10,
+  FontColor->RGBColor[0.27058823529411763`, 0.3058823529411765, 0.6]]
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ "Bevington, Phillip R. and D. Keith Robinson. ",
+ StyleBox["Data Reduction and Error Analysis for the Physical Sciences",
+  FontSlant->"Italic"],
+ ", 2nd. ed. McGraw-Hill: New York, 1992."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ "Baird, D.C. Experimentation: ",
+ StyleBox["An Introduction to Measurement Theory and Experiment Design",
+  FontSlant->"Italic"],
+ ", 3rd. ed. Prentice Hall: Englewood Cliffs, NJ, 1995."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ "Fluke. ",
+ StyleBox["Calibration: Philosophy and Practice",
+  FontSlant->"Italic"],
+ ", 2nd. ed. Fluke Corporation: Everett, WA, 1994."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ StyleBox["Webster's Tenth New Collegiate Dictionary",
+  FontSlant->"Italic"],
+ ", Merriam-Webster: Springfield, MA, 2000."
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}],
+
+Cell[TextData[{
+ "BIPM, ISO / GUM - ",
+ StyleBox["Guide to the expression of uncertainty in measurement",
+  FontSlant->"Italic"],
+ ", JCGM 100:2008. (GUM 1995 with minor corrections)\n",
+ StyleBox[ButtonBox["http://www.bipm.org/utils/common/documents/jcgm/JCGM_100_\
+2008_E.pdf",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://www.bipm.org/utils/common/documents/jcgm/JCGM_100_2008_E.pdf"]\
+, None}],
+  FontFamily->"Verdana",
+  FontSize->10,
+  FontColor->RGBColor[0.27058823529411763`, 0.3058823529411765, 0.6]]
+}], "Text",
+ CellDingbat->"\[FilledSmallSquare]",
+ CellMargins->{{34, 10}, {6, 6}}]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->None,
+WindowToolbars->{"RulerBar", "EditBar"},
+WindowSize->{971, 1064},
+WindowMargins->{{Automatic, 299}, {Automatic, 7}},
+Visible->True,
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PrintingMargins"->{{54., 54.}, {56.6875, 56.6875}}},
+ShowSelection->True,
+ShowCellTags->True,
+TrackCellChangeTimes->False,
+Magnification->1.25,
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Output"], TextAlignment -> -0.9, Background -> 
+    RGBColor[1, 1, 0.909804]], 
+   Cell[
+    StyleData["Text"], TabSpacings -> {2.}]}, Visible -> False, 
+  FrontEndVersion -> "6.0 for Microsoft Windows (32-bit) (May 21, 2008)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 219, 9, 62, "Subtitle"],
+Cell[812, 34, 292, 9, 66, "Text"],
+Cell[1107, 45, 782, 12, 107, "Text"],
+Cell[1892, 59, 1389, 23, 179, "Text"],
+Cell[3284, 84, 693, 16, 75, "Text"],
+Cell[3980, 102, 334, 8, 54, "Text"],
+Cell[4317, 112, 344, 11, 33, "Text"],
+Cell[4664, 125, 917, 20, 96, "Text"],
+Cell[5584, 147, 296, 7, 54, "Text"],
+Cell[5883, 156, 311, 7, 54, "Text"],
+Cell[6197, 165, 1025, 19, 137, "Text"],
+Cell[7225, 186, 669, 12, 75, "Text"],
+Cell[7897, 200, 1242, 28, 137, "Text"],
+Cell[9142, 230, 357, 8, 54, "Text"],
+Cell[9502, 240, 1276, 27, 116, "Text"],
+Cell[10781, 269, 507, 10, 75, "Text"],
+Cell[11291, 281, 1228, 20, 137, "Text"],
+Cell[12522, 303, 368, 8, 54, "Text"],
+Cell[12893, 313, 588, 13, 75, "Text"],
+Cell[13484, 328, 773, 20, 96, "Text"],
+Cell[14260, 350, 370, 10, 54, "Text"],
+Cell[14633, 362, 1618, 47, 174, "Text"],
+Cell[16254, 411, 405, 11, 54, "Text"],
+Cell[16662, 424, 286, 7, 33, "Text"],
+Cell[16951, 433, 1010, 35, 75, "Text"],
+Cell[17964, 470, 2976, 96, 182, "Text"],
+Cell[CellGroupData[{
+Cell[20965, 570, 29, 0, 88, "Section"],
+Cell[20997, 572, 619, 16, 52, "Text"],
+Cell[21619, 590, 289, 7, 53, "Text"],
+Cell[21911, 599, 287, 7, 53, "Text"],
+Cell[22201, 608, 237, 7, 32, "Text"],
+Cell[22441, 617, 223, 6, 32, "Text"],
+Cell[22667, 625, 606, 16, 52, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
