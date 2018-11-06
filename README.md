@@ -4,14 +4,14 @@ Mathematica package for Uncertainty Analysis
 
 ## Installation
 
-1. Modify "%AppData%\Mathematica\Kernel\init.m":
-
+1. Modify `%AppData%\Mathematica\Kernel\init.m`:
+```
 (** User Mathematica initialization file **)
 
 $UcAnalysisRoot = "W:\\KTH\\Uncertainty Analysis";
 
 $Path = PrependTo[ $Path, $UcAnalysisRoot ];
-
+```
 
 2. Install Euclid.ttf
 
