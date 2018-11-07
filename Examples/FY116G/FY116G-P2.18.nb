@@ -1,0 +1,1177 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     37084,       1168]
+NotebookOptionsPosition[     32610,       1053]
+NotebookOutlinePosition[     35698,       1123]
+CellTagsIndexPosition[     35655,       1120]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 2.18 - Uncertainty Analysis", "Subtitle",
+ TextAlignment->Center,
+ FontFamily->"Arial",
+ FontSize->20,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]],
+
+Cell[BoxData[{
+ RowBox[{"Get", "[", " ", 
+  RowBox[{"\"\<UCAnalysis.m\>\"", ",", 
+   RowBox[{"Path", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "}"}]}]}], " ", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"60.", 
+   FractionBox["1", 
+    RowBox[{"2", "\[Pi]"}]], 
+   SqrtBox[
+    FractionBox[
+     RowBox[{"6", " ", "m", " ", "g"}], 
+     RowBox[{"\[ScriptCapitalN]", " ", "\[Rho]", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        SuperscriptBox["k", "2"], "-", "1"}], ")"}], "b", 
+      RowBox[{"(", 
+       RowBox[{
+        SubsuperscriptBox["\[ScriptL]", "2", "3"], "-", 
+        SubsuperscriptBox["\[ScriptL]", "1", "3"]}], ")"}]}]]]}], "    ", 
+  "\[RightTeeArrow]", "     ", 
+  RowBox[{"(", GridBox[{
+     {"m", 
+      RowBox[{"8600", "\[PlusMinus]", "50"}], "Uniform\[ScriptCapitalD]"},
+     {"g", 
+      RowBox[{"CODATA", "[", "gn", "]"}], " "},
+     {"\[ScriptCapitalN]", "6", " "},
+     {"\[Rho]", 
+      RowBox[{"1.29", "\[PlusMinus]", "0.005"}], "Uniform\[ScriptCapitalD]"},
+     {"k", 
+      RowBox[{"1.5", " ", "\[PlusMinus]", " ", "0.05"}], 
+      "Uniform\[ScriptCapitalD]"},
+     {"b", 
+      RowBox[{"0.40", "\[PlusMinus]", "0.005"}], "Uniform\[ScriptCapitalD]"},
+     {
+      SubscriptBox["\[ScriptL]", "2"], 
+      RowBox[{"7.62", "\[PlusMinus]", "0.005"}], "Uniform\[ScriptCapitalD]"},
+     {
+      SubscriptBox["\[ScriptL]", "1"], 
+      RowBox[{"1.21", "\[PlusMinus]", "0.005"}], "Uniform\[ScriptCapitalD]"}
+    },
+    ColumnsEqual->False,
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxSpacings->{"Columns" -> {{2}}}], ")"}]}]}], "Input",
+ CellMargins->{{22, 3}, {8, 10}},
+ CellChangeTimes->{{3.523674958375*^9, 3.52367495975*^9}, {
+   3.524247573890625*^9, 3.52424758025*^9}, 3.52424792153125*^9, {
+   3.525337044546875*^9, 3.5253370448125*^9}, {3.52690402875*^9, 
+   3.526904030296875*^9}, 3.526905566921875*^9, {3.52690604*^9, 
+   3.52690606275*^9}, {3.52698901275*^9, 3.52698901290625*^9}, {
+   3.5273546136875*^9, 3.527354615296875*^9}},
+ TextAlignment->Center],
+
+Cell[TextData[{
+ "(Note that standard acceleration of gravity ",
+ Cell[BoxData[
+  FormBox["g", TraditionalForm]]],
+ " is a defined (exact) quantity.)"
+}], "Text",
+ CellMargins->{{17, 10}, {10, 10}},
+ CellChangeTimes->{{3.524249189703125*^9, 3.52424922275*^9}, {
+  3.524249254375*^9, 3.524249281390625*^9}, {3.524249353765625*^9, 
+  3.524249366*^9}, {3.5243075489375*^9, 3.52430754971875*^9}, {
+  3.524307619359375*^9, 3.524307624015625*^9}},
+ TextAlignment->Center],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[CapitalKoppa]UCResult", "[", " ", 
+  RowBox[{
+   SubscriptBox["f", "\"\<[\!\(\*SuperscriptBox[\(min\), \(-1\)]\)]\>\""], 
+   ",", " ", "\"\<\!\(\*SuperscriptBox[\(min\), \(-1\)]\)\>\"", " ", ",", 
+   RowBox[{"UcPrecision", "\[Rule]", "2"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.525332076984375*^9, 3.525332111359375*^9}, {
+  3.525332214125*^9, 3.525332218234375*^9}, {3.52533266925*^9, 
+  3.5253326753125*^9}, {3.525333068421875*^9, 3.52533307378125*^9}, {
+  3.525333119625*^9, 3.525333120640625*^9}, {3.52533368490625*^9, 
+  3.525333700328125*^9}, {3.5253337885*^9, 3.525333805703125*^9}, {
+  3.525333838875*^9, 3.525333886640625*^9}, {3.525334016578125*^9, 
+  3.525334018984375*^9}, {3.525334073828125*^9, 3.52533408325*^9}, {
+  3.525334211265625*^9, 3.52533424884375*^9}, {3.525334287046875*^9, 
+  3.52533429875*^9}, {3.525334351046875*^9, 3.525334371125*^9}, {
+  3.525334530734375*^9, 3.525334530921875*^9}, {3.525334579265625*^9, 
+  3.525334599*^9}, {3.525334631875*^9, 3.525334643203125*^9}, {
+  3.525334726375*^9, 3.525334731625*^9}, {3.525334980328125*^9, 
+  3.525335019640625*^9}, {3.525335142046875*^9, 3.525335223515625*^9}, {
+  3.525336808140625*^9, 3.52533687809375*^9}, {3.525758802640625*^9, 
+  3.52575880746875*^9}, {3.526471736390625*^9, 3.526471741125*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     FormBox[
+      StyleBox[
+       TagBox[
+        SubscriptBox[
+         "f", "\<\"[\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)]\"\>"],
+        HoldForm],
+       StripOnInput->False,
+       FontFamily->"Euclid"],
+      TraditionalForm], "=", 
+     RowBox[{
+     "(", "164.4901", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", 
+      "5.7393", ")", 
+      StyleBox[
+       TagBox["\<\"\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)\"\>",
+        HoldForm],
+       StripOnInput->False,
+       FontFamily->"Euclid"]}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"158.7508", ";", "170.2294"}], "]"}], 
+      StyleBox[
+       TagBox["\<\"\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)\"\>",
+        HoldForm],
+       StripOnInput->False,
+       FontFamily->"Euclid"], ";", " ", "Normal\[ScriptCapitalD]"}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      RowBox[{
+       StyleBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1.645", "\[PlusMinus]", "0.058"}], ")"}], "\[Times]", 
+         SuperscriptBox["10", "2"]}],
+        FontWeight->Bold], 
+       StyleBox[
+        TagBox["\<\"\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)\"\>",
+         HoldForm],
+        StripOnInput->False,
+        FontFamily->"Euclid"]}], " ", "=", 
+      RowBox[{
+       StyleBox[
+        RowBox[{
+         RowBox[{"1.645", "\[InvisibleApplication]", 
+          RowBox[{"(", "58", ")"}]}], "\[Times]", 
+         SuperscriptBox["10", "2"]}],
+        FontWeight->Bold], 
+       StyleBox[
+        TagBox["\<\"\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)\"\>",
+         HoldForm],
+        StripOnInput->False,
+        FontFamily->"Euclid"]}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True,
+ CellChangeTimes->{3.527354652796875*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\[CapitalKoppa]AnalysisEnvironment"], "Input",
+ CellChangeTimes->{{3.525164127578125*^9, 3.525164237984375*^9}, 
+   3.5251643358125*^9, 3.525164583578125*^9, {3.525340942453125*^9, 
+   3.5253409451875*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"y", "=", 
+    RowBox[{"23.390904037010284`", " ", 
+     SqrtBox[
+      FractionBox[
+       RowBox[{
+        SubscriptBox["x", "1"], " ", 
+        SubscriptBox["x", "2"]}], 
+       RowBox[{
+        SubscriptBox["x", "3"], " ", 
+        SubscriptBox["x", "4"], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", 
+          SubsuperscriptBox["x", "5", "2"]}], ")"}], " ", 
+        SubscriptBox["x", "6"], " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SubsuperscriptBox["x", "7", "3"], "-", 
+          SubsuperscriptBox["x", "8", "3"]}], ")"}]}]]]}]}],
+   FontSize->Larger,
+   FontWeight->Bold,
+   FontColor->RGBColor[0, 0, 
+     Rational[2, 3]]],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.527354652828125*^9}],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Quantity\"\>", 
+      "\[SpanFromLeft]", "\<\"Estimate \[PlusMinus] Uncertainty\"\>", \
+"\<\"Distribution\"\>", 
+      StyleBox["\<\"\[LeftBracketingBar]\[ThinSpace]\[PartialD]f/\[PartialD]\\\
+!\\(\\*SubscriptBox[\\\"x\\\", \\\"i\\\"]\\)\[RightBracketingBar]\"\>",
+       StripOnInput->False,
+       FontFamily->"Courier"]},
+     {"\<\"\"\>", "\[SpanFromLeft]", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+     {"", "", "", "", ""},
+     {
+      TagBox[
+       SubscriptBox["x", "1"],
+       DisplayForm], 
+      TagBox[
+       TagBox["m",
+        HoldForm],
+       DisplayForm], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"8.60", "\[PlusMinus]", "0.05"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "3"]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"9.56338\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"-3\"\>"]}],
+        0.009563379306942326,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "2"],
+       DisplayForm], 
+      TagBox[
+       TagBox["g",
+        HoldForm],
+       DisplayForm], 
+      TagBox[
+       RowBox[{"9.80665`", "\[MediumSpace]", 
+        RowBox[{"(", "exact", ")"}]}],
+       DisplayForm], "\<\"-\"\>", 
+      TagBox[
+       InterpretationBox["\<\"8.38666\"\>",
+        8.386662319926174,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "3"],
+       DisplayForm], 
+      TagBox[
+       TagBox["\[ScriptCapitalN]",
+        HoldForm],
+       DisplayForm], 
+      TagBox[
+       RowBox[{"6", "\[MediumSpace]", 
+        RowBox[{"(", "exact", ")"}]}],
+       DisplayForm], "\<\"-\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"1.37075\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"1\"\>"]}],
+        13.707510339950671`,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "4"],
+       DisplayForm], 
+      TagBox[
+       TagBox["\[Rho]",
+        HoldForm],
+       DisplayForm], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.290", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"6.37559\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"1\"\>"]}],
+        63.75586204628218,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "5"],
+       DisplayForm], 
+      TagBox[
+       TagBox["k",
+        HoldForm],
+       DisplayForm], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.50", "\[PlusMinus]", "0.05"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"1.97388\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"2\"\>"]}],
+        197.38814889528962`,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "6"],
+       DisplayForm], 
+      TagBox[
+       TagBox["b",
+        HoldForm],
+       DisplayForm], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"4.00", "\[PlusMinus]", "0.05"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "1"}]]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"2.05613\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"2\"\>"]}],
+        205.61265509926002`,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "7"],
+       DisplayForm], 
+      TagBox[
+       TagBox[
+        SubscriptBox["\[ScriptL]", "2"],
+        HoldForm],
+       DisplayForm], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"7.620", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"3.25101\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"1\"\>"]}],
+        32.510115325906845`,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "8"],
+       DisplayForm], 
+      TagBox[
+       TagBox[
+        SubscriptBox["\[ScriptL]", "1"],
+        HoldForm],
+       DisplayForm], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.210", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"8.19746\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"-1\"\>"]}],
+        0.8197460035522665,
+        AutoDelete->True],
+       ScientificForm]},
+     {"", "", "", "", ""}
+    },
+    ColumnsEqual->False,
+    GridBoxAlignment->{
+     "Columns" -> {Left, Center, Left, Left, Left}, "Rows" -> {Baseline}, 
+      "ItemsIndexed" -> {{{1, 1}, {1, 4}} -> {Center, Inherited}}},
+    GridBoxDividers->{"Columns" -> {
+        Thickness[Medium], 
+        Thickness[Tiny], {
+         Thickness[Medium]}}, "Rows" -> {
+        Thickness[Medium], False, 
+        Thickness[Medium], {False}, 
+        Thickness[Medium]}},
+    GridBoxItemSize->{"Columns" -> {Automatic}, "Rows" -> {{1.2}}},
+    GridBoxItemStyle->{"Columns" -> {Automatic}, "Rows" -> {
+        Directive[Bold, FontFamily -> "Helvetica", FontSize -> Smaller]}},
+    GridBoxSpacings->{
+     "Columns" -> {{2}}, "Rows" -> {1.5, 0.5, -1, {0.2}, -1}},
+    RowsEqual->False],
+   "Grid"],
+  StripOnInput->False,
+  FontWeight->Bold]], "Output",
+ CellChangeTimes->{3.527354652890625*^9}],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"y\"\>", 
+      TagBox["164.490124079408",
+       DisplayForm], "\<\"\"\>", "\<\"\"\>"},
+     {"\<\"\\!\\(\\*SubscriptBox[\\\"y\\\", \\\"min\\\"]\\)\"\>", 
+      TagBox["153.4263311",
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       InterpretationBox["\<\"y\[MediumSpace]-\[MediumSpace]11.0638\"\>",
+        -11.063792970449441`,
+        AutoDelete->True],
+       NumberForm[#, 6, 
+        NumberSigns -> {
+         "y\[MediumSpace]-\[MediumSpace]", 
+          "y\[MediumSpace]+\[MediumSpace]"}]& ]},
+     {"\<\"\\!\\(\\*SubscriptBox[\\\"y\\\", \\\"max\\\"]\\)\"\>", 
+      TagBox["177.2452202",
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       InterpretationBox["\<\"y\[MediumSpace]+\[MediumSpace]12.7551\"\>",
+        12.755096076968215`,
+        AutoDelete->True],
+       NumberForm[#, 6, 
+        NumberSigns -> {
+         "y\[MediumSpace]-\[MediumSpace]", 
+          "y\[MediumSpace]+\[MediumSpace]"}]& ]},
+     {"\<\"\\!\\(\\*SubscriptBox[\\\"\[CurlyEpsilon]\\\", \
+\\\"max\\\"]\\)\"\>", 
+      TagBox["11.8610683024866",
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       RowBox[{
+        TagBox[
+         InterpretationBox["\<\"7.21\"\>",
+          7.210808775826958,
+          AutoDelete->True],
+         NumberForm[#, 3]& ], "%"}],
+       DisplayForm]},
+     {"\<\"y\[MediumSpace]\[PlusMinus]\[MediumSpace]\\!\\(\\*SubscriptBox[\\\"\
+\[CurlyEpsilon]\\\", \\\"max\\\"]\\)\"\>", 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.64", "\[PlusMinus]", "0.12"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       RowBox[{
+        RowBox[{"1.64", "\[InvisibleApplication]", 
+         RowBox[{"(", "12", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm]},
+     {"\<\"\\!\\(\\*SubscriptBox[\\\"u\\\", \\\"c\\\"]\\)\"\>", 
+      TagBox["5.739303752976773",
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       RowBox[{
+        TagBox[
+         InterpretationBox["\<\"3.49\"\>",
+          3.489147926112641,
+          AutoDelete->True],
+         NumberForm[#, 3]& ], "%"}],
+       DisplayForm]},
+     {"\<\"y\[MediumSpace]\[PlusMinus]\[MediumSpace]\\!\\(\\*SubscriptBox[\\\"\
+u\\\", \\\"c\\\"]\\)\"\>", 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.645", "\[PlusMinus]", "0.058"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       RowBox[{
+        RowBox[{"1.645", "\[InvisibleApplication]", 
+         RowBox[{"(", "58", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm]}
+    },
+    ColumnsEqual->False,
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+    GridBoxDividers->{"Columns" -> {{
+         Thickness[Medium]}, False, False, 
+        Thickness[Medium]}, "Rows" -> {
+        Thickness[Medium], {
+         Thickness[Tiny], False}, 
+        Thickness[Medium]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.5}}},
+    GridBoxSpacings->{
+     "Columns" -> {2, {2}, 1, 0.5, 2}, "Rows" -> {0.5, {0.5, 0.2}, 0.5}},
+    RowsEqual->False],
+   "Grid"],
+  StripOnInput->False,
+  FontWeight->Bold]], "Output",
+ CellChangeTimes->{3.5273546543125*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "\[CapitalKoppa]fEstimate", " ", "\[PlusMinus]", " ", 
+   "\[CapitalKoppa]fMaximumUncertainty"}], " ", "//", 
+  "\[CapitalKoppa]UC"}]], "Input",
+ CellChangeTimes->{
+  3.523674856421875*^9, 3.523675020046875*^9, {3.5242473563125*^9, 
+   3.52424735646875*^9}, 3.525094328234375*^9, {3.52514620671875*^9, 
+   3.52514624775*^9}, 3.52514646565625*^9, {3.525150850015625*^9, 
+   3.525150862265625*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{
+     "164.49", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "11.8611"}], 
+     "\[SpanFromLeft]"},
+    {"\[Element]", 
+     RowBox[{"[", 
+      RowBox[{"152.629", ";", "176.351"}], "]"}]},
+    {"\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.64", "\[PlusMinus]", "0.12"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{
+        RowBox[{"1.64", "\[InvisibleApplication]", 
+         RowBox[{"(", "12", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True,
+ CellChangeTimes->{3.527354654578125*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "\[CapitalKoppa]fEstimate", " ", "\[PlusMinus]", " ", 
+   "\[CapitalKoppa]fStandardUncertainty"}], " ", "//", 
+  "\[CapitalKoppa]UC"}]], "Input",
+ CellChangeTimes->{
+  3.5236748589375*^9, 3.52509433396875*^9, {3.52510764290625*^9, 
+   3.5251076471875*^9}, 3.525146240796875*^9, {3.52514638375*^9, 
+   3.525146384328125*^9}, 3.52514646396875*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{
+     "164.4901", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "5.7393"}], 
+     "\[SpanFromLeft]"},
+    {"\[Element]", 
+     RowBox[{"[", 
+      RowBox[{"158.7508", ";", "170.2294"}], "]"}]},
+    {"\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.645", "\[PlusMinus]", "0.058"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{
+        RowBox[{"1.645", "\[InvisibleApplication]", 
+         RowBox[{"(", "58", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True,
+ CellChangeTimes->{3.527354654625*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[CapitalKoppa]MonteCarlo", "[", " ", 
+   SuperscriptBox["10", 
+    RowBox[{"6", " "}]], "]"}], " ", "//", "\[CapitalKoppa]UC"}]], "Input",
+ CellChangeTimes->{{3.525146262578125*^9, 3.52514628646875*^9}, {
+   3.5251463634375*^9, 3.525146377828125*^9}, 3.525146460953125*^9, {
+   3.52514679771875*^9, 3.525146802390625*^9}, {3.525147351015625*^9, 
+   3.52514735878125*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{
+     "164.7405", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "5.76712"}], 
+     "\[SpanFromLeft]"},
+    {"\[Element]", 
+     RowBox[{"[", 
+      RowBox[{"158.9734", ";", "170.5076"}], "]"}]},
+    {"\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.647", "\[PlusMinus]", "0.058"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{
+        RowBox[{"1.647", "\[InvisibleApplication]", 
+         RowBox[{"(", "58", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True,
+ CellChangeTimes->{3.527354655671875*^9}]
+}, Open  ]],
+
+Cell["", "PageBreak",
+ PageBreakBelow->True],
+
+Cell[CellGroupData[{
+
+Cell["Sanity Check", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\[CapitalKoppa]DumpRelationship"], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  TagBox[
+   TagBox[
+    SubscriptBox[
+     "f", "\<\"[\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)]\"\>"],
+    HoldForm],
+   DisplayForm], "\[Equal]", 
+  RowBox[{"23.390904037010284`", " ", 
+   SqrtBox[
+    FractionBox[
+     RowBox[{
+      TagBox["g",
+       HoldForm], " ", 
+      TagBox["m",
+       HoldForm]}], 
+     RowBox[{
+      TagBox["b",
+       HoldForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", 
+        SuperscriptBox[
+         TagBox["k",
+          HoldForm], "2"]}], ")"}], " ", 
+      TagBox["\[ScriptCapitalN]",
+       HoldForm], " ", 
+      TagBox["\[Rho]",
+       HoldForm], " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", 
+         SuperscriptBox[
+          TagBox[
+           SubscriptBox["\[ScriptL]", "1"],
+           HoldForm], "3"]}], "+", 
+        SuperscriptBox[
+         TagBox[
+          SubscriptBox["\[ScriptL]", "2"],
+          HoldForm], "3"]}], ")"}]}]]]}]}]], "Output",
+ CellLabelAutoDelete->True,
+ CellChangeTimes->{3.52735465575*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\[CapitalKoppa]DumpQuantities"], "Input"],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox[
+      SubscriptBox[
+       "f", "\<\"[\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)]\"\>"],
+      HoldForm], "=", 
+     RowBox[{
+     "(", "164.4901", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", 
+      "5.7393", ")", 
+      TagBox["\<\"\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)\"\>",
+       HoldForm]}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"158.7508", ";", "170.2294"}], "]"}], 
+      TagBox["\<\"\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)\"\>",
+       HoldForm], ";", " ", "Normal\[ScriptCapitalD]"}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      RowBox[{
+       StyleBox[
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"1.645", "\[PlusMinus]", "0.058"}], ")"}], "\[Times]", 
+         SuperscriptBox["10", "2"]}],
+        FontWeight->Bold], 
+       TagBox["\<\"\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)\"\>",
+        HoldForm]}], " ", "=", 
+      RowBox[{
+       StyleBox[
+        RowBox[{
+         RowBox[{"1.645", "\[InvisibleApplication]", 
+          RowBox[{"(", "58", ")"}]}], "\[Times]", 
+         SuperscriptBox["10", "2"]}],
+        FontWeight->Bold], 
+       TagBox["\<\"\\!\\(\\*SuperscriptBox[\\(min\\), \\(-1\\)]\\)\"\>",
+        HoldForm]}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.527354655828125*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["m",
+      HoldForm], "=", 
+     RowBox[{"8600", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "50"}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"8550", ";", "8650"}], "]"}], ";", " ", 
+      "Uniform\[ScriptCapitalD]"}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"8.60", "\[PlusMinus]", "0.05"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "3"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{
+        RowBox[{"8.60", "\[InvisibleApplication]", 
+         RowBox[{"(", "5", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "3"]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.527354655828125*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["g",
+      HoldForm], "=", 
+     RowBox[{
+      RowBox[{"9.80665`", "\[MediumSpace]", 
+       RowBox[{"(", "exact", ")"}]}], 
+      TagBox[
+       FractionBox["m", 
+        SuperscriptBox["s", "2"]],
+       HoldForm]}]},
+    {"\[SpanFromAbove]", "\[RightTriangle]", 
+     RowBox[{
+      RowBox[{"standard", " ", "acceleration", " ", "of", " ", "gravity"}], 
+      RowBox[{";", " "}], 
+      StyleBox["\<\"\!\(\*StyleBox[SubscriptBox[StyleBox[\"g\", \"TI\"], \
+\"n\"], \"TSYM\"]\)\"\>",
+       ShowStringCharacters->False], 
+      RowBox[{"[", 
+       TagBox[
+        FractionBox["m", 
+         SuperscriptBox["s", "2"]],
+        HoldForm], "]"}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.52735465584375*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["\[ScriptCapitalN]",
+      HoldForm], "=", 
+     RowBox[{"6", "\[MediumSpace]", 
+      RowBox[{"(", "exact", ")"}]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.52735465584375*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["\[Rho]",
+      HoldForm], "=", 
+     RowBox[{
+     "1.29", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "0.005"}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"1.285", ";", "1.295"}], "]"}], ";", " ", 
+      "Uniform\[ScriptCapitalD]"}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.290", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{"1.290", "\[InvisibleApplication]", 
+        RowBox[{"(", "5", ")"}]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.52735465584375*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["k",
+      HoldForm], "=", 
+     RowBox[{
+     "1.5", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "0.05"}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"1.45", ";", "1.55"}], "]"}], ";", " ", 
+      "Uniform\[ScriptCapitalD]"}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.50", "\[PlusMinus]", "0.05"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{"1.50", "\[InvisibleApplication]", 
+        RowBox[{"(", "5", ")"}]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.52735465584375*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox["b",
+      HoldForm], "=", 
+     RowBox[{
+     "0.4", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "0.005"}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"0.395", ";", "0.405"}], "]"}], ";", " ", 
+      "Uniform\[ScriptCapitalD]"}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"4.00", "\[PlusMinus]", "0.05"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "1"}]]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{
+        RowBox[{"4.00", "\[InvisibleApplication]", 
+         RowBox[{"(", "5", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "1"}]]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.52735465584375*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox[
+      SubscriptBox["\[ScriptL]", "2"],
+      HoldForm], "=", 
+     RowBox[{
+     "7.62", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "0.005"}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"7.615", ";", "7.625"}], "]"}], ";", " ", 
+      "Uniform\[ScriptCapitalD]"}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"7.620", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{"7.620", "\[InvisibleApplication]", 
+        RowBox[{"(", "5", ")"}]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.52735465584375*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     TagBox[
+      SubscriptBox["\[ScriptL]", "1"],
+      HoldForm], "=", 
+     RowBox[{
+     "1.21", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", "0.005"}]},
+    {"\[SpanFromAbove]", "\[Element]", 
+     RowBox[{
+      RowBox[{"[", 
+       RowBox[{"1.205", ";", "1.215"}], "]"}], ";", " ", 
+      "Uniform\[ScriptCapitalD]"}]},
+    {"\[SpanFromAbove]", "\[TildeEqual]", 
+     RowBox[{
+      StyleBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.210", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       FontWeight->Bold], " ", "=", 
+      StyleBox[
+       RowBox[{"1.210", "\[InvisibleApplication]", 
+        RowBox[{"(", "5", ")"}]}],
+       FontWeight->Bold]}]}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxItemSize->{
+    "Columns" -> {{All}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.2}}, 
+     "RowsIndexed" -> {}},
+   RowsEqual->True],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.527354655859375*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->None,
+ScreenStyleEnvironment->"Presentation",
+WindowToolbars->"RulerBar",
+WindowSize->{1049, 1064},
+WindowMargins->{{Automatic, 283}, {Automatic, 2}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PrintingMargins"->{{54., 54.}, {14.1875, 28.375}}},
+ShowSelection->True,
+InputAliases->{"intt" -> RowBox[{"\[Integral]", 
+     RowBox[{"\[SelectionPlaceholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "dintt" -> 
+  RowBox[{
+     SubsuperscriptBox[
+     "\[Integral]", "\[SelectionPlaceholder]", "\[Placeholder]"], 
+     RowBox[{"\[Placeholder]", 
+       RowBox[{"\[DifferentialD]", "\[Placeholder]"}]}]}], "sumt" -> RowBox[{
+     UnderoverscriptBox["\[Sum]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "prodt" -> RowBox[{
+     UnderoverscriptBox["\[Product]", 
+      RowBox[{"\[SelectionPlaceholder]", "=", "\[Placeholder]"}], 
+      "\[Placeholder]"], "\[Placeholder]"}], "dt" -> RowBox[{
+     SubscriptBox["\[PartialD]", "\[Placeholder]"], " ", 
+     "\[SelectionPlaceholder]"}], "notation" -> RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation>" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongRightArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "notation<" -> 
+  RowBox[{"Notation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], " ", 
+       "\[DoubleLongLeftArrow]", " ", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "symb" -> 
+  RowBox[{"Symbolize", "[", 
+     TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], "]"}], 
+  "infixnotation" -> RowBox[{"InfixNotation", "[", 
+     RowBox[{
+       TagBox["\[SelectionPlaceholder]", "NotationTemplateTag"], ",", 
+       "\[Placeholder]"}], "]"}], "addia" -> RowBox[{"AddInputAlias", "[", 
+     RowBox[{"\"\[SelectionPlaceholder]\"", "\[Rule]", 
+       TagBox["\[Placeholder]", "NotationTemplateTag"]}], "]"}], "pattwraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationPatternTag"], "madeboxeswraper" -> 
+  TagBox["\[SelectionPlaceholder]", "NotationMadeBoxesTag"]},
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Output"], CellFrame -> {{0.5, 0}, {0, 0}}, 
+    CellFrameMargins -> {{24, 8}, {8, 8}}, CellFrameColor -> None, Background -> 
+    RGBColor[1, 1, 0.917647]]}, Visible -> False, FrontEndVersion -> 
+  "6.0 for Microsoft Windows (32-bit) (May 21, 2008)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 205, 5, 46, "Subtitle"],
+Cell[798, 30, 2045, 53, 221, "Input"],
+Cell[2846, 85, 465, 11, 39, "Text"],
+Cell[CellGroupData[{
+Cell[3336, 100, 1305, 20, 45, "Input"],
+Cell[4644, 122, 2114, 65, 111, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6795, 192, 220, 3, 36, "Input"],
+Cell[7018, 197, 799, 27, 109, "Output"],
+Cell[7820, 226, 5781, 199, 257, "Output"],
+Cell[13604, 427, 3297, 95, 219, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16938, 527, 433, 10, 36, "Input"],
+Cell[17374, 539, 1047, 33, 103, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18458, 577, 382, 9, 36, "Input"],
+Cell[18843, 588, 1050, 33, 103, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19930, 626, 407, 8, 42, "Input"],
+Cell[20340, 636, 1054, 33, 103, "Output"]
+}, Open  ]],
+Cell[21409, 672, 44, 1, 7, "PageBreak",
+ PageBreakBelow->True],
+Cell[CellGroupData[{
+Cell[21478, 677, 31, 0, 77, "Section"],
+Cell[CellGroupData[{
+Cell[21534, 681, 57, 0, 36, "Input"],
+Cell[21594, 683, 1046, 41, 84, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22677, 729, 55, 0, 36, "Input"],
+Cell[22735, 731, 1656, 47, 109, "Output"],
+Cell[24394, 780, 1117, 34, 103, "Output"],
+Cell[25514, 816, 1038, 33, 101, "Output"],
+Cell[26555, 851, 507, 16, 54, "Output"],
+Cell[27065, 869, 1067, 33, 103, "Output"],
+Cell[28135, 904, 1055, 33, 103, "Output"],
+Cell[29193, 939, 1176, 37, 103, "Output"],
+Cell[30372, 978, 1097, 34, 103, "Output"],
+Cell[31472, 1014, 1098, 34, 103, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

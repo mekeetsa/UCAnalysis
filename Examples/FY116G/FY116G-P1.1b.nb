@@ -1,0 +1,649 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     19438,        640]
+NotebookOptionsPosition[     17659,        579]
+NotebookOutlinePosition[     18561,        608]
+CellTagsIndexPosition[     18518,        605]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Problem 1.1 - Uncertainty Analysis (Case B)", "Subtitle",
+ CellChangeTimes->{{3.52441058065625*^9, 3.524410591703125*^9}},
+ TextAlignment->Center,
+ FontFamily->"Arial",
+ FontSize->20,
+ FontWeight->"Bold",
+ FontColor->RGBColor[0., 0.25098039215686274`, 0.5019607843137255]],
+
+Cell[BoxData[
+ RowBox[{"Get", "[", " ", 
+  RowBox[{"\"\<UCAnalysis.m\>\"", ",", 
+   RowBox[{"Path", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"NotebookDirectory", "[", "]"}], "}"}]}]}], " ", "]"}]], "Input",\
+
+ CellMargins->{{22, 3}, {8, 10}},
+ CellChangeTimes->{{3.523674877*^9, 3.523674879375*^9}, {3.52424731371875*^9, 
+   3.524247336671875*^9}, 3.524247836546875*^9},
+ TextAlignment->Center],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["c", "H2O"], " ", 
+     SubscriptBox["m", "H2O"], " ", 
+     SubscriptBox["T", 
+      RowBox[{"1", ",", "H2O"}]]}], "+", 
+    RowBox[{
+     SubscriptBox["c", "Hg"], " ", 
+     SubscriptBox["m", "Hg"], " ", 
+     SubscriptBox["T", 
+      RowBox[{"1", ",", "Hg"}]]}]}], 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["c", "H2O"], " ", 
+     SubscriptBox["m", "H2O"]}], "+", 
+    RowBox[{
+     SubscriptBox["c", "Hg"], " ", 
+     SubscriptBox["m", "Hg"]}]}]], "    ", "\[RightTeeArrow]", "     ", 
+  RowBox[{"(", GridBox[{
+     {
+      SubscriptBox["c", "Hg"], 
+      RowBox[{"0.14", "\[PlusMinus]", "0.005"}], "Uniform\[ScriptCapitalD]"},
+     {
+      SubscriptBox["c", "H2O"], 
+      RowBox[{"4.19", "\[PlusMinus]", "0.005"}], "Uniform\[ScriptCapitalD]"},
+     {
+      SubscriptBox["m", "Hg"], 
+      RowBox[{"0.200", "\[PlusMinus]", "0.0005"}], 
+      "Uniform\[ScriptCapitalD]"},
+     {
+      SubscriptBox["m", "H2O"], 
+      RowBox[{"0.037", "\[PlusMinus]", "0.0005"}], 
+      "Uniform\[ScriptCapitalD]"},
+     {
+      SubscriptBox["T", 
+       RowBox[{"1", ",", "Hg"}]], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"273.15", "+", "80"}], ")"}], "\[PlusMinus]", "0.5"}], 
+      "Uniform\[ScriptCapitalD]"},
+     {
+      SubscriptBox["T", 
+       RowBox[{"1", ",", "H2O"}]], 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"273.15", "+", "15"}], ")"}], "\[PlusMinus]", "0.5"}], 
+      "Uniform\[ScriptCapitalD]"}
+    },
+    ColumnsEqual->False,
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxSpacings->{"Columns" -> {{2}}}], ")"}]}]], "Input",
+ CellMargins->{{22, 3}, {8, 10}},
+ CellChangeTimes->{{3.523674877*^9, 3.523674879375*^9}, {3.52424731371875*^9, 
+   3.524247336671875*^9}, 3.524247836546875*^9, {3.524410626515625*^9, 
+   3.524410638640625*^9}, {3.52441067490625*^9, 3.524410711203125*^9}, {
+   3.52441075959375*^9, 3.524410807046875*^9}, {3.524410852265625*^9, 
+   3.52441092625*^9}, {3.52441117271875*^9, 3.524411181140625*^9}, {
+   3.524411222859375*^9, 3.52441127175*^9}, {3.524411549765625*^9, 
+   3.524411640625*^9}},
+ TextAlignment->Center],
+
+Cell[CellGroupData[{
+
+Cell["Evaluated Functional Relationship", "Subsubsection",
+ CellMargins->{{Inherited, Inherited}, {Inherited, 5}},
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellChangeTimes->{3.524247843328125*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\[CapitalKoppa]AnalysisEnvironment"], "Input",
+ CellChangeTimes->{{3.52571436678125*^9, 3.525714367109375*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{"y", "=", 
+    FractionBox[
+     RowBox[{
+      RowBox[{
+       SubscriptBox["x", "1"], " ", 
+       SubscriptBox["x", "3"], " ", 
+       SubscriptBox["x", "5"]}], "+", 
+      RowBox[{
+       SubscriptBox["x", "2"], " ", 
+       SubscriptBox["x", "4"], " ", 
+       SubscriptBox["x", "6"]}]}], 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["x", "1"], " ", 
+       SubscriptBox["x", "3"]}], "+", 
+      RowBox[{
+       SubscriptBox["x", "2"], " ", 
+       SubscriptBox["x", "4"]}]}]]}],
+   FontSize->Larger,
+   FontWeight->Bold,
+   FontColor->RGBColor[0, 0, 
+     Rational[2, 3]]],
+  DisplayForm]], "Output",
+ CellChangeTimes->{3.525760913109375*^9}],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"Variable\"\>", 
+      "\[SpanFromLeft]", "\<\"Uncertainty Interval\"\>", \
+"\<\"Distribution\"\>", 
+      StyleBox["\<\"\[LeftBracketingBar]\[ThinSpace]\[PartialD]f/\[PartialD]\\\
+!\\(\\*SubscriptBox[\\\"x\\\", \\\"i\\\"]\\)\[RightBracketingBar]\"\>",
+       StripOnInput->False,
+       FontFamily->"Courier"]},
+     {"\<\"\"\>", "\[SpanFromLeft]", "\<\"\"\>", "\<\"\"\>", "\<\"\"\>"},
+     {"", "", "", "", ""},
+     {
+      TagBox[
+       SubscriptBox["x", "1"],
+       DisplayForm], 
+      SubscriptBox["c", "Hg"], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"1.40", "\[PlusMinus]", "0.05"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "1"}]]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"6.01609\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"1\"\>"]}],
+        60.16092982309732,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "2"],
+       DisplayForm], 
+      SubscriptBox["c", "H2O"], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"4.190", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "0"]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox["\<\"2.01015\"\>",
+        2.0101503998170998`,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "3"],
+       DisplayForm], 
+      SubscriptBox["m", "Hg"], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2.000", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "1"}]]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"4.21127\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"1\"\>"]}],
+        42.11265087616809,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "4"],
+       DisplayForm], 
+      SubscriptBox["m", "H2O"], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"3.70", "\[PlusMinus]", "0.05"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", 
+         RowBox[{"-", "2"}]]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"2.27636\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"2\"\>"]}],
+        227.63595068199083`,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "5"],
+       DisplayForm], 
+      SubscriptBox["T", 
+       RowBox[{"1", ",", "Hg"}]], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"3.532", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"1.5298\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"-1\"\>"]}],
+        0.1529803857291155,
+        AutoDelete->True],
+       ScientificForm]},
+     {
+      TagBox[
+       SubscriptBox["x", "6"],
+       DisplayForm], 
+      SubscriptBox["T", 
+       RowBox[{"1", ",", "H2O"}]], 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2.882", "\[PlusMinus]", "0.005"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm], "\<\"Uniform\"\>", 
+      TagBox[
+       InterpretationBox[
+        RowBox[{"\<\"8.4702\"\>", "\[Times]", 
+         SuperscriptBox["10", "\<\"-1\"\>"]}],
+        0.8470196142708846,
+        AutoDelete->True],
+       ScientificForm]},
+     {"", "", "", "", ""}
+    },
+    ColumnsEqual->False,
+    GridBoxAlignment->{
+     "Columns" -> {Left, Center, Left, Left, Left}, "Rows" -> {Baseline}, 
+      "ItemsIndexed" -> {{{1, 1}, {1, 4}} -> {Center, Inherited}}},
+    GridBoxDividers->{"Columns" -> {
+        Thickness[Medium], 
+        Thickness[Tiny], 
+        Thickness[Medium], 
+        Thickness[Medium], 
+        Thickness[Medium], 
+        Thickness[Medium]}, "Rows" -> {
+        Thickness[Medium], False, 
+        Thickness[Medium], {False}, 
+        Thickness[Medium]}},
+    GridBoxItemSize->{"Columns" -> {Automatic}, "Rows" -> {{1.2}}},
+    GridBoxItemStyle->{"Columns" -> {Automatic}, "Rows" -> {
+        Directive[Bold, FontFamily -> "Helvetica", FontSize -> Smaller]}},
+    GridBoxSpacings->{
+     "Columns" -> {{2}}, "Rows" -> {1.5, 0.5, -1, {0.2}, -1}},
+    RowsEqual->False],
+   "Grid"],
+  StripOnInput->False,
+  FontWeight->Bold]], "Output",
+ CellChangeTimes->{3.525760913140625*^9}],
+
+Cell[BoxData[
+ StyleBox[
+  TagBox[GridBox[{
+     {"\<\"y\"\>", 
+      TagBox["298.093725072392",
+       DisplayForm], "\<\"\"\>", "\<\"\"\>"},
+     {"\<\"\\!\\(\\*SubscriptBox[\\\"y\\\", \\\"min\\\"]\\)\"\>", 
+      TagBox["297.151546853375",
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       InterpretationBox["\<\"y\[MediumSpace]-\[MediumSpace]0.942178\"\>",
+        -0.9421782190179329,
+        AutoDelete->True],
+       NumberForm[#, 6, 
+        NumberSigns -> {
+         "y\[MediumSpace]-\[MediumSpace]", 
+          "y\[MediumSpace]+\[MediumSpace]"}]& ]},
+     {"\<\"\\!\\(\\*SubscriptBox[\\\"y\\\", \\\"max\\\"]\\)\"\>", 
+      TagBox["299.043029011412",
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       InterpretationBox["\<\"y\[MediumSpace]+\[MediumSpace]0.949304\"\>",
+        0.9493039390195577,
+        AutoDelete->True],
+       NumberForm[#, 6, 
+        NumberSigns -> {
+         "y\[MediumSpace]-\[MediumSpace]", 
+          "y\[MediumSpace]+\[MediumSpace]"}]& ]},
+     {"\<\"\\!\\(\\*SubscriptBox[\\\"\[CurlyEpsilon]\\\", \
+\\\"max\\\"]\\)\"\>", 
+      TagBox["0.945729701893652",
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       RowBox[{
+        TagBox[
+         InterpretationBox["\<\"0.317\"\>",
+          0.3172591780199264,
+          AutoDelete->True],
+         NumberForm[#, 3]& ], "%"}],
+       DisplayForm]},
+     {"\<\"y\[MediumSpace]\[PlusMinus]\[MediumSpace]\\!\\(\\*SubscriptBox[\\\"\
+\[CurlyEpsilon]\\\", \\\"max\\\"]\\)\"\>", 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2.981", "\[PlusMinus]", "0.001"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       RowBox[{
+        RowBox[{"2.981", "\[NegativeVeryThinSpace]", 
+         RowBox[{"(", "1", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm]},
+     {"\<\"\\!\\(\\*SubscriptBox[\\\"u\\\", \\\"c\\\"]\\)\"\>", 
+      TagBox["0.310480091278691",
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       RowBox[{
+        TagBox[
+         InterpretationBox["\<\"0.104\"\>",
+          0.10415519186232132`,
+          AutoDelete->True],
+         NumberForm[#, 3]& ], "%"}],
+       DisplayForm]},
+     {"\<\"y\[MediumSpace]\[PlusMinus]\[MediumSpace]\\!\\(\\*SubscriptBox[\\\"\
+u\\\", \\\"c\\\"]\\)\"\>", 
+      TagBox[
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"2.981", "\[PlusMinus]", "0.003"}], ")"}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm], "\<\"=\"\>", 
+      TagBox[
+       RowBox[{
+        RowBox[{"2.981", "\[NegativeVeryThinSpace]", 
+         RowBox[{"(", "3", ")"}]}], "\[Times]", 
+        SuperscriptBox["10", "2"]}],
+       DisplayForm]}
+    },
+    ColumnsEqual->False,
+    GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}},
+    GridBoxDividers->{"Columns" -> {{
+         Thickness[Medium]}, False, False, 
+        Thickness[Medium]}, "Rows" -> {
+        Thickness[Medium], {
+         Thickness[Medium], False}, 
+        Thickness[Medium]}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{1.5}}},
+    GridBoxSpacings->{
+     "Columns" -> {2, {2}, 1, 0.5, 2}, "Rows" -> {0.5, {0.5, 0.2}, 0.5}},
+    RowsEqual->False],
+   "Grid"],
+  StripOnInput->False,
+  FontWeight->Bold]], "Output",
+ CellChangeTimes->{3.525760914546875*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Absolute Maximum Uncertainty", "Subsubsection",
+ CellChangeTimes->{{3.52424734884375*^9, 3.52424735434375*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["\[CurlyEpsilon]", "max"], "=", 
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "1"}], "n"], 
+    RowBox[{
+     RowBox[{"\[LeftBracketingBar]", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        SubscriptBox["x", "i"]], " ", 
+       RowBox[{"f", "[", "x", "]"}]}], "\[RightBracketingBar]"}], 
+     SubscriptBox["\[CurlyEpsilon]", "i"]}]}]}], ";", "  ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "x", "]"}], "\[PlusMinus]", 
+    SubscriptBox["\[CurlyEpsilon]", "max"]}], " ", "//", 
+   "\[CapitalKoppa]UCE"}]}]], "Input",
+ CellChangeTimes->{
+  3.523674856421875*^9, 3.523675020046875*^9, {3.5242473563125*^9, 
+   3.52424735646875*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{
+   "298.093725072392", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", 
+    "0.94573"}], "\n", 
+   RowBox[{"\[Element]", 
+    RowBox[{"[", 
+     RowBox[{"297.148", ";", "299.0395"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{"\[TildeEqual]", " ", 
+     StyleBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"2.981", "\[PlusMinus]", "0.001"}], ")"}], "\[Times]", 
+       SuperscriptBox["10", "2"]}],
+      FontWeight->Bold]}], " ", "=", " ", 
+    StyleBox[
+     RowBox[{
+      RowBox[{"2.981", "\[NegativeVeryThinSpace]", 
+       RowBox[{"(", "1", ")"}]}], "\[Times]", 
+      SuperscriptBox["10", "2"]}],
+     FontWeight->Bold]}]}],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True,
+ CellChangeTimes->{3.525760914671875*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Combined Standard Uncertainty", "Subsubsection",
+ CellChangeTimes->{{3.52424734884375*^9, 3.52424735434375*^9}, {
+  3.5244149611875*^9, 3.524414965046875*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["u", "c"], "=", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"i", "=", "1"}], "n"], 
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["\[PartialD]", 
+           SubscriptBox["x", "i"]], " ", 
+          RowBox[{"f", "[", "x", "]"}]}], ")"}], "2"], 
+       SubsuperscriptBox["u", "i", "2"]}]}], ")"}], 
+    RowBox[{"1", "/", "2"}]]}], ";", "  ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", "x", "]"}], "\[PlusMinus]", 
+    SubscriptBox["u", "c"]}], " ", "//", "\[CapitalKoppa]UCA"}]}]], "Input",
+ CellChangeTimes->{
+  3.5236748589375*^9, {3.52441119746875*^9, 3.524411198546875*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{
+   "298.093725072392", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", 
+    "0.31048"}], "\n", 
+   RowBox[{"\[Element]", 
+    RowBox[{"[", 
+     RowBox[{"297.7832", ";", "298.4042"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{"\[TildeEqual]", " ", 
+     StyleBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"2.981", "\[PlusMinus]", "0.003"}], ")"}], "\[Times]", 
+       SuperscriptBox["10", "2"]}],
+      FontWeight->Bold]}], " ", "=", " ", 
+    StyleBox[
+     RowBox[{
+      RowBox[{"2.981", "\[NegativeVeryThinSpace]", 
+       RowBox[{"(", "3", ")"}]}], "\[Times]", 
+      SuperscriptBox["10", "2"]}],
+     FontWeight->Bold]}]}],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True,
+ CellChangeTimes->{3.52576091471875*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Monte Carlo Simulation", "Subsubsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Block", "[", " ", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{"data", ",", 
+      RowBox[{"trials", "=", 
+       SuperscriptBox["10", "6"]}]}], " ", "}"}], ",", 
+    RowBox[{
+     RowBox[{"data", "=", 
+      RowBox[{"f", "@@", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"RandomReal", "[", 
+          RowBox[{
+           RowBox[{"fDist", "[", "i", "]"}], ",", 
+           RowBox[{"{", "trials", "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"Mean", "[", "data", "]"}], "\[PlusMinus]", 
+      RowBox[{"StandardDeviation", "[", "data", "]"}]}]}]}], " ", "]"}], " ", 
+  "//", "\[CapitalKoppa]UCA"}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{
+   "298.0932696678", "\[ThinSpace]", "\[PlusMinus]", "\[ThinSpace]", 
+    "0.310087"}], "\n", 
+   RowBox[{"\[Element]", 
+    RowBox[{"[", 
+     RowBox[{"297.7832", ";", "298.4034"}], "]"}]}], "\n", 
+   RowBox[{
+    RowBox[{"\[TildeEqual]", " ", 
+     StyleBox[
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"2.981", "\[PlusMinus]", "0.003"}], ")"}], "\[Times]", 
+       SuperscriptBox["10", "2"]}],
+      FontWeight->Bold]}], " ", "=", " ", 
+    StyleBox[
+     RowBox[{
+      RowBox[{"2.981", "\[NegativeVeryThinSpace]", 
+       RowBox[{"(", "3", ")"}]}], "\[Times]", 
+      SuperscriptBox["10", "2"]}],
+     FontWeight->Bold]}]}],
+  DisplayForm]], "Output",
+ CellLabelAutoDelete->True,
+ CellChangeTimes->{3.52576091546875*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+AutoGeneratedPackage->None,
+ScreenStyleEnvironment->"Presentation",
+WindowToolbars->"RulerBar",
+WindowSize->{967, 1064},
+WindowMargins->{{Automatic, 316}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PrintingMargins"->{{54., 54.}, {28.375, 28.375}}},
+ShowSelection->True,
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (May 21, 2008)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Output"], TextAlignment -> -0.9, Background -> 
+    RGBColor[1, 1, 0.909804]]}, Visible -> False, FrontEndVersion -> 
+  "6.0 for Microsoft Windows (32-bit) (May 21, 2008)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 278, 6, 46, "Subtitle"],
+Cell[871, 31, 396, 10, 53, "Input"],
+Cell[1270, 43, 2162, 62, 154, "Input"],
+Cell[CellGroupData[{
+Cell[3457, 109, 204, 4, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[3686, 117, 125, 1, 36, "Input"],
+Cell[3814, 120, 699, 26, 78, "Output"],
+Cell[4516, 148, 4622, 148, 221, "Output"],
+Cell[9141, 298, 3321, 95, 219, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12511, 399, 117, 1, 56, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[12653, 404, 720, 21, 67, "Input"],
+Cell[13376, 427, 780, 25, 99, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14205, 458, 165, 2, 56, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[14395, 464, 744, 23, 68, "Input"],
+Cell[15142, 489, 780, 25, 99, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15971, 520, 47, 0, 56, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[16043, 524, 794, 23, 91, "Input"],
+Cell[16840, 549, 779, 25, 99, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
